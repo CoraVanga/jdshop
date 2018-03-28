@@ -52,6 +52,7 @@ $config = [
         
     ],
     'params' => $params,
+    'defaultRoute' => 'main',
 ];
 
 if (YII_ENV_DEV) {
