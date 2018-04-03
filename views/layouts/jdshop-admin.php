@@ -1,6 +1,3 @@
-<?php 
-echo Yii::app();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,16 +13,6 @@ echo Yii::app();
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo Yii::$app->homeUrl.'assets-admin/images/favicon.png'?>">
     <title>JD Shop</title>
     <!-- Bootstrap Core CSS -->
-<<<<<<< HEAD
-    <!-- Custom CSS  -->
-    <link href="<?php //echo Yii::app()->getClientScript()->registerCssFile('assets-admin/css/lib/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
-    <link href="assets-admin/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
-    <link href="assets-admin/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
-    <link href="assets-admin/css/lib/owl.carousel.min.css" rel="stylesheet" />
-    <link href="assets-admin/css/lib/owl.theme.default.min.css" rel="stylesheet" />
-    <link href="assets-admin/css/helper.css" rel="stylesheet">
-    <link href="assets-admin/css/style.css" rel="stylesheet">
-=======
     <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/bootstrap/bootstrap.min.css'?>" rel="stylesheet">
     <!-- Custom CSS -->
 
@@ -35,7 +22,7 @@ echo Yii::app();
     <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/owl.theme.default.min.css" rel="stylesheet'?>" />
     <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/helper.css" rel="stylesheet'?>">
     <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/style.css" rel="stylesheet'?>">
->>>>>>> f3a3ebfa4096b1a8f58c59d9ae0a550d192b29ac
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -423,20 +410,13 @@ echo Yii::app();
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
-<<<<<<< HEAD
-    <script src="<?php echo $this->registerCssFile('assets-admin/js/lib/jquery/jquery.min.js'); ?>"></script>
-=======
+
     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/jquery/jquery.min.js'?>"></script>
->>>>>>> f3a3ebfa4096b1a8f58c59d9ae0a550d192b29ac
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/assets-admin/js/popper.min.js'?>"></script>
     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/assets-admin/js/bootstrap.min.js'?>"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-<<<<<<< HEAD
-    <script src="<?php echo $this->registerCssFile('assets-admin/js/jquery.slimscroll.js'); ?>"></script>
-=======
     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/jquery.slimscroll.js'?>"></script>
->>>>>>> f3a3ebfa4096b1a8f58c59d9ae0a550d192b29ac
     <!--Menu sidebar -->
     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/sidebarmenu.js'?>"></script>
     <!--stickey kit -->
