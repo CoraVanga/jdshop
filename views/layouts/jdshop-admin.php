@@ -1,3 +1,6 @@
+<?php 
+echo Yii::app();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +15,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets-admin/images/favicon.png">
     <title>Ela - Bootstrap Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
-    <link href="assets-admin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-
+    <!-- Custom CSS  -->
+    <link href="<?php //echo Yii::app()->getClientScript()->registerCssFile('assets-admin/css/lib/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="assets-admin/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
     <link href="assets-admin/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
     <link href="assets-admin/css/lib/owl.carousel.min.css" rel="stylesheet" />
@@ -394,6 +396,7 @@
 
 
 
+
                     
 
                 <!-- End PAge Content -->
@@ -407,12 +410,12 @@
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
-    <script src="assets-admin/js/lib/jquery/jquery.min.js"></script>
+    <script src="<?php echo $this->registerCssFile('assets-admin/js/lib/jquery/jquery.min.js'); ?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets-admin/js/lib/bootstrap/assets-admin/js/popper.min.js"></script>
     <script src="assets-admin/js/lib/bootstrap/assets-admin/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="assets-admin/js/jquery.slimscroll.js"></script>
+    <script src="<?php echo $this->registerCssFile('assets-admin/js/jquery.slimscroll.js'); ?>"></script>
     <!--Menu sidebar -->
     <script src="assets-admin/js/sidebarmenu.js"></script>
     <!--stickey kit -->

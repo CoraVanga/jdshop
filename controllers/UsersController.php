@@ -35,9 +35,9 @@ class UsersController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'jdshop-admin';
         $searchModel = new UsersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-       $this->layout = 'jdshop-admin';
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

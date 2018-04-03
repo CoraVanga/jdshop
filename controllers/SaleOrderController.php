@@ -35,6 +35,8 @@ class SaleOrderController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'jdshop-admin';
+
         $searchModel = new SearchSaleOrder();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
