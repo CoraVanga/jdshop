@@ -38,7 +38,7 @@ class Users extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password', 'name', 'dob', 'phone', 'role', 'addpress', 'email', 'status'], 'integer'],
+            //[['username', 'password', 'name', 'dob', 'phone', 'role', 'addpress', 'email', 'status'], 'integer'],
         ];
     }
 

@@ -123,7 +123,6 @@ use PHPUnit\TextUI\ResultPrinter;
  *     <log type="coverage-html" target="/tmp/report" lowUpperBound="50" highLowerBound="90"/>
  *     <log type="coverage-clover" target="/tmp/clover.xml"/>
  *     <log type="coverage-crap4j" target="/tmp/crap.xml" threshold="30"/>
- *     <log type="json" target="/tmp/logfile.json"/>
  *     <log type="plain" target="/tmp/logfile.txt"/>
  *     <log type="teamcity" target="/tmp/logfile.txt"/>
  *     <log type="junit" target="/tmp/logfile.xml"/>
@@ -229,6 +228,31 @@ final class Configuration
     public function getFilename(): string
     {
         return $this->filename;
+    }
+
+    public function getExtensionConfiguration(): array
+    {
+        $result = [];
+
+        foreach ($this->xpath->query('extensions/extension') as $extension) {
+            /** @var DOMElement $extension */
+            $class = (string) $extension->getAttribute('class');
+            $file  = '';
+
+            if ($extension->getAttribute('file')) {
+                $file = $this->toAbsolutePath(
+                    (string) $extension->getAttribute('file'),
+                    true
+                );
+            }
+
+            $result[] = [
+                'class' => $class,
+                'file'  => $file
+            ];
+        }
+
+        return $result;
     }
 
     /**

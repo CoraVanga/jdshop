@@ -39,22 +39,9 @@ class ExceptionWrapper extends Exception
     public function __construct(Throwable $t)
     {
         // PDOException::getCode() is a string.
-        // @see http://php.net/manual/en/class.pdoexception.php#95812
+        // @see https://php.net/manual/en/class.pdoexception.php#95812
         parent::__construct($t->getMessage(), (int) $t->getCode());
-
-        $this->className = \get_class($t);
-        $this->file      = $t->getFile();
-        $this->line      = $t->getLine();
-
-        $this->serializableTrace = $t->getTrace();
-
-        foreach ($this->serializableTrace as $i => $call) {
-            unset($this->serializableTrace[$i]['args']);
-        }
-
-        if ($t->getPrevious()) {
-            $this->previous = new self($t->getPrevious());
-        }
+        $this->setOriginalException($t);
     }
 
     /**
@@ -91,5 +78,60 @@ class ExceptionWrapper extends Exception
     public function getPreviousWrapped(): ?self
     {
         return $this->previous;
+    }
+
+    /**
+     * @param string $className
+     */
+    public function setClassName(string $className)
+    {
+        $this->className = $className;
+    }
+
+    public function setOriginalException(\Throwable $t)
+    {
+        $this->originalException($t);
+
+        $this->className = \get_class($t);
+        $this->file      = $t->getFile();
+        $this->line      = $t->getLine();
+
+        $this->serializableTrace = $t->getTrace();
+
+        foreach ($this->serializableTrace as $i => $call) {
+            unset($this->serializableTrace[$i]['args']);
+        }
+
+        if ($t->getPrevious()) {
+            $this->previous = new self($t->getPrevious());
+        }
+    }
+
+    /**
+     * @return null|Throwable
+     */
+    public function getOriginalException(): ?Throwable
+    {
+        return $this->originalException();
+    }
+
+    /**
+     * Method to contain static originalException to exclude it from stacktrace to prevent the stacktrace contents,
+     * which can be quite big, from being garbage-collected, thus blocking memory until shutdown.
+     * Approach works both for var_dump() and var_export() and print_r()
+     *
+     * @param null|Throwable $exceptionToStore
+     *
+     * @return null|Throwable
+     */
+    private function originalException(Throwable $exceptionToStore = null): ?Throwable
+    {
+        static $originalExceptions;
+        $instanceId = \spl_object_hash($this);
+        if ($exceptionToStore) {
+            $originalExceptions[$instanceId] = $exceptionToStore;
+        }
+
+        return $originalExceptions[$instanceId] ?? null;
     }
 }
