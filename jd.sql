@@ -96,6 +96,8 @@ CREATE TABLE discount_detail
   id INT IDENTITY(1,1),
   id_discount INT ,
   id_product INT ,
+  PRIMARY KEY (id),
   FOREIGN KEY (id_discount) REFERENCES discount_product(id),
   FOREIGN KEY (id_product) REFERENCES product(id)
 );
+
