@@ -51,7 +51,7 @@ class Users extends \yii\db\ActiveRecord
             'id' => 'ID',
             'username' => 'Username',
             'password' => 'Password',
-            'name' => 'Name',
+            'name' => 'Tên ',
             'dob' => 'Dob',
             'phone' => 'Phone',
             'role' => 'Role',
