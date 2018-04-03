@@ -12,9 +12,11 @@ echo Yii::app();
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets-admin/images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo Yii::$app->homeUrl.'assets-admin/images/favicon.png'?>">
+    <title>JD Shop</title>
     <!-- Bootstrap Core CSS -->
+<<<<<<< HEAD
     <!-- Custom CSS  -->
     <link href="<?php //echo Yii::app()->getClientScript()->registerCssFile('assets-admin/css/lib/bootstrap/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="assets-admin/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
@@ -23,6 +25,17 @@ echo Yii::app();
     <link href="assets-admin/css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <link href="assets-admin/css/helper.css" rel="stylesheet">
     <link href="assets-admin/css/style.css" rel="stylesheet">
+=======
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/bootstrap/bootstrap.min.css'?>" rel="stylesheet">
+    <!-- Custom CSS -->
+
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/calendar2/semantic.ui.min.css'?>" rel="stylesheet">
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/calendar2/pignose.calendar.min.css'?>" rel="stylesheet">
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/owl.carousel.min.css" rel="stylesheet'?>" />
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/owl.theme.default.min.css" rel="stylesheet'?>" />
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/helper.css" rel="stylesheet'?>">
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/style.css" rel="stylesheet'?>">
+>>>>>>> f3a3ebfa4096b1a8f58c59d9ae0a550d192b29ac
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -46,10 +59,10 @@ echo Yii::app();
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                        <b><img src="assets-admin/images/logo.png" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="<?php echo Yii::$app->homeUrl.'assets-admin/images/logo.png'?>" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="assets-admin/images/logo-text.png" alt="homepage" class="dark-logo" /></span>
+                        <span><img src="<?php echo Yii::$app->homeUrl.'assets-admin/images/logo-text.png'?>" alt="homepage" class="dark-logo" /></span>
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -188,28 +201,28 @@ echo Yii::app();
                                         <div class="message-center">
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="assets-admin/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="user-img"> <img src="<?php echo Yii::$app->homeUrl.'assets-admin/images/users/5.jpg'?>" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="assets-admin/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="user-img"> <img src="<?php echo Yii::$app->homeUrl.'assets-admin/images/users/2.jpg'?>" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>John Doe</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="assets-admin/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                <div class="user-img"> <img src="<?php echo Yii::$app->homeUrl.'assets-admin/images/users/3.jpg'?>" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Mr. John</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
                                                 </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="user-img"> <img src="assets-admin/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                                <div class="user-img"> <img src="<?php echo Yii::$app->homeUrl.'assets-admin/images/users/4.jpg'?>" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
                                                 </div>
@@ -225,7 +238,7 @@ echo Yii::app();
                         <!-- End Messages -->
                         <!-- Profile -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets-admin/images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo Yii::$app->homeUrl.'assets-admin/images/users/5.jpg'?>" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="#"><i class="ti-user"></i> Profile</a></li>
@@ -410,41 +423,49 @@ echo Yii::app();
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
+<<<<<<< HEAD
     <script src="<?php echo $this->registerCssFile('assets-admin/js/lib/jquery/jquery.min.js'); ?>"></script>
+=======
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/jquery/jquery.min.js'?>"></script>
+>>>>>>> f3a3ebfa4096b1a8f58c59d9ae0a550d192b29ac
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets-admin/js/lib/bootstrap/assets-admin/js/popper.min.js"></script>
-    <script src="assets-admin/js/lib/bootstrap/assets-admin/js/bootstrap.min.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/assets-admin/js/popper.min.js'?>"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/assets-admin/js/bootstrap.min.js'?>"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
+<<<<<<< HEAD
     <script src="<?php echo $this->registerCssFile('assets-admin/js/jquery.slimscroll.js'); ?>"></script>
+=======
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/jquery.slimscroll.js'?>"></script>
+>>>>>>> f3a3ebfa4096b1a8f58c59d9ae0a550d192b29ac
     <!--Menu sidebar -->
-    <script src="assets-admin/js/sidebarmenu.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/sidebarmenu.js'?>"></script>
     <!--stickey kit -->
-    <script src="assets-admin/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/sticky-kit-master/dist/sticky-kit.min.js'?>"></script>
     <!--Custom JavaScript -->
 
 
     <!-- Amchart -->
-     <script src="assets-admin/js/lib/morris-chart/raphael-min.js"></script>
-    <script src="assets-admin/js/lib/morris-chart/morris.js"></script>
-    <script src="assets-admin/js/lib/morris-chart/dashboard1-init.js"></script>
+     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/morris-chart/raphael-min.js'?>"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/morris-chart/morris.js'?>"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/morris-chart/dashboard1-init.js'?>"></script>
 
 
-  <script src="assets-admin/js/lib/calendar-2/moment.latest.min.js"></script>
+  <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/calendar-2/moment.latest.min.js'?>"></script>
     <!-- scripit init-->
-    <script src="assets-admin/js/lib/calendar-2/semantic.ui.min.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/calendar-2/semantic.ui.min.js'?>"></script>
     <!-- scripit init-->
-    <script src="assets-admin/js/lib/calendar-2/prism.min.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/calendar-2/prism.min.js'?>"></script>
     <!-- scripit init-->
-    <script src="assets-admin/js/lib/calendar-2/pignose.calendar.min.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/calendar-2/pignose.calendar.min.js'?>"></script>
     <!-- scripit init-->
-    <script src="assets-admin/js/lib/calendar-2/pignose.init.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/calendar-2/pignose.init.js'?>"></script>
 
-    <script src="assets-admin/js/lib/owl-carousel/owl.carousel.min.js"></script>
-    <script src="assets-admin/js/lib/owl-carousel/owl.carousel-init.js"></script>
-    <script src="assets-admin/js/scripts.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/owl-carousel/owl.carousel.min.js'?>"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/owl-carousel/owl.carousel-init.js'?>"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/scripts.js'?>"></script>
     <!-- scripit init-->
 
-    <script src="assets-admin/js/custom.min.js"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/custom.min.js'?>"></script>
 
 </body>
 
