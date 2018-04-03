@@ -18,7 +18,7 @@ class MainController extends Controller
     {
         
         $this->layout = 0;
-        return $this->render('test');
+        return $this->render('shopper');
         //return $this->render('index');
     }
 }
