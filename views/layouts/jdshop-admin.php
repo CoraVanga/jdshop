@@ -1,4 +1,18 @@
+<?php
 
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+use app\widgets\Alert;
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset;
+
+AppAsset::register($this);
+?>
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +26,9 @@
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo Yii::$app->homeUrl.'assets-admin/images/favicon.png'?>">
-    <title>JD Shop</title>
+    
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/bootstrap/bootstrap.min.css'?>" rel="stylesheet">
     <!-- Custom CSS -->
@@ -33,6 +49,8 @@
 </head>
 
 <body class="fix-header fix-sidebar">
+    <?php $this->beginBody() ?>
+    <?= Html::csrfMetaTags() ?>
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -253,10 +271,11 @@
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-primary">Dashboard</h3> </div>
                 <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
+                    
+                    <?= Breadcrumbs::widget([
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]) ?>
+                    <?= Alert::widget() ?>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -320,7 +339,8 @@
     <!-- scripit init-->
 
     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/custom.min.js'?>"></script>
-
+<?php $this->endBody() ?>
 </body>
 
 </html>
+<?php $this->endPage() ?>
