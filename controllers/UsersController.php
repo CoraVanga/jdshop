@@ -23,7 +23,7 @@ class UsersController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['GET'],
                 ],
             ],
         ];
@@ -72,14 +72,10 @@ class UsersController extends Controller
         $post = Yii::$app->request->post();
         if($post){
             $model->formatForSaveUsers($post['Users']);
-            $model->validate();
+            //$model->validate();
             $model->save();
-            echo "<pre>"; 
-            print_r($model->getId());
-            echo "</pre>";
-            die;
-            $item = $model->_attributes;
-            return $this->redirect(['view', 'id' => $item->id ]);
+            $model->validate();
+            return $this->redirect(['view', 'id' => $model->id ]);
         }
         
 //        if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,4 +136,5 @@ class UsersController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+    
 }
