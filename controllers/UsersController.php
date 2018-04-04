@@ -69,10 +69,22 @@ class UsersController extends Controller
         
         $this->layout = 'jdshop-admin';
         $model = new Users();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $post = Yii::$app->request->post();
+        if($post){
+            $model->formatForSaveUsers($post['Users']);
+            $model->validate();
+            $model->save();
+            echo "<pre>"; 
+            print_r($model->getId());
+            echo "</pre>";
+            die;
+            $item = $model->_attributes;
+            return $this->redirect(['view', 'id' => $item->id ]);
         }
+        
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
 
         return $this->render('create', [
             'model' => $model,

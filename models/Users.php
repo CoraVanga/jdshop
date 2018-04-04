@@ -17,7 +17,7 @@ use yii\web\IdentityInterface;
  * @property string $dob
  * @property string $phone
  * @property int $role
- * @property string $addpress
+ * @property string $address
  * @property string $email
  * @property int $status
  *
@@ -65,7 +65,7 @@ class Users extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password', 'auth_key', 'name', 'phone', 'addpress', 'email'], 'string'],
+            [['username', 'password', 'auth_key', 'name', 'phone', 'address', 'email'], 'string'],
             [['dob'], 'safe'],
             [['role', 'status'], 'integer'],
         ];
@@ -85,7 +85,7 @@ class Users extends ActiveRecord implements IdentityInterface
             'dob' => 'Dob',
             'phone' => 'Phone',
             'role' => 'Role',
-            'addpress' => 'Addpress',
+            'address' => 'Address',
             'email' => 'Email',
             'status' => 'Status',
         ];
@@ -188,6 +188,18 @@ class Users extends ActiveRecord implements IdentityInterface
     {
         return $this->password === $password;
     }
-
     
+    public function formatForSaveUsers($post){
+        
+        $this->username = ($post['username']) ? $post['username'] : '';
+        $this->password = ($post['password']) ? $post['password'] : '';
+        $this->auth_key = Yii::$app->security->generateRandomString();
+        $this->name = ($post['name']) ? $post['name'] : '';
+        $this->dob = ($post['dob']) ? ($post['dob']) : '';
+        $this->phone = ($post['phone']) ? $post['phone'] : '';
+        $this->role = ($post['role']) ? $post['role'] : '1';
+        $this->address = ($post['address']) ? $post['address'] : '';
+        $this->email = ($post['email']) ? $post['email'] : '';
+        $this->status = ($post['status']) ? $post['status'] : '';
+    }
 }

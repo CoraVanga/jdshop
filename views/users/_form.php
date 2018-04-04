@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'role')->textInput() ?>
 
-    <?= $form->field($model, 'addpress')->textInput() ?>
+    <?= $form->field($model, 'address')->textInput() ?>
 
     <?= $form->field($model, 'email')->textInput() ?>
 

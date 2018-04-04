@@ -1,4 +1,4 @@
-CREATE DATABASE JD
+﻿CREATE DATABASE JD
 USE JD
 
 drop table users
@@ -21,12 +21,13 @@ CREATE TABLE users
   dob date ,
   phone nvarchar(200) ,
   role INT ,
-  addpress nvarchar(200) ,
+  address nvarchar(200) ,
   email nvarchar(200) ,
   status INT ,
   PRIMARY KEY (id)
 );
- 
+
+--- EXEC sp_RENAME 'users.addpress' , 'address', 'COLUMN'  -- sửa tên addpress -> address
 
 CREATE TABLE type
 (
