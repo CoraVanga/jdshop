@@ -17,7 +17,7 @@ class MainController extends Controller
     public function actionHome()
     {
         
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'jdshop-user';
         return $this->render('shopper');
         //return $this->render('index');
     }

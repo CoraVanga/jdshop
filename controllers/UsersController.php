@@ -52,6 +52,8 @@ class UsersController extends Controller
      */
     public function actionView($id)
     {
+        
+        $this->layout = 'jdshop-admin';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +66,8 @@ class UsersController extends Controller
      */
     public function actionCreate()
     {
+        
+        $this->layout = 'jdshop-admin';
         $model = new Users();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
