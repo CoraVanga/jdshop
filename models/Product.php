@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "product".
  *
  * @property int $id
- * @property int $name
+ * @property string $name
  * @property int $price
- * @property int $created_date
+ * @property string $created_date
  * @property int $status
  * @property string $code
  * @property int $size
@@ -41,8 +41,9 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'created_date', 'status', 'size', 'amount', 'id_type', 'created_uid'], 'integer'],
-            [['code', 'info'], 'string'],
+            [['name', 'code', 'info'], 'string'],
+            [['price', 'status', 'size', 'amount', 'id_type', 'created_uid'], 'integer'],
+            [['created_date'], 'safe'],
             [['created_uid'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['created_uid' => 'id']],
             [['id_type'], 'exist', 'skipOnError' => true, 'targetClass' => Type::className(), 'targetAttribute' => ['id_type' => 'id']],
         ];

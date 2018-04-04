@@ -1,20 +1,32 @@
 CREATE DATABASE JD
 USE JD
 
+drop table users
+drop table type
+drop table product
+drop table image_product
+drop table discount_detail
+drop table discount_product
+drop table sale_order
+drop table order_line
+
+
 CREATE TABLE users
 (
   id INT IDENTITY(1,1),
-  username INT ,
-  password INT ,
-  name INT ,
-  dob INT ,
-  phone INT ,
+  username nvarchar(100) ,
+  password nvarchar(200) ,
+  auth_key nvarchar(200),
+  name nvarchar(200) ,
+  dob date ,
+  phone nvarchar(200) ,
   role INT ,
-  addpress INT ,
-  email INT ,
+  addpress nvarchar(200) ,
+  email nvarchar(200) ,
   status INT ,
   PRIMARY KEY (id)
 );
+ 
 
 CREATE TABLE type
 (
@@ -26,9 +38,9 @@ CREATE TABLE type
 CREATE TABLE product
 (
   id INT IDENTITY(1,1),
-  name INT ,
+  name varchar(100) ,
   price INT ,
-  created_date INT ,
+  created_date datetime ,
   status INT ,
   code NVARCHAR(100) ,
   size INT ,
@@ -44,7 +56,7 @@ CREATE TABLE product
 CREATE TABLE image_product
 (
   id INT IDENTITY(1,1),
-  link INT ,
+  link NVARCHAR(200) ,
   id_product INT ,
   PRIMARY KEY (id),
   FOREIGN KEY (id_product) REFERENCES product(id)
@@ -53,11 +65,11 @@ CREATE TABLE image_product
 CREATE TABLE discount_product
 (
   id INT IDENTITY(1,1),
-  info INT ,
+  info NVARCHAR(100) ,
   type INT ,
   discount INT ,
   status INT ,
-  created_date INT ,
+  created_date datetime ,
   begin_date DATE ,
   end_date DATE ,
   created_uid INT ,
@@ -71,7 +83,7 @@ CREATE TABLE sale_order
   id INT IDENTITY(1,1),
   bill_code NVARCHAR(20) ,
   status INT ,
-  created_date DATE ,
+  created_date datetime ,
   id_user INT ,
   PRIMARY KEY (id),
   FOREIGN KEY (id_user) REFERENCES users(id)

@@ -8,11 +8,11 @@ use Yii;
  * This is the model class for table "discount_product".
  *
  * @property int $id
- * @property int $info
+ * @property string $info
  * @property int $type
  * @property int $discount
  * @property int $status
- * @property int $created_date
+ * @property string $created_date
  * @property string $begin_date
  * @property string $end_date
  * @property int $created_uid
@@ -36,8 +36,9 @@ class DiscountProduct extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['info', 'type', 'discount', 'status', 'created_date', 'created_uid'], 'integer'],
-            [['begin_date', 'end_date'], 'safe'],
+            [['info'], 'string'],
+            [['type', 'discount', 'status', 'created_uid'], 'integer'],
+            [['created_date', 'begin_date', 'end_date'], 'safe'],
             [['created_uid'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['created_uid' => 'id']],
         ];
     }

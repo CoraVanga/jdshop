@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "image_product".
  *
  * @property int $id
- * @property int $link
+ * @property string $link
  * @property int $id_product
  *
  * @property Product $product
@@ -29,7 +29,8 @@ class ImageProduct extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['link', 'id_product'], 'integer'],
+            [['link'], 'string'],
+            [['id_product'], 'integer'],
             [['id_product'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['id_product' => 'id']],
         ];
     }
