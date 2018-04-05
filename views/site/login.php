@@ -1,47 +1,91 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/lib/bootstrap/bootstrap.min.css'?>" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/helper.css'?>" rel="stylesheet">
+    <link href="<?php echo Yii::$app->homeUrl.'assets-admin/css/style.css'?>" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+    <!--[if lt IE 9]>
+    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+<body class="fix-header fix-sidebar">
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+        <div class="unix-login">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <div class="login-content card">
+                            <div class="login-form">
+                                <h4>Login</h4>
+                                <form>
+                                    <div class="form-group">
+                                        <label>Email address</label>
+                                        <input type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+        										<input type="checkbox"> Remember Me
+        									</label>
+                                        <label class="pull-right">
+        										<a href="#">Forgotten Password?</a>
+        									</label>
 
-    <p>Please fill out the following fields to login:</p>
-
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
-
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                                    <div class="register-link m-t-15 text-center">
+                                        <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
-</div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/jquery/jquery.min.js'?>"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/js/popper.min.js'?>"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/js/bootstrap.min.js'?>"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/jquery.slimscroll.js'?>"></script>
+    <!--Menu sidebar -->
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/sidebarmenu.js'?>"></script>
+    <!--stickey kit -->
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/sticky-kit-master/dist/sticky-kit.min.js'?>"></script>
+    <!--Custom JavaScript -->
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/custom.min.js'?>"></script>
+
+</body>
+
+</html>
