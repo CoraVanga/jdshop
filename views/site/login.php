@@ -1,3 +1,15 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model app\models\LoginForm */
+
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+
+$this->title = 'Login';
+$this->params['breadcrumbs'][] = $this->title;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,31 +50,30 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4">
                         <div class="login-content card">
-                            <div class="login-form">
+                            <div class="login-form" method="post">
                                 <h4>Login</h4>
-                                <form>
-                                    <div class="form-group">
-                                        <label>Email address</label>
-                                        <input type="email" class="form-control" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-        										<input type="checkbox"> Remember Me
-        									</label>
-                                        <label class="pull-right">
-        										<a href="#">Forgotten Password?</a>
-        									</label>
+                                
+                                
+                                <?php $form = ActiveForm::begin([
+                                    'id' => 'login-form',
+                                ]); ?>
 
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
-                                    <div class="register-link m-t-15 text-center">
+                                <?= $form->field($model, 'username')->textInput(['autofocus' => true])->input('text', ['placeholder' => "Enter Your Username"])->label(false); ?>
+
+                                <?= $form->field($model, 'password')->passwordInput()->input('password', ['placeholder' => "Password"])->label(false) ?>
+
+                                <?= $form->field($model, 'rememberMe')->checkbox([]) ?>
+                                
+                                <div class="form-group">
+                                    
+                                        <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                                </div>
+                                <div class="register-link m-t-15 text-center">
                                         <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
-                                    </div>
-                                </form>
+                                </div>
+
+                                <?php ActiveForm::end(); ?>
+                                
                             </div>
                         </div>
                     </div>

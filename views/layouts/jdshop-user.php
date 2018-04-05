@@ -1,3 +1,6 @@
+<?php
+ echo Yii::$app->user->getIsGuest();
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

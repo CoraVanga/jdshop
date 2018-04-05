@@ -167,7 +167,7 @@ class Users extends ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->authKey;
+        return $this->auth_key;
     }
 
     /**
@@ -201,5 +201,13 @@ class Users extends ActiveRecord implements IdentityInterface
         $this->address = ($post['address']) ? $post['address'] : '';
         $this->email = ($post['email']) ? $post['email'] : '';
         $this->status = ($post['status']) ? $post['status'] : '';
+    }
+    
+    public static function findUsers($username,$password){
+        $let = Users::findOne(['username' => $username],['password' == $password]);
+        if($let == ""){
+            return false;
+        }
+        return $let;
     }
 }
