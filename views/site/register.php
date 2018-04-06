@@ -1,14 +1,7 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
-
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,30 +43,48 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row justify-content-center">
                     <div class="col-lg-4">
                         <div class="login-content card">
-                            <div class="login-form" method="post">
-                                <h4>Login</h4>
-                                
+                            <div class="login-form">
+                                <h4>Đăng ký thông tin khách hàng</h4>
                                 
                                 <?php $form = ActiveForm::begin([
                                     'id' => 'login-form',
                                 ]); ?>
-
-                                <?= $form->field($model, 'username')->textInput(['autofocus' => true])->input('text', ['placeholder' => "Enter Your Username"])->label(false); ?>
-
-                                <?= $form->field($model, 'password')->passwordInput()->input('password', ['placeholder' => "Password"])->label(false) ?>
-
-                                <?= $form->field($model, 'rememberMe')->checkbox([]) ?>
-                                
-                                <div class="form-group">
-                                    
-                                        <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                                </div>
-                                <div class="register-link m-t-15 text-center">
-                                        <p>Don't have account ? <a href="register"> Sign Up Here</a></p>
-                                </div>
-
+                                    <div class="form-group">
+                                        <label>User Name</label>
+                                        <input type="text" id="users-username" class="form-control" name="Users[username]" placeholder="User Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="text" id="users-username" class="form-control" name="Users[password]" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" id="users-username" class="form-control" name="Users[name]" placeholder="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" id="users-username" class="form-control" name="Users[email]" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Địa chỉ</label>
+                                        <input type="text" id="users-username" class="form-control" name="Users[address]" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ngày sinh</label>
+                                        <input type="date" id="users-username" class="form-control" name="Users[dob]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Điện thoại</label>
+                                        <input type="text" id="users-username" class="form-control" name="Users[phone]">
+                                    </div>
+                                    <input type="text" id="users-username" class="form-control" name="Users[role]" value="4" hidden="1">
+                                    <input type="text" id="users-username" class="form-control" name="Users[status]" value="1" hidden="1">
+                                    <input type="text" id="users-username" class="form-control" name="register" value="1" hidden="1">
+                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Đăng ký</button>
+                                    <div class="register-link m-t-15 text-center">
+                                        <p>Có tài khoản ? <a href="login">Đăng nhập</a></p>
+                                    </div>
                                 <?php ActiveForm::end(); ?>
-                                
                             </div>
                         </div>
                     </div>

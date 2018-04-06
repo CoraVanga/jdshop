@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Users;
 
 class SiteController extends Controller
 {
@@ -79,7 +80,7 @@ class SiteController extends Controller
         $model = new LoginForm();
         
         $post = Yii::$app->request->post();
-        if($post){
+        if(isset($post['LoginForm'])){
             $model->formatForLoginUsers($post['LoginForm']);
             
             $model->login();
@@ -134,5 +135,20 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    public function actionRegister()
+    {
+        $post = Yii::$app->request->post();
+        
+        if(isset($post['register']) && $post['register'] == 1){
+            $this->layout = 0;
+            $users = new Users();
+            $users->formatForSaveUsers($post['Users']);
+            $users->validate();
+            $users->save();
+            return $this->redirect('login');
+        }
+        $this->layout = 0;
+        return $this->render('register');
     }
 }
