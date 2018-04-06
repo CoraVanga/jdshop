@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use app\models\Users;
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 /* @var $form yii\widgets\ActiveForm */
@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'phone')->textInput() ?>
 
-    <?= $form->field($model, 'role')->textInput() ?>
+    <?php $users = new Users(); echo $form->field($model, 'role')->dropDownList($users->getArrayRole()); ?>
 
     <?= $form->field($model, 'address')->textInput() ?>
 

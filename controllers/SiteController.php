@@ -85,7 +85,7 @@ class SiteController extends Controller
             $model->login();
 //            echo Yii::$app->user->getIsGuest();
 //            die;
-            return $this->goBack();
+            return $this->goHome();
         }
         
         $model->password = '';
@@ -99,11 +99,13 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function actionLogout()
+    public function actionLogoutUser()
     {
-        Yii::$app->user->logout();
-
+        unset($_SESSION['ID_USER']);
+//        Yii::$app->user->logout();
+        
         return $this->goHome();
+        
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php
- echo Yii::$app->user->getIsGuest();
+    use app\models\Users;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +42,17 @@
 						<ul class="user-menu">				
 							<li><a href="#">My Account</a></li>
 							<li><a href="cart.html">Your Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>					
-							<li><a href="site/login">Login</a></li>		
+							<li><a href="checkout.html">Checkout</a></li>
+                                                        <?php if(isset($_SESSION['ID_USER'])):?>
+                                                            <li><a href="site/logout-user">
+                                                                <?php
+                                                                $users = Users::findUsersById($_SESSION['ID_USER']);
+                                                                echo $users->name . "( Đăng xuất )";
+                                                                ?>
+                                                            </a></li>	
+                                                        <?php else: ?>
+                                                            <li><a href="site/login">login</a></li>	
+                                                        <?php endif;?>
 						</ul>
 					</div>
 				</div>

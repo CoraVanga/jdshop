@@ -34,6 +34,14 @@ class Users extends ActiveRecord implements IdentityInterface
 //    public $authKey;
 //    public $accessToken;
 
+    const ADMIN = 1;
+    const QUANLY = 2;
+    const NHANVIEN = 3;
+    const KHACH = 4;
+    
+    const CO = 1;
+    const KHONG = 0;
+    
     private static $users = [
 //        '100' => [
 //            'id' => '100',
@@ -210,4 +218,37 @@ class Users extends ActiveRecord implements IdentityInterface
         }
         return $let;
     }
+    public static function findUsersById($id){
+        $let = Users::findOne(['id' => $id]);
+        if($let == ""){
+            return false;
+        }
+        return $let;
+    }
+    
+    public function getArrayRole(){
+        return $arrayName = array(
+            Users::ADMIN => 'admin',
+            Users::QUANLY => 'Quản lý',
+            Users::NHANVIEN => 'Nhân viên',
+            Users::KHACH => 'Khách hàng',
+        );
+    }
+    public function getArrayStatus(){
+        return $arrayName = array(
+            Users::CO => 'Còn hoạt động',
+            Users::KHONG => 'Không hoạt động',
+        );
+    }
+    public function getRole(){
+        $user = new Users();
+        $aRole = $user->getArrayRole();
+        return ($aRole[$this->role]) ? $aRole[$this->role] : '';
+    }
+    public function getStatus(){
+        $user = new Users();
+        $aStatus = $user->getArrayStatus();
+        return ($aStatus[$this->status]) ? $aStatus[$this->status] : '';
+    }
+    
 }

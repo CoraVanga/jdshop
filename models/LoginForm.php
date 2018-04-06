@@ -62,12 +62,10 @@ class LoginForm extends Model
         $users = new Users();
         $let = $users->findUsers($this->username,$this->password);
         if($let != false){
-            return Yii::$app->user->login($let);
-            //return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+            $_SESSION['ID_USER'] = $let->id;
+
+            return true;
         }
-//        if ($this->validate()) {
-//            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
-//        }
         return false;
     }
 
@@ -86,7 +84,6 @@ class LoginForm extends Model
     }
     
     // nghia 
-    
     public function formatForLoginUsers($post){
         $this->username = $post['username'];
         $this->password = $post['password'];
