@@ -208,7 +208,7 @@ class Users extends ActiveRecord implements IdentityInterface
         $this->role = ($post['role']) ? $post['role'] : '1';
         $this->address = ($post['address']) ? $post['address'] : '';
         $this->email = ($post['email']) ? $post['email'] : '';
-        $this->status = ($post['status']) ? $post['status'] : '';
+        $this->status = ($post['status']) ? $post['status'] : '1';
     }
     
     public static function findUsers($username,$password){
@@ -250,5 +250,10 @@ class Users extends ActiveRecord implements IdentityInterface
         $aStatus = $user->getArrayStatus();
         return ($aStatus[$this->status]) ? $aStatus[$this->status] : '';
     }
-    
+    public static function idLogged(){
+        if(isset($_SESSION['ID_USER'])){
+            return $_SESSION['ID_USER'];
+        }
+        return false;
+    }
 }

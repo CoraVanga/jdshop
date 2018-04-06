@@ -306,8 +306,8 @@ AppAsset::register($this);
 
     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/jquery/jquery.min.js'?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/assets-admin/js/popper.min.js'?>"></script>
-    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/assets-admin/js/bootstrap.min.js'?>"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/js/popper.min.js'?>"></script>
+    <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/lib/bootstrap/js/bootstrap.min.js'?>"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="<?php echo Yii::$app->homeUrl.'assets-admin/js/jquery.slimscroll.js'?>"></script>
     <!--Menu sidebar -->
