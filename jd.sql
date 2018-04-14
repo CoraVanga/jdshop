@@ -1,14 +1,6 @@
 ﻿CREATE DATABASE JD
 USE JD
-
-drop table users
-drop table type
-drop table product
-drop table image_product
-drop table discount_detail
-drop table discount_product
-drop table sale_order
-drop table order_line
+drop database jd
 
 
 CREATE TABLE users
