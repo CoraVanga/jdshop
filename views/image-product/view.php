@@ -29,8 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'link',
             'id_product',
+            [
+                'attribute'=>'link',
+                'value'=> 'http://localhost:7777/images/product-images'.'/'.$model->link,
+                'format'=>['image',['width' => '100', 'height' => '100']]
+            ]
         ],
     ]) ?>
 

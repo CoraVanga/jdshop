@@ -77,6 +77,10 @@ class ImageProductController extends Controller
             $imgName = '[JDSHOP]'.$productId.'.'.$image->getExtension();
             $image->saveAs($this->getStoreToSave().'/'.$imgName);
             $model->link = $imgName;
+            echo "<pre>";
+            print_r($model->link);
+            print_r($image);
+            echo "</pre>";
             if($model->save())
             {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -153,6 +157,6 @@ class ImageProductController extends Controller
     }
     public function getStoreToSave(){
       Yii::setAlias('@project', realpath(dirname(__FILE__).'/../'));
-      return Yii::getAlias('@project') .'\static\product-image';
+      return Yii::getAlias('@project') .'\web\images\product-images';
     }
 }
