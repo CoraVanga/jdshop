@@ -7,8 +7,12 @@
  */
 
 namespace app\controllers;
- 
+ use Yii;
+use app\models\Product;
+use app\models\SearchProduct;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
  
 class MainController extends Controller
 {
@@ -18,7 +22,13 @@ class MainController extends Controller
     {
         
         $this->layout = 'jdshop-user';
-        return $this->render('shopper');
+        $searchModel = new SearchProduct();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('shopper', [
+        	'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
         //return $this->render('index');
     }
 }

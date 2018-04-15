@@ -38,10 +38,19 @@ class ProductController extends Controller
         $this->layout = 'jdshop-admin';
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $post = new Product();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'post' => $post,
+        ]);
+    }
+    public function actionAjaxView($id)
+    {
+        $this->layout = 'jdshop-admin';
+        return $this->renderPartial('_view', [
+            'model' => $this->findModel($id),
         ]);
     }
 
