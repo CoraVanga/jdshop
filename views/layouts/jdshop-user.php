@@ -40,9 +40,9 @@
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="#">My Account</a></li>
-							<li><a href="cart.html">Your Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>
+							<li><a href="#">Tài khoản</a></li>
+							<li><a href="cart.html">Giỏ hàng</a></li>
+							<li><a href="checkout.html">Thanh toán</a></li>
                                                         <?php if(isset($_SESSION['ID_USER'])):?>
                                                             <li><a href="site/logout-user">
                                                                 <?php
@@ -51,7 +51,7 @@
                                                                 ?>
                                                             </a></li>	
                                                         <?php else: ?>
-                                                            <li><a href="site/login">login</a></li>	
+                                                            <li><a href="site/login">Đăng nhập</a></li>	
                                                         <?php endif;?>
 						</ul>
 					</div>
@@ -64,24 +64,41 @@
 					<a href="index.html" class="logo pull-left"><img src="<?php echo Yii::$app->homeUrl.'assets-shopper/imageweb/logo.png'?>" width="50%", height="50%" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="./products.html">Woman</a>					
+							<li><a href="./products.html">Trang sức nữ</a>					
 								<ul>
-									<li><a href="./products.html">Lacinia nibh</a></li>									
-									<li><a href="./products.html">Eget molestie</a></li>
-									<li><a href="./products.html">Varius purus</a></li>									
+									<li><a href="./products.html">Nhẫn</a></li>									
+									<li><a href="./products.html">Bông tai</a></li>
+									<li><a href="./products.html">Dây chuyền</a></li>
+									<li><a href="./products.html">Lắc tay, lắc chân</a></li>									
 								</ul>
 							</li>															
-							<li><a href="./products.html">Man</a></li>			
-							<li><a href="./products.html">Sport</a>
+							<li><a href="./products.html">Trang sức nam</a>
+								<ul>
+									<li><a href="./products.html">Nhẫn</a></li>									
+									<li><a href="./products.html">Bông tai</a></li>
+									<li><a href="./products.html">Dây chuyền</a></li>	
+								</ul>
+							</li>				
+							<li><a href="./products.html">Trang sức trẻ em</a>
 								<ul>									
-									<li><a href="./products.html">Gifts and Tech</a></li>
-									<li><a href="./products.html">Ties and Hats</a></li>
-									<li><a href="./products.html">Cold Weather</a></li>
+									<li><a href="./products.html">Bông tai</a></li>
+									<li><a href="./products.html">Dây chuyền</a></li>
+									<li><a href="./products.html">Lắc tay, lắc chân</a></li>	
 								</ul>
 							</li>							
-							<li><a href="./products.html">Hangbag</a></li>
-							<li><a href="./products.html">Best Seller</a></li>
-							<li><a href="./products.html">Top Seller</a></li>
+							<li><a href="./products.html">Trang sức cưới</a>
+								<ul>									
+									<li><a href="./products.html">Trang sức cưới truyền thống</a></li>
+									<li><a href="./products.html">Trang sức cưới hiện đại</a></li>
+								</ul>
+							</li>
+							<li><a href="./products.html">Quà tặng</a>
+								<ul>									
+									<li><a href="./products.html">Cầu hôn</a></li>
+									<li><a href="./products.html">Sinh nhật</a></li>
+									<li><a href="./products.html">Ngày kỉ niệm</a></li>	
+								</ul>
+							</li>	
 						</ul>
 					</nav>
 				</div>
@@ -93,12 +110,7 @@
 							<img src="assets-shopper/themes/images/carousel/banner-1.jpg" alt="" />
 						</li>
 						<li>
-							<img src="assets-shopper/themes/images/carousel/banner-2.jpg" alt="" />
-							<div class="intro">
-								<h1>Mid season sale</h1>
-								<p><span>Up to 50% Off</span></p>
-								<p><span>On selected items online and in stores</span></p>
-							</div>
+							<img src="assets-shopper/themes/images/carousel/banner2.jpg" alt="" />
 						</li>
 					</ul>
 				</div>			
