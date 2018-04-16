@@ -43,8 +43,8 @@ class DiscountDetail extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_discount' => 'Id Discount',
-            'id_product' => 'Id Product',
+            'id_discount' => 'Mã khuyến mãi',
+            'id_product' => 'Mã sản phẩm',
         ];
     }
 

@@ -86,16 +86,16 @@ class Users extends ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'password' => 'Password',
-            'auth_key' => 'Auth Key',
-            'name' => 'Name',
-            'dob' => 'Dob',
-            'phone' => 'Phone',
-            'role' => 'Role',
-            'address' => 'Address',
+            'username' => 'Tên đăng nhập',
+            'password' => 'Mật khẩu',
+            'auth_key' => 'Mã CT',
+            'name' => 'Tên',
+            'dob' => 'Ngày sinh',
+            'phone' => 'Số điện thoại',
+            'role' => 'Quyền',
+            'address' => 'Địa chỉ',
             'email' => 'Email',
-            'status' => 'Status',
+            'status' => 'Trạng thái',
         ];
     }
 

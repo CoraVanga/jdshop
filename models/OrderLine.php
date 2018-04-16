@@ -47,12 +47,12 @@ class OrderLine extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'amount' => 'Amount',
-            'size_product' => 'Size Product',
-            'sum_price' => 'Sum Price',
-            'code_color' => 'Code Color',
-            'id_product' => 'Id Product',
-            'id_bill' => 'Id Bill',
+            'amount' => 'Số lượng',
+            'size_product' => 'Kích thước sản phẩm',
+            'sum_price' => 'Tổng giá',
+            'code_color' => 'Màu sắc',
+            'id_product' => 'Mã sản phẩm',
+            'id_bill' => 'Mã hóa đơn',
         ];
     }
 
