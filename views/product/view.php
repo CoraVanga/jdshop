@@ -41,5 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_uid',
         ],
     ]) ?>
+    <?php
+        
+    ?>
 
 </div>

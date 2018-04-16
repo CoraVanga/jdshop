@@ -45,14 +45,6 @@ class ProductController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'post' => $post,
-        ]);
-    }
-    public function actionAjaxView($id)
-    {
-        $this->layout = 'jdshop-admin';
-        return $this->renderPartial('_view', [
-            'model' => $this->findModel($id),
         ]);
     }
 

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Product;
 use app\models\ImageProduct;
 use app\models\SearchImageProduct;
 use yii\web\Controller;
@@ -54,9 +55,10 @@ class ImageProductController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'jdshop-user';
+        $model = $this->findModel($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -77,10 +79,6 @@ class ImageProductController extends Controller
             $imgName = '[JDSHOP]'.$productId.'.'.$image->getExtension();
             $image->saveAs($this->getStoreToSave().'/'.$imgName);
             $model->link = $imgName;
-            echo "<pre>";
-            print_r($model->link);
-            print_r($image);
-            echo "</pre>";
             if($model->save())
             {
                 return $this->redirect(['view', 'id' => $model->id]);

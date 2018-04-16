@@ -5,8 +5,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\ImageProduct */
-
-$this->title = $model->id;
+$this->title = 'Hình ảnh của '.$model->product->name;
 $this->params['breadcrumbs'][] = ['label' => 'Image Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
