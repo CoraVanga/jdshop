@@ -142,6 +142,20 @@ section.header_text.sub h4{
 iframe{
 	border-bottom:2px solid #eee;
 }
+@media (min-width: 1224px)
+.row-fluid {
+    width: 100%;
+}
+.row-fluid {
+    width: 100%;
+    margin-top: 60px;
+    padding-top: 120px;
+}
+@media (min-width: 1224px)
+.span16 {
+    width: 1175px;
+}
+
 /* end common */
 
 /* top bar
