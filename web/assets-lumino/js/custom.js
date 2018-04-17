@@ -27,4 +27,9 @@ $(document).on('click', '.panel-heading span.clickable', function(e){
 		$this.removeClass('panel-collapsed');
 		$this.find('em').removeClass('fa-toggle-down').addClass('fa-toggle-up');
 	}
-})
+});
+$(function(){
+        $('#modalButton').click(function(){
+        	$('#modal').modal('show').find('#modalContent').load($(this).attr('value'));
+        });
+    });
