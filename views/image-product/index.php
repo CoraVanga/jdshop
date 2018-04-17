@@ -28,8 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'link',
             'id_product',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            
         ],
     ]); ?>
 </div>

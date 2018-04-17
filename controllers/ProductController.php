@@ -26,7 +26,11 @@ class ProductController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'index'  => ['GET'],
+                    'view'   => ['GET'],
+                    'create' => ['GET', 'POST'],
+                    'update' => ['GET', 'PUT', 'POST'],
+                    'delete' => ['POST', 'DELETE'],
                 ],
             ],
         ];
@@ -141,6 +145,7 @@ class ProductController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->layout = 'lumino-admin';
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
