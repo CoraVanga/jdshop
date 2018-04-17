@@ -117,34 +117,36 @@
 			</section>
 			
 			<section class="main-content">
-	<div class="row">
+				<div class="row">
 					<div class="span12">													
 						<div class="row">
 							<div class="span12">
 								<h4 class="title">
-									<span class="pull-left"><span class="text"><span class="line">Trang sức <strong>Nữ</strong></span></span></span>
+									<span class="pull-left"><span class="text"><span class="line">Trang sức <strong>cưới</strong></span></span></span>
 									<span class="pull-right">
 										<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 									</span>
-
 								</h4>
 								<div id="myCarousel" class="myCarousel carousel slide">
 									<div class="carousel-inner">
 										<div class="active item">
 											<ul class="thumbnails">												
 												<li class="span3">
-													<div class="row-fruid">
-													<div class="span16">
-												<img src="assets-shopper/themes/images/carousel/span3.jpg" alt="" />
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<p><a href="product_detail.html"><img src="themes/images/ladies/1.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
+														<a href="products.html" class="category">Commodo consequat</a>
+														<p class="price">$17.25</p>
 													</div>
-													</div>	
-												
+												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="product_detail.html"><img src="themes/images/ladies/5.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Know exactly</a><br/>
+														<span class="sale_tag"></span>
+														<p><a href="product_detail.html"><img src="themes/images/ladies/2.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
 														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$22.30</p>
+														<p class="price">$32.50</p>
 													</div>
 												</li>
 												<li class="span3">
@@ -204,13 +206,133 @@
 									</div>							
 								</div>
 							</div>						
-						</div>			
+						</div>
+						<br/>
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line">Trang sức <strong>Nữ</strong></span></span></span>
+									<span class="pull-right">
+										<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+									</span>
+								</h4>
+								<div id="myCarousel-2" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+											<ul class="thumbnails">												
+												<li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
+														<a href="products.html" class="category">Commodo consequat</a>
+														<p class="price">$25.50</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
+														<a href="products.html" class="category">Quis nostrud</a>
+														<p class="price">$17.55</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware6.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Know exactly turned</a><br/>
+														<a href="products.html" class="category">Quis nostrud</a>
+														<p class="price">$25.30</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware5.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">You think fast</a><br/>
+														<a href="products.html" class="category">World once</a>
+														<p class="price">$25.60</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="item">
+											<ul class="thumbnails">
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware4.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Know exactly</a><br/>
+														<a href="products.html" class="category">Quis nostrud</a>
+														<p class="price">$45.50</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware3.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
+														<a href="products.html" class="category">Commodo consequat</a>
+														<p class="price">$33.50</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">You think water</a><br/>
+														<a href="products.html" class="category">World once</a>
+														<p class="price">$45.30</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
+														<a href="products.html" class="category">Quis nostrud</a>
+														<p class="price">$25.20</p>
+													</div>
+												</li>																																	
+											</ul>
+										</div>
+									</div>							
+								</div>
+							</div>						
+						</div>
+						<div class="row feature_box">						
+							<div class="span4">
+								<div class="service">
+									<div class="responsive">	
+										<img src="themes/images/feature_img_2.png" alt="" />
+										<h4>Thiết kế  <strong>sang trọng</strong></h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>									
+									</div>
+								</div>
+							</div>
+							<div class="span4">	
+								<div class="service">
+									<div class="customize">			
+										<img src="themes/images/feature_img_1.png" alt="" />
+										<h4>Miễn phí  <strong>giao hàng</strong></h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+									</div>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="service">
+									<div class="support">	
+										<img src="themes/images/feature_img_3.png" alt="" />
+										<h4>Miễn phí<strong> làm sạch trọn đời</strong></h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+									</div>
+								</div>
+							</div>	
+						</div>		
+					</div>				
+				</div>
+			</section>
 
 
 
 
 
- <?= $content ?><!--Cực kỳ quan trọng, không được xóa nha-->
+ <?= $content ?><
 
 
 
@@ -219,34 +341,42 @@
 
 			</section>
 			<section class="our_client">
-				<h4 class="title"><span class="text">Manufactures</span></h4>
+				<h4 class="title"><span class="text">Nhà sản xuất</span></h4>
 				
 			</section>
 			<section id="footer-bar">
 				<div class="row">
 					<div class="span3">
-						<h4>Navigation</h4>
+						<h4>Giới thiệu về JD</h4>
 						<ul class="nav">
-							<li><a href="./index.html">Homepage</a></li>  
-							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contac Us</a></li>
-							<li><a href="./cart.html">Your Cart</a></li>
-							<li><a href="./register.html">Login</a></li>							
+							<li><a href="./index.html">Thông tin về JD</a></li>  
+							<li><a href="./about.html">Quá trình phát triển</a></li>
+							<li><a href="./contact.html">Tuyển dụng</a></li>
+							<li><a href="./cart.html">Liên hệ</a></li>
+							<li><a href="./register.html">FAQs</a></li>							
 						</ul>					
 					</div>
 					<div class="span4">
-						<h4>My Account</h4>
+						<h4>Hỗ trợ mua hàng</h4>
 						<ul class="nav">
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
+							<li><a href="#">Hướng dẫn mua hàng</a></li>
+							<li><a href="#">Hướng dẫn thanh toán</a></li>
+							<li><a href="#">Phương thức vận chuyển</a></li>
+							<li><a href="#">Hướng dẫn đo size trang sức</a></li>
+							<li><a href="#">Hướng dẫn sử dụng trang sức</a></li>
+							<li><a href="#">Tra cứu đơn hàng-thẻ thành viên</a></li>
 						</ul>
 					</div>
 					<div class="span5">
-						<p class="logo"><img src="assets-shopper/themes/images/logo.png" class="site_logo" alt=""></p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+						<p class="logo"><img src="assets-shopper/imageweb/logo.png" class="site_logo" alt=""></p>
+						<p>CÔNG TY CỔ PHẦN BẠC ĐÁ QUÝ TÂY NGUYÊN </p>
+						<p>170E Phan Đăng Lưu, P.3, T.Gia Lai, TP.Hồ Chí Minh - ĐT: 028 3995 1703 - 
 						<br/>
+						<p>Fax: 028 3995 1702 - Email: jd@jd.com.vn</p>
+						</p>
+						<p>Giấy chứng nhận đăng ký kinh doanh: 0708521758
+						</p>
+						</p>
 						<span class="social_icons">
 							<a class="facebook" href="#">Facebook</a>
 							<a class="twitter" href="#">Twitter</a>
