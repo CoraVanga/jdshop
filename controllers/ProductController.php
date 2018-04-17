@@ -10,6 +10,7 @@ use app\models\SearchImageProduct;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -56,7 +57,7 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -71,13 +72,28 @@ class ProductController extends Controller
     {
         $this->layout = 'lumino-admin';
         $model = new Product();
+        $modelImage = new ImageProduct();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            if(UploadedFile::getInstance($modelImage, 'link'))
+            {
+                $modelImage->id_product = $model->id;
+                $modelImage->save();
+                $productId = $model->id; //model->id_product;
+                $imageId = $modelImage->id;
+                $image = UploadedFile::getInstance($modelImage, 'link');
+                $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
+                $image->saveAs($this->getStoreToSave().'/'.$imgName);
+                $modelImage->link = $imgName;
+                $modelImage->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'modelImage'=> $modelImage,
         ]);
     }
 
@@ -90,15 +106,29 @@ class ProductController extends Controller
      */
     public function actionUpdate($id)
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         $model = $this->findModel($id);
-
+        $modelImage = new ImageProduct();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            if(UploadedFile::getInstance($modelImage, 'link'))
+            {
+                $modelImage->id_product = $model->id;
+                $modelImage->save();
+                $productId = $model->id; //model->id_product;
+                $imageId = $modelImage->id;
+                $image = UploadedFile::getInstance($modelImage, 'link');
+                $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
+                $image->saveAs($this->getStoreToSave().'/'.$imgName);
+                $modelImage->link = $imgName;
+                $modelImage->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'modelImage'=> $modelImage,
         ]);
     }
 
@@ -130,5 +160,9 @@ class ProductController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function getStoreToSave(){
+      Yii::setAlias('@project', realpath(dirname(__FILE__).'/../'));
+      return Yii::getAlias('@project') .'\web\images\product-images';
     }
 }
