@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = 'lumino-admin';
+        $this->layout = 'jdshop-admin';
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $post = new Product();
@@ -56,7 +56,7 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout = 'lumino-admin';
+        $this->layout = 'jdshop-admin';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -69,16 +69,14 @@ class ProductController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout = 'lumino-admin';
+        $this->layout = 'jdshop-admin';
         $model = new Product();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //return $this->redirect(['view', 'id' => $model->id]);
-            echo 1;
+            return $this->redirect(['view', 'id' => $model->id]);
         }
-        else echo 0;
 
-        return $this->renderAjax('_form', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
@@ -92,7 +90,7 @@ class ProductController extends Controller
      */
     public function actionUpdate($id)
     {
-        $this->layout = 'lumino-admin';
+        $this->layout = 'jdshop-admin';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

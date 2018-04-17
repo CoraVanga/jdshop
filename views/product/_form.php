@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
@@ -11,7 +10,7 @@ use yii\bootstrap\Modal;
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(['id'=>$model->formName()]); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->textInput() ?>
 
@@ -40,35 +39,3 @@ use yii\bootstrap\Modal;
     <?php ActiveForm::end(); ?>
 
 </div>
-<?php 
-$script = <<< JS
-
-$('form#{$model->formName()}').on('beforeSubmit', function(e)
-{
-    var \$form = $(this);
-    $.post(
-        \$form.attr("action"), //serialize
-        \$form.serialize()
-    )
-        .done(function(result){
-            if(result.massage == 'Success')
-            {
-
-                $(\$form).trigger("reset");
-                $.pjax.reload({container:'#productGrid'});
-            }
-            else
-            {
-                
-                $("#messager").html(result.message);
-            }
-
-        });
-        .fail(function(){
-            console.log("server error");
-        });
-    return false;
-}
-JS;
-$this->registerJS($script);
-?>
