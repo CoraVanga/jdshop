@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $post = new Product();
@@ -69,7 +69,7 @@ class ProductController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         $model = new Product();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
