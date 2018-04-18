@@ -10,6 +10,7 @@ use yii\widgets\LinkPager;
 
 $this->title = 'Danh sách sản phẩm';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="product-index">
 <div class="col-lg-12">

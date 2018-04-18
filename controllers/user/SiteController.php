@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Users;
+use yii\helpers\Url;
 
 class SiteController extends Controller
 {
@@ -86,6 +87,9 @@ class SiteController extends Controller
             $model->login();
 //            echo Yii::$app->user->getIsGuest();
 //            die;
+            if(Url::previous()){
+                return $this->render(Url::previous());
+            }
             return $this->goHome();
         }
         
