@@ -85,10 +85,11 @@ class SiteController extends Controller
             $model->formatForLoginUsers($post['LoginForm']);
             
             $model->login();
-//            echo Yii::$app->user->getIsGuest();
-//            die;
+
             if(Url::previous()){
-                return $this->render(Url::previous());
+                 header('Location: admin/home');
+                 unset($_SESSION['__returnUrl']);
+                 exit;
             }
             return $this->goHome();
         }

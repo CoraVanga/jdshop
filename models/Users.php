@@ -250,7 +250,7 @@ class Users extends ActiveRecord implements IdentityInterface
         $aStatus = $user->getArrayStatus();
         return ($aStatus[$this->status]) ? $aStatus[$this->status] : '';
     }
-    public static function idLogged(){
+    public function idLogged(){
         if(isset($_SESSION['ID_USER'])){
             return $_SESSION['ID_USER'];
         }
@@ -260,9 +260,10 @@ class Users extends ActiveRecord implements IdentityInterface
         unset($_SESSION['ID_USER']);
     }
     
-    public static function getRoleUserLogged(){
-        if(Users::idLogged()){
-            $id = Users::idLogged();
+    public function getRoleUserLogged(){
+        $user = new Users();
+        if($user->idLogged()){
+            $id = $user->idLogged();
             return Users::findIdentity($id);
         }
         return false;

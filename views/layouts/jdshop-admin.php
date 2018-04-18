@@ -287,15 +287,11 @@ AppAsset::register($this);
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <?php
-                Url::remember();
-                if(Users::idLogged() ){
-                    echo "<pre>"; 
-                    print_r(Users::getRoleUserLogged());
-                    echo "</pre>";
+                $user = new Users();
+                if($user->idLogged() ){
                     echo $content;
                 }
                 else{
-                    echo Url::to(['user/site/login']);
                     header('Location: /user/site/login');
                     exit;
                 }
