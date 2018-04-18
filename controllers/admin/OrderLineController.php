@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\admin;
 
 use Yii;
-use app\models\Type;
-use app\models\SearchType;
+use app\models\OrderLine;
+use app\models\SearchOrderLine;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TypeController implements the CRUD actions for Type model.
+ * OrderLineController implements the CRUD actions for OrderLine model.
  */
-class TypeController extends Controller
+class OrderLineController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class TypeController extends Controller
     }
 
     /**
-     * Lists all Type models.
+     * Lists all OrderLine models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SearchType();
+        $searchModel = new SearchOrderLine();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class TypeController extends Controller
     }
 
     /**
-     * Displays a single Type model.
+     * Displays a single OrderLine model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class TypeController extends Controller
     }
 
     /**
-     * Creates a new Type model.
+     * Creates a new OrderLine model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Type();
+        $model = new OrderLine();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class TypeController extends Controller
     }
 
     /**
-     * Updates an existing Type model.
+     * Updates an existing OrderLine model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class TypeController extends Controller
     }
 
     /**
-     * Deletes an existing Type model.
+     * Deletes an existing OrderLine model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class TypeController extends Controller
     }
 
     /**
-     * Finds the Type model based on its primary key value.
+     * Finds the OrderLine model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Type the loaded model
+     * @return OrderLine the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Type::findOne($id)) !== null) {
+        if (($model = OrderLine::findOne($id)) !== null) {
             return $model;
         }
 

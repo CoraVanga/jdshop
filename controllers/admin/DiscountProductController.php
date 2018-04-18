@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\admin;
 
 use Yii;
-use app\models\SaleOrder;
-use app\models\SearchSaleOrder;
+use app\models\DiscountProduct;
+use app\models\SearchDiscountProduct;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SaleOrderController implements the CRUD actions for SaleOrder model.
+ * DiscountProductController implements the CRUD actions for DiscountProduct model.
  */
-class SaleOrderController extends Controller
+class DiscountProductController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,16 +30,14 @@ class SaleOrderController extends Controller
     }
 
     /**
-     * Lists all SaleOrder models.
+     * Lists all DiscountProduct models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $this->layout = 'jdshop-admin';
-
-        $searchModel = new SearchSaleOrder();
+        $searchModel = new SearchDiscountProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $this->layout='jdshop-admin';
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -47,7 +45,7 @@ class SaleOrderController extends Controller
     }
 
     /**
-     * Displays a single SaleOrder model.
+     * Displays a single DiscountProduct model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,13 +58,13 @@ class SaleOrderController extends Controller
     }
 
     /**
-     * Creates a new SaleOrder model.
+     * Creates a new DiscountProduct model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new SaleOrder();
+        $model = new DiscountProduct();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -78,7 +76,7 @@ class SaleOrderController extends Controller
     }
 
     /**
-     * Updates an existing SaleOrder model.
+     * Updates an existing DiscountProduct model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,7 +96,7 @@ class SaleOrderController extends Controller
     }
 
     /**
-     * Deletes an existing SaleOrder model.
+     * Deletes an existing DiscountProduct model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -112,15 +110,15 @@ class SaleOrderController extends Controller
     }
 
     /**
-     * Finds the SaleOrder model based on its primary key value.
+     * Finds the DiscountProduct model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return SaleOrder the loaded model
+     * @return DiscountProduct the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = SaleOrder::findOne($id)) !== null) {
+        if (($model = DiscountProduct::findOne($id)) !== null) {
             return $model;
         }
 

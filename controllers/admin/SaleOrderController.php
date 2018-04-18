@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\admin;
 
 use Yii;
-use app\models\Users;
-use app\models\UsersSearch;
+use app\models\SaleOrder;
+use app\models\SearchSaleOrder;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UsersController implements the CRUD actions for Users model.
+ * SaleOrderController implements the CRUD actions for SaleOrder model.
  */
-class UsersController extends Controller
+class SaleOrderController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -23,21 +23,23 @@ class UsersController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['GET','POST'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
     }
 
     /**
-     * Lists all Users models.
+     * Lists all SaleOrder models.
      * @return mixed
      */
     public function actionIndex()
     {
         $this->layout = 'jdshop-admin';
-        $searchModel = new UsersSearch();
+
+        $searchModel = new SearchSaleOrder();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $this->layout='jdshop-admin';
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -45,44 +47,38 @@ class UsersController extends Controller
     }
 
     /**
-     * Displays a single Users model.
+     * Displays a single SaleOrder model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        
-        $this->layout = 'jdshop-admin';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Users model.
+     * Creates a new SaleOrder model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        
-        $this->layout = 'jdshop-admin';
-        $model = new Users();
-        $post = Yii::$app->request->post();
-        if($post){
-            $model->formatForSaveUsers($post['Users']);
-            $model->save();
-            $model->validate();
-            return $this->redirect(['view', 'id' => $model->id ]);
+        $model = new SaleOrder();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
+
         return $this->render('create', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing Users model.
+     * Updates an existing SaleOrder model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,16 +86,10 @@ class UsersController extends Controller
      */
     public function actionUpdate($id)
     {
-        $this->layout = 'jdshop-admin';
         $model = $this->findModel($id);
-        $post = Yii::$app->request->post();
-        if($post){
-             $model->formatForSaveUsers($post['Users']);
-             $model->validate();
-             if(!$model->hasErrors()){
-                $model->save();
-             return $this->redirect(['view', 'id' => $model->id]);
-             }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -108,7 +98,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Deletes an existing Users model.
+     * Deletes an existing SaleOrder model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -122,19 +112,18 @@ class UsersController extends Controller
     }
 
     /**
-     * Finds the Users model based on its primary key value.
+     * Finds the SaleOrder model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Users the loaded model
+     * @return SaleOrder the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Users::findOne($id)) !== null) {
+        if (($model = SaleOrder::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-    
 }

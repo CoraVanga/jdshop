@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\admin;
 
 use Yii;
-use app\models\DiscountProduct;
-use app\models\SearchDiscountProduct;
+use app\models\DiscountDetail;
+use app\models\SearchDiscountDetail;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DiscountProductController implements the CRUD actions for DiscountProduct model.
+ * DiscountDetailController implements the CRUD actions for DiscountDetail model.
  */
-class DiscountProductController extends Controller
+class DiscountDetailController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class DiscountProductController extends Controller
     }
 
     /**
-     * Lists all DiscountProduct models.
+     * Lists all DiscountDetail models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SearchDiscountProduct();
+        $searchModel = new SearchDiscountDetail();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class DiscountProductController extends Controller
     }
 
     /**
-     * Displays a single DiscountProduct model.
+     * Displays a single DiscountDetail model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class DiscountProductController extends Controller
     }
 
     /**
-     * Creates a new DiscountProduct model.
+     * Creates a new DiscountDetail model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new DiscountProduct();
+        $model = new DiscountDetail();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class DiscountProductController extends Controller
     }
 
     /**
-     * Updates an existing DiscountProduct model.
+     * Updates an existing DiscountDetail model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class DiscountProductController extends Controller
     }
 
     /**
-     * Deletes an existing DiscountProduct model.
+     * Deletes an existing DiscountDetail model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class DiscountProductController extends Controller
     }
 
     /**
-     * Finds the DiscountProduct model based on its primary key value.
+     * Finds the DiscountDetail model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return DiscountProduct the loaded model
+     * @return DiscountDetail the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = DiscountProduct::findOne($id)) !== null) {
+        if (($model = DiscountDetail::findOne($id)) !== null) {
             return $model;
         }
 
