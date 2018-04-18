@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 ?>
 <div class="login-form">
+    <label>&nbsp;</label>
     <h4>Đăng ký thông tin khách hàng</h4>
     
     <?php $form = ActiveForm::begin([
@@ -46,10 +47,13 @@ use yii\bootstrap\ActiveForm;
             <input type="text" id="users-username" class="form-control" name="Users[role]" value="4" hidden="true" style="display: none;">
             <input type="text" id="users-username" class="form-control" name="Users[status]" value="1" hidden="1" style="display: none;">
             <input type="text" id="users-username" class="form-control" name="register" value="1" hidden="1" style="display: none;">
-           
+            <div class="form-group">
+                <label>&nbsp;</label>
+                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Đăng ký</button>
+            </div>
         </div>
     </div>
-     <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Đăng ký</button>
+     
     <div class="register-link m-t-15 text-center">
         <p>Có tài khoản ? <a href="login">Đăng nhập</a></p>
     </div>
