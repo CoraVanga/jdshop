@@ -41,5 +41,25 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_uid',
         ],
     ]) ?>
+    <table>
+        <tr>
+            <h1>Hình ảnh</h1>
+        </tr>
+         <tr>
+            <?php
+            $i=0;
+            foreach($model->imageProducts as $photo)
+            { 
+                echo '<td><img width="200" height="200" src="../images/product-images'.'/'.$photo->link.'"></td>';
+                $i++;
+                if ($i==3) {
+                    echo '</tr><tr>';
+                    $i=0;
+                }
+            }
+            ?>
+        </tr> 
+    </table>
+    
 
 </div>

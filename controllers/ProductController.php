@@ -10,6 +10,7 @@ use app\models\SearchImageProduct;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -25,7 +26,11 @@ class ProductController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'index'  => ['GET'],
+                    'view'   => ['GET'],
+                    'create' => ['GET', 'POST'],
+                    'update' => ['GET', 'PUT', 'POST'],
+                    'delete' => ['POST', 'DELETE'],
                 ],
             ],
         ];
@@ -37,7 +42,7 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $post = new Product();
@@ -45,14 +50,6 @@ class ProductController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'post' => $post,
-        ]);
-    }
-    public function actionAjaxView($id)
-    {
-        $this->layout = 'jdshop-admin';
-        return $this->renderPartial('_view', [
-            'model' => $this->findModel($id),
         ]);
     }
 
@@ -64,7 +61,7 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -77,15 +74,30 @@ class ProductController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         $model = new Product();
+        $modelImage = new ImageProduct();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            if(UploadedFile::getInstance($modelImage, 'link'))
+            {
+                $modelImage->id_product = $model->id;
+                $modelImage->save();
+                $productId = $model->id; //model->id_product;
+                $imageId = $modelImage->id;
+                $image = UploadedFile::getInstance($modelImage, 'link');
+                $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
+                $image->saveAs($this->getStoreToSave().'/'.$imgName);
+                $modelImage->link = $imgName;
+                $modelImage->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'modelImage'=> $modelImage,
         ]);
     }
 
@@ -98,15 +110,29 @@ class ProductController extends Controller
      */
     public function actionUpdate($id)
     {
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         $model = $this->findModel($id);
-
+        $modelImage = new ImageProduct();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            if(UploadedFile::getInstance($modelImage, 'link'))
+            {
+                $modelImage->id_product = $model->id;
+                $modelImage->save();
+                $productId = $model->id; //model->id_product;
+                $imageId = $modelImage->id;
+                $image = UploadedFile::getInstance($modelImage, 'link');
+                $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
+                $image->saveAs($this->getStoreToSave().'/'.$imgName);
+                $modelImage->link = $imgName;
+                $modelImage->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'modelImage'=> $modelImage,
         ]);
     }
 
@@ -119,6 +145,7 @@ class ProductController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->layout = 'lumino-admin';
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -138,5 +165,9 @@ class ProductController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function getStoreToSave(){
+      Yii::setAlias('@project', realpath(dirname(__FILE__).'/../'));
+      return Yii::getAlias('@project') .'\web\images\product-images';
     }
 }

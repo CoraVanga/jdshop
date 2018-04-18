@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function actionIndex()
     {
         
-        $this->layout = 'jdshop-admin';
+        $this->layout = 'lumino-admin';
         return $this->render('index');
     }
 }
