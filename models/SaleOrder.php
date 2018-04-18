@@ -46,11 +46,11 @@ class SaleOrder extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'total_price' => 'Total Price',
+            'total_price' => 'Thành tiền ',
             'id' => 'ID',
-            'bill_code' => 'Bill Code',
-            'status' => 'Status',
-            'created_date' => 'Created Date',
+            'bill_code' => 'Hóa đơn',
+            'status' => 'Trạng thái',
+            'created_date' => 'Ngày tạo',
             'id_user' => 'Id User',
         ];
     }

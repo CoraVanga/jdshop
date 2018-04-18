@@ -50,14 +50,14 @@ class DiscountProduct extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'info' => 'Info',
-            'type' => 'Type',
-            'discount' => 'Discount',
-            'status' => 'Status',
-            'created_date' => 'Created Date',
-            'begin_date' => 'Begin Date',
-            'end_date' => 'End Date',
-            'created_uid' => 'Created Uid',
+            'info' => 'Thông tin',
+            'type' => 'Loại',
+            'discount' => 'Khuyến mãi',
+            'status' => 'Trạng thái',
+            'created_date' => 'Ngày tạo',
+            'begin_date' => 'Ngày bắt đầu',
+            'end_date' => 'Ngày kết thúc',
+            'created_uid' => 'Người tạo',
         ];
     }
 
