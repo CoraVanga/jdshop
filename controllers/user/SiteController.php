@@ -162,4 +162,9 @@ class SiteController extends Controller
         }
         return $this->render('register');
     }
+    public function actionTest()
+    {
+        $this->layout = '';
+        return $this->render('test');
+    }
 }
