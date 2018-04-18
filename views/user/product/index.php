@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 ?>
 <section class="header_text sub">
 			<img class="pageBanner" src="../assets-shopper/themes/images/carousel/nhannu.jpg" alt="New products" >
-				<h4><span>Sản phẩm bán chạy nhất</span></h4>
+				<h4><span>Sản phẩm bán chạy</span></h4>
 			</section>
 			<section class="main-content">
 				
@@ -124,26 +124,24 @@ use yii\widgets\Pjax;
 					<div class="span3 col">
 						<div class="block">	
 							<ul class="nav nav-list">
-								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
+								<li class="nav-header">MÀU CHẤT LIỆU</li>
+								<li><a href="products.html">Hồng+Trắng</a></li>
+								<li class="active"><a href="products.html">Trắng</a></li>
+								<li><a href="products.html">Bạc si vàng vàng</a></li>
+								<li><a href="products.html">Bạc si vàng hồng</a></li>
+								<li><a href="products.html">Giả cổ</a></li>
 							</ul>
 							<br/>
 							<ul class="nav nav-list below">
-								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
+								<li class="nav-header">LOẠI ĐÁ CHÍNH</li>
+								<li><a href="products.html">CZ</a></li>
+								<li><a href="products.html">Ngọc Trai</a></li>
+								<li><a href="products.html">Syntethic</a></li>
 							</ul>
 						</div>
 						<div class="block">
 							<h4 class="title">
-								<span class="pull-left"><span class="text">Randomize</span></span>
+								<span class="pull-left"><span class="text">Sản phẩm mới nhất</span></span>
 								<span class="pull-right">
 									<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 								</span>
