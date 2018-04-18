@@ -42,7 +42,22 @@ use yii\widgets\Pjax;
 									<a href="#" class="category">Suspendisse aliquet</a>
 									<p class="price">$341</p>
 								</div>
+							</li>	
+							<li class="span3">
+						</ul>
+						<div ng-app="myApp" ng-controller="myCtrl">
+									<span><strong>Sắp xếp theo: </strong></span>
+									<select ng-model="selectedName" ng-options="x for x in names">
+									</select>
+								</div>		
+						<ul class="thumbnails listing-products">	
 							</li>
+								<script>
+									var app = angular.module('myApp', []);
+									app.controller('myCtrl', function($scope) {
+   								 	$scope.names = ["Emil", "Tobias", "Linus"];
+									});
+								</script>
 							<li class="span3">
 								<div class="product-box">												
 									<span class="sale_tag"></span>
@@ -92,7 +107,8 @@ use yii\widgets\Pjax;
 									<p class="price">$261</p>
 								</div>
 							</li>
-						</ul>								
+						</ul>
+												
 						<hr>
 						<div class="pagination pagination-small pagination-centered">
 							<ul>
