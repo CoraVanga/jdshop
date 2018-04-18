@@ -147,6 +147,11 @@ class SiteController extends Controller
     {
         $post = Yii::$app->request->post();
         
+        $user = new Users();
+        if ($user->idLogged()) {
+            return $this->goHome();
+        }
+        
         if(isset($post['register']) && $post['register'] == 1){
             $this->layout = 0;
             $users = new Users();
