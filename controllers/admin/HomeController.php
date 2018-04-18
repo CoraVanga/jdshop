@@ -5,6 +5,7 @@ use yii\web\Controller;
 
 class HomeController extends Controller{
 	public function actionIndex(){
+		$this->layout='jdshop-admin';
 		return $this->render('index');
 	}
 }
