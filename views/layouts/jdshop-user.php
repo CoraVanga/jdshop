@@ -44,7 +44,7 @@
 							<li><a href="cart.html">Giỏ hàng</a></li>
 							<li><a href="checkout.html">Thanh toán</a></li>
                                                         <?php if(isset($_SESSION['ID_USER'])):?>
-                                                            <li><a href="site/logout-user">
+                                                            <li><a href="user/site/logout-user">
                                                                 <?php
                                                                 $users = Users::findUsersById($_SESSION['ID_USER']);
                                                                 echo $users->name . "( Đăng xuất )";
