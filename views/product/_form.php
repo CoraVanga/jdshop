@@ -14,26 +14,54 @@ use yii\helpers\ArrayHelper;
     <hr>
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->select(['id','name'])->all(),'id','name'))?>
+    <div class="row p-t-20">
+        <div class="col-md-3">
+            <div class="form-group">
+                <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->select(['id','name'])->all(),'id','name'),['class'=>'form-control custom-select'])?>
+            </div>
+        </div>
+    </div>
+
+    <?= $form->field($model, 'name')->textInput(['class'=>'form-control']) ?>
+
+    <div class="row p-t-20">
+        <div class="col-md-6">
+            <div class="form-group">
+                <?= $form->field($model, 'code')->textInput(['class'=>'form-control']) ?>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <?= $form->field($model, 'size')->textInput(['class'=>'form-control']) ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row p-t-20">
+        <div class="col-md-6">
+            <div class="form-group">
+                <?= $form->field($model, 'price')->textInput() ?>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <?= $form->field($model, 'amount')->textInput() ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <?= $form->field($model, 'info')->textarea() ?>
+            </div>
+        </div>
+    </div>
     
-    <?= $form->field($model, 'name')->textInput() ?>
-
-    <?= $form->field($model, 'price')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'code')->textInput() ?>
-
-    <?= $form->field($model, 'size')->textInput() ?>
-
-    <?= $form->field($model, 'amount')->textInput() ?>
-
-    <?= $form->field($model, 'info')->textInput() ?>
-
     <?= $form->field($modelImage, 'link')->fileInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
