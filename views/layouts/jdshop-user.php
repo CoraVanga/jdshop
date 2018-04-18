@@ -10,20 +10,20 @@
 		<meta name="description" content="">
 		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
 		<!-- bootstrap -->
-		<link href="<?php echo Yii::$app->homeUrl.'assets-shopper/bootstrap/css/bootstrap.min.css'?>" rel="stylesheet">      
-		<link href="<?php echo Yii::$app->homeUrl.'assets-shopper/bootstrap/css/bootstrap-responsive.min.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap.min.css'?>" rel="stylesheet">      
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-responsive.min.css'?>" rel="stylesheet">
 		
-		<link href="<?php echo Yii::$app->homeUrl.'assets-shopper/themes/css/bootstrappage.css'?>" rel="stylesheet"/>
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/bootstrappage.css'?>" rel="stylesheet"/>
 		
 		<!-- global styles -->
-		<link href="<?php echo Yii::$app->homeUrl.'assets-shopper/themes/css/flexslider.css'?>" rel="stylesheet"/>
-		<link href="<?php echo Yii::$app->homeUrl.'assets-shopper/themes/css/main.css'?>" rel="stylesheet"/>
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/flexslider.css'?>" rel="stylesheet"/>
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/main.css'?>" rel="stylesheet"/>
 
 		<!-- scripts -->
-		<script src="<?php echo Yii::$app->homeUrl.'assets-shopper/themes/js/jquery-1.7.2.min.js'?>"></script>
-		<script src="<?php echo Yii::$app->homeUrl.'assets-shopper/bootstrap/js/bootstrap.min.js'?>"></script>				
-		<script src="<?php echo Yii::$app->homeUrl.'assets-shopper/themes/js/superfish.js'?>"></script>	
-		<script src="<?php echo Yii::$app->homeUrl.'assets-shopper/themes/js/jquery.scrolltotop.js'?>"></script>
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery-1.7.2.min.js'?>"></script>
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/bootstrap.min.js'?>"></script>				
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/superfish.js'?>"></script>	
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery.scrolltotop.js'?>"></script>
 		<!--[if lt IE 9]>			
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="js/respond.min.js"></script>
@@ -51,7 +51,7 @@
                                                                 ?>
                                                             </a></li>	
                                                         <?php else: ?>
-                                                            <li><a href="site/login">Đăng nhập</a></li>	
+                                                            <li><a href="../site/login">Đăng nhập</a></li>	
                                                         <?php endif;?>
 						</ul>
 					</div>
@@ -61,12 +61,12 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
-					<a href="index.html" class="logo pull-left"><img src="<?php echo Yii::$app->homeUrl.'assets-shopper/imageweb/logo.png'?>" width="50%", height="50%" class="site_logo" alt=""></a>
+					<a href="index.html" class="logo pull-left"><img src="<?php echo Yii::$app->homeUrl.'../assets-shopper/imageweb/logo.png'?>" width="50%", height="50%" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
 							<li><a href="./products.html">Trang sức nữ</a>					
 								<ul>
-									<li><a href="./products.html">Nhẫn</a></li>									
+									<li><a href="<?php echo Yii::$app->homeUrl.'../user/product'?>">Nhẫn</a></li>									
 									<li><a href="./products.html">Bông tai</a></li>
 									<li><a href="./products.html">Dây chuyền</a></li>
 									<li><a href="./products.html">Lắc tay, lắc chân</a></li>									
@@ -107,10 +107,10 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<img src="assets-shopper/themes/images/carousel/banner-1.jpg" alt="" />
+							<img src="../assets-shopper/themes/images/carousel/banner-1.jpg" alt="" />
 						</li>
 						<li>
-							<img src="assets-shopper/themes/images/carousel/banner2.jpg" alt="" />
+							<img src="../assets-shopper/themes/images/carousel/banner2.jpg" alt="" />
 						</li>
 					</ul>
 				</div>			
@@ -368,7 +368,7 @@
 						</ul>
 					</div>
 					<div class="span5">
-						<p class="logo"><img src="assets-shopper/imageweb/logo.png" class="site_logo" alt=""></p>
+						<p class="logo"><img src="../assets-shopper/imageweb/logo.png" class="site_logo" alt=""></p>
 						<p>CÔNG TY CỔ PHẦN BẠC ĐÁ QUÝ TÂY NGUYÊN </p>
 						<p>170E Phan Đăng Lưu, P.3, T.Gia Lai, TP.Hồ Chí Minh - ĐT: 028 3995 1703 - 
 						<br/>
@@ -390,8 +390,8 @@
 				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
 			</section>
 		</div>
-		<script src="assets-shopper/themes/js/common.js"></script>
-		<script src="assets-shopper/themes/js/jquery.flexslider-min.js"></script>
+		<script src="../assets-shopper/themes/js/common.js"></script>
+		<script src="../assets-shopper/themes/js/jquery.flexslider-min.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$(document).ready(function() {
