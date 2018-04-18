@@ -48,10 +48,10 @@ use yii\widgets\Pjax;
 						<div >
 								<span><strong>Sắp xếp theo: </strong></span>
 								<select>
-							  	<option value="volvo">Volvo</option>
-							  	<option value="saab">Saab</option>
-							  	<option value="vw">VW</option>
-							  	<option value="audi" selected>Audi</option>
+							  	<option value="volvo">Xếp theo giá: Thấp đến cao</option>
+							  	<option value="saab">Xếp theo giá: Cao đến thấp</option>
+							  	<option value="vw">Xếp theo giảm giá: Thấp đến cao</option>
+							  	<option value="audi" selected>Xếp theo giảm giá: Thấp đến cao</option>
 							</select>
 						</div>
 						<ul class="thumbnails listing-products">	
