@@ -7,24 +7,28 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Product */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Sản phảm', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-title">
+    <h4><?= Html::encode($this->title) ?></h4>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Sửa đổi', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Xóa', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Bạn có chắc chắn muốn xóa sản phẩm này?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
-
+</div>
+<div class="card-body">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -43,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
     <table>
         <tr>
-            <h1>Hình ảnh</h1>
+            <h4>Hình ảnh</h4>
         </tr>
          <tr>
             <?php
@@ -61,5 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
         </tr> 
     </table>
     
-
+</div>
+</div>
+</div>
+</div>
 </div>
