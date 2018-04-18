@@ -205,7 +205,7 @@ class Users extends ActiveRecord implements IdentityInterface
         $this->name = ($post['name']) ? $post['name'] : '';
         $this->dob = ($post['dob']) ? ($post['dob']) : '';
         $this->phone = ($post['phone']) ? $post['phone'] : '';
-        $this->role = ($post['role']) ? $post['role'] : '1';
+        $this->role = ($post['role']) ? $post['role'] : '4';
         $this->address = ($post['address']) ? $post['address'] : '';
         $this->email = ($post['email']) ? $post['email'] : '';
         $this->status = ($post['status']) ? $post['status'] : '1';

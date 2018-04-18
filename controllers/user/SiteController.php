@@ -151,7 +151,7 @@ class SiteController extends Controller
         if ($user->idLogged()) {
             return $this->goHome();
         }
-        
+        $this->layout = 'jdshop-user';
         if(isset($post['register']) && $post['register'] == 1){
             $this->layout = 0;
             $users = new Users();
@@ -160,7 +160,6 @@ class SiteController extends Controller
             $users->save();
             return $this->redirect('login');
         }
-        $this->layout = 0;
         return $this->render('register');
     }
 }
