@@ -44,14 +44,14 @@
 							<li><a href="cart.html">Giỏ hàng</a></li>
 							<li><a href="checkout.html">Thanh toán</a></li>
                                                         <?php if(isset($_SESSION['ID_USER'])):?>
-                                                            <li><a href="user/site/logout-user">
+                                                            <li><a href="../user/site/logout-user">
                                                                 <?php
                                                                 $users = Users::findUsersById($_SESSION['ID_USER']);
                                                                 echo $users->name . "( Đăng xuất )";
                                                                 ?>
                                                             </a></li>	
                                                         <?php else: ?>
-                                                            <li><a href="../site/login">Đăng nhập</a></li>	
+                                                            <li><a href="../user/site/login">Đăng nhập</a></li>	
                                                         <?php endif;?>
 						</ul>
 					</div>

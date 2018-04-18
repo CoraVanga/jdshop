@@ -259,4 +259,65 @@ class Users extends ActiveRecord implements IdentityInterface
     public static function logout(){
         unset($_SESSION['ID_USER']);
     }
+    
+    public static function getRoleUserLogged(){
+        if(Users::idLogged()){
+            $id = Users::idLogged();
+            return Users::findIdentity($id);
+        }
+        return false;
+    }
+
+    public static function HasUserName($username){
+        $Users = Users::find()->where(['username' => $username])->all();
+        if($Users){
+             return true;
+        }
+        return false;
+    }
+    
+    public static function CreateMessage($typemessage, $info){
+        $_SESSION['message'][$typemessage] = $info;
+    }
+    public static function CheckMessage(){
+        if(isset($_SESSION['message']['danger'])){
+            ?>
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Thất bại !</strong> <?= $_SESSION['message']['danger'] ?>
+              </div>
+            <?php
+            unset($_SESSION['message']['danger']);
+        }
+        if(isset($_SESSION['message']['success'])){
+            ?>
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Thành công !</strong> <?= $_SESSION['message']['success'] ?>
+              </div>
+            <?php
+            unset($_SESSION['message']['success']);
+        }
+        
+        if(isset($_SESSION['message']['info'])){
+            ?>
+            <div class="alert alert-info alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Thông tin !</strong> <?= $_SESSION['message']['info'] ?>
+              </div>
+            <?php
+            unset($_SESSION['message']['info']);
+        }
+        
+        if(isset($_SESSION['message']['warning'])){
+            ?>
+            <div class="alert alert-warning alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Cảnh báo !</strong> <?= $_SESSION['message']['warning'] ?>
+              </div>
+            <?php
+            unset($_SESSION['message']['warning']);
+        }
+        
+    }
 }
