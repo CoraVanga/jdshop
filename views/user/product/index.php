@@ -177,27 +177,12 @@ use yii\widgets\Pjax;
 							</div>
 						</div>
 						<div class="block">								
-							<h4 class="title"><strong>Best</strong> Seller</h4>								
-							<ul class="small-product">
-								<li>
-									<a href="#" title="Praesent tempor sem sodales">
-										<img src="../assets-shopper/themes/images/ladies/3.jpg" alt="Praesent tempor sem sodales">
-									</a>
-									<a href="#">Praesent tempor sem</a>
-								</li>
-								<li>
-									<a href="#" title="Luctus quam ultrices rutrum">
-										<img src="../assets-shopper/themes/images/ladies/4.jpg" alt="Luctus quam ultrices rutrum">
-									</a>
-									<a href="#">Luctus quam ultrices rutrum</a>
-								</li>
-								<li>
-									<a href="#" title="Fusce id molestie massa">
-										<img src="../assets-shopper/themes/images/ladies/5.jpg" alt="Fusce id molestie massa">
-									</a>
-									<a href="#">Fusce id molestie massa</a>
-								</li>   
-							</ul>
+							<h4 class="title"><strong>Hỗ trợ</strong> Khách hàng </h4>		
+							<ul>
+								<li><a href="products.html">Hỗ trợ mua hàng</a></li>
+								<li><a href="products.html">Tư vấn chọn trang sức</a></li>
+							</ul>						
+							
 						</div>
 					</div>
 				</div>
