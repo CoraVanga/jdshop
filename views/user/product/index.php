@@ -9,8 +9,8 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 ?>
 <section class="header_text sub">
-			<img class="pageBanner" src="../assets-shopper/themes/images/pageBanner.png" alt="New products" >
-				<h4><span>New products</span></h4>
+			<img class="pageBanner" src="../assets-shopper/themes/images/carousel/nhannu.jpg" alt="New products" >
+				<h4><span>Sản phẩm bán chạy nhất</span></h4>
 			</section>
 			<section class="main-content">
 				
