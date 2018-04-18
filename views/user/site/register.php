@@ -34,7 +34,7 @@ use yii\bootstrap\ActiveForm;
          <div class="span6">
             <div class="form-group">
                 <label>Địa chỉ</label>
-                <input type="text" id="users-username" class="form-control" name="Users[address]" placeholder="Password">
+                <input type="text" id="users-username" class="form-control" name="Users[address]" placeholder="Địa chỉ">
             </div>
             <div class="form-group">
                 <label>Ngày sinh</label>
