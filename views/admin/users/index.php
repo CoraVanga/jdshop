@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Users;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UsersSearch */
@@ -11,7 +12,7 @@ $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="users-index">
-
+    
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -31,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'dob',
             'phone',
-            //'role',
+            'role',
             //'address',
             //'email:email',
             //'status',

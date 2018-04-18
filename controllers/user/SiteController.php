@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Users;
+use yii\helpers\Url;
 
 class SiteController extends Controller
 {
@@ -73,19 +74,25 @@ class SiteController extends Controller
     public function actionLogin()
     {
         $this->layout = 0;
-        if (!Yii::$app->user->isGuest) {
+        $user = new Users();
+        if ($user->idLogged()) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
-        
         $post = Yii::$app->request->post();
         if(isset($post['LoginForm'])){
             $model->formatForLoginUsers($post['LoginForm']);
-            
             $model->login();
-//            echo Yii::$app->user->getIsGuest();
-//            die;
+            if( $user->idLogged()){
+                $id = $user->idLogged();
+                $user = $user->findUsersById($id);
+                $role = $user->role;
+                if($role == 1){
+                    header('Location: ../../admin/home');
+                    exit;
+                }
+            }
             return $this->goHome();
         }
         
@@ -140,6 +147,11 @@ class SiteController extends Controller
     {
         $post = Yii::$app->request->post();
         
+        $user = new Users();
+        if ($user->idLogged()) {
+            return $this->goHome();
+        }
+        $this->layout = 'jdshop-user';
         if(isset($post['register']) && $post['register'] == 1){
             $this->layout = 0;
             $users = new Users();
@@ -148,7 +160,6 @@ class SiteController extends Controller
             $users->save();
             return $this->redirect('login');
         }
-        $this->layout = 0;
         return $this->render('register');
     }
 }

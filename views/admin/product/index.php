@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SearchProduct */
@@ -9,6 +10,7 @@ use yii\grid\GridView;
 
 $this->title = 'Danh sách sản phẩm';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="product-index">
 <div class="col-lg-12">
@@ -45,6 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
 </div>
 </div>
 </div>

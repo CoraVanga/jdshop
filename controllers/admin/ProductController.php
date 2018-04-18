@@ -11,6 +11,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\data\Pagination;
+use yii\data\ActiveDataProvider;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -42,11 +44,25 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
+
         $this->layout = 'jdshop-admin';
         $searchModel = new SearchProduct();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $post = new Product();
+        
 
+        $query = Product::find();
+        // $dataProvider = new ActiveDataProvider([
+        // 'query' => $query,
+        // 'pagination' => [
+        //     'pageSize' => 10,
+        // ],
+        // 'sort' => [
+        //     'defaultOrder' => [
+        //         'name' => SORT_DESC,
+        //         'id' => SORT_DESC,
+        //         ]
+        //     ],
+        // ]);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

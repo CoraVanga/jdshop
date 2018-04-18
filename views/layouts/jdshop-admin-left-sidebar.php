@@ -1,6 +1,6 @@
 <div class="left-sidebar">
     <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
+    <div class="scroll-sidebar" style="overflow-x: visible; overflow-y: hidden; width: auto; height: 100%;">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">

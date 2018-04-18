@@ -23,7 +23,7 @@ class MainController extends Controller
         
         $this->layout = 'jdshop-user';
         //$this->layout = 'lumino-admin';
-        
+
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

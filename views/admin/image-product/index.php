@@ -25,10 +25,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'link',
-            'id_product',
-            
+            //'id',
+            //'link',
+            //'id_product',
+            'attribute'=>'product.name',
+            [
+                'label' => 'Hình ảnh',
+                'format'=>['image',['width' => '100', 'height' => '100']],
+                'value' => function ($model) {
+                        return '../images/product-images'.'/'.$model->link;
+                },
+            ],
+
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

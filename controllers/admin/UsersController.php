@@ -66,19 +66,29 @@ class UsersController extends Controller
      */
     public function actionCreate()
     {
-        
-        $this->layout = 'jdshop-admin';
-        $model = new Users();
-        $post = Yii::$app->request->post();
-        if($post){
-            $model->formatForSaveUsers($post['Users']);
-            $model->save();
-            $model->validate();
-            return $this->redirect(['view', 'id' => $model->id ]);
+        try {
+            $this->layout = 'jdshop-admin';
+            $model = new Users();
+            $post = Yii::$app->request->post();
+            if($post){
+                if(!Users::HasUserName($post['Users']['username'])){
+                    $model->formatForSaveUsers($post['Users']);
+                    $model->save();
+                    $model->validate();
+                    return $this->redirect(['view', 'id' => $model->id ]);
+                }
+                    Users::CreateMessage('danger','Tên đăng nhập đã có người dùng');
+          
+                
+            }
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        } catch (Exception $e) {
+            echo "Exception Create Users";
+            printf($e);
         }
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        
     }
 
     /**
