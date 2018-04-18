@@ -10,7 +10,6 @@ use yii\grid\GridView;
 $this->title = 'Danh sách sản phẩm';
 $this->params['breadcrumbs'][] = $this->title;
 
-Users::UniqueUserName('nghia');
 ?>
 <div class="product-index">
 <div class="col-lg-12">

@@ -12,6 +12,8 @@ use app\assets\AppAsset;
 use app\models\Users;
 use app\controllers\user\SiteController;
 use  yii\web\View;
+use yii\helpers\Url;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -285,6 +287,7 @@ AppAsset::register($this);
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <?php
+                Url::remember();
                 if(Users::idLogged() ){
                     echo "<pre>"; 
                     print_r(Users::getRoleUserLogged());
@@ -293,8 +296,8 @@ AppAsset::register($this);
                 }
                 else{
                     echo Url::to(['user/site/login']);
-                    //header('Location: /user/site/login');
-                  //  exit;
+                    header('Location: /user/site/login');
+                    exit;
                 }
                 
                 ?>
