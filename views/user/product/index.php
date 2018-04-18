@@ -45,19 +45,16 @@ use yii\widgets\Pjax;
 							</li>	
 							<li class="span3">
 						</ul>
-						<div ng-app="myApp" ng-controller="myCtrl">
-									<span><strong>Sắp xếp theo: </strong></span>
-									<select ng-model="selectedName" ng-options="x for x in names">
-									</select>
-								</div>		
+						<div >
+								<span><strong>Sắp xếp theo: </strong></span>
+								<select>
+							  	<option value="volvo">Volvo</option>
+							  	<option value="saab">Saab</option>
+							  	<option value="vw">VW</option>
+							  	<option value="audi" selected>Audi</option>
+							</select>
+						</div>
 						<ul class="thumbnails listing-products">	
-							</li>
-								<script>
-									var app = angular.module('myApp', []);
-									app.controller('myCtrl', function($scope) {
-   								 	$scope.names = ["Emil", "Tobias", "Linus"];
-									});
-								</script>
 							<li class="span3">
 								<div class="product-box">												
 									<span class="sale_tag"></span>
