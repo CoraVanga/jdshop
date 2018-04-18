@@ -85,11 +85,16 @@ class SiteController extends Controller
             $model->formatForLoginUsers($post['LoginForm']);
             
             $model->login();
-
-            if(Url::previous()){
-                 header('Location: admin/home');
-                 unset($_SESSION['__returnUrl']);
-                 exit;
+            
+            $user = new Users();
+            if( $user->idLogged()){
+                $id = $user->idLogged();
+                $user = $user->findUsersById($id);
+                $role = $user->role;
+                if($role == 1){
+                    header('Location: ../../admin/home');
+                    exit;
+                }
             }
             return $this->goHome();
         }

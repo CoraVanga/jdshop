@@ -218,7 +218,7 @@ class Users extends ActiveRecord implements IdentityInterface
         }
         return $let;
     }
-    public static function findUsersById($id){
+    public function findUsersById($id){
         $let = Users::findOne(['id' => $id]);
         if($let == ""){
             return false;
