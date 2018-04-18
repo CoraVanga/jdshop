@@ -269,7 +269,7 @@ AppAsset::register($this);
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Dashboard</h3> </div>
+                   <img src="<?php echo Yii::$app->homeUrl.'../assets-shopper/imageweb/logo.png'?>" width="100", height="50" class="site_logo" alt=""> </div>
                 <div class="col-md-7 align-self-center">
                     
                     <?= Breadcrumbs::widget([

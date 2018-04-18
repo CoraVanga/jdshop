@@ -7,17 +7,22 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SearchProduct */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Products';
+$this->title = 'Danh sách sản phẩm';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-title">
+    <h4><?= Html::encode($this->title) ?></h4>
+        <p>
+        <?= Html::a('Thêm sản phẩm', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    </div>
+    <div class="card-body">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+
 
          <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'name',
             'price',
             'created_date',
@@ -40,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
-
+</div>
+</div>
+</div>
 </div>

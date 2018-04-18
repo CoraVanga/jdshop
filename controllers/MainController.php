@@ -21,8 +21,8 @@ class MainController extends Controller
     public function actionHome()
     {
         
-        //$this->layout = 'jdshop-user';
-        $this->layout = 'lumino-admin';
+        $this->layout = 'jdshop-user';
+        //$this->layout = 'lumino-admin';
         
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);

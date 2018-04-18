@@ -256,4 +256,7 @@ class Users extends ActiveRecord implements IdentityInterface
         }
         return false;
     }
+    public static function logout(){
+        unset($_SESSION['ID_USER']);
+    }
 }
