@@ -74,19 +74,16 @@ class SiteController extends Controller
     public function actionLogin()
     {
         $this->layout = 0;
-        if (!Yii::$app->user->isGuest) {
+        $user = new Users();
+        if ($user->idLogged()) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
-        
         $post = Yii::$app->request->post();
         if(isset($post['LoginForm'])){
             $model->formatForLoginUsers($post['LoginForm']);
-            
             $model->login();
-            
-            $user = new Users();
             if( $user->idLogged()){
                 $id = $user->idLogged();
                 $user = $user->findUsersById($id);
