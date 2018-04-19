@@ -154,7 +154,7 @@ class ImageProductController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
     public function getStoreToSave(){
-      Yii::setAlias('@project', realpath(dirname(__FILE__).'/../'));
+      Yii::setAlias('@project', realpath(dirname(__FILE__).'/../../'));
       return Yii::getAlias('@project') .'\web\images\product-images';
     }
 }

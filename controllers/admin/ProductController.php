@@ -105,6 +105,7 @@ class ProductController extends Controller
                 $image = UploadedFile::getInstance($modelImage, 'link');
                 $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
                 $image->saveAs($this->getStoreToSave().'/'.$imgName);
+                //$image->saveAs('localhost:7777/images/product-images'.'/'.$imgName);
                 $modelImage->link = $imgName;
                 $modelImage->save();
             }
@@ -183,7 +184,7 @@ class ProductController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
     public function getStoreToSave(){
-      Yii::setAlias('@project', realpath(dirname(__FILE__).'/../'));
+      Yii::setAlias('@project', realpath(dirname(__FILE__).'/../../'));
       return Yii::getAlias('@project') .'\web\images\product-images';
     }
 }
