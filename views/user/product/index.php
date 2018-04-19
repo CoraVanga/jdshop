@@ -9,8 +9,8 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 ?>
 <section class="header_text sub">
-			<img class="pageBanner" src="../assets-shopper/themes/images/pageBanner.png" alt="New products" >
-				<h4><span>New products</span></h4>
+			<img class="pageBanner" src="../assets-shopper/themes/images/carousel/nhannu.jpg" alt="New products" >
+				<h4><span>Sản phẩm bán chạy</span></h4>
 			</section>
 			<section class="main-content">
 				
@@ -42,7 +42,19 @@ use yii\widgets\Pjax;
 									<a href="#" class="category">Suspendisse aliquet</a>
 									<p class="price">$341</p>
 								</div>
-							</li>
+							</li>	
+							<li class="span3">
+						</ul>
+						<div >
+								<span><strong>Sắp xếp theo: </strong></span>
+								<select>
+							  	<option value="volvo">Xếp theo giá: Thấp đến cao</option>
+							  	<option value="saab">Xếp theo giá: Cao đến thấp</option>
+							  	<option value="vw">Xếp theo giảm giá: Thấp đến cao</option>
+							  	<option value="audi" selected>Xếp theo giảm giá: Thấp đến cao</option>
+							</select>
+						</div>
+						<ul class="thumbnails listing-products">	
 							<li class="span3">
 								<div class="product-box">												
 									<span class="sale_tag"></span>
@@ -92,7 +104,8 @@ use yii\widgets\Pjax;
 									<p class="price">$261</p>
 								</div>
 							</li>
-						</ul>								
+						</ul>
+												
 						<hr>
 						<div class="pagination pagination-small pagination-centered">
 							<ul>
@@ -108,26 +121,24 @@ use yii\widgets\Pjax;
 					<div class="span3 col">
 						<div class="block">	
 							<ul class="nav nav-list">
-								<li class="nav-header">SUB CATEGORIES</li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
-								<li><a href="products.html">Nullam semper elementum</a></li>
-								<li><a href="products.html">Phasellus ultricies</a></li>
-								<li><a href="products.html">Donec laoreet dui</a></li>
+								<li class="nav-header">MÀU CHẤT LIỆU</li>
+								<li><a href="products.html">Hồng+Trắng</a></li>
+								<li class="active"><a href="products.html">Trắng</a></li>
+								<li><a href="products.html">Bạc si vàng vàng</a></li>
+								<li><a href="products.html">Bạc si vàng hồng</a></li>
+								<li><a href="products.html">Giả cổ</a></li>
 							</ul>
 							<br/>
 							<ul class="nav nav-list below">
-								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
+								<li class="nav-header">LOẠI ĐÁ CHÍNH</li>
+								<li><a href="products.html">CZ</a></li>
+								<li><a href="products.html">Ngọc Trai</a></li>
+								<li><a href="products.html">Syntethic</a></li>
 							</ul>
 						</div>
 						<div class="block">
 							<h4 class="title">
-								<span class="pull-left"><span class="text">Randomize</span></span>
+								<span class="pull-left"><span class="text">Sản phẩm mới nhất</span></span>
 								<span class="pull-right">
 									<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 								</span>
@@ -163,27 +174,12 @@ use yii\widgets\Pjax;
 							</div>
 						</div>
 						<div class="block">								
-							<h4 class="title"><strong>Best</strong> Seller</h4>								
-							<ul class="small-product">
-								<li>
-									<a href="#" title="Praesent tempor sem sodales">
-										<img src="../assets-shopper/themes/images/ladies/3.jpg" alt="Praesent tempor sem sodales">
-									</a>
-									<a href="#">Praesent tempor sem</a>
-								</li>
-								<li>
-									<a href="#" title="Luctus quam ultrices rutrum">
-										<img src="../assets-shopper/themes/images/ladies/4.jpg" alt="Luctus quam ultrices rutrum">
-									</a>
-									<a href="#">Luctus quam ultrices rutrum</a>
-								</li>
-								<li>
-									<a href="#" title="Fusce id molestie massa">
-										<img src="../assets-shopper/themes/images/ladies/5.jpg" alt="Fusce id molestie massa">
-									</a>
-									<a href="#">Fusce id molestie massa</a>
-								</li>   
-							</ul>
+							<h4 class="title"><strong>Hỗ trợ</strong> Khách hàng </h4>		
+							<ul>
+								<li><a href="products.html">Hỗ trợ mua hàng</a></li>
+								<li><a href="products.html">Tư vấn chọn trang sức</a></li>
+							</ul>						
+							
 						</div>
 					</div>
 				</div>
