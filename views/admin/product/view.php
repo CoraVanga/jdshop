@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             $i=0;
             foreach($model->imageProducts as $photo)
             { 
-                echo '<td><img width="200" height="200" src="../images/product-images'.'/'.$photo->link.'"></td>';
+                echo '<td><img width="200" height="200" src="../../images/product-images'.'/'.$photo->link.'"></td>';
                 $i++;
                 if ($i==3) {
                     echo '</tr><tr>';
