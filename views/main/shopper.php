@@ -42,9 +42,9 @@ use yii\widgets\Pjax;
 									echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
 									if ($model->getImageProducts()->one()) {
 										$image = $model->getImageProducts()->asArray()->one();
-									 		echo '<p><a href="product_detail.html"><img src="../images/product-images'.'/'.$image['link'].'" alt="" /></a></p>';
+									 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt="" />', ['../product/view', 'id' => $model->id]).'</p>';
 									 	}
-										echo '<a href="#" class="title">'.$model->name.'</a><br/>';
+									 	echo Html::a($model->name, ['../product/view', 'id' => $model->id],['class' => 'title']);
 										echo '<p class="price">'.$model->price.' VNĐ</p>';
 										echo '</div></li>';
 										$i++;
