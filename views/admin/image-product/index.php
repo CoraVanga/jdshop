@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Hình ảnh',
                 'format'=>['image',['width' => '100', 'height' => '100']],
                 'value' => function ($model) {
-                        return '../images/product-images'.'/'.$model->link;
+                        return '../../images/product-images'.'/'.$model->link;
                 },
             ],
 
