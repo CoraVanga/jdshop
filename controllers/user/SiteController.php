@@ -110,8 +110,6 @@ class SiteController extends Controller
     public function actionLogoutUser()
     {
         unset($_SESSION['ID_USER']);
-//        Yii::$app->user->logout();
-        
         return $this->goHome();
         
     }
