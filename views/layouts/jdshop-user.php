@@ -31,6 +31,7 @@
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-about.css'?>" rel="stylesheet"> 
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-info.css'?>" rel="stylesheet">
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-faq.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdmh.css'?>" rel="stylesheet">
 	</head>
     <body>		
 		<div id="top-bar" class="container">
