@@ -28,6 +28,8 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="js/respond.min.js"></script>
 		<![endif]-->
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-about.css'?>" rel="stylesheet"> 
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-info.css'?>" rel="stylesheet">
 	</head>
     <body>		
 		<div id="top-bar" class="container">
@@ -129,7 +131,6 @@
 						<h4>Giới thiệu về JD</h4>
 						<ul class="nav">
 							<li><a href="./index.html">Thông tin về JD</a></li>  
-							<li><a href="./about.html">Quá trình phát triển</a></li>
 							<li><a href="./contact.html">Tuyển dụng</a></li>
 							<li><a href="./cart.html">Liên hệ</a></li>
 							<li><a href="./register.html">FAQs</a></li>							

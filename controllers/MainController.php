@@ -33,4 +33,15 @@ class MainController extends Controller
         ]);
         //return $this->render('index');
     }
+
+    public function actionAbout()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('about');
+    }
+    public function actionInfo()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('infodev');
+    }
 }
