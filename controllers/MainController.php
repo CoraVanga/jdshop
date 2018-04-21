@@ -44,7 +44,7 @@ class MainController extends Controller
         $this->layout = 'jdshop-user';
         return $this->render('infodev');
     }
-    public function actionFAQ()
+    public function actionFaq()
     {
         $this->layout = 'jdshop-user';
         return $this->render('faq');
