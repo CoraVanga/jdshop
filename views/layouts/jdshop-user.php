@@ -34,6 +34,7 @@
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdmh.css'?>" rel="stylesheet">
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdtt.css'?>" rel="stylesheet">
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdvc.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-dosize.css'?>" rel="stylesheet">
 	</head>
     <body>		
 		<div id="top-bar" class="container">
