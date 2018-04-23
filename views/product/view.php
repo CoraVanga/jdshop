@@ -17,7 +17,11 @@ $this->title = $model->name;
 		<div class="span9">
 			<div class="row">
 				<div class="span4">
-					<a href="../assets-shopper/themes/images/ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="../assets-shopper/themes/images/ladies/1.jpg"></a>												
+					<?php
+						$image = $model->getImageProducts()->asArray()->one();
+						echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" class="thumbnail" title="'.$image['link'].'" alt="<img src="../images/product-images'.'/'.$image['link'].'" />').'</p>';
+					?>
+					<!-- <a href="../assets-shopper/themes/images/ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="../assets-shopper/themes/images/ladies/1.jpg"></a> -->												
 					<ul class="thumbnails small">								
 						<li class="span1">
 							<a href="../assets-shopper/themes/images/ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="../assets-shopper/themes/images/ladies/2.jpg" alt=""></a>

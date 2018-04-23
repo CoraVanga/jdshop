@@ -1,5 +1,8 @@
 <?php
     use app\models\Users;
+    use yii\helpers\Html;
+	use yii\grid\GridView;
+	use yii\widgets\LinkPager;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,8 +125,8 @@
 
 
 
-			<section class="our_client">
-				<h4 class="title"><span class="text">Nhà sản xuất</span></h4>
+			<!-- <section class="our_client">
+				<h4 class="title"><span class="text">Nhà sản xuất</span></h4> -->
 				
 			</section>
 			<section id="footer-bar">
@@ -131,9 +134,9 @@
 					<div class="span3">
 						<h4>Giới thiệu về JD</h4>
 						<ul class="nav">
-							<li><a href="./index.html">Thông tin về JD</a></li>  
-							<li><a href="./cart.html">Liên hệ</a></li>
-							<li><a href="./register.html">FAQs</a></li>							
+							<li><?= Html::a('Thông tin về JD', ['about']) ?></li> 
+							<li><?= Html::a('Liên hệ', ['info']) ?></li>
+							<li><?= Html::a('FAQs', ['faq']) ?></li>							
 						</ul>					
 					</div>
 					<div class="span4">
