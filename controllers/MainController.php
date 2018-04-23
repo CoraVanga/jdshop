@@ -74,4 +74,9 @@ class MainController extends Controller
         $this->layout = 'jdshop-user';
         return $this->render('huongdansudung');
     }
+      public function actionHdtc()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('huongdantracuu');
+    }
 }
