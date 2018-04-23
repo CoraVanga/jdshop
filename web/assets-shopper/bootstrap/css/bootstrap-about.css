@@ -1,0 +1,32 @@
+.imgTN{
+	width: 20%;
+}
+.title1{
+	font-style: oblique;
+	font-size: 24px;
+	color: orange;
+}
+.imgSM{
+	width: 30%;
+}
+.imgGTCL{
+	width: 40%;
+}
+.txt{
+	font-style: initial;
+	font-size: 15px;
+	font-family: bold;
+}
+.content{
+	background: #F5FFFA;
+	
+}
+.content p{
+	font-size: 16px;
+}
+.info{
+	text-transform: uppercase;
+	font-variant-position: all;
+	font-variant-caps: all-petite-caps;
+	display: block;
+}
