@@ -52,19 +52,19 @@
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="#">Tài khoản</a></li>
-							<li><a href="cart.html">Giỏ hàng</a></li>
-							<li><a href="checkout.html">Thanh toán</a></li>
-                                                        <?php if(isset($_SESSION['ID_USER'])):?>
-                                                            <li><a href="../../user/site/logout-user">
-                                                                <?php
-                                                                $users = Users::findUsersById($_SESSION['ID_USER']);
-                                                                echo $users->name . "( Đăng xuất )";
-                                                                ?>
-                                                            </a></li>	
-                                                        <?php else: ?>
-                                                            <li><a href="../../user/site/login">Đăng nhập</a></li>	
-                                                        <?php endif;?>
+                            <?php if(isset($_SESSION['ID_USER'])):?>
+                            	<li><?= Html::a('Tài khoản', ['../user/users/view', 'id' => $_SESSION['ID_USER']]) ?></li>
+								<li><a href="cart.html">Giỏ hàng</a></li>
+								<li><a href="checkout.html">Thanh toán</a></li>
+                                <li><a href="../../user/site/logout-user">
+                                    <?php
+                                    $users = Users::findUsersById($_SESSION['ID_USER']);
+                                    echo $users->name . "( Đăng xuất )";
+                                    ?>
+                                </a></li>	
+                            <?php else: ?>
+                                <li><a href="../../user/site/login">Đăng nhập</a></li>	
+                            <?php endif;?>
 						</ul>
 					</div>
 				</div>
