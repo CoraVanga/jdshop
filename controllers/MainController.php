@@ -49,4 +49,34 @@ class MainController extends Controller
         $this->layout = 'jdshop-user';
         return $this->render('faq');
     }
+    public function actionHdmh()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('huongdanmuahang');
+    }
+    public function actionHdtt()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('huongdanthanhtoan');
+    }
+    public function actionHdvc()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('huongdanvanchuyen');
+    }
+    public function actionHdds()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('huongdandosize');
+    }
+    public function actionHdsd()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('huongdansudung');
+    }
+      public function actionHdtc()
+    {
+        $this->layout = 'jdshop-user';
+        return $this->render('huongdantracuu');
+    }
 }

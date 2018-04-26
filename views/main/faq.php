@@ -144,7 +144,7 @@ Quý khách vui lòng liên hệ các cửa hàng JD trên toàn quốc hoặc t
 
 <hr class="question-sererater" />
 <div class="question-content">
-<p>Hệ thống PNJ chấp nhận thanh toán tất cả các loại thẻ tín dụng và thẻ thanh toán nội địa (ATM) đối với tất cả sản phẩm được bán tại cửa hàng ngoại trừ một số sản phẩm như: Vàng miếng, nhẫn khoen ép vỉ và Kim Cương rời trên 6ly.</p>
+<p>Hệ thống JD chấp nhận thanh toán tất cả các loại thẻ tín dụng và thẻ thanh toán nội địa (ATM) đối với tất cả sản phẩm được bán tại cửa hàng ngoại trừ một số sản phẩm như: Vàng miếng, nhẫn khoen ép vỉ và Kim Cương rời trên 6ly.</p>
 </div>
 </li>
 </ul>
