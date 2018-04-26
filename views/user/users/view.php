@@ -19,21 +19,49 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Thay đổi mật khẩu', ['update', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
     </p>
     <div style="width:50%">
+    <table class="table table-striped">
+        <tr>
+            <td><h4>Tên tài khoản</h4></td>
+            <td><h4><?=$model->username?></h4></td>
+        </tr>
+        <tr>
+            <td><h4>Họ và tên</h4></td>
+            <td><h4><?=$model->name?></h4></td>
+        </tr>
+        <tr>
+            <td><h4>Ngày sinh</h4></td>
+            <td><h4><?=$model->dob?></h4></td>
+        </tr>
+        <tr>
+            <td><h4>Số điện thoại</h4></td>
+            <td><h4><?=$model->phone?></h4></td>
+        </tr>
+        <tr>
+            <td><h4>Địa chỉ</h4></td>
+            <td><h4><?=$model->address?></h4></td>
+        </tr>
+        <tr>
+            <td><h4>Email<h4></td>
+            <td><h4><?=$model->email?></h4></td>
+        </tr>
+    </table>
+    </div>
+    <!-- <div style="width:50%">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'username',
-            'password',
+            //'password',
             'name',
             'dob',
             'phone',
-            'role',
+            //'role',
             'address',
             'email:email',
-            'status',
+            //'status',
         ],
     ]) ?>
-    </div>
+    </div> -->
 
 </div>
