@@ -20,6 +20,20 @@
                         <li><a href="email-inbox.html">Inbox</a></li>
                     </ul>
                 </li>
+
+
+                <li class="dropdown">
+                  <a class="has-arrow dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dashboard
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+
+
                 <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Charts</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="chart-flot.html">Flot</a></li>
