@@ -61,7 +61,6 @@ $this->title = $model->name;
 					</ul>							 
 					<div class="tab-content">
 						<div class="tab-pane active" id="home"><?=$model->info?></div>
-						
 					</div>							
 				</div>						
 				<div class="span9">	
