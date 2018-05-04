@@ -35,6 +35,7 @@ class TypeController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'jdshop-admin';
         $searchModel = new SearchType();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +53,7 @@ class TypeController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout = 'jdshop-admin';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +66,7 @@ class TypeController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout = 'jdshop-admin';
         $model = new Type();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +87,7 @@ class TypeController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->layout = 'jdshop-admin';
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

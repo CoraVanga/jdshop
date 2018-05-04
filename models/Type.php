@@ -50,4 +50,11 @@ class Type extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Product::className(), ['id_type' => 'id']);
     }
+
+    public function getArrayGender(){
+        return [
+            '0' => 'Nữ',
+            '1' => 'Nam',
+        ];
+    }
 }
