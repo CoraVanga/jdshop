@@ -116,12 +116,3 @@ CREATE TABLE discount_detail
 -- khuyến mãi cho nhiều sản phẩm
 -- Vd : nhận yêu cầu giảm giá tiền của sản phầm A bớt đi 100k.
 
-CREATE TABLE big_sale
-(
-	id int Identity(1,1),
-	id_product int,
-	sl_bandau int,
-	sl_hientai int,
-	info nvarchar(100),
-	FOREIGN KEY (id_product) REFERENCES product(id),
-)
