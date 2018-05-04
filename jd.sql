@@ -2,6 +2,13 @@
 USE JD
 drop database jd
 
+drop table type
+drop table product
+drop table image_product
+drop table discount_detail
+drop table discount_product
+drop table order_line
+drop table sale_order
 
 CREATE TABLE users
 (
@@ -25,6 +32,7 @@ CREATE TABLE type
 (
   id INT IDENTITY(1,1),
   name NVARCHAR(100) ,
+  gender NVARCHAR(20),
   PRIMARY KEY (id)
 );
 
@@ -41,9 +49,11 @@ CREATE TABLE product
   info NVARCHAR(900) ,
   id_type INT ,
   created_uid INT ,
+  id_discount INT,
   PRIMARY KEY (id),
   FOREIGN KEY (id_type) REFERENCES type(id),
-  FOREIGN KEY (created_uid) REFERENCES users(id)
+  FOREIGN KEY (created_uid) REFERENCES users(id),
+  FOREIGN KEY (id_discount) REFERENCES discount_product(id)
 );
 
 CREATE TABLE image_product
@@ -59,9 +69,7 @@ CREATE TABLE discount_product
 (
   id INT IDENTITY(1,1),
   info NVARCHAR(100) ,
-  type INT ,
   discount INT ,
-  status INT ,
   created_date datetime ,
   begin_date DATE ,
   end_date DATE ,
@@ -95,16 +103,17 @@ CREATE TABLE order_line
   FOREIGN KEY (id_product) REFERENCES product(id),
   FOREIGN KEY (id_bill) REFERENCES sale_order(id)
 );
+-- Bỏ discount_detail
 
-CREATE TABLE discount_detail
-(
-  id INT IDENTITY(1,1),
-  id_discount INT ,
-  id_product INT ,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_discount) REFERENCES discount_product(id),
-  FOREIGN KEY (id_product) REFERENCES product(id)
-);
+--CREATE TABLE discount_detail
+--(
+--	id INT IDENTITY(1,1),
+--	id_discount INT ,
+--	id_product INT ,
+--	PRIMARY KEY (id),
+--	FOREIGN KEY (id_discount) REFERENCES discount_product(id),
+--	FOREIGN KEY (id_product) REFERENCES product(id)
+--);
 
 ---- Demo -- hệ quản trị CSDL
 
