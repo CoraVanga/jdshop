@@ -29,6 +29,7 @@ class Type extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'string'],
+            [['gender'], 'integer'],
         ];
     }
 
@@ -40,6 +41,7 @@ class Type extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Tên',
+            'gender' => 'giới tính',
         ];
     }
 

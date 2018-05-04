@@ -69,7 +69,16 @@ class TypeController extends Controller
         $this->layout = 'jdshop-admin';
         $model = new Type();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        if ($model->load(Yii::$app->request->post())) {
+            $post = Yii::$app->request->post();
+            $model->attributes = $post['Type'];
+            //  echo "<pre>";
+            // print_r($model);
+            // echo "</pre>";
+            // die;
+            $model->save();
+            
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
