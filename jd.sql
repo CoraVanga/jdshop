@@ -115,6 +115,19 @@ CREATE TABLE order_line
 --	FOREIGN KEY (id_product) REFERENCES product(id)
 --);
 
+
+---Chú thích trạng thái của sale-order
+---1: Nháp
+---2: Đơn hàng
+---3: Đã thanh toán
+---4: Hủy
+
+---Chú thích trạng thái của user
+-- 1 : admin
+-- 2 : quản lý
+-- 3 : nhân viên 
+-- 4 : khách hàng
+
 ---- Demo -- hệ quản trị CSDL
 
 -- 1 .  Mất dữ liệu cập nhật (Lost update)
