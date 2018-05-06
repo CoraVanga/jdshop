@@ -5,48 +5,22 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="nav-devider"></li>
-                <li class="nav-label">Home</li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard <span class="label label-rouded label-primary pull-right">2</span></span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="index.html">Ecommerce </a></li>
-                        <li><a href="index1.html">Analytics </a></li>
-                    </ul>
+                <li class="nav-label">Trang chủ</li>
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard <span class="label label-rouded label-primary pull-right"></span></span></a>
+                    
                 </li>
-                <li class="nav-label">Apps</li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Email</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="email-compose.html">Compose</a></li>
-                        <li><a href="email-read.html">Read</a></li>
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                    </ul>
+                <li class="nav-label">Quản lý</li>
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Khách hàng</span></a>
+                
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Sản phẩm</span></a>
+                       
                 </li>
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Khuyến mãi</span></a>
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Đơn hàng</span></a>    
 
 
-                <li class="dropdown">
-                  <a class="has-arrow dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dashboard
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-
-
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Charts</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="chart-flot.html">Flot</a></li>
-                        <li><a href="chart-morris.html">Morris</a></li>
-                        <li><a href="chart-chartjs.html">ChartJs</a></li>
-                        <li><a href="chart-chartist.html">Chartist </a></li>
-                        <li><a href="chart-amchart.html">AmChart</a></li>
-                        <li><a href="chart-echart.html">EChart</a></li>
-                        <li><a href="chart-sparkline.html">Sparkline</a></li>
-                        <li><a href="chart-peity.html">Peity</a></li>
-                    </ul>
-                </li>
-                <li class="nav-label">Features</li>
+                
+                <li class="nav-label">Báo cáo</li>
                 <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Bootstrap UI <span class="label label-rouded label-warning pull-right">6</span></span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="ui-alert.html">Alert</a></li>
