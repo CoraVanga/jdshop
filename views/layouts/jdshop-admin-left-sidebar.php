@@ -6,17 +6,17 @@
             <ul id="sidebarnav">
                 <li class="nav-devider"></li>
                 <li class="nav-label">Trang chủ</li>
-                <li> <a href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard <span class="label label-rouded label-primary pull-right"></span></span></a>
+                <li> <a href="#" aria-expanded="false"><i class=" fa fa-tachometer  "></i><span class="hide-menu">Dashboard <span class="label label-rouded label-primary pull-right"></span></span></a>
                     
                 </li>
                 <li class="nav-label">Quản lý</li>
-                <li> <a href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Khách hàng</span></a>
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-user-circle"></i><span class="hide-menu">Khách hàng</span></a>
                 
-                <li> <a href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Sản phẩm</span></a>
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-diamond "></i><span class="hide-menu">Sản phẩm</span></a>
                        
                 </li>
-                <li> <a href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Khuyến mãi</span></a>
-                <li> <a href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Đơn hàng</span></a>    
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-bullhorn "></i><span class="hide-menu">Khuyến mãi</span></a>
+                <li> <a href="#" aria-expanded="false"><i class="fa fa-cart-plus "></i><span class="hide-menu">Đơn hàng</span></a>    
 
 
                 
