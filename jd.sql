@@ -5,6 +5,7 @@ drop database jd
 drop table type
 drop table product
 drop table image_product
+drop table product_detail
 drop table discount_detail
 drop table discount_product
 drop table order_line
@@ -52,8 +53,7 @@ CREATE TABLE discount_product
 CREATE TABLE product
 (
   id INT IDENTITY(1,1),
-  name varchar(100) ,
-  price INT ,
+  name nvarchar(100) ,
   created_date datetime ,
   status INT ,
   code NVARCHAR(100) ,
@@ -70,13 +70,12 @@ CREATE TABLE product
 CREATE TABLE product_detail
 (
 	id INT IDENTITY(1,1),
-	size INT,
+	size float,
 	price INT,
 	amount INT,
 	id_product INT,
 	FOREIGN KEY (id_product) REFERENCES product(id)
 );
-
 
 CREATE TABLE image_product
 (
