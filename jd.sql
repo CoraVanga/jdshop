@@ -49,6 +49,15 @@ CREATE TABLE discount_product
   FOREIGN KEY (created_uid) REFERENCES users(id)
 );
 
+CREATE TABLE product_detail
+(
+	id INT IDENTITY(1,1),
+	size INT,
+	price INT,
+	amount INT,
+
+);
+
 CREATE TABLE product
 (
   id INT IDENTITY(1,1),
@@ -57,16 +66,16 @@ CREATE TABLE product
   created_date datetime ,
   status INT ,
   code NVARCHAR(100) ,
-  size INT ,
-  amount INT ,
   info NVARCHAR(900) ,
   id_type INT ,
   created_uid INT ,
   id_discount INT,
+  id_product_detail INT,
   PRIMARY KEY (id),
   FOREIGN KEY (id_type) REFERENCES type(id),
   FOREIGN KEY (created_uid) REFERENCES users(id),
-  FOREIGN KEY (id_discount) REFERENCES discount_product(id)
+  FOREIGN KEY (id_discount) REFERENCES discount_product(id),
+  FOREIGN KEY (id_product_detail) REFERENCES product_detail(id),
 );
 
 CREATE TABLE image_product
@@ -128,6 +137,12 @@ CREATE TABLE order_line
 -- 3 : nhân viên 
 -- 4 : khách hàng
 
+---Chú thích trạng thái của sản phẩm
+---1: Sử dụng
+---2: Không sử dụng
+
+---Chú thích loại sản phẩm
+---gender để trống: Áp dụng cho cả nam và nữ
 ---- Demo -- hệ quản trị CSDL
 
 -- 1 .  Mất dữ liệu cập nhật (Lost update)
