@@ -50,6 +50,7 @@ use yii\widgets\Pjax;
 									 	}
 									 	echo Html::a($model->name, ['../product/view', 'id' => $model->id],['class' => 'title']);
 										// echo '<p class="price">'.$model->price.' VNĐ</p>';
+										echo '<br/>';
 										echo Html::a($model->type->gender, ['../product/view', 'id' => $model->id],['class' => 'category']);
 										echo '</div></li>';
 										$i++;

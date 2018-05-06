@@ -10,7 +10,7 @@ $this->title = $model->name;
 ?>
 <section class="header_text sub">
 	<img class="pageBanner" src="../assets-shopper/themes/images/carousel/nhannu.jpg" alt="New products" >
-	<h4><span>THÔNG TIN CHI TIẾT SẢN PHẨM <?= $model->name?></span></h4>
+	<!-- <h4><span>THÔNG TIN CHI TIẾT SẢN PHẨM <?= $model->name?></span></h4> -->
 </section>
 <section class="main-content">				
 	<div class="row">						
@@ -19,7 +19,14 @@ $this->title = $model->name;
 				<div class="span4">
 					<?php
 						$image = $model->getImageProducts()->asArray()->one();
+						if(!empty($image))
+						{
 						echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" class="thumbnail" title="'.$image['link'].'" alt="<img src="../images/product-images'.'/'.$image['link'].'" />').'</p>';
+						}
+						else
+						{
+							echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png" class="thumbnail" title="No Image Found"').'</p>';
+						}
 					?>
 					<!-- <a href="../assets-shopper/themes/images/ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="../assets-shopper/themes/images/ladies/1.jpg"></a> -->												
 					<ul class="thumbnails small">								
@@ -39,11 +46,11 @@ $this->title = $model->name;
 				</div>
 				<div class="span5">
 					<address>
-						<strong>Nhãn hiệu: </strong> <span>Apple</span><br>
-						<strong>Mã sản phẩm: </strong> <span><?= $model->code ?></span><br>
-						<strong>Số lượng: </strong> <span><?= $model->amount?></span><br>								
+						<h3><?= $model->name?></h3>
+						<h5><?= $model->code ?></h5>
+						<!-- <strong>Số lượng: </strong> <span>$model->amount</span><br>	 -->							
 					</address>									
-					<h4><strong>Giá: <?=$model->price?></strong></h4>
+					<!-- <h4><strong>Giá: $model->price</strong></h4> -->
 				</div>
 				<div class="span5">
 					<form class="form-inline">
