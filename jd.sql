@@ -74,7 +74,8 @@ CREATE TABLE product_detail
 	price INT,
 	amount INT,
 	id_product INT,
-	FOREIGN KEY (id_product) REFERENCES product(id)
+	FOREIGN KEY (id_product) REFERENCES product(id),
+	PRIMARY KEY (id),
 );
 
 CREATE TABLE image_product
