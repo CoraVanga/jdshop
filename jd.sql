@@ -49,15 +49,6 @@ CREATE TABLE discount_product
   FOREIGN KEY (created_uid) REFERENCES users(id)
 );
 
-CREATE TABLE product_detail
-(
-	id INT IDENTITY(1,1),
-	size INT,
-	price INT,
-	amount INT,
-
-);
-
 CREATE TABLE product
 (
   id INT IDENTITY(1,1),
@@ -70,13 +61,22 @@ CREATE TABLE product
   id_type INT ,
   created_uid INT ,
   id_discount INT,
-  id_product_detail INT,
   PRIMARY KEY (id),
   FOREIGN KEY (id_type) REFERENCES type(id),
   FOREIGN KEY (created_uid) REFERENCES users(id),
   FOREIGN KEY (id_discount) REFERENCES discount_product(id),
-  FOREIGN KEY (id_product_detail) REFERENCES product_detail(id),
 );
+
+CREATE TABLE product_detail
+(
+	id INT IDENTITY(1,1),
+	size INT,
+	price INT,
+	amount INT,
+	id_product INT,
+	FOREIGN KEY (id_product) REFERENCES product(id)
+);
+
 
 CREATE TABLE image_product
 (
