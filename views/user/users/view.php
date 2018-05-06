@@ -6,10 +6,11 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 
-$this->title ='Thông tin tài khoản '.$model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+// $this->title ='Thông tin tài khoản '.$model->name;
+// $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
+<section class="main-content">
 <div class="users-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -65,3 +66,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div> -->
 
 </div>
+</section>
