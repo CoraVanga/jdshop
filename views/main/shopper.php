@@ -40,12 +40,17 @@ use yii\widgets\Pjax;
 									$i=0;
 									foreach ($dataProvider->models as $model) {
 									echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
-									if ($model->getImageProducts()->one()) {
+									if (!empty($model->getImageProducts()->one())) {
 										$image = $model->getImageProducts()->asArray()->one();
 									 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt="" />', ['../product/view', 'id' => $model->id]).'</p>';
 									 	}
+									 	else
+									 	{
+									 		echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $model->id]).'</p>';
+									 	}
 									 	echo Html::a($model->name, ['../product/view', 'id' => $model->id],['class' => 'title']);
-										echo '<p class="price">'.$model->price.' VNĐ</p>';
+										// echo '<p class="price">'.$model->price.' VNĐ</p>';
+										echo Html::a($model->type->gender, ['../product/view', 'id' => $model->id],['class' => 'category']);
 										echo '</div></li>';
 										$i++;
 										if($i==8) break;
