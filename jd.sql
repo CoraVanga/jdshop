@@ -36,6 +36,19 @@ CREATE TABLE type
   PRIMARY KEY (id)
 );
 
+CREATE TABLE discount_product
+(
+  id INT IDENTITY(1,1),
+  info NVARCHAR(100) ,
+  discount INT ,
+  created_date datetime ,
+  begin_date DATE ,
+  end_date DATE ,
+  created_uid INT ,
+  PRIMARY KEY (id),
+  FOREIGN KEY (created_uid) REFERENCES users(id)
+);
+
 CREATE TABLE product
 (
   id INT IDENTITY(1,1),
@@ -63,19 +76,6 @@ CREATE TABLE image_product
   id_product INT ,
   PRIMARY KEY (id),
   FOREIGN KEY (id_product) REFERENCES product(id)
-);
-
-CREATE TABLE discount_product
-(
-  id INT IDENTITY(1,1),
-  info NVARCHAR(100) ,
-  discount INT ,
-  created_date datetime ,
-  begin_date DATE ,
-  end_date DATE ,
-  created_uid INT ,
-  PRIMARY KEY (id),
-  FOREIGN KEY (created_uid) REFERENCES users(id)
 );
 
 CREATE TABLE sale_order
