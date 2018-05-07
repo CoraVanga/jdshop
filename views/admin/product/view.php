@@ -34,14 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'price',
             'created_date',
             'status',
             'code',
-            'size',
-            'amount',
             'info',
-            'id_type',
             'created_uid',
         ],
     ]) ?>

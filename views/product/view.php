@@ -55,8 +55,10 @@ $this->title = $model->name;
 				<div class="span5">
 					<form class="form-inline">
 						<p>&nbsp;</p>
-						<label>Số lượng:</label>
-						<input type="text" class="span1" placeholder="1">
+						<?php
+							$detail = $model->getProductDetails()->asArray()->one();
+							echo '<p>Test: '.$detail['size'].'</p>';
+						?>
 						<button class="btn btn-inverse" type="submit">Thêm vào giỏ hàng</button>
 					</form>
 				</div>							
