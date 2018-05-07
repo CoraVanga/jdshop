@@ -5,6 +5,7 @@ drop database jd
 drop table type
 drop table product
 drop table image_product
+drop table product_detail
 drop table discount_detail
 drop table discount_product
 drop table order_line
@@ -52,13 +53,10 @@ CREATE TABLE discount_product
 CREATE TABLE product
 (
   id INT IDENTITY(1,1),
-  name varchar(100) ,
-  price INT ,
+  name nvarchar(100) ,
   created_date datetime ,
   status INT ,
   code NVARCHAR(100) ,
-  size INT ,
-  amount INT ,
   info NVARCHAR(900) ,
   id_type INT ,
   created_uid INT ,
@@ -66,7 +64,18 @@ CREATE TABLE product
   PRIMARY KEY (id),
   FOREIGN KEY (id_type) REFERENCES type(id),
   FOREIGN KEY (created_uid) REFERENCES users(id),
-  FOREIGN KEY (id_discount) REFERENCES discount_product(id)
+  FOREIGN KEY (id_discount) REFERENCES discount_product(id),
+);
+
+CREATE TABLE product_detail
+(
+	id INT IDENTITY(1,1),
+	size float,
+	price INT,
+	amount INT,
+	id_product INT,
+	FOREIGN KEY (id_product) REFERENCES product(id),
+	PRIMARY KEY (id),
 );
 
 CREATE TABLE image_product
@@ -128,6 +137,12 @@ CREATE TABLE order_line
 -- 3 : nhân viên 
 -- 4 : khách hàng
 
+---Chú thích trạng thái của sản phẩm
+---1: Sử dụng
+---2: Không sử dụng
+
+---Chú thích loại sản phẩm
+---gender để trống: Áp dụng cho cả nam và nữ
 ---- Demo -- hệ quản trị CSDL
 
 -- 1 .  Mất dữ liệu cập nhật (Lost update)

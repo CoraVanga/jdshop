@@ -9,21 +9,20 @@ use Yii;
  *
  * @property int $id
  * @property string $name
- * @property int $price
  * @property string $created_date
  * @property int $status
  * @property string $code
- * @property int $size
- * @property int $amount
  * @property string $info
  * @property int $id_type
  * @property int $created_uid
+ * @property int $id_discount
  *
- * @property DiscountDetail[] $discountDetails
  * @property ImageProduct[] $imageProducts
  * @property OrderLine[] $orderLines
  * @property Users $createdU
  * @property Type $type
+ * @property DiscountProduct $discount
+ * @property ProductDetail[] $productDetails
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -42,10 +41,11 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'code', 'info'], 'string'],
-            [['price', 'status', 'size', 'amount', 'id_type', 'created_uid'], 'integer'],
             [['created_date'], 'safe'],
+            [['status', 'id_type', 'created_uid', 'id_discount'], 'integer'],
             [['created_uid'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['created_uid' => 'id']],
             [['id_type'], 'exist', 'skipOnError' => true, 'targetClass' => Type::className(), 'targetAttribute' => ['id_type' => 'id']],
+            [['id_discount'], 'exist', 'skipOnError' => true, 'targetClass' => DiscountProduct::className(), 'targetAttribute' => ['id_discount' => 'id']],
         ];
     }
 
@@ -57,24 +57,14 @@ class Product extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'price' => 'Price',
             'created_date' => 'Created Date',
             'status' => 'Status',
             'code' => 'Code',
-            'size' => 'Size',
-            'amount' => 'Amount',
             'info' => 'Info',
             'id_type' => 'Id Type',
             'created_uid' => 'Created Uid',
+            'id_discount' => 'Id Discount',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDiscountDetails()
-    {
-        return $this->hasMany(DiscountDetail::className(), ['id_product' => 'id']);
     }
 
     /**
@@ -107,5 +97,21 @@ class Product extends \yii\db\ActiveRecord
     public function getType()
     {
         return $this->hasOne(Type::className(), ['id' => 'id_type']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDiscount()
+    {
+        return $this->hasOne(DiscountProduct::className(), ['id' => 'id_discount']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProductDetails()
+    {
+        return $this->hasMany(ProductDetail::className(), ['id_product' => 'id']);
     }
 }
