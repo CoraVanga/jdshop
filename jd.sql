@@ -36,6 +36,19 @@ CREATE TABLE type
   PRIMARY KEY (id)
 );
 
+CREATE TABLE discount_product
+(
+  id INT IDENTITY(1,1),
+  info NVARCHAR(100) ,
+  discount INT ,
+  created_date datetime ,
+  begin_date DATE ,
+  end_date DATE ,
+  created_uid INT ,
+  PRIMARY KEY (id),
+  FOREIGN KEY (created_uid) REFERENCES users(id)
+);
+
 CREATE TABLE product
 (
   id INT IDENTITY(1,1),
@@ -63,19 +76,6 @@ CREATE TABLE image_product
   id_product INT ,
   PRIMARY KEY (id),
   FOREIGN KEY (id_product) REFERENCES product(id)
-);
-
-CREATE TABLE discount_product
-(
-  id INT IDENTITY(1,1),
-  info NVARCHAR(100) ,
-  discount INT ,
-  created_date datetime ,
-  begin_date DATE ,
-  end_date DATE ,
-  created_uid INT ,
-  PRIMARY KEY (id),
-  FOREIGN KEY (created_uid) REFERENCES users(id)
 );
 
 CREATE TABLE sale_order
@@ -114,6 +114,19 @@ CREATE TABLE order_line
 --	FOREIGN KEY (id_discount) REFERENCES discount_product(id),
 --	FOREIGN KEY (id_product) REFERENCES product(id)
 --);
+
+
+---Chú thích trạng thái của sale-order
+---1: Nháp
+---2: Đơn hàng
+---3: Đã thanh toán
+---4: Hủy
+
+---Chú thích trạng thái của user
+-- 1 : admin
+-- 2 : quản lý
+-- 3 : nhân viên 
+-- 4 : khách hàng
 
 ---- Demo -- hệ quản trị CSDL
 
