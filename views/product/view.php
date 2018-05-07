@@ -47,7 +47,8 @@ $this->title = $model->name;
 				<div class="span5">
 					<address>
 						<h3><?= $model->name?></h3>
-						<h5><?= $model->code ?></h5>
+						<h5>MS: <?= $model->code ?></h5>
+						<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price)?> VNĐ</h2>
 						<!-- <strong>Số lượng: </strong> <span>$model->amount</span><br>	 -->							
 					</address>									
 					<!-- <h4><strong>Giá: $model->price</strong></h4> -->
@@ -55,10 +56,20 @@ $this->title = $model->name;
 				<div class="span5">
 					<form class="form-inline">
 						<p>&nbsp;</p>
+						<select class="jdComBoBox" style="width: 150px; height: 40px; padding: 10px;">
+						  <option value="choosesize">CHỌN KÍCH CỠ</option>
+<!-- 						  <option value="saab">Saab</option>
+						  <option value="vw">VW</option>
+						  <option value="audi" selected>Audi</option> -->
 						<?php
-							$detail = $model->getProductDetails()->asArray()->one();
-							echo '<p>Test: '.$detail['size'].'</p>';
+							// $detail = $model->getProductDetails()->asArray()->all();
+							// echo '<p>Test: '.$detail['0']['size'].' '.sizeof($detail).'</p>';
+							foreach ($detail as $product_detail) {
+							    echo '<option value="'.number_format($product_detail->price).' VNĐ">'.$product_detail->size.'</option>';
+							}
 						?>
+						</select><span style="font-size: 15px; padding: 10px;"><?= Html::a('Hướng dẫn chọn kích cỡ', ['main/hdds']) ?></span>
+						<br/><br/>
 						<button class="btn btn-inverse" type="submit">Thêm vào giỏ hàng</button>
 					</form>
 				</div>							

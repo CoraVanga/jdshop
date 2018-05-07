@@ -24,7 +24,8 @@
 
 		<!-- scripts -->
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery-1.7.2.min.js'?>"></script>
-		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/bootstrap.min.js'?>"></script>				
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/bootstrap.min.js'?>"></script>
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/jd_custom.js'?>"></script>	
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/superfish.js'?>"></script>	
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery.scrolltotop.js'?>"></script>
 		<!--[if lt IE 9]>			

@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 use Yii;
+use app\models\ProductDetail;
 use app\models\Product;
 use app\models\SearchProduct;
 use app\models\ImageProduct;
@@ -52,8 +53,10 @@ class ProductController extends Controller
     public function actionView($id)
     {
         $this->layout = 'jdshop-user';
+        $detail = ProductDetail::find()->where(['id_product' => $id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'detail' => $detail,
         ]);
     }
     protected function findModel($id)
