@@ -2,15 +2,47 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use yii\bootstrap\Alert;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 
 $this->title = $model->name;
 ?>
 <section class="header_text sub">
-	<img class="pageBanner" src="../assets-shopper/themes/images/carousel/nhannu.jpg" alt="New products" >
+	<!-- <img class="pageBanner" src="../assets-shopper/themes/images/carousel/nhannu.jpg" alt="New products" > -->
 	<!-- <h4><span>THÔNG TIN CHI TIẾT SẢN PHẨM <?= $model->name?></span></h4> -->
+	<?php
+	if($_POST){
+        if($flag==1)
+        {
+        	 Alert::begin([
+	            'options' => [
+	                'class' => 'alert-danger',
+	            ],
+	        ]);
+        	echo 'Bạn phải đăng nhập để mua sản phẩm này';
+        }
+        if($flag==2)
+        {
+        	 Alert::begin([
+	            'options' => [
+	                'class' => 'alert-warning',
+	            ],
+	        ]);
+        	echo 'Sản phẩm đã hết số lượng, xin vui lòng liên lạc lại sau';
+        }
+        if($flag==3)
+        {
+        	 Alert::begin([
+	            'options' => [
+	                'class' => 'alert-success',
+	            ],
+	        ]);
+        	echo 'Đã thêm sản phẩm thành công vào giỏ hàng của bạn';
+        }
+        Alert::end();
+        }
+	?>
 </section>
 <section class="main-content">				
 	<div class="row">						
@@ -54,10 +86,14 @@ $this->title = $model->name;
 					<!-- <h4><strong>Giá: $model->price</strong></h4> -->
 				</div>
 				<div class="span5">
-					<form class="form-inline">
-						<p>&nbsp;</p>
+					<form class="form-inline" method="post" action="view?id=<?=$model->id?>">
+
+						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+						<input type="hidden" name="id" value="<?php echo $model->id; ?>">
+						<input type="hidden" name="size" id="productSize" value="<?php echo $detail['0']->size; ?>">
+
 						<select class="jdComBoBox" style="width: 150px; height: 40px; padding: 10px;" name="productDropDown" id="productDropDown">
-						  <option value="choosesize">CHỌN KÍCH CỠ</option>
+						  <option value="<?=number_format($detail['0']->price)?> VNĐ">CHỌN KÍCH CỠ</option>
 <!-- 						  <option value="saab">Saab</option>
 						  <option value="vw">VW</option>
 						  <option value="audi" selected>Audi</option> -->
@@ -70,13 +106,7 @@ $this->title = $model->name;
 						?>
 						</select><span style="font-size: 15px; padding: 10px;"><?= Html::a('Hướng dẫn chọn kích cỡ', ['main/hdds']) ?></span>
 						<br/><br/>
-						<?php
- 
-					   	(isset($_POST["productDropDown"])) ? $company = $_POST["productDropDown"] : $company=1;
-						 
-						?>
-						<?= Html::a('Thêm vào giỏ hàng', ['add', 'id' => $model->id, 'size' => $company], ['class' => 'btn btn-info']) ?>
-						
+						<button id="addToCartButton" type="submit" name="" class="btn btn-info">Thêm vào giỏ hàng</button>
 					</form>
 				</div>							
 			</div>

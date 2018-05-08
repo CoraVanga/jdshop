@@ -17,6 +17,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\bootstrap\Alert;
  
 class ProductController extends Controller
 {
@@ -28,7 +29,7 @@ class ProductController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'index'  => ['GET'],
-                    'view'   => ['GET'],
+                    'view'   => ['GET','POST'],
                     'create' => ['GET', 'POST'],
                     'update' => ['GET', 'PUT', 'POST'],
                     'delete' => ['POST', 'DELETE'],
@@ -54,20 +55,25 @@ class ProductController extends Controller
     {
         $this->layout = 'jdshop-user';
         $detail = ProductDetail::find()->where(['id_product' => $id])->all();
+        $flag=0;// Không tạo thông báo
+        if($_POST){
+            // echo "<pre>";
+            // print_r($_POST);
+            // echo "</pre>";
+            if(!isset($_SESSION['ID_USER']))
+                $flag=1; //Bạn cần phải đăng nhập để thực hiện thao tác này
+            else
+            {
+                $flag=3;
+            }
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
             'detail' => $detail,
+            'flag' => $flag,
         ]);
     }
-    public function actionAdd($id, $size)
-    {
-        $this->layout = 'jdshop-user';
-        $detail = ProductDetail::find()->where(['id_product' => $id])->all();
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-            'detail' => $detail,
-        ]);
-    }
+
 
 
     protected function findModel($id)
