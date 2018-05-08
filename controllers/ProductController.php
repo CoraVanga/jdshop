@@ -90,12 +90,48 @@ class ProductController extends Controller
                     $orderline->sum_price = $productdetail->price;
                     $orderline->amount = 1;
                     $orderline->id_product = $productdetail->id_product;
+                    $orderline->id_bill = $saleorder->id;
+                    $orderline->save();
 
                 }
                 else
                 {
                     //Đã có giỏ hàng trong hệ thống
                     $orderline = OrderLine::find()->where(['id_bill'=>$saleorder->id])->all();
+
+                    if(empty($orderline))
+                    {
+                        $orderline = new OrderLine();
+                        $orderline->size_product = $productdetail->size;
+                        $orderline->sum_price = $productdetail->price;
+                        $orderline->amount = 1;
+                        $orderline->id_product = $productdetail->id_product;
+                        $orderline->id_bill = $saleorder->id;
+                        $orderline->save();
+                    }
+                    else
+                    {
+                        $flag = 0;
+                        foreach ($orderline as $item) {
+                            if($item->id_product==$productdetail->id_product && $item->size_product==$productdetail->size)
+                            {
+                                $item->amount = $item->amount+1;
+                                $item->sum_price = $productdetail->price*$item->amount;
+                                $item->save();
+                                $flag=1;
+                            }
+                        }
+                        if($flag==0)
+                        {
+                            $orderline = new OrderLine();
+                            $orderline->size_product = $productdetail->size;
+                            $orderline->sum_price = $productdetail->price;
+                            $orderline->amount = 1;
+                            $orderline->id_product = $productdetail->id_product;
+                            $orderline->id_bill = $saleorder->id;
+                            $orderline->save();
+                        }
+                    }
                 }
                 echo "<pre>";
                 print_r($user->name);
