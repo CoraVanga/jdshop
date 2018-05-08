@@ -59,6 +59,17 @@ class ProductController extends Controller
             'detail' => $detail,
         ]);
     }
+    public function actionAdd($id, $size)
+    {
+        $this->layout = 'jdshop-user';
+        $detail = ProductDetail::find()->where(['id_product' => $id])->all();
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+            'detail' => $detail,
+        ]);
+    }
+
+
     protected function findModel($id)
     {
         if (($model = Product::findOne($id)) !== null) {

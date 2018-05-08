@@ -48,7 +48,7 @@ $this->title = $model->name;
 					<address>
 						<h3><?= $model->name?></h3>
 						<h5>MS: <?= $model->code ?></h5>
-						<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price)?> VNĐ</h2>
+						<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price)?> VNĐ</h2><br/>
 						<!-- <strong>Số lượng: </strong> <span>$model->amount</span><br>	 -->							
 					</address>									
 					<!-- <h4><strong>Giá: $model->price</strong></h4> -->
@@ -56,7 +56,7 @@ $this->title = $model->name;
 				<div class="span5">
 					<form class="form-inline">
 						<p>&nbsp;</p>
-						<select class="jdComBoBox" style="width: 150px; height: 40px; padding: 10px;">
+						<select class="jdComBoBox" style="width: 150px; height: 40px; padding: 10px;" name="productDropDown" id="productDropDown">
 						  <option value="choosesize">CHỌN KÍCH CỠ</option>
 <!-- 						  <option value="saab">Saab</option>
 						  <option value="vw">VW</option>
@@ -70,7 +70,13 @@ $this->title = $model->name;
 						?>
 						</select><span style="font-size: 15px; padding: 10px;"><?= Html::a('Hướng dẫn chọn kích cỡ', ['main/hdds']) ?></span>
 						<br/><br/>
-						<button class="btn btn-inverse" type="submit">Thêm vào giỏ hàng</button>
+						<?php
+ 
+					   	(isset($_POST["productDropDown"])) ? $company = $_POST["productDropDown"] : $company=1;
+						 
+						?>
+						<?= Html::a('Thêm vào giỏ hàng', ['add', 'id' => $model->id, 'size' => $company], ['class' => 'btn btn-info']) ?>
+						
 					</form>
 				</div>							
 			</div>
