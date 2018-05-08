@@ -8,6 +8,9 @@
 
 namespace app\controllers;
 use Yii;
+use app\models\OrderLine;
+use app\models\SaleOrder;
+use app\models\Users;
 use app\models\ProductDetail;
 use app\models\Product;
 use app\models\SearchProduct;
@@ -61,9 +64,45 @@ class ProductController extends Controller
             // print_r($_POST);
             // echo "</pre>";
             if(!isset($_SESSION['ID_USER']))
+            {
                 $flag=1; //Bạn cần phải đăng nhập để thực hiện thao tác này
+            }
             else
             {
+                //Lấy thông tin sản phẩm, chi tiết sp, người dùng, đơn hàng 
+                $product = Product::findOne($_POST['id']);
+                $user = Users::findOne($_SESSION['ID_USER']);
+                $productdetail = ProductDetail::find()->where(['id_product'=>$product->id, 'size'=>$_POST['size']])->one();
+                $saleorder = SaleOrder::find()->where(['id_user'=>$user->id, 'status'=>'1'])->one();
+                if(!isset($saleorder))
+                {
+                    //Chưa có giỏ hàng nào trong hệ thống
+                    //Tạo đơn hàng mới
+                    $saleorder = new SaleOrder();
+                    $saleorder->id_user = $user->id;
+                    $saleorder->total_price = $productdetail->price;
+                    $saleorder->bill_code = 'SO'.$user->id.$product->id;
+                    $saleorder->status = 1;
+                    $saleorder->save();
+                    //Tạo chi tiết đơn hàng mới
+                    $orderline = new OrderLine();
+                    $orderline->size_product = $productdetail->size;
+                    $orderline->sum_price = $productdetail->price;
+                    $orderline->amount = 1;
+                    $orderline->id_product = $productdetail->id_product;
+
+                }
+                else
+                {
+                    //Đã có giỏ hàng trong hệ thống
+                    $orderline = OrderLine::find()->where(['id_bill'=>$saleorder->id])->all();
+                }
+                echo "<pre>";
+                print_r($user->name);
+                print_r($product->name);
+                print_r($saleorder->total_price);
+                print_r($productdetail->amount);
+                echo "</pre>";
                 $flag=3;
             }
         }
