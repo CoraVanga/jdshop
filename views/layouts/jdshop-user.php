@@ -24,7 +24,8 @@
 
 		<!-- scripts -->
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery-1.7.2.min.js'?>"></script>
-		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/bootstrap.min.js'?>"></script>				
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/bootstrap.min.js'?>"></script>
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/jd_custom.js'?>"></script>	
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/superfish.js'?>"></script>	
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery.scrolltotop.js'?>"></script>
 		<!--[if lt IE 9]>			
@@ -55,7 +56,6 @@
                             <?php if(isset($_SESSION['ID_USER'])):?>
                             	<li><?= Html::a('Tài khoản', ['../user/users/view', 'id' => $_SESSION['ID_USER']]) ?></li>
 								<li><a href="cart.html">Giỏ hàng</a></li>
-								<li><a href="checkout.html">Thanh toán</a></li>
                                 <li><a href="../../user/site/logout-user">
                                     <?php
                                     $users = Users::findUsersById($_SESSION['ID_USER']);

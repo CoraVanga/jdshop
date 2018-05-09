@@ -126,10 +126,11 @@ CREATE TABLE order_line
 
 
 ---Chú thích trạng thái của sale-order
----1: Nháp
+---1: Giỏ hàng (Tạo bởi khách hàng)
+---2: Nháp (Tạo bởi admin)
 ---2: Đơn hàng
 ---3: Đã thanh toán
----4: Hủy
+---0: Hủy
 
 ---Chú thích trạng thái của user
 -- 1 : admin
