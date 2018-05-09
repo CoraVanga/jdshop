@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        //'assets-admin/css/lib/bootstrap/bootstrap.min.css',
         'assets-admin/css/lib/calendar2/semantic.ui.min.css',
         'assets-admin/css/lib/calendar2/pignose.calendar.min.css',
         'assets-admin/css/lib/owl.carousel.min.css',
@@ -32,7 +33,7 @@ class AppAsset extends AssetBundle
         'assets-admin/js/lib/bootstrap/js/popper.min.js',
         'assets-admin/js/jquery.slimscroll.js',
         'assets-admin/js/sidebarmenu.js',
-        'assets-admin/js/lib/sticky-kit-master/dist/sticky-kit.min.js',
+        // 'assets-admin/js/lib/sticky-kit-master/dist/sticky-kit.min.js', // làm cột bị lăng
         'assets-admin/js/lib/morris-chart/raphael-min.js',
         'assets-admin/js/lib/morris-chart/morris.js',
         'assets-admin/js/lib/morris-chart/dashboard1-init.js',
@@ -45,6 +46,9 @@ class AppAsset extends AssetBundle
         'assets-admin/js/lib/owl-carousel/owl.carousel-init.js',
         'assets-admin/js/scripts.js',
         'assets-admin/js/custom.min.js',
+        //'assets-admin/js/lib/jquery/jquery.min.js',
+        //'assets-admin/js/lib/bootstrap/js/bootstrap.min.js',
+
     ];
     public $depends = [
          'yii\web\YiiAsset',
