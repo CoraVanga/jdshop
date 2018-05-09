@@ -56,7 +56,6 @@
                             <?php if(isset($_SESSION['ID_USER'])):?>
                             	<li><?= Html::a('Tài khoản', ['../user/users/view', 'id' => $_SESSION['ID_USER']]) ?></li>
 								<li><a href="cart.html">Giỏ hàng</a></li>
-								<li><a href="checkout.html">Thanh toán</a></li>
                                 <li><a href="../../user/site/logout-user">
                                     <?php
                                     $users = Users::findUsersById($_SESSION['ID_USER']);
