@@ -99,7 +99,7 @@ class CartController extends Controller
                     $new_orderline = OrderLine::find()->where(['id_bill'=>$new_saleorder->id])->all();
                     return $this->render('view', [
                         'saleorder'=>$new_saleorder,
-                        'orderline'=>$orderline,
+                        'orderline'=>$new_orderline,
                         'user'=>$user,
                         'status'=>$status,
                     ]);

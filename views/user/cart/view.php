@@ -168,6 +168,9 @@ $this->title = 'Giỏ hàng';
 					?>
 					</tbody>
 				</table>
+				<p>Người nhận: <?php echo $user->name?></p>
+				<p>Số điện thoại: <?php echo $user->phone?></p>
+				<p>Địa chỉ: <?php echo $user->address?></p>
 			<?php endif;?>
 								
 		</div>

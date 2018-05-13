@@ -1,5 +1,6 @@
 <?php
     use app\models\Users;
+    use app\models\SaleOrder;
     use yii\helpers\Html;
 	use yii\grid\GridView;
 	use yii\widgets\LinkPager;
@@ -55,17 +56,28 @@
 					<div class="account pull-right">
 						<ul class="user-menu">				
                             <?php if(isset($_SESSION['ID_USER'])):?>
+                            	 <?php
+                                    $users = Users::findUsersById($_SESSION['ID_USER']);
+                                    $saleorder = SaleOrder::find()->where(['id_user'=>$users->id, 'status'=>'1'])->one();
+                                    ?>
                             	<li><?= Html::a('Tài khoản', ['../user/users/view','id'=>$_SESSION['ID_USER']]) ?></li>
-								<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
+								<?php if(isset($saleorder)):?>
+									<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
+								<?php endif;?>
                                 <li><a href="../../user/site/logout-user">
                                     <?php
-                                    $users = Users::findUsersById($_SESSION['ID_USER']);
                                     echo $users->name . "( Đăng xuất )";
                                     ?>
                                 </a></li>	
                             <?php else: ?>
                             	<?php if(isset($_SESSION['ID_CUS'])):?>
-                            		<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
+                            		<?php
+                            			$users = Users::findUsersById($_SESSION['ID_CUS']);
+                            			$saleorder = SaleOrder::find()->where(['id_user'=>$users->id, 'status'=>'1'])->one();
+                            		?>
+                            		<?php if(isset($saleorder)):?>
+                            			<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
+                        			<?php endif;?>
                     			<?php endif;?>
                                 <li><a href="../../user/site/login">Đăng nhập</a></li>	
                             <?php endif;?>
