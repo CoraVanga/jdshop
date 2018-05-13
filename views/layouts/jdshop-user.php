@@ -79,41 +79,22 @@
 					<a href="../../main" class="logo pull-left"><img src="<?php echo Yii::$app->homeUrl.'../assets-shopper/imageweb/logo.png'?>" width="50%", height="50%" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="./products.html">Trang sức nữ</a>					
+							<li><?= Html::a('Trang chủ', ['../main']) ?>
+							</li>
+							<li><?= Html::a('Giới thiệu', ['../main/about']) ?>
+							</li>
+							<li><a href="<?php echo Yii::$app->homeUrl.'../user/product'?>">Sản phẩm</a>					
 								<ul>
-									<li><a href="<?php echo Yii::$app->homeUrl.'../user/product'?>">Nhẫn</a></li>									
+									<li><a href="<?php echo Yii::$app->homeUrl.'../user/product'?>">Nhẫn</a></li>				
 									<li><a href="./products.html">Bông tai</a></li>
 									<li><a href="./products.html">Dây chuyền</a></li>
 									<li><a href="./products.html">Lắc tay, lắc chân</a></li>									
 								</ul>
-							</li>															
-							<li><a href="./products.html">Trang sức nam</a>
-								<ul>
-									<li><a href="./products.html">Nhẫn</a></li>									
-									<li><a href="./products.html">Bông tai</a></li>
-									<li><a href="./products.html">Dây chuyền</a></li>	
-								</ul>
-							</li>				
-							<li><a href="./products.html">Trang sức trẻ em</a>
-								<ul>									
-									<li><a href="./products.html">Bông tai</a></li>
-									<li><a href="./products.html">Dây chuyền</a></li>
-									<li><a href="./products.html">Lắc tay, lắc chân</a></li>	
-								</ul>
-							</li>							
-							<li><a href="./products.html">Trang sức cưới</a>
-								<ul>									
-									<li><a href="./products.html">Trang sức cưới truyền thống</a></li>
-									<li><a href="./products.html">Trang sức cưới hiện đại</a></li>
-								</ul>
 							</li>
-							<li><a href="./products.html">Quà tặng</a>
-								<ul>									
-									<li><a href="./products.html">Cầu hôn</a></li>
-									<li><a href="./products.html">Sinh nhật</a></li>
-									<li><a href="./products.html">Ngày kỉ niệm</a></li>	
-								</ul>
-							</li>	
+							<li><li><?= Html::a('Liên hệ', ['../main/info']) ?></li>
+							</li>
+							<li><li><?= Html::a('FAQs', ['../main/faq']) ?></li>
+							</li>														
 						</ul>
 					</nav>
 				</div>
@@ -143,9 +124,9 @@
 					<div class="span3">
 						<h4>Giới thiệu về JD</h4>
 						<ul class="nav">
-							<li><?= Html::a('Thông tin về JD', ['about']) ?></li> 
-							<li><?= Html::a('Liên hệ', ['info']) ?></li>
-							<li><?= Html::a('FAQs', ['faq']) ?></li>							
+							<li><?= Html::a('Thông tin về JD', ['../main/about']) ?></li> 
+							<li><?= Html::a('Liên hệ', ['../main/info']) ?></li>
+							<li><?= Html::a('FAQs', ['../main/faq']) ?></li>							
 						</ul>					
 					</div>
 					<div class="span4">
