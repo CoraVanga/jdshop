@@ -69,9 +69,9 @@ class CartController extends Controller
 
         }
         if($_POST){
-            echo "<pre>";
-            print_r($_POST);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($_POST);
+            // echo "</pre>";
             if($_POST['status']==0)
             {
                 $status=1;
@@ -86,6 +86,23 @@ class CartController extends Controller
                     $user->phone = $_POST['sdt'];
                     $user->address = $_POST['address'];
                     $user->save();
+                    $status=1;
+                }
+                else
+                {
+                    echo "<pre>";
+                    print_r($_POST);
+                    echo "</pre>";
+                    $new_saleorder = SaleOrder::find()->where(['id'=>$_POST['soid']])->one();
+                    $new_saleorder->status=3;
+                    $new_saleorder->save();
+                    $new_orderline = OrderLine::find()->where(['id_bill'=>$new_saleorder->id])->all();
+                    return $this->render('view', [
+                        'saleorder'=>$new_saleorder,
+                        'orderline'=>$orderline,
+                        'user'=>$user,
+                        'status'=>$status,
+                    ]);
                 }
             }
         }

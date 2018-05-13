@@ -52,9 +52,9 @@ $this->title = 'Giỏ hàng';
 						</tr>
 					</thead>
 					<tbody>
-					<?php 
-					if(isset($saleorder)):
-						foreach ($orderline as $item) {
+					 
+					<?php if(isset($saleorder)):?>
+						<?php foreach ($orderline as $item) {
 							echo '<tr>';
 							$image = ImageProduct::find()->where(['id_product'=>$item->product->id])->one();
 							$productdetail = ProductDetail::find()->where(['id_product'=>$item->product->id,'size'=>$item->size_product])->one();
@@ -71,7 +71,7 @@ $this->title = 'Giỏ hàng';
 							echo '<td>'.number_format($item->sum_price).'</td>';
 							echo '</tr>';
 						}
-						endif;
+						
 					?>
 					</tbody>
 				</table>
@@ -91,6 +91,7 @@ $this->title = 'Giỏ hàng';
 						</div>
 					</form>				
 				</p>
+			<?php endif;?>
 			<?php elseif($status==1): ?>
 				<div style="clear: both;"></div>
 				<h3>Thông tin người nhận &amp; địa chỉ giao hàng</h3>
@@ -107,10 +108,19 @@ $this->title = 'Giỏ hàng';
 						'email:email',
 					],
 					]) ?>
+					<form class="form-horizontal" method="post" action="view">
+						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+						<input type="hidden" name="status" value="<?php echo $status ?>">
+						<input type="hidden" name="soid" value="<?php echo $saleorder->id ?>">
+						<div id="jdCartSubmitButton" style="text-align: center;">
+							<button class="btn btn-inverse"  type="submit">Xác nhận</button>
+						</div>
+					</form>
 				<?php else:?>
 					<form class="form-horizontal" method="post" action="view">
 						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 						<input type="hidden" name="status" value="<?php echo $status ?>">
+						<input type="hidden" name="soid" value="<?php echo $saleorder->id ?>">
 						<div class="form-group">
 							<label for="email">Họ và tên</label>
 							<input type="text" class="form-control-lg" name="name">
@@ -132,6 +142,32 @@ $this->title = 'Giỏ hàng';
 						</div>
 					</form>
 				<?php endif;?>
+			<?php elseif($status==2 && $saleorder->status==3): ?>
+				<div style="clear: both;"></div>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Tên sản phẩm</th>
+							<th>Số lượng</th>
+							<th>Thành tiền</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php 
+					if(isset($saleorder)):
+						foreach ($orderline as $item) {
+							echo '<tr>';
+							$image = ImageProduct::find()->where(['id_product'=>$item->product->id])->one();
+							$productdetail = ProductDetail::find()->where(['id_product'=>$item->product->id,'size'=>$item->size_product])->one();
+							echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5></td>';
+							echo '<td>'.$item->amount.'</td>';
+							echo '<td>'.number_format($item->sum_price).'</td>';
+							echo '</tr>';
+						}
+						endif;
+					?>
+					</tbody>
+				</table>
 			<?php endif;?>
 								
 		</div>

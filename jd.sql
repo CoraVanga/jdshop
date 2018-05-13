@@ -128,8 +128,8 @@ CREATE TABLE order_line
 ---Chú thích trạng thái của sale-order
 ---1: Giỏ hàng (Tạo bởi khách hàng)
 ---2: Nháp (Tạo bởi admin)
----2: Đơn hàng
----3: Đã thanh toán
+---3: Đơn hàng
+---4: Đã thanh toán
 ---0: Hủy
 
 ---Chú thích trạng thái của user
