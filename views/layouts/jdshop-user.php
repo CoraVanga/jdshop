@@ -55,8 +55,8 @@
 					<div class="account pull-right">
 						<ul class="user-menu">				
                             <?php if(isset($_SESSION['ID_USER'])):?>
-                            	<li><?= Html::a('Tài khoản', ['../user/users/view', 'id' => $_SESSION['ID_USER']]) ?></li>
-								<li><?= Html::a('Giỏ hàng', ['../user/cart/view', 'id' => $_SESSION['ID_USER']]) ?></li>
+                            	<li><?= Html::a('Tài khoản', ['../user/users/view']) ?></li>
+								<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
                                 <li><a href="../../user/site/logout-user">
                                     <?php
                                     $users = Users::findUsersById($_SESSION['ID_USER']);
@@ -65,7 +65,7 @@
                                 </a></li>	
                             <?php else: ?>
                             	<?php if(isset($_SESSION['ID_CUS'])):?>
-                            		<li><?= Html::a('Giỏ hàng', ['../user/cart/view', 'id' => $_SESSION['ID_CUS']]) ?></li>
+                            		<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
                     			<?php endif;?>
                                 <li><a href="../../user/site/login">Đăng nhập</a></li>	
                             <?php endif;?>

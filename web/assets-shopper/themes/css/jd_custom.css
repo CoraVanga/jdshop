@@ -18,7 +18,8 @@ ul.wizard li:first-child {
     border-radius: 4px 0 0 4px;
 }
 ul.wizard li.text-primary {
-    background: #f1f6fc;
+    background: #eb4800;
+    color: white;
 }
 ul.wizard li {
     border: 1px solid #d4d4d4;
@@ -41,7 +42,7 @@ ul.wizard li .chevron {
     border-left: 10px solid #d4d4d4;
 }
 ul.wizard li.text-primary .chevron:before {
-    border-left: 10px solid #f1f6fc;
+    border-left: 10px solid #eb4800;
 }
 ul.wizard li .chevron:before {
     position: absolute;

@@ -15,19 +15,23 @@ $this->title = 'Giỏ hàng';
 	<div class="row">
 		<div class="span9">					
 			<h4 class="title"><span class="text"><strong>Giỏ hàng</strong> của bạn</span></h4>
+			<form class="form-inline" method="post" action="view?id=<?=$model->id?>">
+				<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+				<input type="hidden" name="id" value="<?php echo $model->id; ?>">
+			</form>
 			<ul class="wizard pull-right">
 				<li id="step10" class="text-primary">
-					Review Order<span class="chevron"></span>
+					Đơn hàng<span class="chevron"></span>
 				</li>
 				<li id="step20" class="text-muted">
-					Shipping &amp;
-					Billing<span class="chevron"></span>   
+					Vận chuyển &amp;
+					Xóa đơn<span class="chevron"></span>   
 				</li>
 				<li id="step40" class="text-muted">
-					Payment<span class="chevron"></span>
+					Thanh toán<span class="chevron"></span>
 				</li>
 				<li id="step50" class="text-muted">
-					Confirmation<span class="chevron"></span>
+					Xác nhận<span class="chevron"></span>
 				</li>
 			</ul>
 			<table class="table table-striped">
@@ -54,7 +58,7 @@ $this->title = 'Giỏ hàng';
 						{
 							echo '<td>'.Html::a('<img src="../../images/product-images/NoImageFound.png" class="thumbnail" title="No Image Found"').'</td>';
 						}
-						echo '<td>'.$item->product->name.'<br/>KÍCH CỠ: '.$item->size_product.'<br/>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ <br/>'.Html::a('Xóa', ['../main']).'</td>';
+						echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5><h5>'.Html::a('Xóa', ['../main']).'<h5></td>';
 						echo '<td>'.$item->amount.'</td>';
 						echo '<td>'.number_format($item->sum_price).'</td>';
 						echo '</tr>';
@@ -62,32 +66,6 @@ $this->title = 'Giỏ hàng';
 					endif;
 				?>
 				</tbody>
-<!-- 				<tbody>
-					<tr>
-						<td><input type="checkbox" value="option1"></td>
-						<td><a href="product_detail.html"><img alt="" src="themes/images/ladies/9.jpg"></a></td>
-						<td>Fusce id molestie massa</td>
-						<td><input type="text" placeholder="1" class="input-mini"></td>
-						<td>$2,350.00</td>
-						<td>$2,350.00</td>
-					</tr>			  
-					<tr>
-						<td><input type="checkbox" value="option1"></td>
-						<td><a href="product_detail.html"><img alt="" src="themes/images/ladies/1.jpg"></a></td>
-						<td>Luctus quam ultrices rutrum</td>
-						<td><input type="text" placeholder="2" class="input-mini"></td>
-						<td>$1,150.00</td>
-						<td>$2,450.00</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" value="option1"></td>
-						<td><a href="product_detail.html"><img alt="" src="themes/images/ladies/3.jpg"></a></td>
-						<td>Wuam ultrices rutrum</td>
-						<td><input type="text" placeholder="1" class="input-mini"></td>
-						<td>$1,210.00</td>
-						<td>$1,123.00</td>
-					</tr>	  
-				</tbody> -->
 			</table>
 			<hr>
 			<p class="cart-total right">

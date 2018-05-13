@@ -41,7 +41,7 @@ class CartController extends Controller
         ];
     }
 
-    public function actionView($id)
+    public function actionView()
     {   
         if (isset($_SESSION['ID_USER']))
         {
@@ -56,7 +56,7 @@ class CartController extends Controller
             return $this->redirect(['../main']);
         }
         $this->layout = 'jdshop-user';
-        
+        $status = 0;//Xem đơn hàng
         $saleorder = SaleOrder::find()->where(['id_user'=>$user->id,'status'=>'1'])->one();
         $flag=0;
         if(isset($saleorder))
@@ -71,6 +71,8 @@ class CartController extends Controller
         return $this->render('view', [
             'saleorder'=>$saleorder,
             'orderline'=>$orderline,
+            'user'=>$user,
+            'status'=>$status,
         ]);    
 
     }
