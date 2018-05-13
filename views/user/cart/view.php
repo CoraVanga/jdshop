@@ -15,10 +15,24 @@ $this->title = 'Giỏ hàng';
 	<div class="row">
 		<div class="span9">					
 			<h4 class="title"><span class="text"><strong>Giỏ hàng</strong> của bạn</span></h4>
+			<ul class="wizard pull-right">
+				<li id="step10" class="text-primary">
+					Review Order<span class="chevron"></span>
+				</li>
+				<li id="step20" class="text-muted">
+					Shipping &amp;
+					Billing<span class="chevron"></span>   
+				</li>
+				<li id="step40" class="text-muted">
+					Payment<span class="chevron"></span>
+				</li>
+				<li id="step50" class="text-muted">
+					Confirmation<span class="chevron"></span>
+				</li>
+			</ul>
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>Xóa</th>
 						<th>Hình ảnh</th>
 						<th>Tên sản phẩm</th>
 						<th>Số lượng</th>
@@ -32,7 +46,6 @@ $this->title = 'Giỏ hàng';
 						echo '<tr>';
 						$image = ImageProduct::find()->where(['id_product'=>$item->product->id])->one();
 						$productdetail = ProductDetail::find()->where(['id_product'=>$item->product->id,'size'=>$item->size_product])->one();
-						echo '<td><input type="checkbox" value="option1"></td>';
 						if(!empty($image))
 						{
 							echo '<td>'.Html::a('<img src="../../images/product-images'.'/'.$image->link.'" class="thumbnail" title="'.$image['link'].'" alt="<img src="../images/product-images'.'/'.$image->link.'" />').'</td>';
@@ -41,7 +54,7 @@ $this->title = 'Giỏ hàng';
 						{
 							echo '<td>'.Html::a('<img src="../../images/product-images/NoImageFound.png" class="thumbnail" title="No Image Found"').'</td>';
 						}
-						echo '<td>'.$item->product->name.'<br/>KÍCH CỠ: '.$item->size_product.'<br/>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ</td>';
+						echo '<td>'.$item->product->name.'<br/>KÍCH CỠ: '.$item->size_product.'<br/>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ <br/>'.Html::a('Xóa', ['../main']).'</td>';
 						echo '<td>'.$item->amount.'</td>';
 						echo '<td>'.number_format($item->sum_price).'</td>';
 						echo '</tr>';

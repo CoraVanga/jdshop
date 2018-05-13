@@ -17,6 +17,7 @@
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-responsive.min.css'?>" rel="stylesheet">
 		
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/bootstrappage.css'?>" rel="stylesheet"/>
+		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/jd_custom.css'?>" rel="stylesheet"/>
 		
 		<!-- global styles -->
 		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/flexslider.css'?>" rel="stylesheet"/>
