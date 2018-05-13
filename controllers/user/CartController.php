@@ -42,16 +42,18 @@ class CartController extends Controller
     }
 
     public function actionView($id)
-    {
-        if(!isset($_SESSION['ID_USER']) && !isset($_SESSION['ID_CUS']))
-            return $this->redirect(['../main']);
-        else if (isset($_SESSION['ID_USER']))
+    {   
+        if (isset($_SESSION['ID_USER']))
         {
             $user = Users::findOne($_SESSION['ID_USER']);
         }
-        else
+        else if(isset($_SESSION['ID_CUS']))
         {
             $user = Users::findOne($_SESSION['ID_CUS']);
+        }
+        else
+        {
+            return $this->redirect(['../main']);
         }
         $this->layout = 'jdshop-user';
         

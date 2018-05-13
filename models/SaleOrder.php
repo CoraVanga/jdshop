@@ -34,7 +34,6 @@ class SaleOrder extends \yii\db\ActiveRecord
     {
         return [
             [['total_price', 'status', 'id_user'], 'integer'],
-            [['bill_code'], 'string'],
             [['created_date'], 'safe'],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['id_user' => 'id']],
         ];
@@ -48,7 +47,6 @@ class SaleOrder extends \yii\db\ActiveRecord
         return [
             'total_price' => 'Thành tiền ',
             'id' => 'ID',
-            'bill_code' => 'Hóa đơn',
             'status' => 'Trạng thái',
             'created_date' => 'Ngày tạo',
             'id_user' => 'Id User',

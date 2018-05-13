@@ -13,15 +13,15 @@ $this->title = $model->name;
 	<!-- <h4><span>THÔNG TIN CHI TIẾT SẢN PHẨM <?= $model->name?></span></h4> -->
 	<?php
 	if($_POST){
-        if($flag==1)
-        {
-        	 Alert::begin([
-	            'options' => [
-	                'class' => 'alert-danger',
-	            ],
-	        ]);
-        	echo 'Bạn phải đăng nhập để mua sản phẩm này';
-        }
+        // if($flag==1)
+        // {
+        // 	 Alert::begin([
+	       //      'options' => [
+	       //          'class' => 'alert-danger',
+	       //      ],
+	       //  ]);
+        // 	echo 'Bạn phải đăng nhập để mua sản phẩm này';
+        // }
         if($flag==2)
         {
         	 Alert::begin([

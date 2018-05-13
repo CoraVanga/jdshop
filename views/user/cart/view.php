@@ -9,7 +9,7 @@ use app\models\ProductDetail;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 
-$this->title = $saleorder->bill_code;
+$this->title = 'Giỏ hàng';
 ?>
 <section class="main-content">				
 	<div class="row">
