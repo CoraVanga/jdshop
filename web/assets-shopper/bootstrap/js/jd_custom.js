@@ -11,8 +11,7 @@ $(function() {
 			$('#productSize').val(size);
 		});
 		$('#addToCartButton').click(function(){
-
 		});
 	});
-	
+
 });

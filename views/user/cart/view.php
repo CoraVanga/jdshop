@@ -15,67 +15,104 @@ $this->title = 'Giỏ hàng';
 	<div class="row">
 		<div class="span9">					
 			<h4 class="title"><span class="text"><strong>Giỏ hàng</strong> của bạn</span></h4>
-			<form class="form-inline" method="post" action="view?id=<?=$model->id?>">
-				<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
-				<input type="hidden" name="id" value="<?php echo $model->id; ?>">
-			</form>
-			<ul class="wizard pull-right">
-				<li id="step10" class="text-primary">
-					Đơn hàng<span class="chevron"></span>
-				</li>
-				<li id="step20" class="text-muted">
-					Vận chuyển &amp;
-					Xóa đơn<span class="chevron"></span>   
-				</li>
-				<li id="step40" class="text-muted">
-					Thanh toán<span class="chevron"></span>
-				</li>
-				<li id="step50" class="text-muted">
-					Xác nhận<span class="chevron"></span>
-				</li>
-			</ul>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Hình ảnh</th>
-						<th>Tên sản phẩm</th>
-						<th>Số lượng</th>
-						<th>Thành tiền</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php 
-				if(isset($saleorder)):
-					foreach ($orderline as $item) {
-						echo '<tr>';
-						$image = ImageProduct::find()->where(['id_product'=>$item->product->id])->one();
-						$productdetail = ProductDetail::find()->where(['id_product'=>$item->product->id,'size'=>$item->size_product])->one();
-						if(!empty($image))
-						{
-							echo '<td>'.Html::a('<img src="../../images/product-images'.'/'.$image->link.'" class="thumbnail" title="'.$image['link'].'" alt="<img src="../images/product-images'.'/'.$image->link.'" />').'</td>';
+			<div>
+				<ul class="wizard pull-right">
+					<li id="step10" class="
+						<?php if($status==0) 
+								echo 'text-primary'; 
+							else 
+								echo 'text-muted';?>">
+						Đơn hàng<span class="chevron"></span>
+					</li>
+					<li id="step20" class="
+						<?php if($status==1) 
+								echo 'text-primary'; 
+							else 
+								echo 'text-muted';?>">
+						Vận chuyển &amp;
+						Hóa đơn<span class="chevron"></span>   
+					</li>
+					<li id="step40" class="
+						<?php if($status==2) 
+								echo 'text-primary'; 
+							else 
+								echo 'text-muted';?>">
+						Thanh toán<span class="chevron"></span>
+					</li>
+					<li id="step50" class="
+						<?php if($status==3) 
+								echo 'text-primary'; 
+							else 
+								echo 'text-muted';?>">
+						Xác nhận<span class="chevron"></span>
+					</li>
+				</ul>
+			</div>
+			<?php if($status==0):?>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Hình ảnh</th>
+							<th>Tên sản phẩm</th>
+							<th>Số lượng</th>
+							<th>Thành tiền</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php 
+					if(isset($saleorder)):
+						foreach ($orderline as $item) {
+							echo '<tr>';
+							$image = ImageProduct::find()->where(['id_product'=>$item->product->id])->one();
+							$productdetail = ProductDetail::find()->where(['id_product'=>$item->product->id,'size'=>$item->size_product])->one();
+							if(!empty($image))
+							{
+								echo '<td>'.Html::a('<img src="../../images/product-images'.'/'.$image->link.'" class="thumbnail" title="'.$image['link'].'" alt="<img src="../images/product-images'.'/'.$image->link.'" />').'</td>';
+							}
+							else
+							{
+								echo '<td>'.Html::a('<img src="../../images/product-images/NoImageFound.png" class="thumbnail" title="No Image Found"').'</td>';
+							}
+							echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5><h5>'.Html::a('Xóa', ['../main']).'<h5></td>';
+							echo '<td>'.$item->amount.'</td>';
+							echo '<td>'.number_format($item->sum_price).'</td>';
+							echo '</tr>';
 						}
-						else
-						{
-							echo '<td>'.Html::a('<img src="../../images/product-images/NoImageFound.png" class="thumbnail" title="No Image Found"').'</td>';
-						}
-						echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5><h5>'.Html::a('Xóa', ['../main']).'<h5></td>';
-						echo '<td>'.$item->amount.'</td>';
-						echo '<td>'.number_format($item->sum_price).'</td>';
-						echo '</tr>';
-					}
-					endif;
-				?>
-				</tbody>
-			</table>
-			<hr>
-			<p class="cart-total right">
-				<strong>Tổng cộng: </strong><strong style="color: #eb4800; font-size:17px;"><?= number_format($saleorder->total_price)?> VNĐ</strong><br>
-			</p>
-			<hr/>
-			<p class="buttons center">				
-				<button class="btn" type="button">Cập nhật</button>
-				<!-- <button class="btn" type="button">Continue</button> -->
-				<button class="btn btn-inverse" type="submit" id="checkout">Thanh toán</button>
+						endif;
+					?>
+					</tbody>
+				</table>
+				<hr>
+				<p class="cart-total right">
+					<strong>Tổng cộng: </strong><strong style="color: #eb4800; font-size:17px;"><?= number_format($saleorder->total_price)?> VNĐ</strong><br>
+				</p>
+				<hr/>
+			<?php elseif($status==1): ?>
+				<div style="clear: both;"></div>
+				<h3>Thông tin người nhận &amp; địa chỉ giao hàng</h3>
+				<hr/>
+				<p><?= Html::a('Chỉnh sửa', ['update', 'id' => $user->id], ['class' => 'btn btn-primary']) ?></p>
+				<?= DetailView::widget([
+					'model' => $user,
+					'attributes' => [
+						'name',
+						'dob',
+						'phone',
+						'address',
+						'email:email',
+					],
+					]) ?>
+			<?php endif;?>
+			<p class="buttons center" style="text-align: center;">
+				<form class="form-inline" method="post" action="view">
+					<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+					<input type="hidden" name="status" value="<?php echo $status ?>">
+					<div id="jdCartSubmitButton" style="text-align: center;">
+						<button class="btn" type="button">Cập nhật</button>
+						<!-- <button class="btn" type="button">Continue</button> -->
+						<button class="btn btn-inverse"  type="submit" id="checkout">Thanh toán</button>
+					</div>
+				</form>				
 			</p>					
 		</div>
 		<div class="span3 col">

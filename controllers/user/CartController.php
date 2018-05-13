@@ -68,6 +68,15 @@ class CartController extends Controller
             $orderline = null;
 
         }
+        if($_POST){
+            echo "<pre>";
+            print_r($_POST);
+            echo "</pre>";
+            if($_POST['status']==0)
+            {
+                $status=1;
+            }
+        }
         return $this->render('view', [
             'saleorder'=>$saleorder,
             'orderline'=>$orderline,
