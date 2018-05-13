@@ -76,6 +76,18 @@ class CartController extends Controller
             {
                 $status=1;
             }
+            if($_POST['status']==1)
+            {
+                $status=2;
+                if($user->name==null)
+                {
+                    $user->name = $_POST['name'];
+                    $user->dob = $_POST['dob'];
+                    $user->phone = $_POST['sdt'];
+                    $user->address = $_POST['address'];
+                    $user->save();
+                }
+            }
         }
         return $this->render('view', [
             'saleorder'=>$saleorder,

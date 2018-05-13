@@ -32,15 +32,8 @@ $this->title = 'Giỏ hàng';
 						Vận chuyển &amp;
 						Hóa đơn<span class="chevron"></span>   
 					</li>
-					<li id="step40" class="
-						<?php if($status==2) 
-								echo 'text-primary'; 
-							else 
-								echo 'text-muted';?>">
-						Thanh toán<span class="chevron"></span>
-					</li>
 					<li id="step50" class="
-						<?php if($status==3) 
+						<?php if($status==2) 
 								echo 'text-primary'; 
 							else 
 								echo 'text-muted';?>">
@@ -87,11 +80,23 @@ $this->title = 'Giỏ hàng';
 					<strong>Tổng cộng: </strong><strong style="color: #eb4800; font-size:17px;"><?= number_format($saleorder->total_price)?> VNĐ</strong><br>
 				</p>
 				<hr/>
+				<p class="buttons center" style="text-align: center;">
+					<form class="form-inline" method="post" action="view">
+						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+						<input type="hidden" name="status" value="<?php echo $status ?>">
+						<div id="jdCartSubmitButton" style="text-align: center;">
+							<button class="btn" type="button">Cập nhật</button>
+							<!-- <button class="btn" type="button">Continue</button> -->
+							<button class="btn btn-inverse"  type="submit" id="checkout">Thanh toán</button>
+						</div>
+					</form>				
+				</p>
 			<?php elseif($status==1): ?>
 				<div style="clear: both;"></div>
 				<h3>Thông tin người nhận &amp; địa chỉ giao hàng</h3>
 				<hr/>
-				<p><?= Html::a('Chỉnh sửa', ['update', 'id' => $user->id], ['class' => 'btn btn-primary']) ?></p>
+				<?php if($user->name!=null):?>
+				<p><?= Html::a('Chỉnh sửa', ['../user/users/update','id'=>$user->id], ['class' => 'btn btn-primary']) ?></p>
 				<?= DetailView::widget([
 					'model' => $user,
 					'attributes' => [
@@ -102,18 +107,33 @@ $this->title = 'Giỏ hàng';
 						'email:email',
 					],
 					]) ?>
+				<?php else:?>
+					<form class="form-horizontal" method="post" action="view">
+						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+						<input type="hidden" name="status" value="<?php echo $status ?>">
+						<div class="form-group">
+							<label for="email">Họ và tên</label>
+							<input type="text" class="form-control-lg" name="name">
+						</div>
+						<div class="form-group">
+							<label for="pwd">Ngày sinh</label>
+							<input type="date" class="form-control" name="dob">
+						</div>
+						<div class="form-group">
+							<label for="pwd">Số điện thoại</label>
+							<input type="text" class="form-control" name="sdt">
+						</div>
+						<div class="form-group">
+							<label for="pwd">Địa chỉ</label>
+							<input type="text" class="form-control" name="address">
+						</div>
+						<div id="jdCartSubmitButton" style="text-align: center;">
+							<button class="btn btn-inverse"  type="submit">Lưu</button>
+						</div>
+					</form>
+				<?php endif;?>
 			<?php endif;?>
-			<p class="buttons center" style="text-align: center;">
-				<form class="form-inline" method="post" action="view">
-					<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
-					<input type="hidden" name="status" value="<?php echo $status ?>">
-					<div id="jdCartSubmitButton" style="text-align: center;">
-						<button class="btn" type="button">Cập nhật</button>
-						<!-- <button class="btn" type="button">Continue</button> -->
-						<button class="btn btn-inverse"  type="submit" id="checkout">Thanh toán</button>
-					</div>
-				</form>				
-			</p>					
+								
 		</div>
 		<div class="span3 col">
 			<div class="block">	

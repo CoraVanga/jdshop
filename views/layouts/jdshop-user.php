@@ -55,7 +55,7 @@
 					<div class="account pull-right">
 						<ul class="user-menu">				
                             <?php if(isset($_SESSION['ID_USER'])):?>
-                            	<li><?= Html::a('Tài khoản', ['../user/users/view']) ?></li>
+                            	<li><?= Html::a('Tài khoản', ['../user/users/view','id'=>$_SESSION['ID_USER']]) ?></li>
 								<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
                                 <li><a href="../../user/site/logout-user">
                                     <?php
