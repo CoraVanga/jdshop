@@ -92,6 +92,10 @@ class SiteController extends Controller
                     header('Location: ../../admin/home');
                     exit;
                 }
+                if(isset($_SESSION['ID_CUS']))
+                {
+                    $_SESSION['ID_CUS']=null;
+                }
             }
             return $this->goHome();
         }

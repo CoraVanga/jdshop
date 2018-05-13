@@ -43,31 +43,33 @@ class CartController extends Controller
 
     public function actionView($id)
     {
-        if(!isset($_SESSION['ID_USER']))
-        {
+        if(!isset($_SESSION['ID_USER']) && !isset($_SESSION['ID_CUS']))
             return $this->redirect(['../main']);
+        else if (isset($_SESSION['ID_USER']))
+        {
+            $user = Users::findOne($_SESSION['ID_USER']);
         }
         else
         {
-            $this->layout = 'jdshop-user';
-            $user = Users::findOne($_SESSION['ID_USER']);
-            $saleorder = SaleOrder::find()->where(['id_user'=>$user->id,'status'=>'1'])->one();
-            $flag=0;
-            if(isset($saleorder))
-            {
-                $orderline = OrderLine::find()->where(['id_bill'=>$saleorder->id])->all();
-            }
-            else
-            {
-                $orderline = null;
-
-            }
-            return $this->render('view', [
-                'saleorder'=>$saleorder,
-                'orderline'=>$orderline,
-            ]);    
+            $user = Users::findOne($_SESSION['ID_CUS']);
+        }
+        $this->layout = 'jdshop-user';
+        
+        $saleorder = SaleOrder::find()->where(['id_user'=>$user->id,'status'=>'1'])->one();
+        $flag=0;
+        if(isset($saleorder))
+        {
+            $orderline = OrderLine::find()->where(['id_bill'=>$saleorder->id])->all();
+        }
+        else
+        {
+            $orderline = null;
 
         }
+        return $this->render('view', [
+            'saleorder'=>$saleorder,
+            'orderline'=>$orderline,
+        ]);    
 
     }
 }
