@@ -27,11 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'info',
-            'type',
             'discount',
-            'status',
-            //'created_date',
-            //'begin_date',
+            'created_date',
+            'begin_date',
             //'end_date',
             //'created_uid',
 

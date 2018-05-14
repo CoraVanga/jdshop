@@ -9,16 +9,14 @@ use Yii;
  *
  * @property int $id
  * @property string $info
- * @property int $type
  * @property int $discount
- * @property int $status
  * @property string $created_date
  * @property string $begin_date
  * @property string $end_date
  * @property int $created_uid
  *
- * @property DiscountDetail[] $discountDetails
  * @property Users $createdU
+ * @property Product[] $products
  */
 class DiscountProduct extends \yii\db\ActiveRecord
 {
@@ -50,21 +48,13 @@ class DiscountProduct extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'info' => 'Thông tin',
-            'discount' => 'Khuyến mãi',
-            'created_date' => 'Ngày tạo',
-            'begin_date' => 'Ngày bắt đầu',
-            'end_date' => 'Ngày kết thúc',
-            'created_uid' => 'Người tạo',
+            'info' => 'Info',
+            'discount' => 'Discount',
+            'created_date' => 'Created Date',
+            'begin_date' => 'Begin Date',
+            'end_date' => 'End Date',
+            'created_uid' => 'Created Uid',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDiscountDetails()
-    {
-        return $this->hasMany(DiscountDetail::className(), ['id_discount' => 'id']);
     }
 
     /**
@@ -73,5 +63,13 @@ class DiscountProduct extends \yii\db\ActiveRecord
     public function getCreatedU()
     {
         return $this->hasOne(Users::className(), ['id' => 'created_uid']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProducts()
+    {
+        return $this->hasMany(Product::className(), ['id_discount' => 'id']);
     }
 }

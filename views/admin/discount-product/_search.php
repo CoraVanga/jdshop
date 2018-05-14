@@ -19,15 +19,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'info') ?>
 
-    <?= $form->field($model, 'type') ?>
-
     <?= $form->field($model, 'discount') ?>
 
-    <?= $form->field($model, 'status') ?>
+    <?= $form->field($model, 'created_date') ?>
 
-    <?php // echo $form->field($model, 'created_date') ?>
-
-    <?php // echo $form->field($model, 'begin_date') ?>
+    <?= $form->field($model, 'begin_date') ?>
 
     <?php // echo $form->field($model, 'end_date') ?>
 

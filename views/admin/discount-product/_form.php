@@ -14,11 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'info')->textInput() ?>
 
-    <?= $form->field($model, 'type')->textInput() ?>
-
     <?= $form->field($model, 'discount')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
 
     <?= $form->field($model, 'created_date')->textInput() ?>
 
