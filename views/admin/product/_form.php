@@ -30,26 +30,7 @@ use yii\helpers\ArrayHelper;
                 <?= $form->field($model, 'code')->textInput(['class'=>'form-control']) ?>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <?= $form->field($model, 'size')->textInput(['class'=>'form-control']) ?>
-            </div>
-        </div>
-    </div>
-
-    <div class="row p-t-20">
-        <div class="col-md-6">
-            <div class="form-group">
-                <?= $form->field($model, 'price')->textInput() ?>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <?= $form->field($model, 'amount')->textInput() ?>
-            </div>
-        </div>
-    </div>
-
+</div>
     <div class="row p-t-20">
         <div class="col-md-12">
             <div class="form-group">

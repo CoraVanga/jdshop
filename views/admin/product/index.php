@@ -13,27 +13,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="product-index">
-<div class="col-lg-12">
-    <div class="card">
-        <div class="card-title">
-    <h4><?= Html::encode($this->title) ?></h4>
-        <p>
-        <?= Html::a('Thêm sản phẩm', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    </div>
-    <div class="card-body">
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-title">
+                <h4><?= Html::encode($this->title) ?></h4>
+                <p>
+                    <?= Html::a('Thêm sản phẩm', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="card-body">
+                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
 
-         <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'name',
+                        'name',
             //'created_date',
             //'status',
             //'code',
@@ -43,11 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id_type',
             //'created_uid',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                    ]); ?>
 
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
 </div>
