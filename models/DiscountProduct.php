@@ -37,7 +37,7 @@ class DiscountProduct extends \yii\db\ActiveRecord
     {
         return [
             [['info'], 'string'],
-            [['type', 'discount', 'status', 'created_uid'], 'integer'],
+            [['discount', 'created_uid'], 'integer'],
             [['created_date', 'begin_date', 'end_date'], 'safe'],
             [['created_uid'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['created_uid' => 'id']],
         ];
@@ -51,9 +51,7 @@ class DiscountProduct extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'info' => 'Thông tin',
-            'type' => 'Loại',
             'discount' => 'Khuyến mãi',
-            'status' => 'Trạng thái',
             'created_date' => 'Ngày tạo',
             'begin_date' => 'Ngày bắt đầu',
             'end_date' => 'Ngày kết thúc',
