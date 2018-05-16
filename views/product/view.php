@@ -80,7 +80,16 @@ $this->title = $model->name;
 					<address>
 						<h3><?= $model->name?></h3>
 						<h5>MS: <?= $model->code ?></h5>
-						<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price)?> VNĐ</h2><br/>
+						<?php if(isset($discount)):?>
+							<p id="jdDiscount" hidden><?=$discount->discount?></p>
+							<h4><?=$discount->info?> Giảm giá: <?=$discount->discount?>%</h4>
+							<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price*($discount->discount/100))?> VNĐ</h2>
+							<h5><strike><?= number_format($detail['0']->price)?> VNĐ</strike></h5>
+						<?php else: ?>
+							<p id="jdDiscount" hidden>1</p>
+							<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price)?> VNĐ</h2>
+						<?php endif;?>
+						<br/>
 						<!-- <strong>Số lượng: </strong> <span>$model->amount</span><br>	 -->							
 					</address>									
 					<!-- <h4><strong>Giá: $model->price</strong></h4> -->

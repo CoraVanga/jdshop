@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\base\Widget;
+use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\DiscountProduct */
 /* @var $form yii\widgets\ActiveForm */
@@ -29,14 +30,22 @@ use yii\widgets\ActiveForm;
     <div class="row p-t-20">
         <div class="col-md-3">
             <div class="form-group">
-                <?= $form->field($model, 'begin_date')->textInput() ?>
+                <?= $form->field($model, 'begin_date')->widget(\yii\jui\DatePicker::class, [
+                    'options' => ['class' => 'form-control'],
+                    //'language' => 'ru',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    ]) ?>
             </div>
         </div>
     </div>
     <div class="row p-t-20">
         <div class="col-md-3">
             <div class="form-group">
-                <?= $form->field($model, 'end_date')->textInput() ?>
+                <?= $form->field($model, 'end_date')->widget(\yii\jui\DatePicker::class, [
+                    'options' => ['class' => 'form-control'],
+                    //'language' => 'ru',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    ]) ?>
             </div>
         </div>
     </div>

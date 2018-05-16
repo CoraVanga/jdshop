@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 use Yii;
+use app\models\DiscountProduct;
 use app\models\OrderLine;
 use app\models\SaleOrder;
 use app\models\Users;
@@ -58,6 +59,8 @@ class ProductController extends Controller
     {
         $this->layout = 'jdshop-user';
         $detail = ProductDetail::find()->where(['id_product' => $id])->all();
+        $product = Product::findOne($id);
+        $discount = DiscountProduct::find()->where(['id'=>$product->id_discount])->one();
         $flag=0;// Không tạo thông báo
         if($_POST){
             // echo "<pre>";
@@ -147,6 +150,7 @@ class ProductController extends Controller
             $flag=3;
             }
         return $this->render('view', [
+            'discount' => $discount,
             'model' => $this->findModel($id),
             'detail' => $detail,
             'flag' => $flag,

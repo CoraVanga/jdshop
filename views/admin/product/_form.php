@@ -57,52 +57,37 @@ use yii\helpers\ArrayHelper;
       <button type="button" class="jdtablinks" onclick="openTab(event, 'info')">Mô tả</button>
     </div>
 
-    <div id="detail" class="jdtabcontent" style="display: block;">
+    <div id="detail" class="jdtabcontent" style="display: block; overflow:auto;">
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                        <th>Price</th>
+                        <th>Kích cỡ</th>
+                        <th>Giá</th>
+                        <th>Số lượng tồn</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Kolor Tea Shirt For Man</td>
-                        <td><span class="badge badge-primary">Sale</span></td>
-                        <td>January 22</td>
-                        <td class="color-primary">$21.56</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Kolor Tea Shirt For Women</td>
-                        <td><span class="badge badge-success">Tax</span></td>
-                        <td>January 30</td>
-                        <td class="color-success">$55.32</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Blue Backpack For Baby</td>
-                        <td><span class="badge badge-danger">Extended</span></td>
-                        <td>January 25</td>
-                        <td class="color-danger">$14.85</td>
+                        <td><button type="button" class="btn btn-primary m-b-10 m-l-5 btn-sm">Thêm chi tiết mới</button></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <div id="image" class="jdtabcontent">
+    <div id="image" class="jdtabcontent" style="overflow:auto;">
         <?= $form->field($modelImage, 'link')->fileInput() ?>
     </div>
 
-    <div id="info" class="jdtabcontent">
-        <?= $form->field($model, 'info')->textarea(['rows' => '6'])->label(false) ?>
+    <div id="info" class="jdtabcontent" style="overflow:auto;">
+        <?= $form->field($model, 'info')->textarea(['rows' => '9'])->label(false) ?>
     </div>
 
-    <div class="form-group">
+    <div style="clear: both;"></div>
+    <div class="form-group" >
         <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
     </div>
 

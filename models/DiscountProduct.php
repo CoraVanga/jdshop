@@ -34,10 +34,19 @@ class DiscountProduct extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['info','discount','begin_date','end_date'], 'required', 'message' => 'Thông tin này là bắt buộc'],
             [['info'], 'string'],
-            [['discount', 'created_uid'], 'integer'],
+            [['discount', 'created_uid'], 'integer', 'message' => 'Bạn chỉ có thể nhập số'],
+            ['discount', 'integer', 'min' => 5, 'max' => 100, 'message' => 'Khuyến mãi phải từ 10% tới 100%'],
             [['created_date', 'begin_date', 'end_date'], 'safe'],
             [['created_uid'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['created_uid' => 'id']],
+            [
+              'end_date',
+              'compare',
+              'compareAttribute'=>'begin_date',
+              'operator'=>'>', 
+              'message'=>'{attribute} phải lớn hơn "{compareValue}".'
+            ],
         ];
     }
 
@@ -48,12 +57,12 @@ class DiscountProduct extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'info' => 'Info',
-            'discount' => 'Discount',
-            'created_date' => 'Created Date',
-            'begin_date' => 'Begin Date',
-            'end_date' => 'End Date',
-            'created_uid' => 'Created Uid',
+            'info' => 'Mô tả',
+            'discount' => '% Khuyến mãi',
+            'created_date' => 'Ngày tạo',
+            'begin_date' => 'Ngày bắt đầu',
+            'end_date' => 'Ngày kết thúc',
+            'created_uid' => 'Người tạo',
         ];
     }
 
