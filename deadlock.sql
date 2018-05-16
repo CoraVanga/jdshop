@@ -24,28 +24,38 @@ BEGIN
 	DECLARE @ID_SALE_ORDER INT
 	DECLARE @PRICE INT
 	SET @PRICE = 0
-	--SET TRANSACTION ISOLATION LEVEL Serializable
-	SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
-	BEGIN TRAN t1
-		SELECT @ID_SALE_ORDER =  [order_line].[id_bill] FROM [order_line] WHERE [order_line].[id] = @ID_ORDER_LINE
-		DELETE FROM [order_line] WHERE  [order_line].[id] = @ID_ORDER_LINE   
+		SET TRANSACTION ISOLATION LEVEL Serializable
+		BEGIN TRAN 
+			SELECT @ID_SALE_ORDER =  [order_line].[id_bill] FROM [order_line] WHERE [order_line].[id] = @ID_ORDER_LINE
+			DELETE FROM [order_line] WHERE  [order_line].[id] = @ID_ORDER_LINE   
 		
-		SELECT @PRICE = SUM([order_line].[sum_price]) FROM [order_line] WHERE [order_line].[id_bill] = @ID_SALE_ORDER 
-		PRINT @ID_SALE_ORDER
-		PRINT @PRICE
-		IF @PRICE = 0
-			BEGIN
-				UPDATE [sale_order] SET [sale_order].[status] = 5 WHERE [sale_order].[id] = @ID_SALE_ORDER
-				PRINT @PRICE
-			END
-		ELSE
-			BEGIN
-				UPDATE [sale_order]
-				SET [sale_order].[total_price] = @PRICE
-				WHERE [sale_order].[id] = @ID_SALE_ORDER
-				PRINT @PRICE
-			END
-	COMMIT TRAN t1
+			SELECT @PRICE = SUM([order_line].[sum_price]) FROM [order_line] WHERE [order_line].[id_bill] = @ID_SALE_ORDER 
+			PRINT @ID_SALE_ORDER
+			PRINT @PRICE
+			IF @PRICE = 0
+				BEGIN
+					waitfor delay '00:00:15'
+					UPDATE [sale_order] SET [sale_order].[status] = 5 WHERE [sale_order].[id] = @ID_SALE_ORDER
+					PRINT @PRICE
+				END
+			ELSE
+				BEGIN
+					waitfor delay '00:00:15'
+					UPDATE [sale_order]
+					SET [sale_order].[total_price] = @PRICE
+					WHERE [sale_order].[id] = @ID_SALE_ORDER
+					PRINT @PRICE
+				END
+			--IF @@ERROR= 0
+			--  BEGIN
+			--	commit Tran
+			--	select 0
+			--  END
+			--else
+			--  BEGIN
+			--	rollback Tran
+			--	select -1
+			--  END
 END
 
 DROP PROC XOACHITIETHOADON
@@ -71,7 +81,7 @@ AS
 BEGIN
 	DECLARE @STATUS_OLD INT 
 	SET TRANSACTION ISOLATION LEVEL Serializable
-	BEGIN TRAN t2
+	BEGIN TRAN T2
 		SELECT @STATUS_OLD = [sale_order].[status] FROM [sale_order] WHERE  [sale_order].[id] = @ID_SALE_ORDER   
 		IF @STATUS_OLD = 4 OR @STATUS_OLD = 5 OR @STATUS_NEW = @STATUS_OLD
 		BEGIN 
@@ -86,11 +96,21 @@ BEGIN
 		IF @STATUS_NEW =5  AND @STATUS_OLD != 4
 		BEGIN
 			 UPDATE [sale_order] SET [sale_order].[status] = @STATUS_NEW WHERE [sale_order].[id] = @ID_SALE_ORDER
-			 waitfor delay '00:00:15'
+			 
 			 DELETE FROM [order_line] WHERE  [order_line].[id_bill] = @ID_SALE_ORDER  
 			 PRINT 'TRƯỜNG HỢP 3' 
 		END 
-	COMMIT TRAN t2
+	
+	IF @@ERROR= 0
+			  BEGIN
+				commit Tran T2
+				select 0
+			  END
+			else
+			  BEGIN
+				rollback Tran T2
+				select -1
+			  END
 END
 
 DROP PROC CAPNHATTRANGTHAIHOADON
@@ -121,14 +141,13 @@ SELECT TOP 1000 [id]
   ------------------------------------- Test deadlock -----------------------------------
 
   -- test ko có SET TRANSACTION ISOLATION LEVEL Serializable
-create PROCEDURE XOACHITIETHOADON 
+CREATE PROCEDURE XOACHITIETHOADON 
 @ID_ORDER_LINE INT
 AS
 BEGIN
 	DECLARE @ID_SALE_ORDER INT
 	DECLARE @PRICE INT
 	SET @PRICE = 0
-	BEGIN TRY  
 		BEGIN TRAN t1
 			SELECT @ID_SALE_ORDER =  [order_line].[id_bill] FROM [order_line] WHERE [order_line].[id] = @ID_ORDER_LINE
 			DELETE FROM [order_line] WHERE  [order_line].[id] = @ID_ORDER_LINE   
@@ -149,16 +168,12 @@ BEGIN
 					PRINT @PRICE
 				END
 		COMMIT TRAN t1 
-	END TRY  
-	BEGIN CATCH  
-		 PRINT 'ERROR'
-	END CATCH 
 END
 
 DROP PROC XOACHITIETHOADON
 
 EXEC XOACHITIETHOADON 5
-------------------------------------------------------------
+----------------------------TEST--------------------------------
 create PROCEDURE CAPNHATTRANGTHAIHOADON
 @ID_SALE_ORDER INT, @STATUS_NEW INT
 AS
@@ -185,17 +200,18 @@ BEGIN
 		END 
 	COMMIT TRAN t2
 END
-
+--------------------------------
 DROP PROC CAPNHATTRANGTHAIHOADON
 
 EXEC CAPNHATTRANGTHAIHOADON 1,5
 
   -- Dữ liệu test --
-  SET IDENTITY_INSERT [sale_order] Off
+  SET IDENTITY_INSERT [sale_order] off
   INSERT INTO [sale_order] ([total_price],[id],[bill_code],[status],[created_date],[id_user])
   VALUES ('40000',1000,'TESTBILL',1,NULL,10)
   -----------------
-  SET IDENTITY_INSERT [order_line] ON
+  SET IDENTITY_INSERT [order_line] on
+  -----------------------------------
   INSERT INTO [order_line] ([id],[amount],[size_product],[sum_price],[code_color],[id_product],[id_bill])
   VALUES (1000,100,9,20000,NULL,4,1000)
   INSERT INTO [order_line] ([id],[amount],[size_product],[sum_price],[code_color],[id_product],[id_bill])
@@ -207,12 +223,13 @@ EXEC CAPNHATTRANGTHAIHOADON 1,5
   -------------------------------------------------------------------------------
   -- Kịch bản test
   -- cập nhật hoá đơn 
-  EXEC CAPNHATTRANGTHAIHOADON 1000,5
-  -- chạy song song 
+ 
   EXEC XOACHITIETHOADON 1001
+  -- chạy song song 
+   EXEC CAPNHATTRANGTHAIHOADON 1000,5
   --Msg 1205, Level 13, State 51, Procedure XOACHITIETHOADON, Line 22
   --Transaction (Process ID 51) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
-  --------------------------------------------------------------------
+--------------------------------------------------------------------
 SELECT TOP 1000 [total_price]
       ,[id]
       ,[bill_code]
@@ -220,7 +237,7 @@ SELECT TOP 1000 [total_price]
       ,[created_date]
       ,[id_user]
   FROM [JD].[dbo].[sale_order]
-
+--------------------------------------------------------------------
 
 SELECT TOP 1000 [id]
       ,[amount]
