@@ -64,11 +64,13 @@
 								<?php if(isset($saleorder)):?>
 									<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
 								<?php endif;?>
+								<?php if($users->username!=null):?>
                                 <li><a href="../../user/site/logout-user">
                                     <?php
                                     echo $users->name . "( Đăng xuất )";
                                     ?>
-                                </a></li>	
+                                </a></li>
+                                <?php endif;?>
                             <?php else: ?>
                             	<?php if(isset($_SESSION['ID_CUS'])):?>
                             		<?php

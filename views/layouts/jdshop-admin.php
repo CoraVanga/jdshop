@@ -30,7 +30,8 @@ AppAsset::register($this);
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo Yii::$app->homeUrl.'../assets-admin/images/favicon.png'?>">
-    
+    <link href="<?php echo Yii::$app->homeUrl.'../assets-admin/jdadmin/jd_custom_css.css'?>" rel="stylesheet"/>
+    <script src="<?php echo Yii::$app->homeUrl.'../assets-admin/jdadmin/jd_custom_js.js'?>"></script>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <!-- Bootstrap Core CSS -->

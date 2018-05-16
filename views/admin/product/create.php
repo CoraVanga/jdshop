@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="col-lg-10">
 		<div class="card card-outline-primary">
 			<div class="card-header">
-				<h4 class="m-b-0 text-white"><?= Html::encode($this->title) ?></h4>
+				<h4 class="m-b-0 text-white" style="padding:10px;"><?= Html::encode($this->title) ?></h4>
 			</div>
 			<div class="card-body">
 				<?= $this->render('_form', [

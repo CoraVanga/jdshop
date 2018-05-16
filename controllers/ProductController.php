@@ -70,7 +70,7 @@ class ProductController extends Controller
                 $flag=1; //Bạn cần phải đăng nhập để thực hiện thao tác này
                 $user = new Users();
                 $user->save();
-                $_SESSION['ID_CUS']=$user->id;
+                $_SESSION['ID_USER']=$user->id;
 
             }
             else
