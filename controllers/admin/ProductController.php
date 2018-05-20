@@ -96,7 +96,17 @@ class ProductController extends Controller
         if($model->load(Yii::$app->request->post()))
         {
             echo "<pre>";
-            echo $_POST['name'];
+            $size = json_decode($_POST['sizeList']);
+            $amount = json_decode($_POST['priceList']);
+            $price = json_decode($_POST['amountList']);
+            //echo $array[0];
+            for ($x = 0; $x <= count($price); $x++) {
+                echo "The number is: $x <br>";
+            } 
+            foreach($array as $item)
+            {
+                echo $item;
+            }
             echo '</pre>';
         }
         // if ($model->load(Yii::$app->request->post()) && $model->save()) {

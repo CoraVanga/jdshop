@@ -50,7 +50,9 @@ use yii\helpers\ArrayHelper;
             </div>
         </div>
     </div> -->
-
+    <input type="hidden" name="sizeList" class="jdSizeList" value="">
+    <input type="hidden" name="priceList" class="jdPriceList" value="">
+    <input type="hidden" name="amountList" class="jdAmountList" value="">
     <div class="jdtab">
       <button type="button" class="jdtablinks active" onclick="openTab(event, 'detail')">Chi tiết sản phẩm</button>
       <button type="button" class="jdtablinks" onclick="openTab(event, 'image')">Hình ảnh</button>
@@ -65,11 +67,13 @@ use yii\helpers\ArrayHelper;
                         <th>Kích cỡ</th>
                         <th>Giá</th>
                         <th>Số lượng tồn</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="jdButtonRow">
                         <td><button id="jdAddButton" type="button" class="btn btn-primary m-b-10 m-l-5 btn-sm">Thêm chi tiết mới</button></td>
+                        <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
