@@ -83,10 +83,10 @@ $this->title = $model->name;
 						<?php if(isset($discount)):?>
 							<p id="jdDiscount" hidden><?=$discount->discount?></p>
 							<h4><?=$discount->info?> Giảm giá: <?=$discount->discount?>%</h4>
-							<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price*($discount->discount/100))?> VNĐ</h2>
-							<h5><strike><?= number_format($detail['0']->price)?> VNĐ</strike></h5>
+							<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price - $detail['0']->price*($discount->discount/100))?> VNĐ</h2>
+							<h5><strike class="jdOriginPrice"><?= number_format($detail['0']->price)?> VNĐ</strike></h5>
 						<?php else: ?>
-							<p id="jdDiscount" hidden>1</p>
+							<p id="jdDiscount" hidden>0</p>
 							<h2 class="productPrice" style="color: #eb4800;"><?= number_format($detail['0']->price)?> VNĐ</h2>
 						<?php endif;?>
 						<br/>
@@ -100,20 +100,36 @@ $this->title = $model->name;
 						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 						<input type="hidden" name="id" value="<?php echo $model->id; ?>">
 						<input type="hidden" name="size" id="productSize" value="<?php echo $detail['0']->size; ?>">
-
-						<select class="jdComBoBox" style="width: 150px; height: 40px; padding: 10px;" name="productDropDown" id="productDropDown">
-						  <option value="<?=number_format($detail['0']->price)?> VNĐ">CHỌN KÍCH CỠ</option>
-<!-- 						  <option value="saab">Saab</option>
-						  <option value="vw">VW</option>
-						  <option value="audi" selected>Audi</option> -->
-						<?php
-							// $detail = $model->getProductDetails()->asArray()->all();
-							// echo '<p>Test: '.$detail['0']['size'].' '.sizeof($detail).'</p>';
-							foreach ($detail as $product_detail) {
-							    echo '<option value="'.number_format($product_detail->price).' VNĐ">'.$product_detail->size.'</option>';
-							}
-						?>
-						</select><span style="font-size: 15px; padding: 10px;"><?= Html::a('Hướng dẫn chọn kích cỡ', ['main/hdds']) ?></span>
+						<?php if(isset($discount)):?>
+							<select class="jdComBoBox" style="width: 150px; height: 40px; padding: 10px;" name="productDropDown" id="productDropDown">
+							  <option value="<?=number_format($detail['0']->price)?> VNĐ">CHỌN KÍCH CỠ</option>
+							<?php
+								foreach ($detail as $product_detail) {
+								    echo '<option value="'.number_format($product_detail->price - $product_detail->price*($discount->discount/100)).' VNĐ">'.$product_detail->size.'</option>';
+								}
+							?>
+							</select>
+							<div hidden="1">
+								<select class="jdComBoBox2" style="width: 150px; height: 40px; padding: 10px;" name="productDropDown2" id="productDropDown">
+								  <option value="<?=number_format($detail['0']->price)?> VNĐ ">CHỌN KÍCH CỠ</option>
+								<?php
+									foreach ($detail as $product_detail) {
+									    echo '<option value="'.number_format($product_detail->price).' VNĐ">'.$product_detail->size.'</option>';
+									}
+								?>
+								</select>
+							</div>
+						<?php else: ?>
+							<select class="jdComBoBox" style="width: 150px; height: 40px; padding: 10px;" name="productDropDown" id="productDropDown">
+							  <option value="<?=number_format($detail['0']->price)?> VNĐ">CHỌN KÍCH CỠ</option>
+							<?php
+								foreach ($detail as $product_detail) {
+								    echo '<option value="'.number_format($product_detail->price).' VNĐ">'.$product_detail->size.'</option>';
+								}
+							?>
+							</select>
+						<?php endif;?>
+						<span style="font-size: 15px; padding: 10px;"><?= Html::a('Hướng dẫn chọn kích cỡ', ['main/hdds']) ?></span>
 						<br/><br/>
 						<button id="addToCartButton" type="submit" name="" class="btn btn-info">Thêm vào giỏ hàng</button>
 					</form>
