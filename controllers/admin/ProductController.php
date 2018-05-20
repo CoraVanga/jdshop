@@ -93,24 +93,29 @@ class ProductController extends Controller
         $this->layout = 'jdshop-admin';
         $model = new Product();
         $modelImage = new ImageProduct();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            if(UploadedFile::getInstance($modelImage, 'link'))
-            {
-                $modelImage->id_product = $model->id;
-                $modelImage->save();
-                $productId = $model->id; //model->id_product;
-                $imageId = $modelImage->id;
-                $image = UploadedFile::getInstance($modelImage, 'link');
-                $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
-                $image->saveAs($this->getStoreToSave().'/'.$imgName);
-                //$image->saveAs('localhost:7777/images/product-images'.'/'.$imgName);
-                $modelImage->link = $imgName;
-                $modelImage->save();
-            }
-            return $this->redirect(['view', 'id' => $model->id]);
+        if($model->load(Yii::$app->request->post()))
+        {
+            echo "<pre>";
+            echo $_POST['name'];
+            echo '</pre>';
         }
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        //     if(UploadedFile::getInstance($modelImage, 'link'))
+        //     {
+        //         $modelImage->id_product = $model->id;
+        //         $modelImage->save();
+        //         $productId = $model->id; //model->id_product;
+        //         $imageId = $modelImage->id;
+        //         $image = UploadedFile::getInstance($modelImage, 'link');
+        //         $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
+        //         $image->saveAs($this->getStoreToSave().'/'.$imgName);
+        //         //$image->saveAs('localhost:7777/images/product-images'.'/'.$imgName);
+        //         $modelImage->link = $imgName;
+        //         $modelImage->save();
+        //     }
+        //     return $this->redirect(['view', 'id' => $model->id]);
+        // }
 
         return $this->render('create', [
             'model' => $model,

@@ -59,7 +59,7 @@ use yii\helpers\ArrayHelper;
 
     <div id="detail" class="jdtabcontent" style="display: block; overflow:auto;">
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped jdOne2Many">
                 <thead>
                     <tr>
                         <th>Kích cỡ</th>
@@ -68,8 +68,8 @@ use yii\helpers\ArrayHelper;
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><button type="button" class="btn btn-primary m-b-10 m-l-5 btn-sm">Thêm chi tiết mới</button></td>
+                    <tr class="jdButtonRow">
+                        <td><button id="jdAddButton" type="button" class="btn btn-primary m-b-10 m-l-5 btn-sm">Thêm chi tiết mới</button></td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
