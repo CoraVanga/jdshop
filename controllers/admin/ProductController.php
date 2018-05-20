@@ -3,6 +3,7 @@
 namespace app\controllers\admin;
 
 use Yii;
+use app\models\ProductDetail;
 use app\models\Product;
 use app\models\SearchProduct;
 use app\models\ImageProduct;
@@ -93,39 +94,38 @@ class ProductController extends Controller
         $this->layout = 'jdshop-admin';
         $model = new Product();
         $modelImage = new ImageProduct();
-        if($model->load(Yii::$app->request->post()))
-        {
-            echo "<pre>";
-            $size = json_decode($_POST['sizeList']);
-            $amount = json_decode($_POST['priceList']);
-            $price = json_decode($_POST['amountList']);
-            //echo $array[0];
-            for ($x = 0; $x <= count($price); $x++) {
-                echo "The number is: $x <br>";
-            } 
-            foreach($array as $item)
-            {
-                echo $item;
-            }
-            echo '</pre>';
-        }
-        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-        //     if(UploadedFile::getInstance($modelImage, 'link'))
-        //     {
-        //         $modelImage->id_product = $model->id;
-        //         $modelImage->save();
-        //         $productId = $model->id; //model->id_product;
-        //         $imageId = $modelImage->id;
-        //         $image = UploadedFile::getInstance($modelImage, 'link');
-        //         $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
-        //         $image->saveAs($this->getStoreToSave().'/'.$imgName);
-        //         //$image->saveAs('localhost:7777/images/product-images'.'/'.$imgName);
-        //         $modelImage->link = $imgName;
-        //         $modelImage->save();
-        //     }
-        //     return $this->redirect(['view', 'id' => $model->id]);
-        // }
+            if(UploadedFile::getInstance($modelImage, 'link'))
+            {
+                $modelImage->id_product = $model->id;
+                $modelImage->save();
+                $productId = $model->id; //model->id_product;
+                $imageId = $modelImage->id;
+                $image = UploadedFile::getInstance($modelImage, 'link');
+                $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
+                $image->saveAs($this->getStoreToSave().'/'.$imgName);
+                //$image->saveAs('localhost:7777/images/product-images'.'/'.$imgName);
+                $modelImage->link = $imgName;
+                $modelImage->save();
+            }
+            if (isset($_POST['sizeList']))
+            {
+                $size = json_decode($_POST['sizeList']);
+                $amount = json_decode($_POST['amountList']);
+                $price = json_decode($_POST['priceList']);
+                //echo $array[0];
+                for ($x = 0; $x <= count($price)-1; $x++) {
+                    $productdetail = new ProductDetail();
+                    $productdetail->size = $size[$x];
+                    $productdetail->price = $price[$x];
+                    $productdetail->amount = $amount[$x];
+                    $productdetail->id_product = $model->id;
+                    $productdetail->save();
+                } 
+            }
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
         return $this->render('create', [
             'model' => $model,

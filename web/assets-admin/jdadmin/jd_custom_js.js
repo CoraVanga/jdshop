@@ -13,14 +13,14 @@ function openTab(evt, tabName) {
 }
 $("#jdAddButton").click(function(){
     var string = '<tr class="jdItem">';
-    string = string + '<td><input type="number" class="form-control input-flat input-sm jdSize" onchange="getSizeValue($(this).val())" placeholder="Kích cỡ sản phẩm" name="size"></td>';
-    string = string + '<td><input type="number" class="form-control input-flat input-sm jdPrice" onchange="getPriceValue($(this).val())" placeholder="Giá tiền" name="price"></td>';
-    string = string + '<td><input type="number" class="form-control input-flat input-sm jdAmount" onchange="getAmountValue($(this).val())" placeholder="Số lượng tồn" name="amount"></td>';
-    string = string + '<td><p class="jdDeleteItem"><i class="fa fa-trash-o" aria-hidden="true"></i></p></td>';
+    string = string + '<td><input type="number" class="form-control input-flat input-sm jdSize" onchange="getSizeValue()" placeholder="Kích cỡ sản phẩm" name="size"></td>';
+    string = string + '<td><input type="number" class="form-control input-flat input-sm jdPrice" onchange="getPriceValue()" placeholder="Giá tiền" name="price"></td>';
+    string = string + '<td><input type="number" class="form-control input-flat input-sm jdAmount" onchange="getAmountValue()" placeholder="Số lượng tồn" name="amount"></td>';
+    string = string + '<td><p class="jdDeleteItem" onclick="deleteOne2ManyRow(this)"><i class="fa fa-trash-o" aria-hidden="true"></i></p></td>';
     string = string + '</tr>';
     $(string).insertBefore('.jdButtonRow');
 });
-function getSizeValue(value){
+function getSizeValue(){
     var sizeList = []
     $('.jdOne2Many .jdSize').each(function(){
         var size = $(this).val();
@@ -30,7 +30,7 @@ function getSizeValue(value){
     $('.jdSizeList').val(JSON.stringify(sizeList));
     
 }
-function getPriceValue(value){
+function getPriceValue(){
     var priceList = []
     $('.jdOne2Many .jdPrice').each(function(){
         var price = $(this).val();
@@ -40,7 +40,7 @@ function getPriceValue(value){
     $('.jdPriceList').val(JSON.stringify(priceList));
     
 }
-function getAmountValue(value){
+function getAmountValue(){
     var amountList = []
     $('.jdOne2Many .jdAmount').each(function(){
         var amount = $(this).val();
@@ -49,4 +49,13 @@ function getAmountValue(value){
 
     $('.jdAmountList').val(JSON.stringify(amountList));
     
+}
+function deleteOne2ManyRow(row)
+{
+    var index =  $(row).parents().parents().index();
+    //document.getElementsByClassName("jdOne2Many").deleteRow(index);
+    $(row).parent().parent().remove();
+    getSizeValue();
+    getPriceValue();
+    getAmountValue();
 }
