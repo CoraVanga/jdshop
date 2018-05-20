@@ -84,7 +84,13 @@ use yii\widgets\Pjax;
 						<li class="span3">
 							<div class="product-box">
 								<span class="sale_tag"></span>
-								<p><a href="product_detail.html"><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware2.jpg" alt=""></a></p>
+								<div class="jdimgcontainer">
+									<p><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware2.jpg" class="image" alt=""></p>
+									<div class="middle">
+								    <div class="jdimgtext"><a>John Doe</a></div>
+								    <div class="jdimgtext"><a>John Doe</a></div>
+							  </div>
+								</div>
 								<a href="product_detail.html" class="title">Ut wisi enim ad</a><br>
 								<a href="products.html" class="category">Commodo consequat</a>
 								<p class="price">$25.50</p>
