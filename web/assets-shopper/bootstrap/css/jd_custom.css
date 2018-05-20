@@ -21,6 +21,7 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
+  width: fit-content;
 }
 
 .jdimgcontainer:hover .image {
@@ -32,9 +33,10 @@
 }
 
 .jdimgtext {
-  background-color: #4CAF50;
+  background-color: #eb4800;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   padding: 16px 32px;
   margin: 5px;
+  /*width: 100%;*/
 }

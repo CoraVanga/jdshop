@@ -42,11 +42,19 @@ use yii\widgets\Pjax;
 									echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
 									if (!empty($model->getImageProducts()->one())) {
 										$image = $model->getImageProducts()->asArray()->one();
-									 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt="" />', ['../product/view', 'id' => $model->id]).'</p>';
+											echo '<div class="jdimgcontainer">';
+									 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../product/view', 'id' => $model->id]).'</p>';
+									 		echo '<div class="middle">';
+									 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $model->id]).'</div>';
+									 		echo '</div></div>';
 									 	}
 									 	else
 									 	{
+									 		echo '<div class="jdimgcontainer">';
 									 		echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $model->id]).'</p>';
+									 		echo '<div class="middle">';
+									 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $model->id]).'</div>';
+									 		echo '</div></div>';
 									 	}
 									 	echo Html::a($model->name, ['../product/view', 'id' => $model->id],['class' => 'title']);
 										// echo '<p class="price">'.$model->price.' VNĐ</p>';
