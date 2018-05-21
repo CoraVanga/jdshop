@@ -1,3 +1,4 @@
+use jd
 --Khi thêm sản phẩm vào, tự động thêm ngày tạo và status
 alter trigger trg_set_product_status_createdate on product
 for insert
@@ -121,7 +122,6 @@ begin
 		select @sumprice=SUM(sum_price) from order_line where @idbill=order_line.id_bill
 		update sale_order
 		set total_price=@sumprice where id=@idbill
-
 	end
 end
 insert into order_line(sum_price,size_product,id_bill,id_product, amount) values (100,10,19,1,1)
