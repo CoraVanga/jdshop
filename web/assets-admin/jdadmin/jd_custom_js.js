@@ -13,6 +13,9 @@ function openTab(evt, tabName) {
 }
 $("#jdAddButton").click(function(){
     var string = '<tr class="jdItem">';
+    var rowCount = $('.jdOne2Many tr').length;
+    rowCount = rowCount -1;
+    string = string + '<td class="jdOrderNumber">'+rowCount+'</td>';
     string = string + '<td><input type="number" class="form-control input-flat input-sm jdSize" onchange="getSizeValue()" placeholder="Kích cỡ sản phẩm" name="size"></td>';
     string = string + '<td><input type="number" class="form-control input-flat input-sm jdPrice" onchange="getPriceValue()" placeholder="Giá tiền" name="price"></td>';
     string = string + '<td><input type="number" class="form-control input-flat input-sm jdAmount" onchange="getAmountValue()" placeholder="Số lượng tồn" name="amount"></td>';
@@ -48,14 +51,20 @@ function getAmountValue(){
     });
 
     $('.jdAmountList').val(JSON.stringify(amountList));
-    
+    var rowCount = $('.jdOne2Many tr').length;
 }
 function deleteOne2ManyRow(row)
 {
     var index =  $(row).parents().parents().index();
     //document.getElementsByClassName("jdOne2Many").deleteRow(index);
+
     $(row).parent().parent().remove();
     getSizeValue();
     getPriceValue();
     getAmountValue();
+    var number = 1;
+    $('.jdOne2Many .jdOrderNumber').each(function(){
+        $(this).text(number);
+        number = number + 1;
+    });
 }

@@ -64,6 +64,7 @@ use yii\helpers\ArrayHelper;
             <table class="table table-striped jdOne2Many">
                 <thead>
                     <tr>
+                        <th>STT</th>
                         <th>Kích cỡ</th>
                         <th>Giá</th>
                         <th>Số lượng tồn</th>
@@ -73,6 +74,7 @@ use yii\helpers\ArrayHelper;
                 <tbody>
                     <tr class="jdButtonRow">
                         <td><button id="jdAddButton" type="button" class="btn btn-primary m-b-10 m-l-5 btn-sm">Thêm chi tiết mới</button></td>
+                        <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
