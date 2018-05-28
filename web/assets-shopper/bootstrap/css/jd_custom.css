@@ -1,6 +1,7 @@
 .jdimgcontainer {
     position: relative;
     width: 100%;
+    background-color: white;
 }
 
 /*.image {
