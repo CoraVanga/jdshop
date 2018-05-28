@@ -17,35 +17,42 @@ USE JD
 -- Nếu bằng 0 thì chuyển trạng thái hoá đơn thành huỷ
 -- Nếu khác 0 thì cập nhật lại tổng thành tiền cho hoá đơn
 -----------------------------------------------------------------------
+
+
 create PROCEDURE XOACHITIETHOADON 
 @ID_ORDER_LINE INT
 AS
 BEGIN
-	DECLARE @ID_SALE_ORDER INT
-	DECLARE @PRICE INT
-	SET @PRICE = 0
-		SET TRANSACTION ISOLATION LEVEL Serializable
-		BEGIN TRAN 
-			SELECT @ID_SALE_ORDER =  [order_line].[id_bill] FROM [order_line] WHERE [order_line].[id] = @ID_ORDER_LINE
-			DELETE FROM [order_line] WHERE  [order_line].[id] = @ID_ORDER_LINE   
+	BEGIN TRY  
+		DECLARE @ID_SALE_ORDER INT
+		DECLARE @PRICE INT
+		SET @PRICE = 0
+			SET TRANSACTION ISOLATION LEVEL Serializable
+			BEGIN TRAN 
+				SELECT @ID_SALE_ORDER =  [order_line].[id_bill] FROM [order_line] WHERE [order_line].[id] = @ID_ORDER_LINE
+				DELETE FROM [order_line] WHERE  [order_line].[id] = @ID_ORDER_LINE   
 		
-			SELECT @PRICE = SUM([order_line].[sum_price]) FROM [order_line] WHERE [order_line].[id_bill] = @ID_SALE_ORDER 
-			PRINT @ID_SALE_ORDER
-			PRINT @PRICE
-			IF @PRICE = 0
-				BEGIN
-					waitfor delay '00:00:15'
-					UPDATE [sale_order] SET [sale_order].[status] = 5 WHERE [sale_order].[id] = @ID_SALE_ORDER
-					PRINT @PRICE
-				END
-			ELSE
-				BEGIN
-					waitfor delay '00:00:15'
-					UPDATE [sale_order]
-					SET [sale_order].[total_price] = @PRICE
-					WHERE [sale_order].[id] = @ID_SALE_ORDER
-					PRINT @PRICE
-				END
+				SELECT @PRICE = SUM([order_line].[sum_price]) FROM [order_line] WHERE [order_line].[id_bill] = @ID_SALE_ORDER 
+				--PRINT @ID_SALE_ORDER
+				--PRINT @PRICE
+				IF @PRICE = 0
+					BEGIN
+						waitfor delay '00:00:15'
+						UPDATE [sale_order] SET [sale_order].[status] = 5 WHERE [sale_order].[id] = @ID_SALE_ORDER
+						PRINT @PRICE
+					END
+				ELSE
+					BEGIN
+						waitfor delay '00:00:15'
+						UPDATE [sale_order]
+						SET [sale_order].[total_price] = @PRICE
+						WHERE [sale_order].[id] = @ID_SALE_ORDER
+						PRINT @PRICE
+					END
+	END TRY  
+	BEGIN CATCH  
+		 print 'ER'
+	END CATCH  
 			--IF @@ERROR= 0
 			--  BEGIN
 			--	commit Tran
@@ -79,38 +86,33 @@ create PROCEDURE CAPNHATTRANGTHAIHOADON
 @ID_SALE_ORDER INT, @STATUS_NEW INT
 AS
 BEGIN
-	DECLARE @STATUS_OLD INT 
-	SET TRANSACTION ISOLATION LEVEL Serializable
-	BEGIN TRAN T2
-		SELECT @STATUS_OLD = [sale_order].[status] FROM [sale_order] WHERE  [sale_order].[id] = @ID_SALE_ORDER   
-		IF @STATUS_OLD = 4 OR @STATUS_OLD = 5 OR @STATUS_NEW = @STATUS_OLD
-		BEGIN 
-			ROLLBACK TRAN
-			PRINT 'TRƯỜNG HỢP 1' 
-		END
-		IF @STATUS_NEW != 5 AND ( @STATUS_OLD != 4 OR @STATUS_OLD != 5 ) -- chặn 5 nếu 5 thì phải xoá order_line
-		BEGIN 
-			UPDATE [sale_order] SET [sale_order].[status] = @STATUS_NEW WHERE [sale_order].[id] = @ID_SALE_ORDER  
-			PRINT 'TRƯỜNG HỢP 2' 
-		END
-		IF @STATUS_NEW =5  AND @STATUS_OLD != 4
-		BEGIN
-			 UPDATE [sale_order] SET [sale_order].[status] = @STATUS_NEW WHERE [sale_order].[id] = @ID_SALE_ORDER
+	BEGIN TRY  
+		DECLARE @STATUS_OLD INT 
+		--SET TRANSACTION ISOLATION LEVEL Serializable
+		BEGIN TRAN T2
+			SELECT @STATUS_OLD = [sale_order].[status] FROM [sale_order] WHERE  [sale_order].[id] = @ID_SALE_ORDER   
+			IF @STATUS_OLD = 4 OR @STATUS_OLD = 5 OR @STATUS_NEW = @STATUS_OLD
+			BEGIN 
+				ROLLBACK TRAN
+				PRINT 'TRƯỜNG HỢP 1' 
+			END
+			IF @STATUS_NEW != 5 AND ( @STATUS_OLD != 4 OR @STATUS_OLD != 5 ) -- chặn 5 nếu 5 thì phải xoá order_line
+			BEGIN 
+				UPDATE [sale_order] SET [sale_order].[status] = @STATUS_NEW WHERE [sale_order].[id] = @ID_SALE_ORDER  
+				PRINT 'TRƯỜNG HỢP 2' 
+			END
+			IF @STATUS_NEW =5  AND @STATUS_OLD != 4
+			BEGIN
+				 UPDATE [sale_order] SET [sale_order].[status] = @STATUS_NEW WHERE [sale_order].[id] = @ID_SALE_ORDER
 			 
-			 DELETE FROM [order_line] WHERE  [order_line].[id_bill] = @ID_SALE_ORDER  
-			 PRINT 'TRƯỜNG HỢP 3' 
-		END 
-	
-	IF @@ERROR= 0
-			  BEGIN
-				commit Tran T2
-				select 0
-			  END
-			else
-			  BEGIN
-				rollback Tran T2
-				select -1
-			  END
+				 DELETE FROM [order_line] WHERE  [order_line].[id_bill] = @ID_SALE_ORDER  
+				 PRINT 'TRƯỜNG HỢP 3' 
+			END 
+		COMMIT TRAN T2
+	END TRY  
+	BEGIN CATCH  
+		print 'ER'
+	END CATCH  
 END
 
 DROP PROC CAPNHATTRANGTHAIHOADON
@@ -194,7 +196,7 @@ BEGIN
 		IF @STATUS_NEW =5  AND @STATUS_OLD != 4
 		BEGIN
 			 UPDATE [sale_order] SET [sale_order].[status] = @STATUS_NEW WHERE [sale_order].[id] = @ID_SALE_ORDER
-			 waitfor delay '00:00:15'
+			 --waitfor delay '00:00:15'
 			 DELETE FROM [order_line] WHERE  [order_line].[id_bill] = @ID_SALE_ORDER  
 			 PRINT 'TRƯỜNG HỢP 3' 
 		END 
@@ -247,3 +249,5 @@ SELECT TOP 1000 [id]
       ,[id_product]
       ,[id_bill]
   FROM [JD].[dbo].[order_line]
+
+  
