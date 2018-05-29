@@ -47,6 +47,12 @@ class CartController extends Controller
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             $orderline = OrderLine::findOne($_POST['id']);
             $orderline->delete();
+            $saleorder = SaleOrder::findOne($orderline->id_bill);
+            $orderlineList = OrderLine::find()->where(['id_bill'=>$saleorder->id])->one();
+            if(!isset($orderlineList))
+            {
+                $saleorder->delete();
+            }
             return [
                 'success' => '1',
             ];
@@ -77,8 +83,8 @@ class CartController extends Controller
         }
         else
         {
+            return $this->redirect(['../main']);
             $orderline = null;
-
         }
         if($_POST){
             // echo "<pre>";
@@ -118,12 +124,17 @@ class CartController extends Controller
                 }
             }
         }
-        return $this->render('view', [
-            'saleorder'=>$saleorder,
-            'orderline'=>$orderline,
-            'user'=>$user,
-            'status'=>$status,
-        ]);    
-
+        if(!isset($orderline))
+        {
+            return $this->redirect(['../main']);
+        }
+        else {
+            return $this->render('view', [
+                'saleorder'=>$saleorder,
+                'orderline'=>$orderline,
+                'user'=>$user,
+                'status'=>$status,
+            ]);    
+        }
     }
 }
