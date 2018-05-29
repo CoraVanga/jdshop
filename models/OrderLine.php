@@ -34,7 +34,7 @@ class OrderLine extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['amount', 'size_product', 'sum_price', 'code_color', 'id_product', 'id_bill'], 'integer'],
+            [['amount', 'size_product', 'sum_price', 'id_product', 'id_bill'], 'integer'],
             [['id_product'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['id_product' => 'id']],
             [['id_bill'], 'exist', 'skipOnError' => true, 'targetClass' => SaleOrder::className(), 'targetAttribute' => ['id_bill' => 'id']],
         ];

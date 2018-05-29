@@ -91,6 +91,28 @@ $this->title = 'Giỏ hàng';
 						</div>
 					</form>				
 				</p>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Tên sản phẩm</th>
+							<th>Số lượng</th>
+							<th>Thành tiền</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($orderline as $item) {
+							echo '<tr>';
+							echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5><button class="btn btn-inverse delCartItem">Xóa</button></td>';
+							echo '<td class="orderLineId" hidden="1">'.$item->id.'</td>';
+							echo '<td>'.$item->amount.'</td>';
+							echo '<td>'.number_format($item->sum_price).'</td>';
+							echo '</tr>';
+						}
+						
+					?>
+					</tbody>
+				</table>
+
 			<?php endif;?>
 			<?php elseif($status==1): ?>
 				<div style="clear: both;"></div>
@@ -233,4 +255,24 @@ $this->title = 'Giỏ hàng';
 			</div>						
 		</div>
 	</div>
-</section>			
+</section>
+<script>
+	$('.delCartItem').click(function() {
+			var orderLineId = $(this).parent().parent().find(".orderLineId").html();
+			//var baseUrl = '<?php echo Yii::$app->request->baseUrl?>';
+			alert("Đã xóa "+orderLineId);
+
+			$.ajax({
+				url: '<?php echo Yii::$app->request->baseUrl. '/user/cart/del' ?>',
+				type: 'post',
+				data: {
+					 _csrf : '<?=Yii::$app->request->getCsrfToken()?>',
+					id: orderLineId
+				},
+				success:function(data){
+					alert("Đã xóa sản phẩm này khỏi giỏ hàng của bạn");
+				}
+			});
+			
+		});
+</script>			

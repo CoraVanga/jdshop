@@ -14,9 +14,26 @@ $(function() {
 			var originvalue = $('.jdComBoBox2 option').eq(index).val();
 			$('.jdOriginPrice').text(originvalue);
 		});
-		$('#addToCartButton').click(function(){
+		// $('.delCartItem').click(function() {
+		// 	var orderLineId = $(this).parent().parent().find(".orderLineId").html();
+		// 	//var baseUrl = '<?php echo Yii::$app->request->baseUrl?>';
+		// 	alert("Đã xóa "+orderLineId);
 
-		});
+		// 	$.ajax({
+		// 		url: '/user/cart/del',
+		// 		type: 'post',
+		// 		data: {
+		// 			 _csrf : '<?=Yii::$app->request->getCsrfToken()?>',
+		// 			id: orderLineId
+		// 		},
+		// 		success:function(data){
+		// 			alert("Đã xóa sản phẩm này khỏi giỏ hàng của bạn");
+		// 		}
+		// 	});
+			
+		// });
+
 	});
+
 
 });

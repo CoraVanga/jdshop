@@ -41,6 +41,18 @@ class CartController extends Controller
         ];
     }
 
+    public function actionDel()
+    {
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $orderline = OrderLine::findOne($_POST['id']);
+            $orderline->delete();
+            return [
+                'success' => '1',
+            ];
+        }
+    }
+
     public function actionView()
     {   
         if (isset($_SESSION['ID_USER']))
