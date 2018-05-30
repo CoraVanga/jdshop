@@ -27,8 +27,23 @@ class MainController extends Controller
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $query = new \yii\db\Query;
+        $query->select('order_line.id_product,type.gender,product.name, sum(amount)')
+            ->from('order_line')
+            ->innerJoin('product',$on = 'product.id = order_line.id_product')
+            ->innerJoin('type',$on = 'product.id_type = type.id')
+            ->addGroupBy('order_line.id_product,product.name,type.gender')
+            ->addOrderBy(['sum(amount)'=>SORT_DESC])
+            ->limit(8);
+        $rows = $query->all();
+        $command = $query->createCommand();
+        $rows = $command->queryAll();
+        echo "<pre>";
+        print_r($rows);
+        echo "</pre>";
         return $this->render('shopper', [
         	'searchModel' => $searchModel,
+            'featureProduct' => $rows,
             'dataProvider' => $dataProvider,
         ]);
         //return $this->render('index');

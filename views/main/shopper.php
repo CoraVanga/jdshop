@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SearchProduct */
@@ -37,38 +38,39 @@ use yii\widgets\Pjax;
 						<div class="active item">
 							<ul class="thumbnails">
 								<?php
+							$i=0;
+							foreach ($featureProduct as $product)
+							{
+								if ($i==4) {
+									echo '</ul></div><div class="item"><ul class="thumbnails">';
 									$i=0;
-									foreach ($dataProvider->models as $model) {
-									echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
-									if (!empty($model->getImageProducts()->one())) {
-										$image = $model->getImageProducts()->asArray()->one();
-											echo '<div class="jdimgcontainer">';
-									 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../product/view', 'id' => $model->id]).'</p>';
-									 		echo '<div class="middle">';
-									 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $model->id]).'</div>';
-									 		echo '</div></div>';
-									 	}
-									 	else
-									 	{
-									 		echo '<div class="jdimgcontainer">';
-									 		echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $model->id]).'</p>';
-									 		echo '<div class="middle">';
-									 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $model->id]).'</div>';
-									 		echo '</div></div>';
-									 	}
-									 	echo Html::a($model->name, ['../product/view', 'id' => $model->id],['class' => 'title']);
-										// echo '<p class="price">'.$model->price.' VNĐ</p>';
-										echo '<br/>';
-										echo Html::a($model->type->gender, ['../product/view', 'id' => $model->id],['class' => 'category']);
-										echo '</div></li>';
-										$i++;
-										if($i==8) break;
-										if ($i==4) {
-											echo '</div><div class="item"><ul class="thumbnails">';
-											$i=0;
-										}
-									}
-								?>									
+								}
+								echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+								$model = Product::findOne($product['id_product']);
+								if (!empty($model->getImageProducts()->one())) {
+									$image = $model->getImageProducts()->asArray()->one();
+										echo '<div class="jdimgcontainer">';
+								 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../product/view', 'id' => $product['id_product']]).'</p>';
+								 		echo '<div class="middle">';
+								 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id_product']]).'</div>';
+								 		echo '</div></div>';
+								 	}
+								 	else
+								 	{
+								 		echo '<div class="jdimgcontainer">';
+								 		echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $product['id_product']]).'</p>';
+								 		echo '<div class="middle">';
+								 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id_product']]).'</div>';
+								 		echo '</div></div>';
+								 	}
+								 	echo Html::a($product['name'], ['../product/view', 'id' => $product['id_product']],['class' => 'title']);
+									// echo '<p class="price">'.$model->price.' VNĐ</p>';
+									echo '<br/>';
+									echo Html::a($product['gender'], ['../product/view', 'id' => $product['id_product']],['class' => 'category']);
+									echo '</div></li>';
+									$i++;
+							}
+						?>									
 								
 						</div>
 					</div>							
@@ -88,82 +90,8 @@ use yii\widgets\Pjax;
 		<div id="myCarousel-2" class="myCarousel carousel slide">
 			<div class="carousel-inner">
 				<div class="active item">
-					<ul class="thumbnails">												
-						<li class="span3">
-							<div class="product-box">
-								<span class="sale_tag"></span>
-								<div class="jdimgcontainer">
-									<p><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware2.jpg" class="image" alt=""></p>
-									<div class="middle">
-								    <div class="jdimgtext"><a>John Doe</a></div>
-								    <div class="jdimgtext"><a>John Doe</a></div>
-							  </div>
-								</div>
-								<a href="product_detail.html" class="title">Ut wisi enim ad</a><br>
-								<a href="products.html" class="category">Commodo consequat</a>
-								<p class="price">$25.50</p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="product-box">
-								<p><a href="product_detail.html"><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware1.jpg" alt=""></a></p>
-								<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br>
-								<a href="products.html" class="category">Quis nostrud</a>
-								<p class="price">$17.55</p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="product-box">
-								<p><a href="product_detail.html"><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware6.jpg" alt=""></a></p>
-								<a href="product_detail.html" class="title">Know exactly turned</a><br>
-								<a href="products.html" class="category">Quis nostrud</a>
-								<p class="price">$25.30</p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="product-box">
-								<p><a href="product_detail.html"><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware5.jpg" alt=""></a></p>
-								<a href="product_detail.html" class="title">You think fast</a><br>
-								<a href="products.html" class="category">World once</a>
-								<p class="price">$25.60</p>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul class="thumbnails">
-						<li class="span3">
-							<div class="product-box">
-								<p><a href="product_detail.html"><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware4.jpg" alt=""></a></p>
-								<a href="product_detail.html" class="title">Know exactly</a><br>
-								<a href="products.html" class="category">Quis nostrud</a>
-								<p class="price">$45.50</p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="product-box">
-								<p><a href="product_detail.html"><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware3.jpg" alt=""></a></p>
-								<a href="product_detail.html" class="title">Ut wisi enim ad</a><br>
-								<a href="products.html" class="category">Commodo consequat</a>
-								<p class="price">$33.50</p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="product-box">
-								<p><a href="product_detail.html"><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware2.jpg" alt=""></a></p>
-								<a href="product_detail.html" class="title">You think water</a><br>
-								<a href="products.html" class="category">World once</a>
-								<p class="price">$45.30</p>
-							</div>
-						</li>
-						<li class="span3">
-							<div class="product-box">
-								<p><a href="product_detail.html"><img src="../assets-shopper/themes/images/cloth/bootstrap-women-ware1.jpg" alt=""></a></p>
-								<a href="product_detail.html" class="title">Quis nostrud exerci</a><br>
-								<a href="products.html" class="category">Quis nostrud</a>
-								<p class="price">$25.20</p>
-							</div>
-						</li>																																	
+					<ul class="thumbnails">		
+													
 					</ul>
 				</div>
 			</div>							
