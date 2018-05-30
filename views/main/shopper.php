@@ -91,7 +91,40 @@ use app\models\Product;
 			<div class="carousel-inner">
 				<div class="active item">
 					<ul class="thumbnails">		
-													
+						<?php
+							$i=0;
+							foreach ($newProduct as $product)
+							{
+								if ($i==4) {
+									echo '</ul></div><div class="item"><ul class="thumbnails">';
+									$i=0;
+								}
+								echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+								$model = Product::findOne($product['id']);
+								if (!empty($model->getImageProducts()->one())) {
+									$image = $model->getImageProducts()->asArray()->one();
+										echo '<div class="jdimgcontainer">';
+								 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../product/view', 'id' => $product['id']]).'</p>';
+								 		echo '<div class="middle">';
+								 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id']]).'</div>';
+								 		echo '</div></div>';
+								 	}
+								 	else
+								 	{
+								 		echo '<div class="jdimgcontainer">';
+								 		echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $product['id']]).'</p>';
+								 		echo '<div class="middle">';
+								 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id']]).'</div>';
+								 		echo '</div></div>';
+								 	}
+								 	echo Html::a($product['name'], ['../product/view', 'id' => $product['id']],['class' => 'title']);
+									// echo '<p class="price">'.$model->price.' VNĐ</p>';
+									echo '<br/>';
+									echo Html::a($model->type->gender, ['../product/view', 'id' => $product['id']],['class' => 'category']);
+									echo '</div></li>';
+									$i++;
+							}
+						?>									
 					</ul>
 				</div>
 			</div>							

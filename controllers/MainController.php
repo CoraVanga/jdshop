@@ -27,6 +27,7 @@ class MainController extends Controller
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        //get feature product
         $query = new \yii\db\Query;
         $query->select('order_line.id_product,type.gender,product.name, sum(amount)')
             ->from('order_line')
@@ -35,15 +36,20 @@ class MainController extends Controller
             ->addGroupBy('order_line.id_product,product.name,type.gender')
             ->addOrderBy(['sum(amount)'=>SORT_DESC])
             ->limit(8);
-        $rows = $query->all();
-        $command = $query->createCommand();
-        $rows = $command->queryAll();
-        echo "<pre>";
-        print_r($rows);
-        echo "</pre>";
+        $featureProduct = $query->all();
+
+        //get new product
+        $query = new \yii\db\Query;
+        $query->select('*')
+            ->from('product')
+            ->addOrderBy(['created_date'=>SORT_DESC])
+            ->limit(8);
+        $newProduct = $query->all();
+
         return $this->render('shopper', [
         	'searchModel' => $searchModel,
-            'featureProduct' => $rows,
+            'featureProduct' => $featureProduct,
+            'newProduct' => $newProduct,
             'dataProvider' => $dataProvider,
         ]);
         //return $this->render('index');
