@@ -29,7 +29,7 @@ class MainController extends Controller
 
         //get feature product
         $query = new \yii\db\Query;
-        $query->select('order_line.id_product,type.gender,product.name, sum(amount)')
+        $query->select('order_line.id_product,type.gender,product.name, sum(amount)  as amount')
             ->from('order_line')
             ->innerJoin('product',$on = 'product.id = order_line.id_product')
             ->innerJoin('type',$on = 'product.id_type = type.id')
