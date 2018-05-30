@@ -6,7 +6,6 @@
 
  		<p>Khi khách hàng đã đặt hàng thành công và đã được nhân viên JD xác nhận đơn hàng. Khách hàng có thể tra cứu tình trạng đơn hàng của mình được cập nhật liên tục trên website. Khách hàng có thể đăng nhập hoặc không cần đăng nhập để tra cứu đơn hàng.</p>
 
- 		<div style="text-align: center;"><img alt="Tra cứu đơn hàng" class="ty-pict img-lazyload" data-src="/images/image-update/HDMuaHang/HDTraCuuDiem_TraDonHang.png" /></div>
 
  		<p><strong class="mp-note"><em>Lưu ý: </em></strong>Khách hàng có thể tra cứu mã đơn hàng theo 3 cách:</p>
 
@@ -18,11 +17,8 @@
 
  		<p>Khi khách hàng đã đăng ký thẻ thành viên ở các cửa hàng của JD, khách hàng có thể tra cứu thẻ thành viên khi mua sản phẩm của JD trên online. Điểm tích lũy của khách hàng sẽ được cập nhập liên tục trên website mỗi khi khách hàng thanh toán thành công đơn hàng. Khách hàng có thể đăng nhập hoặc không cần đăng nhập để tra cứu đơn hàng.</p>
 
- 		<div style="text-align: center;"><img alt="Tra cứu thẻ thành viên" class="ty-pict img-lazyload" data-src="/images/image-update/HDMuaHang/HDTraCuuDiem_TraCuuDiemTichLuy.png" /></div>
 
  		<p>Khách hàng có thể nhập Mã thẻ khách hàng hoặc Điện thoại sau đó bấm <strong>TRA CỨU</strong> để xem thông tin cũng như điểm tích lũy của khách hàng.</p>
-
- 		<div style="text-align: center;"><img alt="Tra cứu thẻ thành viên" class="ty-pict img-lazyload" data-src="/images/image-update/HDMuaHang/HDTraCuuDiem_TraCuuDiemTichLuy_Form.png" /></div>
 
  		<p><strong class="mp-note"><em>Lợi ích khi đăng ký thành viên:</em></strong></p>
 
