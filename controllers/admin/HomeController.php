@@ -41,11 +41,21 @@ class HomeController extends Controller{
             ->where('exists (select * from sale_order as t2 where t1.id = t2.id_user)');
         $customers = $query->all();
 
+        //get recentSO
+        $query = new \yii\db\Query;
+        $query->select('t2.name, t1.total_price, t2.address, t1.status, t1.created_date')
+            ->from('sale_order as t1, users as t2')
+            ->where('t1.id_user = t2.id')
+            ->addOrderBy(['t1.created_date'=>SORT_DESC])
+            ->limit(5);
+        $recentSO = $query->all();
+
 		return $this->render('index', [
         	'revenue' => $revenue,
         	'sales' => $sales,
         	'products' => $products,
         	'customers' => $customers,
+        	'recentSO' => $recentSO,
         ]);
 	}
 }
