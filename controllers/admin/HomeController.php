@@ -52,10 +52,11 @@ class HomeController extends Controller{
 
         //get profit
         $query = new \yii\db\Query;
-        $query->select('t2.name, t1.total_price, t2.address, t1.status, t1.created_date')
+        $query->select('month(created_date) as month,year(created_date) as year,sum(total_price) as profit')
             ->from('sale_order')
             ->addGroupBy('month(created_date),year(created_date)')
-        $recentSO = $query->all();
+            ->addOrderBy(['month(created_date)'=>SORT_DESC, 'year(created_date)'=>SORT_DESC]);
+        $profit = $query->all();
 
 		return $this->render('index', [
         	'revenue' => $revenue,
@@ -63,6 +64,7 @@ class HomeController extends Controller{
         	'products' => $products,
         	'customers' => $customers,
         	'recentSO' => $recentSO,
+        	'profit' =>$profit,
         ]);
 	}
 }

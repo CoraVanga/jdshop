@@ -182,46 +182,44 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="col-lg-12">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Extra Area Chart</h4>
+					<h4 class="card-title">Lợi nhuận trong những tháng gần đây</h4>
 					<?= ChartJs::widget([
 					    'type' => 'line',
 					    'options' => [
 					        'height' => 100,
 					        'width' => 400
+                    
+                
 					    ],
 					    'data' => [
-					        'labels' => ["January", "February", "March", "April", "May", "June", "July"],
+					        'labels' => [$profit['7']['month'].'/'.$profit['7']['year'], 
+					        			$profit['6']['month'].'/'.$profit['6']['year'],
+					        			$profit['5']['month'].'/'.$profit['5']['year'],
+					        			$profit['4']['month'].'/'.$profit['4']['year'],
+					        			$profit['3']['month'].'/'.$profit['3']['year'],
+					        			$profit['2']['month'].'/'.$profit['2']['year'],
+					        			$profit['1']['month'].'/'.$profit['1']['year'],
+					        			$profit['0']['month'].'/'.$profit['0']['year'],
+					        			],
 					        'datasets' => [
 					            [
-					                'label' => "My First dataset",
+					                'label' => "Lợi nhuận",
 					                'backgroundColor' => "rgba(179,181,198,0.2)",
 					                'borderColor' => "rgba(179,181,198,1)",
 					                'pointBackgroundColor' => "rgba(179,181,198,1)",
 					                'pointBorderColor' => "#fff",
 					                'pointHoverBackgroundColor' => "#fff",
 					                'pointHoverBorderColor' => "rgba(179,181,198,1)",
-					                'data' => [65, 59, 90, 81, 56, 55, 40]
+					                'data' => [$profit['7']['profit'],
+					                			$profit['6']['profit'],
+					                			$profit['5']['profit'],
+					                			$profit['4']['profit'],
+					                			$profit['3']['profit'],
+					                			$profit['2']['profit'],
+					                			$profit['1']['profit'],
+					                			$profit['0']['profit'],
+					            	]
 					            ],
-					            [
-					                'label' => "My Second dataset",
-					                'backgroundColor' => "rgba(255,99,132,0.2)",
-					                'borderColor' => "rgba(255,99,132,1)",
-					                'pointBackgroundColor' => "rgba(255,99,132,1)",
-					                'pointBorderColor' => "#fff",
-					                'pointHoverBackgroundColor' => "#fff",
-					                'pointHoverBorderColor' => "rgba(255,99,132,1)",
-					                'data' => [28, 48, 40, 19, 96, 27, 100]
-					            ],
-					            [
-					                'label' => "My Third dataset",
-					                'backgroundColor' => "rgba(255,80,120,0.2)",
-					                'borderColor' => "rgba(255,99,132,1)",
-					                'pointBackgroundColor' => "rgba(255,99,132,1)",
-					                'pointBorderColor' => "#fff",
-					                'pointHoverBackgroundColor' => "#fff",
-					                'pointHoverBorderColor' => "rgba(255,99,132,1)",
-					                'data' => [55, 99, 10, 150, 70, 111, 133]
-					            ]
 					        ]
 					    ]
 					]);
