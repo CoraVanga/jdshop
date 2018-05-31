@@ -58,6 +58,14 @@ class HomeController extends Controller{
             ->addOrderBy(['month(created_date)'=>SORT_DESC, 'year(created_date)'=>SORT_DESC]);
         $profit = $query->all();
 
+        //get inventory
+        $query = new \yii\db\Query;
+        $query->select('p.id_type,t.name,t.gender,sum(amount) as totalamount')
+            ->from('product_detail as pd, product as p, type as t')
+            ->where('pd.id_product = p.id and t.id = p.id_type')
+            ->addGroupBy('p.id_type,t.name, t.gender');
+        $inventory = $query->all();
+
 		return $this->render('index', [
         	'revenue' => $revenue,
         	'sales' => $sales,
@@ -65,6 +73,7 @@ class HomeController extends Controller{
         	'customers' => $customers,
         	'recentSO' => $recentSO,
         	'profit' =>$profit,
+        	'inventory' => $inventory,
         ]);
 	}
 }

@@ -179,7 +179,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-9">
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title">Lợi nhuận trong những tháng gần đây</h4>
@@ -187,7 +187,6 @@ $this->params['breadcrumbs'][] = $this->title;
 					    'type' => 'line',
 					    'options' => [
 					        'height' => 100,
-					        'width' => 400
                     
                 
 					    ],
@@ -224,6 +223,65 @@ $this->params['breadcrumbs'][] = $this->title;
 					    ]
 					]);
 					?>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Tồn kho theo loại sản phẩm</h4>
+					<?php
+					$data = [];
+					$label=[];
+					foreach($inventory as $item)
+					{
+						array_push($data, $item['totalamount']);
+						array_push($label, $item['name'].' '.$item['gender']);
+					}
+					echo ChartJs::widget([
+					    'type' => 'pie',
+					    'id' => 'structurePie',
+					    'options' => [
+					        'height' => 420,
+					        'width' => 420,
+					        'legend' => [
+					        	'display' => false,
+					        ],
+					    ],
+					    'data' => [
+					        'radius' =>  "90%",
+					        'labels' => $label, // Your labels
+					        'datasets' => [
+					            [
+					                'data' => $data, // Your dataset
+					                'label' => '',
+					                'backgroundColor' => [
+					                        '#ADC3FF',
+					                        '#FF9A9A',
+					                    	'rgba(190, 124, 145, 0.8)',
+					                    	'#80CC14',
+					                        '#CC3814',
+					                    	'#00FFA9',
+					                    	'#ADC3FF',
+					                        '#FF9A9A',
+					                    	'CC6E14',
+					                ],
+					                'borderColor' =>  [
+					                        '#fff',
+					                        '#fff',
+					                        '#fff'
+					                ],
+					                'borderWidth' => 1,
+					                'hoverBorderColor'=>["#999","#999","#999","#999","#999","#999","#999","#999","#999"],                
+					            ]
+					        ]
+					    ],
+					    'clientOptions' => [
+					    	'legend' => [ 'display'=> false ],
+					    ],
+					]);
+					?>
+
 				</div>
 			</div>
 		</div>
