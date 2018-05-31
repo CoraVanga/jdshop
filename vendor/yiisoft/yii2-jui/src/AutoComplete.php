@@ -10,24 +10,28 @@ namespace yii\jui;
 use yii\helpers\Html;
 
 /**
- * Spinner renders an spinner jQuery UI widget.
+ * AutoComplete renders an autocomplete jQuery UI widget.
  *
  * For example:
  *
  * ```php
- * echo Spinner::widget([
+ * echo AutoComplete::widget([
  *     'model' => $model,
  *     'attribute' => 'country',
- *     'clientOptions' => ['step' => 2],
+ *     'clientOptions' => [
+ *         'source' => ['USA', 'RUS'],
+ *     ],
  * ]);
  * ```
  *
  * The following example will use the name property instead:
  *
  * ```php
- * echo Spinner::widget([
- *     'name'  => 'country',
- *     'clientOptions' => ['step' => 2],
+ * echo AutoComplete::widget([
+ *     'name' => 'country',
+ *     'clientOptions' => [
+ *         'source' => ['USA', 'RUS'],
+ *     ],
  * ]);
  * ```
  *
@@ -35,48 +39,37 @@ use yii\helpers\Html;
  * method, for example like this:
  *
  * ```php
- * <?= $form->field($model, 'from_date')->widget(\yii\jui\Spinner::classname(), [
- *     'clientOptions' => ['step' => 2],
+ * <?= $form->field($model, 'from_date')->widget(\yii\jui\AutoComplete::classname(), [
+ *     'clientOptions' => [
+ *         'source' => ['USA', 'RUS'],
+ *     ],
  * ]) ?>
  * ```
  *
- * @see http://api.jqueryui.com/spinner/
+ * @see http://api.jqueryui.com/autocomplete/
  * @author Alexander Kochetov <creocoder@gmail.com>
  * @since 2.0
  */
-class Spinner extends InputWidget
+class AutoComplete extends InputWidget
 {
     /**
-     * @inheritDoc
-     */
-    protected $clientEventMap = [
-        'spin' => 'spin',
-        'change' => 'spinchange',
-        'create' => 'spincreate',
-        'start' => 'spinstart',
-        'stop' => 'spinstop'
-    ];
-
-
-    /**
-     * Renders the widget.
+     * {@inheritdoc}
      */
     public function run()
     {
-        echo $this->renderWidget();
-        $this->registerWidget('spinner');
+        $this->registerWidget('autocomplete');
+        return $this->renderWidget();
     }
 
     /**
-     * Renders the Spinner widget.
+     * Renders the AutoComplete widget.
      * @return string the rendering result.
      */
     public function renderWidget()
     {
         if ($this->hasModel()) {
             return Html::activeTextInput($this->model, $this->attribute, $this->options);
-        } else {
-            return Html::textInput($this->name, $this->value, $this->options);
         }
+        return Html::textInput($this->name, $this->value, $this->options);
     }
 }

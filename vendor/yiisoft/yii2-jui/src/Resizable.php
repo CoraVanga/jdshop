@@ -10,34 +10,36 @@ namespace yii\jui;
 use yii\helpers\Html;
 
 /**
- * Draggable renders an draggable jQuery UI widget.
+ * Resizable renders an resizable jQuery UI widget.
  *
  * For example:
  *
  * ```php
- * Draggable::begin([
- *     'clientOptions' => ['grid' => [50, 20]],
+ * Resizable::begin([
+ *     'clientOptions' => [
+ *         'grid' => [20, 10],
+ *     ],
  * ]);
  *
- * echo 'Draggable contents here...';
+ * echo 'Resizable contents here...';
  *
- * Draggable::end();
+ * Resizable::end();
  * ```
  *
- * @see http://api.jqueryui.com/draggable/
+ * @see http://api.jqueryui.com/resizable/
  * @author Alexander Kochetov <creocoder@gmail.com>
  * @since 2.0
  */
-class Draggable extends Widget
+class Resizable extends Widget
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $clientEventMap = [
-        'create' => 'dragcreate',
-        'drag' => 'drag',
-        'stop' => 'dragstop',
-        'start' => 'dragstart',
+        'create' => 'resizecreate',
+        'resize' => 'resize',
+        'start' => 'resizestart',
+        'stop' => 'resizestop',
     ];
 
 
@@ -56,6 +58,6 @@ class Draggable extends Widget
     public function run()
     {
         echo Html::endTag('div') . "\n";
-        $this->registerWidget('draggable');
+        $this->registerWidget('resizable');
     }
 }

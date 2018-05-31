@@ -15,10 +15,10 @@ return array (
   'yiisoft/yii2-jui' => 
   array (
     'name' => 'yiisoft/yii2-jui',
-    'version' => '2.0.7.0',
+    'version' => '9999999-dev',
     'alias' => 
     array (
-      '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui',
+      '@yii/jui' => $vendorDir . '/yiisoft/yii2-jui/src',
     ),
   ),
   'yiisoft/yii2-bootstrap' => 
@@ -64,6 +64,15 @@ return array (
     'alias' => 
     array (
       '@kato' => $vendorDir . '/perminder-klair/yii2-dropzone',
+    ),
+  ),
+  'devgroup/yii2-dropzone' => 
+  array (
+    'name' => 'devgroup/yii2-dropzone',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@devgroup/dropzone' => $vendorDir . '/devgroup/yii2-dropzone',
     ),
   ),
 );

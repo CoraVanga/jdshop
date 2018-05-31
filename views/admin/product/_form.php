@@ -87,27 +87,17 @@ use kato\DropZone;
 
     <div id="image" class="jdtabcontent" style="overflow:auto;">
         <!-- <?= $form->field($modelImage, 'link')->fileInput() ?> -->
-       
     </div>
 
     <div id="info" class="jdtabcontent" style="overflow:auto;">
         <?= $form->field($model, 'info')->textarea(['rows' => '9'])->label(false) ?>
     </div>
-    <?=
-            \kato\DropZone::widget([
-               'options' => [
-                   'maxFilesize' => '2',
-               ],
-               'clientEvents' => [
-                   'complete' => "function(file){console.log(file)}",
-                   'removedfile' => "function(file){alert(file.name + ' is removed')}"
-               ],
-           ]);
-        ?>
+
     <div style="clear: both;"></div>
     <div class="form-group" >
         <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
+
 </div>

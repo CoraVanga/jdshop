@@ -10,28 +10,24 @@ namespace yii\jui;
 use yii\helpers\Html;
 
 /**
- * AutoComplete renders an autocomplete jQuery UI widget.
+ * Spinner renders an spinner jQuery UI widget.
  *
  * For example:
  *
  * ```php
- * echo AutoComplete::widget([
+ * echo Spinner::widget([
  *     'model' => $model,
  *     'attribute' => 'country',
- *     'clientOptions' => [
- *         'source' => ['USA', 'RUS'],
- *     ],
+ *     'clientOptions' => ['step' => 2],
  * ]);
  * ```
  *
  * The following example will use the name property instead:
  *
  * ```php
- * echo AutoComplete::widget([
- *     'name' => 'country',
- *     'clientOptions' => [
- *         'source' => ['USA', 'RUS'],
- *     ],
+ * echo Spinner::widget([
+ *     'name'  => 'country',
+ *     'clientOptions' => ['step' => 2],
  * ]);
  * ```
  *
@@ -39,38 +35,47 @@ use yii\helpers\Html;
  * method, for example like this:
  *
  * ```php
- * <?= $form->field($model, 'from_date')->widget(\yii\jui\AutoComplete::classname(), [
- *     'clientOptions' => [
- *         'source' => ['USA', 'RUS'],
- *     ],
+ * <?= $form->field($model, 'from_date')->widget(\yii\jui\Spinner::classname(), [
+ *     'clientOptions' => ['step' => 2],
  * ]) ?>
  * ```
  *
- * @see http://api.jqueryui.com/autocomplete/
+ * @see http://api.jqueryui.com/spinner/
  * @author Alexander Kochetov <creocoder@gmail.com>
  * @since 2.0
  */
-class AutoComplete extends InputWidget
+class Spinner extends InputWidget
 {
     /**
-     * @inheritdoc
+     * @inheritDoc
+     */
+    protected $clientEventMap = [
+        'spin' => 'spin',
+        'change' => 'spinchange',
+        'create' => 'spincreate',
+        'start' => 'spinstart',
+        'stop' => 'spinstop'
+    ];
+
+
+    /**
+     * Renders the widget.
      */
     public function run()
     {
-        $this->registerWidget('autocomplete');
-        return $this->renderWidget();
+        echo $this->renderWidget();
+        $this->registerWidget('spinner');
     }
 
     /**
-     * Renders the AutoComplete widget.
+     * Renders the Spinner widget.
      * @return string the rendering result.
      */
     public function renderWidget()
     {
         if ($this->hasModel()) {
             return Html::activeTextInput($this->model, $this->attribute, $this->options);
-        } else {
-            return Html::textInput($this->name, $this->value, $this->options);
         }
+        return Html::textInput($this->name, $this->value, $this->options);
     }
 }

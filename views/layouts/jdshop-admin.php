@@ -31,6 +31,7 @@ AppAsset::register($this);
 
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo Yii::$app->homeUrl.'../assets-admin/images/favicon.png'?>">
     <link href="<?php echo Yii::$app->homeUrl.'../assets-admin/jdadmin/jd_custom_css.css'?>" rel="stylesheet"/>
+    <link href="<?php echo Yii::$app->homeUrl.'../assets-admin/css/lib/dropzone/dropzone.css'?>" rel="stylesheet"/>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <!-- Bootstrap Core CSS -->
@@ -132,5 +133,13 @@ AppAsset::register($this);
 <?php $this->endBody() ?>
 </body>
 <script src="<?php echo Yii::$app->homeUrl.'../assets-admin/jdadmin/jd_custom_js.js'?>"></script>
+<!-- <link href="<?php echo Yii::$app->homeUrl.'../assets-admin/css/dist/basic.css'?>" rel="stylesheet"/>
+<link href="<?php echo Yii::$app->homeUrl.'../assets-admin/css/dist/dropzone.css'?>" rel="stylesheet"/>
+<link href="<?php echo Yii::$app->homeUrl.'../assets-admin/css/dist/min/basic.min.css'?>" rel="stylesheet"/>
+<link href="<?php echo Yii::$app->homeUrl.'../assets-admin/css/dist/min/dropzone.min.css'?>" rel="stylesheet"/>
+<script src="<?php echo Yii::$app->homeUrl.'../assets-admin/css/dist/dropzone.js'?>"></script>
+<script src="<?php echo Yii::$app->homeUrl.'../assets-admin/css/dist/dropzone-amd-module.js'?>"></script>
+<script src="<?php echo Yii::$app->homeUrl.'../assets-admin/css/dist/min/dropzone.min.js'?>"></script>
+<script src="<?php echo Yii::$app->homeUrl.'../assets-admin/css/dist/min/dropzone-amd-module.min.js'?>"></script> -->
 </html>
 <?php $this->endPage() ?>
