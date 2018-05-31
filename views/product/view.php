@@ -166,63 +166,40 @@ $this->title = $model->name;
 						<div class="carousel-inner">
 							<div class="active item">
 								<ul class="thumbnails listing-products">
-									<li class="span3">
-										<div class="product-box">
-											<span class="sale_tag"></span>												
-											<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/6.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
-											<a href="#" class="category">Suspendisse aliquet</a>
-											<p class="price">$341</p>
-										</div>
-									</li>
-									<li class="span3">
-										<div class="product-box">
-											<span class="sale_tag"></span>												
-											<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/5.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-											<a href="#" class="category">Phasellus consequat</a>
-											<p class="price">$341</p>
-										</div>
-									</li>       
-									<li class="span3">
-										<div class="product-box">												
-											<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/4.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Praesent tempor sem</a><br/>
-											<a href="#" class="category">Erat gravida</a>
-											<p class="price">$28</p>
-										</div>
-									</li>												
-								</ul>
-							</div>
-							<div class="item">
-								<ul class="thumbnails listing-products">
-									<li class="span3">
-										<div class="product-box">
-											<span class="sale_tag"></span>												
-											<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/1.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-											<a href="#" class="category">Phasellus consequat</a>
-											<p class="price">$341</p>
-										</div>
-									</li>       
-									<li class="span3">
-										<div class="product-box">												
-											<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/2.jpg"></a><br/>
-											<a href="product_detail.html">Praesent tempor sem</a><br/>
-											<a href="#" class="category">Erat gravida</a>
-											<p class="price">$28</p>
-										</div>
-									</li>
-									<li class="span3">
-										<div class="product-box">
-											<span class="sale_tag"></span>												
-											<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/3.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
-											<a href="#" class="category">Suspendisse aliquet</a>
-											<p class="price">$341</p>
-										</div>
-									</li>
-								</ul>
+									<?php
+										$i=0;
+										foreach ($relatedProduct as $product)
+										{
+											if ($i==3) {
+												echo '</ul></div><div class="item"><ul class="thumbnails listing-products">';
+												$i=0;
+											}
+											echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+											$model = Product::findOne($product['id']);
+											if (!empty($model->getImageProducts()->one())) {
+												$image = $model->getImageProducts()->asArray()->one();
+													echo '<div class="jdimgcontainer">';
+											 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../product/view', 'id' => $product['id']]).'</p>';
+											 		echo '<div class="middle">';
+											 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id']]).'</div>';
+											 		echo '</div></div>';
+											 	}
+											 	else
+											 	{
+											 		echo '<div class="jdimgcontainer">';
+											 		echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $product['id']]).'</p>';
+											 		echo '<div class="middle">';
+											 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id']]).'</div>';
+											 		echo '</div></div>';
+											 	}
+											 	echo Html::a($product['name'], ['../product/view', 'id' => $product['id']],['class' => 'title']);
+												// echo '<p class="price">'.$model->price.' VNĐ</p>';
+												echo '<br/>';
+												echo Html::a($model->type->gender, ['../product/view', 'id' => $product['id']],['class' => 'category']);
+												echo '</div></li>';
+												$i++;
+										}
+									?>	
 							</div>
 						</div>
 					</div>
@@ -276,18 +253,6 @@ $this->title = $model->name;
 								}
 						?>					
 						</div>
-						<!-- <div class="item">
-							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">												
-										<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/8.jpg"></a><br/>
-										<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
-										<a href="#" class="category">Urna nec lectus mollis</a>
-										<p class="price">$134</p>
-									</div>
-								</li>
-							</ul>
-						</div> -->
 					</div>
 				</div>
 			</div>
@@ -295,10 +260,10 @@ $this->title = $model->name;
 				<h4 class="title">
 					<span class="pull-left"><span class="text">Sản phẩm mới nhất</span></span>
 					<span class="pull-right">
-						<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+						<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
 					</span>
 				</h4>
-				<div id="myCarousel" class="carousel slide">
+				<div id="myCarousel-2" class="carousel slide">
 					<div class="carousel-inner">
 						<div class="active item">
 							<ul class="thumbnails listing-products">
@@ -337,7 +302,7 @@ $this->title = $model->name;
 									}
 								?>
 						</div>
-						<div class="item">
+						<!-- <div class="item">
 							<ul class="thumbnails listing-products">
 								<li class="span3">
 									<div class="product-box">												
@@ -348,7 +313,7 @@ $this->title = $model->name;
 									</div>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

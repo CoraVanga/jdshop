@@ -82,6 +82,13 @@ class ProductController extends Controller
             ->limit(4);
         $newProduct = $query->all();
 
+        //get related product
+        $query = new \yii\db\Query;
+
+        $query->select('*')
+            ->from('product')
+            ->where(['id_type'=>Product::findOne($id)->id_type]);
+        $relatedProduct = $query->all();
 
         if($_POST){
             // echo "<pre>";
@@ -177,6 +184,7 @@ class ProductController extends Controller
             'flag' => $flag,
             'newProduct' => $newProduct,
             'featureProduct' =>$featureProduct,
+            'relatedProduct' =>$relatedProduct,
         ]);
     }
 
