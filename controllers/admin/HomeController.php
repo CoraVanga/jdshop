@@ -50,6 +50,13 @@ class HomeController extends Controller{
             ->limit(5);
         $recentSO = $query->all();
 
+        //get profit
+        $query = new \yii\db\Query;
+        $query->select('t2.name, t1.total_price, t2.address, t1.status, t1.created_date')
+            ->from('sale_order')
+            ->addGroupBy('month(created_date),year(created_date)')
+        $recentSO = $query->all();
+
 		return $this->render('index', [
         	'revenue' => $revenue,
         	'sales' => $sales,

@@ -71,140 +71,65 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="col-lg-3">
             <div class="card bg-dark">
                 <div class="testimonial-widget-one p-17">
-                    <div class="testimonial-widget-one owl-carousel owl-theme owl-loaded owl-drag">
-                    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-703px, 0px, 0px); transition: 0.25s; width: 2109px;"><div class="owl-item cloned" style="width: 165.75px; margin-right: 10px;"><div class="item">
+                    <div class="testimonial-widget-one owl-carousel owl-theme">
+                        <div class="item">
                             <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/4.jpg" alt="">
-                                <div class="testimonial-author">TYRION LANNISTER</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
+	                            <img class="testimonial-author-img" src="images/avatar/3.jpg" alt="" />
+                                <div class="testimonial-author">BILL GATES</div>
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i><span style="color:white; font-size:15px;">Những khách hàng khó tính nhất chính là nguồn học vĩ đại nhất của bạn. Nếu bạn sinh ra trong nghèo khó, đó không phải là lỗi của bạn. Nhưng nếu bạn chết trong nghèo khó, thì đó là lỗi của bạn.</span>
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="images/avatar/3.jpg" alt="" />
+                                <div class="testimonial-author">JACK MA</div>
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i>
+                                    <span style="color:white; font-size:15px;">Nếu bạn muốn phát triển, hãy tìm kiếm một cơ hội thật tốt. Nếu bạn muốn có một công ty lớn, bạn hãy nghĩ đến những vấn đề mà bạn phải đối mặt trước khi nghĩ đến thành công.</span>
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="images/avatar/1.jpg" alt="" />
+                                <div class="testimonial-author">JOSEPH ADDISON</div>
+                                <div class="testimonial-text">
+                                    <i class="fa fa-quote-left"></i>
+                                    <span style="color:white; font-size:15px;">Không có gì cần thiết hơn trong kinh doanh là sự nhanh nhạy.</span><br/>
+									<span style="color:white; font-size:15px;">There is nothing more requisite in business than despatch.</span>
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimonial-content">
+                                <img class="testimonial-author-img" src="images/avatar/4.jpg" alt="" />
+                                <div class="testimonial-author">ZIG ZIGLAR</div>
                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
+                                    <i class="fa fa-quote-left"></i>
+                                    <span style="color:white; font-size:15px;">Nếu mọi người thích bạn, họ sẽ lắng nghe bạn, nhưng nếu họ tin tưởng bạn, họ sẽ làm kinh doanh với bạn.</span><br/>
+									<span style="color:white; font-size:15px;">If people like you, they'll listen to you, but if they trust you, they'll do business with you.</span>
                                     <i class="fa fa-quote-right"></i>
                                 </div>
                             </div>
-                        </div></div><div class="owl-item cloned" style="width: 165.75px; margin-right: 10px;"><div class="item">
+                        </div>
+                        <div class="item">
                             <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/5.jpg" alt="">
-                                <div class="testimonial-author">TYRION LANNISTER</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
+                                <img class="testimonial-author-img" src="images/avatar/5.jpg" alt="" />
+                                <div class="testimonial-author">ZIG ZIGLARS</div>
                                 <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
+                                    <i class="fa fa-quote-left"></i>
+                                   	<span style="color:white; font-size:15px;">Mỗi lần bán hàng có năm trở ngại cơ bản: không cần thiết, không có tiền, không vội vàng, không ham muốn, không có niềm tin.</span><br/>
+									<span style="color:white; font-size:15px;">Every sale has five basic obstacles: no need, no money, no hurry, no desire, no trust.</span>
                                     <i class="fa fa-quote-right"></i>
                                 </div>
                             </div>
-                        </div></div><div class="owl-item cloned" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/6.jpg" alt="">
-                                <div class="testimonial-author">TYRION LANNISTER</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/2.jpg" alt="">
-                                <div class="testimonial-author">John</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item active" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/3.jpg" alt="">
-                                <div class="testimonial-author">Abraham</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/1.jpg" alt="">
-                                <div class="testimonial-author">Lincoln</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/4.jpg" alt="">
-                                <div class="testimonial-author">TYRION LANNISTER</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                               <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/5.jpg" alt="">
-                                <div class="testimonial-author">TYRION LANNISTER</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/6.jpg" alt="">
-                                <div class="testimonial-author">TYRION LANNISTER</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item cloned" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/2.jpg" alt="">
-                                <div class="testimonial-author">John</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item cloned" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/3.jpg" alt="">
-                                <div class="testimonial-author">Abraham</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div><div class="owl-item cloned" style="width: 165.75px; margin-right: 10px;"><div class="item">
-                            <div class="testimonial-content">
-                                <img class="testimonial-author-img" src="images/avatar/1.jpg" alt="">
-                                <div class="testimonial-author">Lincoln</div>
-                                <div class="testimonial-author-position">Founder-Ceo. Dell Corp</div>
-
-                                <div class="testimonial-text">
-                                    <i class="fa fa-quote-left"></i>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .
-                                    <i class="fa fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots disabled"></div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -247,7 +172,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 
                             </tbody>
                         </table>
-                        <p>Xem thêm</p>
+                        <p align="center"><?=Html::a('Xem thêm', ['../admin/sale-order'],['class' => 'btn btn-success'])?></p>
                     </div>
                 </div>
             </div>
