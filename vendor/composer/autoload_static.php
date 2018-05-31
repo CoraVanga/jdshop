@@ -37,6 +37,7 @@ class ComposerStaticInit7fedd1a814cc2bb6e2c197fd51b63424
         ),
         'd' => 
         array (
+            'dosamigos\\chartjs\\' => 18,
             'devgroup\\dropzone\\' => 18,
         ),
         'c' => 
@@ -125,6 +126,10 @@ class ComposerStaticInit7fedd1a814cc2bb6e2c197fd51b63424
         'kato\\' => 
         array (
             0 => __DIR__ . '/..' . '/perminder-klair/yii2-dropzone',
+        ),
+        'dosamigos\\chartjs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/2amigos/yii2-chartjs-widget/src',
         ),
         'devgroup\\dropzone\\' => 
         array (

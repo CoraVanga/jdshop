@@ -75,4 +75,13 @@ return array (
       '@devgroup/dropzone' => $vendorDir . '/devgroup/yii2-dropzone',
     ),
   ),
+  '2amigos/yii2-chartjs-widget' => 
+  array (
+    'name' => '2amigos/yii2-chartjs-widget',
+    'version' => '2.1.2.0',
+    'alias' => 
+    array (
+      '@dosamigos/chartjs' => $vendorDir . '/2amigos/yii2-chartjs-widget/src',
+    ),
+  ),
 );

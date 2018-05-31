@@ -16,6 +16,7 @@ return array(
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
     'kato\\' => array($vendorDir . '/perminder-klair/yii2-dropzone'),
+    'dosamigos\\chartjs\\' => array($vendorDir . '/2amigos/yii2-chartjs-widget/src'),
     'devgroup\\dropzone\\' => array($vendorDir . '/devgroup/yii2-dropzone'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
