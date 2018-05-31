@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc7a8cdcef199b8ae2c984c1e3e94b51",
+    "content-hash": "8f3d18ea129258b255f63bedc27c2210",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -213,6 +213,48 @@
                 "html"
             ],
             "time": "2018-02-23T01:58:20+00:00"
+        },
+        {
+            "name": "perminder-klair/yii2-dropzone",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/perminder-klair/yii2-dropzone.git",
+                "reference": "41e8145d940cc9955011138a9f16ad80e9831423"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/perminder-klair/yii2-dropzone/zipball/41e8145d940cc9955011138a9f16ad80e9831423",
+                "reference": "41e8145d940cc9955011138a9f16ad80e9831423",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "2.0.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kato\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Parminder Klair",
+                    "email": "perminder.klair@gmail.com"
+                }
+            ],
+            "description": "DropzoneJs Extention for Yii2",
+            "keywords": [
+                "dropzone",
+                "extension",
+                "upload",
+                "yii2"
+            ],
+            "time": "2015-11-09T11:28:44+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3123,7 +3165,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "perminder-klair/yii2-dropzone": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

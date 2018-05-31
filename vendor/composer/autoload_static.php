@@ -30,6 +30,10 @@ class ComposerStaticInit7fedd1a814cc2bb6e2c197fd51b63424
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'k' => 
+        array (
+            'kato\\' => 5,
+        ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
@@ -108,6 +112,10 @@ class ComposerStaticInit7fedd1a814cc2bb6e2c197fd51b63424
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'kato\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/perminder-klair/yii2-dropzone',
         ),
         'cebe\\markdown\\' => 
         array (
