@@ -12,7 +12,7 @@
                 <li class="nav-label">Quản lý</li>
                 <li> <a href="#" aria-expanded="false"><i class="fa fa-user-circle"></i><span class="hide-menu">Khách hàng</span></a>
                 
-                <li> <a href="#" aria-expanded="false"><i class="fa fa-diamond "></i><span class="hide-menu">Sản phẩm</span></a>
+                <li> <a href="../../admin/product" aria-expanded="false"><i class="fa fa-diamond "></i><span class="hide-menu">Sản phẩm</span></a>
                        
                 </li>
                 <li> <a href="#" aria-expanded="false"><i class="fa fa-bullhorn "></i><span class="hide-menu">Khuyến mãi</span></a>

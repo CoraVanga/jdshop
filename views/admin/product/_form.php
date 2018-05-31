@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use app\models\Type;
 use app\models\DiscountProduct;
 use yii\helpers\ArrayHelper;
+use kato\DropZone;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 /* @var $form yii\widgets\ActiveForm */
@@ -85,7 +86,20 @@ use yii\helpers\ArrayHelper;
     </div>
 
     <div id="image" class="jdtabcontent" style="overflow:auto;">
-        <?= $form->field($modelImage, 'link')->fileInput() ?>
+        <!-- <?= $form->field($modelImage, 'link')->fileInput() ?> -->
+       <?=
+            $form->field($modelImage, 'link')->widget(DropZone, [
+            'options' => [
+                'url'=>'upload',
+                'maxFilesize' => '200',
+                'addRemoveLinks'=>true,
+            ],
+            'clientEvents' => [
+                'complete' => "function(file) { console.log(file) }",
+                'removedfile' => "function(file) {alert(file.name + ' is removed') }",
+            ],
+            ]);
+        ?>
     </div>
 
     <div id="info" class="jdtabcontent" style="overflow:auto;">
