@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\bootstrap\Alert;
+use app\models\Product;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 
@@ -61,8 +62,17 @@ $this->title = $model->name;
 						}
 					?>
 					<!-- <a href="../assets-shopper/themes/images/ladies/1.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="../assets-shopper/themes/images/ladies/1.jpg"></a> -->												
-					<ul class="thumbnails small">								
-						<li class="span1">
+					<ul class="thumbnails small">
+						<?php 
+							$imageList = $model->getImageProducts()->asArray()->all();
+							foreach($imageList as $images)
+							{
+								echo '<li class="span1">';
+								echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$images['link'].'" class="thumbnail" data-fancybox-group="group1" title="'.$images['link'].'" alt="<img src="../images/product-images'.'/'.$image['link'].'" />').'</p>';
+								echo '</li>';
+							}
+						?>		
+						<!-- <li class="span1">
 							<a href="../assets-shopper/themes/images/ladies/2.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="../assets-shopper/themes/images/ladies/2.jpg" alt=""></a>
 						</li>								
 						<li class="span1">
@@ -73,7 +83,7 @@ $this->title = $model->name;
 						</li>
 						<li class="span1">
 							<a href="../assets-shopper/themes/images/ladies/5.jpg" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="../assets-shopper/themes/images/ladies/5.jpg" alt=""></a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<div class="span5">
@@ -231,18 +241,42 @@ $this->title = $model->name;
 					<div class="carousel-inner">
 						<div class="active item">
 							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">
-										<span class="sale_tag"></span>												
-										<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/7.jpg"></a><br/>
-										<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-										<a href="#" class="category">Suspendisse aliquet</a>
-										<p class="price">$261</p>
-									</div>
-								</li>
-							</ul>
+							<?php
+								$i=0;
+								foreach ($featureProduct as $product)
+								{
+									if ($i==1) {
+										echo '</ul></div><div class="item"><ul class="thumbnails listing-products">';
+										$i=0;
+									}
+									echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+									$model = Product::findOne($product['id_product']);
+									if (!empty($model->getImageProducts()->one())) {
+										$image = $model->getImageProducts()->asArray()->one();
+											echo '<div class="jdimgcontainer">';
+									 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../product/view', 'id' => $product['id_product']]).'</p>';
+									 		echo '<div class="middle">';
+									 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id_product']]).'</div>';
+									 		echo '</div></div>';
+									 	}
+									 	else
+									 	{
+									 		echo '<div class="jdimgcontainer">';
+									 		echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $product['id_product']]).'</p>';
+									 		echo '<div class="middle">';
+									 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id_product']]).'</div>';
+									 		echo '</div></div>';
+									 	}
+									 	echo Html::a($product['name'], ['../product/view', 'id' => $product['id_product']],['class' => 'title']);
+										// echo '<p class="price">'.$model->price.' VNĐ</p>';
+										echo '<br/>';
+										echo Html::a($product['gender'], ['../product/view', 'id' => $product['id_product']],['class' => 'category']);
+										echo '</div></li>';
+										$i++;
+								}
+						?>					
 						</div>
-						<div class="item">
+						<!-- <div class="item">
 							<ul class="thumbnails listing-products">
 								<li class="span3">
 									<div class="product-box">												
@@ -253,7 +287,7 @@ $this->title = $model->name;
 									</div>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -268,16 +302,40 @@ $this->title = $model->name;
 					<div class="carousel-inner">
 						<div class="active item">
 							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">
-										<span class="sale_tag"></span>												
-										<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/7.jpg"></a><br/>
-										<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-										<a href="#" class="category">Suspendisse aliquet</a>
-										<p class="price">$261</p>
-									</div>
-								</li>
-							</ul>
+								<?php
+									$i=0;
+									foreach ($newProduct as $product)
+									{
+										if ($i==1) {
+											echo '</ul></div><div class="item"><ul class="thumbnails listing-products">';
+											$i=0;
+										}
+										echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+										$model = Product::findOne($product['id']);
+										if (!empty($model->getImageProducts()->one())) {
+											$image = $model->getImageProducts()->asArray()->one();
+												echo '<div class="jdimgcontainer">';
+										 		echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../product/view', 'id' => $product['id']]).'</p>';
+										 		echo '<div class="middle">';
+										 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id']]).'</div>';
+										 		echo '</div></div>';
+										 	}
+										 	else
+										 	{
+										 		echo '<div class="jdimgcontainer">';
+										 		echo '<p>'.Html::a('<img src="../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $product['id']]).'</p>';
+										 		echo '<div class="middle">';
+										 		echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id']]).'</div>';
+										 		echo '</div></div>';
+										 	}
+										 	echo Html::a($product['name'], ['../product/view', 'id' => $product['id']],['class' => 'title']);
+											// echo '<p class="price">'.$model->price.' VNĐ</p>';
+											echo '<br/>';
+											echo Html::a($model->type->gender, ['../product/view', 'id' => $product['id']],['class' => 'category']);
+											echo '</div></li>';
+											$i++;
+									}
+								?>
 						</div>
 						<div class="item">
 							<ul class="thumbnails listing-products">
