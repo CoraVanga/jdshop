@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'total_price',
             'id',
-            'bill_code',
+            //'bill_code',
             'status',
             'created_date',
             //'id_user',

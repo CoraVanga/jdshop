@@ -19,7 +19,7 @@ class SearchSaleOrder extends SaleOrder
     {
         return [
             [['total_price', 'id', 'status', 'id_user'], 'integer'],
-            [['bill_code', 'created_date'], 'safe'],
+            [['created_date'], 'safe'],
         ];
     }
 
@@ -66,7 +66,6 @@ class SearchSaleOrder extends SaleOrder
             'id_user' => $this->id_user,
         ]);
 
-        $query->andFilterWhere(['like', 'bill_code', $this->bill_code]);
 
         return $dataProvider;
     }
