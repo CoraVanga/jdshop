@@ -10,7 +10,7 @@
                     
                 </li>
                 <li class="nav-label">Quản lý</li>
-                <li> <a href="../../admin/users" aria-expanded="false"><i class="fa fa-user-circle"></i><span class="hide-menu">Khách hàng</span></a>
+                <li> <a href="../../admin/users" aria-expanded="false"><i class="fa fa-user-circle"></i><span class="hide-menu">Tài khoản</span></a>
                 
                 <li> <a href="../../admin/product" aria-expanded="false"><i class="fa fa-diamond "></i><span class="hide-menu">Sản phẩm</span></a>
                        

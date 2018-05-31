@@ -89,7 +89,7 @@ class Users extends ActiveRecord implements IdentityInterface
             'username' => 'Tên đăng nhập',
             'password' => 'Mật khẩu',
             'auth_key' => 'Mã CT',
-            'name' => 'Tên',
+            'name' => 'Họ & Tên',
             'dob' => 'Ngày sinh',
             'phone' => 'Số điện thoại',
             'role' => 'Quyền',

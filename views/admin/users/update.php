@@ -5,17 +5,22 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
 
-$this->title = 'Update Users: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->title = 'Thay đổi thông tin người dùng: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Người dùng', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Thay đổi';
 ?>
 <div class="users-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+	<div class="col-lg-10">
+		<div class="card card-outline-primary">
+			<div class="card-header">
+				<h4 class="m-b-0 text-white" style="padding:10px;"><?= Html::encode($this->title) ?></h4>
+			</div>
+			<div class="card-body">
+				<?= $this->render('_form', [
+					'model' => $model,
+					]) ?>
+			</div>
+		</div>
+	</div>
 </div>

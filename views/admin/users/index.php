@@ -8,36 +8,41 @@ use app\models\Users;
 /* @var $searchModel app\models\UsersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = 'Danh sách tài khoản';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="users-index">
-    
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+<div class="product-index">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-title">
+                <h4><?= Html::encode($this->title) ?></h4>
+                <p>
+                    <?= Html::a('Thêm tài khoản', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="card-body">
 
-    <p>
-        <?= Html::a('Create Users', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'id',
-            'username',
-            //'password',
-            'name',
-            'dob',
-            'phone',
-            'role',
-            //'address',
-            //'email:email',
-            //'status',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                        //'id',
+                        //'username',
+                        //'password',
+                        'name',
+                        'dob',
+                        'phone',
+                        //'role',
+                        'address',
+                        //'email:email',
+                        //'status',
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                    ]); ?>
+            </div>
+        </div>
+    </div>
 </div>
+
