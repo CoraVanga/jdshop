@@ -30,6 +30,7 @@
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/jd_custom.js'?>"></script>	
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/superfish.js'?>"></script>	
 		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery.scrolltotop.js'?>"></script>
+		
 		<!--[if lt IE 9]>			
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="js/respond.min.js"></script>
@@ -195,6 +196,6 @@
 				});
 			});
 		</script>
-
+		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jd_custom.js'?>"></script>
     </body>
 </html>

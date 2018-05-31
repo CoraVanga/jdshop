@@ -54,7 +54,7 @@ $this->title = $model->name;
 						$image = $model->getImageProducts()->asArray()->one();
 						if(!empty($image))
 						{
-						echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" class="thumbnail" title="'.$image['link'].'" alt="<img src="../images/product-images'.'/'.$image['link'].'" />').'</p>';
+						echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$image['link'].'" class="thumbnail jdImageProductBig" title="'.$image['link'].'" alt="<img src="../images/product-images'.'/'.$image['link'].'" />').'</p>';
 						}
 						else
 						{
@@ -68,7 +68,7 @@ $this->title = $model->name;
 							foreach($imageList as $images)
 							{
 								echo '<li class="span1">';
-								echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$images['link'].'" class="thumbnail" data-fancybox-group="group1" title="'.$images['link'].'" alt="<img src="../images/product-images'.'/'.$image['link'].'" />').'</p>';
+								echo '<p>'.Html::a('<img src="../images/product-images'.'/'.$images['link'].'" class="thumbnail jdImageProductSmall" data-fancybox-group="group1" title="'.$images['link'].'" alt="<img src="../images/product-images'.'/'.$image['link'].'" />').'</p>';
 								echo '</li>';
 							}
 						?>		
