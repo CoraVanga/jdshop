@@ -148,7 +148,7 @@
 					<div class="span4">
 						<h4>Hỗ trợ mua hàng</h4>
 						<ul class="nav">
-							<li><a href="http://localhost:8080/main/hdmh">Hướng dẫn mua hàng</a></li>
+							<li><?= Html::a('Hướng dẫn mua hàng', ['../main/hdmh']) ?></li>
 							<li><a href="http://localhost:8080/main/hdtt">Hướng dẫn thanh toán</a></li>
 							<li><a href="http://localhost:8080/main/hdvc">Phương thức vận chuyển</a></li>
 							<li><a href="http://localhost:8080/main/hdds">Hướng dẫn đo size trang sức</a></li>
