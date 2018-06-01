@@ -35,11 +35,30 @@ use kato\DropZone;
     <div class="row p-t-20">
         <div class="form-group">
             <div class="col-md-3">
-                <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->select(['id','name'])->all(),'id','name'),['class'=>'form-control custom-select'])?>
+                <?php
+                    $types=Type::find()->all();
+                    $listtype = [];
+                    foreach($types as $type)
+                    {
+                        if($type->gender!=null)
+                            $listtype[$type->id]=$type->name.': '.$type->gender;
+                        else
+                            $listtype[$type->id]=$type->name;
+                    }
+                ?>
+                <?= $form->field($model, 'id_type')->dropDownList($listtype,['prompt'=>'Loại sản phẩm'])->label(false)?>
             </div>
 
             <div class="col-md-4">
-                <?= $form->field($model, 'id_discount')->dropDownList(ArrayHelper::map(DiscountProduct::find()->select(['id','info'])->all(),'id','info'),['class'=>'form-control custom-select'])?>
+                <?php
+                    $discounts=DiscountProduct::find()->all();
+                    $listdp = [];
+                    foreach($discounts as $discount)
+                    {
+                        $listdp[$discount->id]=$type->info;
+                    }
+                ?>
+                <?= $form->field($model, 'id_discount')->dropDownList($listdp,['prompt'=>'Khuyến mãi'])->label(false)?>
             </div>
         </div>
     </div>
