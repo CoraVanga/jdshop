@@ -72,11 +72,33 @@ class ProductController extends Controller
             ->from('product as p, type as t')
             ->where('p.id_type=t.id and t.name='.$name);
         $productList = $query->all();
+
+        //get feature product
+        $query = new \yii\db\Query;
+        $query->select('order_line.id_product,type.gender,product.name, sum(amount)  as amount')
+            ->from('order_line')
+            ->innerJoin('product',$on = 'product.id = order_line.id_product')
+            ->innerJoin('type',$on = 'product.id_type = type.id')
+            ->addGroupBy('order_line.id_product,product.name,type.gender')
+            ->addOrderBy(['sum(amount)'=>SORT_DESC])
+            ->limit(4);
+        $featureProduct = $query->all();
+
+        //get new product
+        $query = new \yii\db\Query;
+        $query->select('*')
+            ->from('product')
+            ->addOrderBy(['created_date'=>SORT_DESC])
+            ->limit(4);
+        $newProduct = $query->all();
+
         return $this->render('view', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'productList' => $productList,
             'nametype'=>$nametype,
+            'newProduct' => $newProduct,
+            'featureProduct' =>$featureProduct,
         ]);
     }
 }

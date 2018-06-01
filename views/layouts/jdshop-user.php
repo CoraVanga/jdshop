@@ -100,7 +100,7 @@
 							</li>
 							<li><?= Html::a('Giới thiệu', ['../main/about']) ?>
 							</li>
-							<li><a href="<?php echo Yii::$app->homeUrl.'../user/product'?>">Sản phẩm</a>					
+							<li><a href="#">Sản phẩm</a>					
 								<ul>
 									<li><?= Html::a('Nhẫn', ['../user/product/view', 'type' => 'ring'])?></li>				
 									<li><?= Html::a('Bông tai', ['../user/product/view', 'type' => 'earring'])?></li>
