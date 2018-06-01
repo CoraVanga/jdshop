@@ -61,11 +61,33 @@ class CartController extends Controller
     public function actionOld($id)
     {
         $this->layout = 'jdshop-user';
+
+        //get feature product
+        $query = new \yii\db\Query;
+        $query->select('order_line.id_product,type.gender,product.name, sum(amount)  as amount')
+            ->from('order_line')
+            ->innerJoin('product',$on = 'product.id = order_line.id_product')
+            ->innerJoin('type',$on = 'product.id_type = type.id')
+            ->addGroupBy('order_line.id_product,product.name,type.gender')
+            ->addOrderBy(['sum(amount)'=>SORT_DESC])
+            ->limit(4);
+        $featureProduct = $query->all();
+
+        //get new product
+        $query = new \yii\db\Query;
+        $query->select('*')
+            ->from('product')
+            ->addOrderBy(['created_date'=>SORT_DESC])
+            ->limit(4);
+        $newProduct = $query->all();
+
         $soList = SaleOrder::find()->where(['id_user'=>$id])->all();
         $user = Users::find()->where(['id'=>$id])->one();
         return $this->render('viewold', [
                 'soList'=> $soList,
                 'user'=>$user,
+                'newProduct'=>$newProduct,
+                'featureProduct'=>$featureProduct,
             ]);
     }
     public function actionView()

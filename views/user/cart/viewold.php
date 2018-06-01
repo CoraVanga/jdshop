@@ -27,47 +27,28 @@ $this->title = 'Giỏ hàng';
 						</tr>
 					</thead>
 					<tbody>
-                        <?php foreach($soList as $saleorder){
-                        	echo '<tr>';
-                        	echo '<td>'.$saleorder->user->name.'</td>';
-                        	echo '<td>'.number_format($saleorder->total_price).'</td>';
-                        	echo '<td>'.$saleorder->user->address.'</td>';
-                        	echo '<td>'.date("d/m/Y", strtotime($saleorder->created_date)).'</td>';
-                        	if($saleorder->status==4)
-                        		echo '<td><span class="badge badge-success">Hoàn thành</span></td>';
-                        	if($saleorder->status==3)
-                        		echo '<td><span class="badge badge-warning">Đơn hàng</span></td>';
-                        	echo '</tr>';
-                        }
-                        ?>
+						<?php foreach($soList as $saleorder){
+							echo '<tr>';
+							echo '<td>'.$saleorder->user->name.'</td>';
+							echo '<td>'.number_format($saleorder->total_price).'</td>';
+							echo '<td>'.$saleorder->user->address.'</td>';
+							echo '<td>'.date("d/m/Y", strtotime($saleorder->created_date)).'</td>';
+							if($saleorder->status==4)
+								echo '<td><span class="badge badge-success">Hoàn thành</span></td>';
+							if($saleorder->status==3)
+								echo '<td><span class="badge badge-warning">Đơn hàng</span></td>';
+							echo '</tr>';
+						}
+						?>
 
-                    </tbody>
-                </table>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<div class="span3 col">
 			<div class="block">	
-				<ul class="nav nav-list">
-					<li class="nav-header">SUB CATEGORIES</li>
-					<li><a href="products.html">Nullam semper elementum</a></li>
-					<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-					<li><a href="products.html">Donec laoreet dui</a></li>
-					<li><a href="products.html">Nullam semper elementum</a></li>
-					<li><a href="products.html">Phasellus ultricies</a></li>
-					<li><a href="products.html">Donec laoreet dui</a></li>
-				</ul>
-				<br/>
-				<ul class="nav nav-list below">
-					<li class="nav-header">MANUFACTURES</li>
-					<li><a href="products.html">Adidas</a></li>
-					<li><a href="products.html">Nike</a></li>
-					<li><a href="products.html">Dunlop</a></li>
-					<li><a href="products.html">Yamaha</a></li>
-				</ul>
-			</div>
-			<div class="block">
 				<h4 class="title">
-					<span class="pull-left"><span class="text">Randomize</span></span>
+					<span class="pull-left"><span class="text">Sản phẩm bán chạy nhất</span></span>
 					<span class="pull-right">
 						<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 					</span>
@@ -76,57 +57,92 @@ $this->title = 'Giỏ hàng';
 					<div class="carousel-inner">
 						<div class="active item">
 							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">
-										<span class="sale_tag"></span>												
-										<a href="product_detail.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
-										<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-										<a href="#" class="category">Suspendisse aliquet</a>
-										<p class="price">$261</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="item">
-							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">												
-										<a href="product_detail.html"><img alt="" src="themes/images/ladies/4.jpg"></a><br/>
-										<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
-										<a href="#" class="category">Urna nec lectus mollis</a>
-										<p class="price">$134</p>
-									</div>
-								</li>
-							</ul>
+								<?php
+								$i=0;
+								foreach ($featureProduct as $product)
+								{
+									if ($i==1) {
+										echo '</ul></div><div class="item"><ul class="thumbnails listing-products">';
+										$i=0;
+									}
+									echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+									$model = Product::findOne($product['id_product']);
+									if (!empty($model->getImageProducts()->one())) {
+										$image = $model->getImageProducts()->asArray()->one();
+										echo '<div class="jdimgcontainer">';
+										echo '<p>'.Html::a('<img src="../../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../../product/view', 'id' => $product['id_product']]).'</p>';
+										echo '<div class="middle">';
+										echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id_product']]).'</div>';
+										echo '</div></div>';
+									}
+									else
+									{
+										echo '<div class="jdimgcontainer">';
+										echo '<p>'.Html::a('<img src="../../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $product['id_product']]).'</p>';
+										echo '<div class="middle">';
+										echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id_product']]).'</div>';
+										echo '</div></div>';
+									}
+									echo Html::a($product['name'], ['../../product/view', 'id' => $product['id_product']],['class' => 'title']);
+										// echo '<p class="price">'.$model->price.' VNĐ</p>';
+									echo '<br/>';
+									echo Html::a($product['gender'], ['../product/view', 'id' => $product['id_product']],['class' => 'category']);
+									echo '</div></li>';
+									$i++;
+								}
+								?>					
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>						
-		</div>
-	</div>
-</section>
-<script>
-	$('.delCartItem').click(function() {
-			var orderLineId = $(this).parent().parent().find(".orderLineId").html();
-			//var baseUrl = '<?php echo Yii::$app->request->baseUrl?>';
-			// var orderlineItem = $(this).parent().parent().html();
-			// alert(orderlineItem);
-			var classOrderLineId = "."+orderLineId+"";
-			// alert("Đã xóa "+orderLineId);
-			// console.log("Bắt đầu");
-			// console.log($(classOrderLineId).html());
-			$.ajax({
-				url: '<?php echo Yii::$app->request->baseUrl. '/user/cart/del' ?>',
-				type: 'post',
-				data: {
-					 _csrf : '<?=Yii::$app->request->getCsrfToken()?>',
-					id: orderLineId
-				},
-				success:function(data){
-					alert("Đã xóa sản phẩm này khỏi giỏ hàng của bạn");
-					$(classOrderLineId).remove();
-				}
-			});
-			
-		});
-</script>			
+				<div class="block">
+					<h4 class="title">
+						<span class="pull-left"><span class="text">Sản phẩm mới nhất</span></span>
+						<span class="pull-right">
+							<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+						</span>
+					</h4>
+					<div id="myCarousel-2" class="carousel slide">
+						<div class="carousel-inner">
+							<div class="active item">
+								<ul class="thumbnails listing-products">
+									<?php
+									$i=0;
+									foreach ($newProduct as $product)
+									{
+										if ($i==1) {
+											echo '</ul></div><div class="item"><ul class="thumbnails listing-products">';
+											$i=0;
+										}
+										echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+										$model = Product::findOne($product['id']);
+										if (!empty($model->getImageProducts()->one())) {
+											$image = $model->getImageProducts()->asArray()->one();
+											echo '<div class="jdimgcontainer">';
+											echo '<p>'.Html::a('<img src="../../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../../product/view', 'id' => $product['id']]).'</p>';
+											echo '<div class="middle">';
+											echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id']]).'</div>';
+											echo '</div></div>';
+										}
+										else
+										{
+											echo '<div class="jdimgcontainer">';
+											echo '<p>'.Html::a('<img src="../../images/product-images/NoImageFound.png'.'" alt="" />', ['../product/view', 'id' => $product['id']]).'</p>';
+											echo '<div class="middle">';
+											echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../product/view', 'id' => $product['id']]).'</div>';
+											echo '</div></div>';
+										}
+										echo Html::a($product['name'], ['../../product/view', 'id' => $product['id']],['class' => 'title']);
+											// echo '<p class="price">'.$model->price.' VNĐ</p>';
+										echo '<br/>';
+										echo Html::a($model->type->gender, ['../../product/view', 'id' => $product['id']],['class' => 'category']);
+										echo '</div></li>';
+										$i++;
+									}
+									?>
+								</ul>
+							</div>
+						</div>						
+					</div>
+				</div>
+</section>		
