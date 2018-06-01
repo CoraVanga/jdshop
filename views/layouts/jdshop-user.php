@@ -60,7 +60,7 @@
                             <?php if(isset($_SESSION['ID_USER'])):?>
                             	 <?php
                                     $users = Users::findUsersById($_SESSION['ID_USER']);
-                                    $saleorder = SaleOrder::find()->where(['id_user'=>$users->id, 'status'=>'1'])->one();
+                                    $saleorder = SaleOrder::find()->where(['id_user'=>$users->id])->one();
                                     ?>
                             	<li><?= Html::a('Tài khoản', ['../user/users/view','id'=>$_SESSION['ID_USER']]) ?></li>
 								<?php if(isset($saleorder)):?>

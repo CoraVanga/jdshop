@@ -58,7 +58,16 @@ class CartController extends Controller
             ];
         }
     }
-
+    public function actionOld($id)
+    {
+        $this->layout = 'jdshop-user';
+        $soList = SaleOrder::find()->where(['id_user'=>$id])->all();
+        $user = Users::find()->where(['id'=>$id])->one();
+        return $this->render('viewold', [
+                'soList'=> $soList,
+                'user'=>$user,
+            ]);
+    }
     public function actionView()
     {   
         if (isset($_SESSION['ID_USER']))
@@ -83,7 +92,6 @@ class CartController extends Controller
         }
         else
         {
-            return $this->redirect(['../main']);
             $orderline = null;
         }
         if($_POST){
@@ -124,10 +132,10 @@ class CartController extends Controller
                 }
             }
         }
-        if(!isset($orderline))
-        {
-            return $this->redirect(['../main']);
-        }
+        // if(!isset($orderline))
+        // {
+        //     return $this->redirect(['../main']);
+        // }
         else {
             return $this->render('view', [
                 'saleorder'=>$saleorder,

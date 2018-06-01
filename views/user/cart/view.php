@@ -15,6 +15,7 @@ $this->title = 'Giỏ hàng';
 	<div class="row">
 		<div class="span9">					
 			<h4 class="title"><span class="text"><strong>Giỏ hàng</strong> của bạn</span></h4>
+			<?php if(isset($saleorder)):?>
 			<div>
 				<ul class="wizard pull-right">
 					<li id="step10" class="
@@ -194,7 +195,11 @@ $this->title = 'Giỏ hàng';
 				<p>Số điện thoại: <?php echo $user->phone?></p>
 				<p>Địa chỉ: <?php echo $user->address?></p>
 			<?php endif;?>
-								
+			<?php else: ?>
+				<h2 align="center">Hiện tại bạn chưa có đơn hàng nào</h2>
+				<h3 align="center" style="color:#eb4800">Xem những đơn hàng bạn đã mua</h3>
+				<?=Html::a('Xem những đơn hàng bạn đã mua', ['../user/cart/old', 'id' => $_SESSION['ID_USER']],['class' => 'title'])?>
+			<?php endif;?>			
 		</div>
 		<div class="span3 col">
 			<div class="block">	
