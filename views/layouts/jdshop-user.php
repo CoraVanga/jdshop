@@ -50,9 +50,7 @@
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
-					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
-					</form>
+					<p style="color:#eb4800"><b>NIỀM TIN LÀ GIÁ TRỊ CỐT LÕI</b></p>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
