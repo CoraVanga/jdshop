@@ -50,13 +50,28 @@ class ProductController extends Controller
         {
             $name="N'Nhẫn'";
             $nametype='Nhẫn';
-            //get product by type
-            $query = new \yii\db\Query;
-            $query->select('p.name as productname, t.gender as gender, t.name as typename,p.id as pid')
-                ->from('product as p, type as t')
-                ->where('p.id_type=t.id and t.name='.$name);
-            $productList = $query->all();
         }
+        if($type=='earring')
+        {
+            $name="N'Bông tai'";
+            $nametype='Bông tai';
+        }
+        if($type=='necklace')
+        {
+            $name="N'Dây chuyền'";
+            $nametype='Dây chuyền';
+        }
+        if($type=='bangles')
+        {
+            $name="N'Lắc tay'";
+            $nametype='Lắc tay';
+        }
+        //get product by type
+        $query = new \yii\db\Query;
+        $query->select('p.name as productname, t.gender as gender, t.name as typename,p.id as pid')
+            ->from('product as p, type as t')
+            ->where('p.id_type=t.id and t.name='.$name);
+        $productList = $query->all();
         return $this->render('view', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

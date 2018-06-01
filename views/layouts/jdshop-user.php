@@ -103,9 +103,9 @@
 							<li><a href="<?php echo Yii::$app->homeUrl.'../user/product'?>">Sản phẩm</a>					
 								<ul>
 									<li><?= Html::a('Nhẫn', ['../user/product/view', 'type' => 'ring'])?></li>				
-									<li><a href="./products.html">Bông tai</a></li>
-									<li><a href="./products.html">Dây chuyền</a></li>
-									<li><a href="./products.html">Lắc tay, lắc chân</a></li>									
+									<li><?= Html::a('Bông tai', ['../user/product/view', 'type' => 'earring'])?></li>
+									<li><?= Html::a('Dây chuyền', ['../user/product/view', 'type' => 'necklace'])?></li>
+									<li><?= Html::a('Lắc tay', ['../user/product/view', 'type' => 'bangles'])?></li>									
 								</ul>
 							</li>
 							<li><li><?= Html::a('Liên hệ', ['../main/info']) ?></li>

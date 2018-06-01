@@ -18,8 +18,13 @@ use app\models\Product;
 					<div class="span9">								
 						<ul class="thumbnails listing-products">
 							<?php
+								$i=0;
 								foreach($productList as $product)
 								{
+									if($i%3==0)
+									{
+										echo '<div style="clear:both;"></div>';
+									}
 									echo '<li class="span3">';
 									echo '<div class="product-box">';
 									echo '<span class="sale_tag"></span>';
@@ -47,6 +52,11 @@ use app\models\Product;
 
 									echo '</div>';
 									echo '</li>';
+									if($i==(count($productList)-1))
+									{
+										echo '<div style="clear:both;"></div>';
+									}
+									$i++;
 								}
 							?>
 												
