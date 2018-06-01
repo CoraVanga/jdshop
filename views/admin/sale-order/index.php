@@ -7,32 +7,65 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SearchSaleOrder */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Sale Orders';
+$this->title = 'Danh sách đơn hàng';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sale-order-index">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-title">
+                <h4><?= Html::encode($this->title) ?></h4>
+                <p>
+                    <?= Html::a('Thêm đơn hàng', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
+            </div>
+            <div class="card-body">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
+                        'attribute'=>'user.name',
+                        //'total_price',
+                        [
+                            'label' => 'Tổng tiền',
+                            'value' => function ($model) {
+                                    return number_format($model->total_price);
+                            },
+                        ],
+                        //'id',
+                        //'bill_code',
+                        [
+                            'label' => 'Địa chỉ',
+                            'value' => function ($model) {
+                                    return $model->user->address;
+                            },
+                        ],
+                        [
+                            'label' => 'Ngày tạo',
+                            'value' => function ($model) {
+                                    return date("d/m/Y", strtotime($model->created_date));
+                            },
+                        ],
+                        [
+                            'label' => 'Trạng thái',
+                            'value' => function ($model) {
+                                    if($model->status==4)
+                                        return 'Hoàn hành';
+                                    if($model->status==3)
+                                        return 'Đơn hàng';
+                                    
+                            },
+                        ],
+                        //'status',
+                        //'id_user',
 
-    <p>
-        <?= Html::a('Create Sale Order', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'total_price',
-            'id',
-            //'bill_code',
-            'status',
-            'created_date',
-            //'id_user',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                        ['class' => 'yii\grid\ActionColumn'],
+                    ],
+                    ]); ?>
+            </div>
+        </div>
+    </div>
 </div>
+
