@@ -35,11 +35,33 @@ class ProductController extends Controller
         $this->layout = 'jdshop-user';
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $post = new Product();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+    public function actionView($type)
+    {
+        $this->layout = 'jdshop-user';
+        $searchModel = new SearchProduct();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if($type=='ring')
+        {
+            $name="N'Nhẫn'";
+            $nametype='Nhẫn';
+            //get product by type
+            $query = new \yii\db\Query;
+            $query->select('p.name as productname, t.gender as gender, t.name as typename,p.id as pid')
+                ->from('product as p, type as t')
+                ->where('p.id_type=t.id and t.name='.$name);
+            $productList = $query->all();
+        }
+        return $this->render('view', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'productList' => $productList,
+            'nametype'=>$nametype,
         ]);
     }
 }

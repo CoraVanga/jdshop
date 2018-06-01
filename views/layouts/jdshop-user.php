@@ -102,7 +102,7 @@
 							</li>
 							<li><a href="<?php echo Yii::$app->homeUrl.'../user/product'?>">Sản phẩm</a>					
 								<ul>
-									<li><a href="<?php echo Yii::$app->homeUrl.'../user/product'?>">Nhẫn</a></li>				
+									<li><?= Html::a('Nhẫn', ['../user/product/view', 'type' => 'ring'])?></li>				
 									<li><a href="./products.html">Bông tai</a></li>
 									<li><a href="./products.html">Dây chuyền</a></li>
 									<li><a href="./products.html">Lắc tay, lắc chân</a></li>									
