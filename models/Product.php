@@ -56,14 +56,14 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'created_date' => 'Created Date',
-            'status' => 'Status',
-            'code' => 'Code',
-            'info' => 'Info',
-            'id_type' => 'Id Type',
-            'created_uid' => 'Created Uid',
-            'id_discount' => 'Id Discount',
+            'name' => 'Tên sản phẩm',
+            'created_date' => 'Ngảy tạo',
+            'status' => 'trạng thái',
+            'code' => 'Mã',
+            'info' => 'Mô tả',
+            'id_type' => 'Loại sản phẩm',
+            'created_uid' => 'Người tạo',
+            'id_discount' => 'Khuyến mãi',
         ];
     }
 

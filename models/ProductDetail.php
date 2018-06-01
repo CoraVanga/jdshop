@@ -44,10 +44,10 @@ class ProductDetail extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'size' => 'Size',
-            'price' => 'Price',
-            'amount' => 'Amount',
-            'id_product' => 'Id Product',
+            'size' => 'Kích cỡ',
+            'price' => 'Giá',
+            'amount' => 'Số lượng tồn',
+            'id_product' => 'Sản phẩm',
         ];
     }
 

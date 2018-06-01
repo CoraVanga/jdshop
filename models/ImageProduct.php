@@ -42,8 +42,8 @@ class ImageProduct extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'link' => 'Link',
-            'id_product' => 'Id Product',
+            'link' => 'Hình ảnh',
+            'id_product' => 'Sản phẩm',
         ];
     }
 

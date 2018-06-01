@@ -14,8 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'total_price')->textInput() ?>
 
-    <?= $form->field($model, 'bill_code')->textInput() ?>
-
     <?= $form->field($model, 'status')->textInput() ?>
 
     <?= $form->field($model, 'created_date')->textInput() ?>
