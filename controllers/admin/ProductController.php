@@ -175,6 +175,30 @@ class ProductController extends Controller
         $model = $this->findModel($id);
         $modelImage = new ImageProduct();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->created_uid = $_SESSION['ID_USER'];
+            $model->save();
+            foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name){
+                $temp = $_FILES["files"]["tmp_name"][$key];
+                $path = $_FILES["files"]["name"][$key];
+                $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+                $modelImage = new ImageProduct();
+                $modelImage->id_product = $model->id;
+                $modelImage->save();
+                $productId = $model->id; //model->id_product;
+                $imageId = $modelImage->id;
+
+                $name = '[JDSHOP]'.$productId.$imageId.'.'.$ext;
+                 
+                if(empty($temp))
+                {
+                    break;
+                }
+                 
+                move_uploaded_file($temp,$this->getStoreToSave().'/'.$name);
+                $modelImage->link = $name;
+                $modelImage->save();
+            }
 
             if(UploadedFile::getInstance($modelImage, 'link'))
             {
@@ -185,8 +209,24 @@ class ProductController extends Controller
                 $image = UploadedFile::getInstance($modelImage, 'link');
                 $imgName = '[JDSHOP]'.$productId.$imageId.'.'.$image->getExtension();
                 $image->saveAs($this->getStoreToSave().'/'.$imgName);
+                //$image->saveAs('localhost:7777/images/product-images'.'/'.$imgName);
                 $modelImage->link = $imgName;
                 $modelImage->save();
+            }
+            if (isset($_POST['sizeList']))
+            {
+                $size = json_decode($_POST['sizeList']);
+                $amount = json_decode($_POST['amountList']);
+                $price = json_decode($_POST['priceList']);
+                //echo $array[0];
+                for ($x = 0; $x <= count($price)-1; $x++) {
+                    $productdetail = new ProductDetail();
+                    $productdetail->size = $size[$x];
+                    $productdetail->price = $price[$x];
+                    $productdetail->amount = $amount[$x];
+                    $productdetail->id_product = $model->id;
+                    $productdetail->save();
+                } 
             }
             return $this->redirect(['view', 'id' => $model->id]);
         }

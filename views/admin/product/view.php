@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row p-t-20">
                     <div class="form-group">
                         <div class="col-md-5">
-                            <h4>Loại sản phẩm: <?=$model->type->name.':'.$model->type->gender?></h4>
+                            <h4>Loại sản phẩm: <?=$model->type->name.' ('.$model->type->gender.')'?></h4>
                         </div>
                     </div>
                 </div>
