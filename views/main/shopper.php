@@ -137,7 +137,7 @@ use app\models\Product;
 			<div class="responsive">	
 				<img src="../assets-shopper/themes/images/feature_img_2.png" alt="" />
 				<h4>Thiết kế  <strong>sang trọng</strong></h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>									
+				<p>JD hân hạnh mang tới dòng sản phẩm được thiết kế tinh tế, sang trọng cho khách hàng.</p>									
 			</div>
 		</div>
 	</div>
@@ -146,7 +146,7 @@ use app\models\Product;
 			<div class="customize">			
 				<img src="../assets-shopper/themes/images/feature_img_1.png" alt="" />
 				<h4>Miễn phí  <strong>giao hàng</strong></h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+				<p>Đối với tất cả khách hàng khi mua hàng ở JD sẽ được miễn phí giao hàng.</p>
 			</div>
 		</div>
 	</div>
@@ -155,7 +155,7 @@ use app\models\Product;
 			<div class="support">	
 				<img src="../assets-shopper/themes/images/feature_img_3.png" alt="" />
 				<h4>Miễn phí<strong> làm sạch trọn đời</strong></h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+				<p>Những sản phẩm của JD sau thời gian sử dụng có thể đem lại cửa hàng để làm sạch.</p>
 			</div>
 		</div>
 	</div>	

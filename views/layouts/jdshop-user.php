@@ -148,11 +148,11 @@
 						<h4>Hỗ trợ mua hàng</h4>
 						<ul class="nav">
 							<li><?= Html::a('Hướng dẫn mua hàng', ['../main/hdmh']) ?></li>
-							<li><a href="http://localhost:8080/main/hdtt">Hướng dẫn thanh toán</a></li>
-							<li><a href="http://localhost:8080/main/hdvc">Phương thức vận chuyển</a></li>
-							<li><a href="http://localhost:8080/main/hdds">Hướng dẫn đo size trang sức</a></li>
-							<li><a href="http://localhost:8080/main/hdsd">Hướng dẫn sử dụng trang sức</a></li>
-							<li><a href="http://localhost:8080/main/hdtc">Tra cứu đơn hàng-thẻ thành viên</a></li>
+							<li><?= Html::a('Hướng dẫn thanh toán', ['../main/hdtt']) ?></li>
+							<li><?= Html::a('Phương thức vận chuyển', ['../main/hdvc']) ?></li>
+							<li><?= Html::a('Hướng dẫn đo size trang sức', ['../main/hdds']) ?></li>
+							<li><?= Html::a('Hướng dẫn sử dụng trang sức', ['../main/hdsd']) ?></li>
+							<li><?= Html::a('Tra cứu đơn hàng-thẻ thành viên', ['../main/hdtc']) ?></li>
 						</ul>
 					</div>
 					<div class="span5">
