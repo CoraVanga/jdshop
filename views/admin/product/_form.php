@@ -55,7 +55,7 @@ use kato\DropZone;
                     $listdp = [];
                     foreach($discounts as $discount)
                     {
-                        $listdp[$discount->id]=$type->info;
+                        $listdp[$discount->id]=$discount->info;
                     }
                 ?>
                 <?= $form->field($model, 'id_discount')->dropDownList($listdp,['prompt'=>'Khuyến mãi'])->label(false)?>

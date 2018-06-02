@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\models\DiscountProduct;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
@@ -55,10 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row p-t-20">
                     <div class="form-group">
                         <div class="col-md-10">
-                            <?php
-
-                            ?>
-                            <h4>Khuyến mãi: <?=$model->id_discount?></h4>
+                            <h4>Khuyến mãi: 
+                            <?= Html::a($discount->info, ['../../admin/discount-product/view','id'=>$discount->id]) ?></h4>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace app\controllers\admin;
 
 use Yii;
 use app\models\ProductDetail;
+use app\models\DiscountProduct;
 use app\models\Product;
 use app\models\SearchProduct;
 use app\models\ImageProduct;
@@ -80,9 +81,11 @@ class ProductController extends Controller
     {
         $this->layout = 'jdshop-admin';
         $productdetails = ProductDetail::find()->where(['id_product'=>$id])->all();
+        $discount = DiscountProduct::find()->where(['id'=>$this->findModel($id)->id_discount])->one();
         return $this->render('view', [
             'model' => $this->findModel($id),
             'productdetails' => $productdetails,
+            'discount' => $discount,
         ]);
     }
 
