@@ -96,6 +96,30 @@ class ProductController extends Controller
         $modelImage = new ImageProduct();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+
+            foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name){
+                $temp = $_FILES["files"]["tmp_name"][$key];
+                $path = $_FILES["files"]["name"][$key];
+                $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+                $modelImage = new ImageProduct();
+                $modelImage->id_product = $model->id;
+                $modelImage->save();
+                $productId = $model->id; //model->id_product;
+                $imageId = $modelImage->id;
+
+                $name = '[JDSHOP]'.$productId.$imageId.'.'.$ext;
+                 
+                if(empty($temp))
+                {
+                    break;
+                }
+                 
+                move_uploaded_file($temp,$this->getStoreToSave().'/'.$name);
+                $modelImage->link = $name;
+                $modelImage->save();
+            }
+
             if(UploadedFile::getInstance($modelImage, 'link'))
             {
                 $modelImage->id_product = $model->id;

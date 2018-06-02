@@ -16,7 +16,7 @@ use kato\DropZone;
         <h3>Thông tin sản phẩm</h3>
     </div>
     <hr>
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="row p-t-0">
         <div class="col-md-12">
             <div class="form-group">
@@ -62,7 +62,9 @@ use kato\DropZone;
             </div>
         </div>
     </div>
-
+    <label>Chọn hình ảnh</label>
+    <input type="file" name="files[]" multiple="multiple" />
+    <br>
 <!--     <div class="row p-t-20">
         <div class="col-md-12">
             <div class="form-group">
@@ -75,7 +77,7 @@ use kato\DropZone;
     <input type="hidden" name="amountList" class="jdAmountList" value="">
     <div class="jdtab">
       <button type="button" class="jdtablinks active" onclick="openTab(event, 'detail')">Chi tiết sản phẩm</button>
-      <button type="button" class="jdtablinks" onclick="openTab(event, 'image')">Hình ảnh</button>
+      <!-- <button type="button" class="jdtablinks" onclick="openTab(event, 'image')">Hình ảnh</button> -->
       <button type="button" class="jdtablinks" onclick="openTab(event, 'info')">Mô tả</button>
     </div>
 
@@ -104,9 +106,7 @@ use kato\DropZone;
         </div>
     </div>
 
-    <div id="image" class="jdtabcontent" style="overflow:auto;">
-        <!-- <?= $form->field($modelImage, 'link')->fileInput() ?> -->
-    </div>
+
 
     <div id="info" class="jdtabcontent" style="overflow:auto;">
         <?= $form->field($model, 'info')->textarea(['rows' => '9'])->label(false) ?>
