@@ -126,7 +126,7 @@ use kato\DropZone;
                 echo '<div class="jdimgcontainer">';
                 echo '<p><img width="200" height="200" src="../../images/product-images'.'/'.$photo->link.'"></p>';
                 echo '<div class="jdmiddle">';
-                echo Html::a('Xóa', ['../../admin/image-product/delete', 'id' => $photo->id], [
+                echo Html::a('Xóa', ['../../admin/product/delimage', 'idi' => $photo->id, 'idp' => $model->id], [
                     'class' => 'btn btn-danger jdimgtext',
                     'data' => [
                         'confirm' => 'Bạn có chắc chắn muốn xóa hình ảnh này?',

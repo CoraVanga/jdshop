@@ -44,6 +44,13 @@ class ProductController extends Controller
      * Lists all Product models.
      * @return mixed
      */
+    public function actionDelimage($idi, $idp)
+    {
+        $this->layout = 'jdshop-admin';
+        // $this->findModel($id)->delete();
+
+        return $this->redirect(['update','id' => $idp]);
+    }
     public function actionIndex()
     {
 
