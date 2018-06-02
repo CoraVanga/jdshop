@@ -57,8 +57,8 @@ class Product extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Tên sản phẩm',
-            'created_date' => 'Ngảy tạo',
-            'status' => 'trạng thái',
+            'created_date' => 'Ngày tạo',
+            'status' => 'Trạng thái',
             'code' => 'Mã',
             'info' => 'Mô tả',
             'id_type' => 'Loại sản phẩm',

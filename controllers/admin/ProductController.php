@@ -79,8 +79,10 @@ class ProductController extends Controller
     public function actionView($id)
     {
         $this->layout = 'jdshop-admin';
+        $productdetails = ProductDetail::find()->where(['id_product'=>$id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'productdetails' => $productdetails,
         ]);
     }
 
@@ -95,8 +97,8 @@ class ProductController extends Controller
         $model = new Product();
         $modelImage = new ImageProduct();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-
+            $model->created_uid = $_SESSION['ID_USER'];
+            $model->save();
             foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name){
                 $temp = $_FILES["files"]["tmp_name"][$key];
                 $path = $_FILES["files"]["name"][$key];
