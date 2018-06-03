@@ -174,6 +174,15 @@ class CartController extends Controller
                     ]);
                 }
             }
+            return $this->render('view', [
+                'saleorder'=>$saleorder,
+                'orderline'=>$orderline,
+                'user'=>$user,
+                'status'=>$status,
+                'newProduct' => $newProduct,
+                'featureProduct' =>$featureProduct,
+            ]);
+
         }
         // if(!isset($orderline))
         // {
