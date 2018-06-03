@@ -69,6 +69,8 @@ class SaleOrderController extends Controller
         $model = new SaleOrder();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->created_uid = $_SESSION['ID_USER'];
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

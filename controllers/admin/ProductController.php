@@ -44,12 +44,22 @@ class ProductController extends Controller
      * Lists all Product models.
      * @return mixed
      */
-    public function actionDelimage($idi, $idp)
+    public function actionDelimage()
     {
-        $this->layout = 'jdshop-admin';
-        // $this->findModel($id)->delete();
-
-        return $this->redirect(['update','id' => $idp]);
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $imageProduct = ImageProduct::findOne($_POST['id']);
+            if(isset($imageProduct))
+            {
+                $link = $imageProduct->link;
+                $imageProduct->delete();
+                $path = $_SERVER['DOCUMENT_ROOT'].'\images\product-images\\'.$link;
+                unlink($path);
+            }
+            return [
+                'success' => '1',
+            ];
+        }
     }
     public function actionIndex()
     {

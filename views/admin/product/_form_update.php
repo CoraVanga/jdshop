@@ -124,15 +124,10 @@ use kato\DropZone;
                     
                 echo '<td>';
                 echo '<div class="jdimgcontainer">';
+                echo '<p hidden="1" class="jdImageId">'.$photo->id.'</p>';
                 echo '<p><img width="200" height="200" src="../../images/product-images'.'/'.$photo->link.'"></p>';
                 echo '<div class="jdmiddle">';
-                echo Html::a('Xóa', ['../../admin/product/delimage', 'idi' => $photo->id, 'idp' => $model->id], [
-                    'class' => 'btn btn-danger jdimgtext',
-                    'data' => [
-                        'confirm' => 'Bạn có chắc chắn muốn xóa hình ảnh này?',
-                        'method' => 'post',
-                    ],
-                    ]);
+                echo '<p class="btn btn-danger jdDelImageButton">Xóa</p>';
                 echo '</div></div>';
                 echo '</td>';
                 if($i==3)

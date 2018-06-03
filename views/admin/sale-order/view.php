@@ -7,30 +7,35 @@ use yii\widgets\DetailView;
 /* @var $model app\models\SaleOrder */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Sale Orders', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Đơn hàng', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sale-order-view">
+    <div class="col-lg-10">
+        <div class="card card-outline-primary">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white" style="padding:10px;">Thông tin đơn hàng</h4>
+            </div>
+            <br/>
+            <p>
+                <?= Html::a('Sửa đổi', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('Xóa', ['delete', 'id' => $model->id], [
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => 'Bạn có chắc chắn muốn xóa sản phẩm này?',
+                        'method' => 'post',
+                    ],
+                    ]) ?>
+            </p>
+            <br/>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'total_price',
             'id',
-            'bill_code',
+            //'bill_code',
             'status',
             'created_date',
             'id_user',

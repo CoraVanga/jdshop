@@ -25,3 +25,24 @@ $this->params['breadcrumbs'][] = 'Cập nhật';
 		</div>
 	</div>
 </div>
+<script>
+	$('.jdDelImageButton').click(function() {
+			$(this).parent().parent().parent().attr('id','jdDelIem');
+			idImage = $(this).parent().parent().parent().find('.jdImageId').html();
+			alert(idImage);
+
+			$.ajax({
+				url: '<?php echo Yii::$app->request->baseUrl. '/admin/product/delimage' ?>',
+				type: 'post',
+				data: {
+					 _csrf : '<?=Yii::$app->request->getCsrfToken()?>',
+					id: idImage,
+				},
+				success:function(data){
+					alert("Xóa hình ảnh thành công");
+					$('#jdDelIem').remove();
+				}
+			});
+			
+		});
+</script>
