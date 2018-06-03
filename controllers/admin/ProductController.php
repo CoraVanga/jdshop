@@ -61,6 +61,20 @@ class ProductController extends Controller
             ];
         }
     }
+    public function actionDeldetail()
+    {
+        if (Yii::$app->request->isAjax) {
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $productDetail = ProductDetail::findOne($_POST['id']);
+            if(isset($productDetail))
+            {
+                $productDetail->delete();
+            }
+            return [
+                'success' => '1',
+            ];
+        }
+    }
     public function actionIndex()
     {
 

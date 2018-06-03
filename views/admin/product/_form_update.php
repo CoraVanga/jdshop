@@ -83,7 +83,7 @@ use kato\DropZone;
 
     <div id="detail" class="jdtabcontent" style="display: block; overflow:auto;">
         <div class="table-responsive">
-            <table class="table table-striped jdOne2Many">
+            <table class="table table-hover jdOne2Many">
                 <thead>
                     <tr>
                         <th>STT</th>
@@ -94,8 +94,24 @@ use kato\DropZone;
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                            $i=1;
+                            foreach($model->productDetails as $productdetail)
+                            {
+                                echo '<tr class="jdItem">';
+                                echo '<td hidden="1" class="jdProductDetailID">'.$productdetail->id.'</td>';
+                                echo '<td class="jdOrderNumber">'.$i.'</td>';
+                                echo '<td>'.$productdetail->size.'</td>';
+                                echo '<td>'.number_format($productdetail->price).' VNĐ</td>';
+                                echo '<td>'.$productdetail->amount.'</td>';
+                                echo '<td><p class="jdDeleteItem" onclick="deleteOne2ManyRow(this)"><i class="fa fa-trash-o jdDeleteDetail" aria-hidden="true"></i></p><td>';
+                                echo '<tr/>';
+                                $i++;
+                            }
+                        ?>
                     <tr class="jdButtonRow">
                         <td><button id="jdAddButton" type="button" class="btn btn-primary m-b-10 m-l-5 btn-sm">Thêm chi tiết mới</button></td>
+                        <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>

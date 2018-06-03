@@ -29,8 +29,6 @@ $this->params['breadcrumbs'][] = 'Cập nhật';
 	$('.jdDelImageButton').click(function() {
 			$(this).parent().parent().parent().attr('id','jdDelIem');
 			idImage = $(this).parent().parent().parent().find('.jdImageId').html();
-			alert(idImage);
-
 			$.ajax({
 				url: '<?php echo Yii::$app->request->baseUrl. '/admin/product/delimage' ?>',
 				type: 'post',
@@ -41,6 +39,22 @@ $this->params['breadcrumbs'][] = 'Cập nhật';
 				success:function(data){
 					alert("Xóa hình ảnh thành công");
 					$('#jdDelIem').remove();
+				}
+			});
+			
+		});
+		$('.jdDeleteDetail').click(function() {
+			idProductDetail = $(this).parent().parent().parent().find('.jdProductDetailID').html();
+			//alert(idProductDetail);
+			$.ajax({
+				url: '<?php echo Yii::$app->request->baseUrl. '/admin/product/deldetail' ?>',
+				type: 'post',
+				data: {
+					 _csrf : '<?=Yii::$app->request->getCsrfToken()?>',
+					id: idProductDetail,
+				},
+				success:function(data){
+					alert("Xóa chi tiết thành công");
 				}
 			});
 			

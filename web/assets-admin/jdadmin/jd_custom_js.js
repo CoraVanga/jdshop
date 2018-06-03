@@ -13,8 +13,11 @@ function openTab(evt, tabName) {
 }
 $("#jdAddButton").click(function(){
     var string = '<tr class="jdItem">';
-    var rowCount = $('.jdOne2Many tr').length;
-    rowCount = rowCount -1;
+    var rowCount = 1;
+    $('.jdOne2Many tr.jdItem').each(function(){
+        rowCount = rowCount + 1;
+    });
+    //rowCount = rowCount -1;
     string = string + '<td class="jdOrderNumber">'+rowCount+'</td>';
     string = string + '<td><input type="number" class="form-control input-flat input-sm jdSize" onchange="getSizeValue()" placeholder="Kích cỡ sản phẩm" name="size"></td>';
     string = string + '<td><input type="number" class="form-control input-flat input-sm jdPrice" onchange="getPriceValue()" placeholder="Giá tiền" name="price"></td>';
