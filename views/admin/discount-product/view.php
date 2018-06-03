@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                 </div>
-
+                <h4>Danh sách sản phẩm áp dụng khuyến mãi</h4>
                 <div class="jdtab">
                     <button type="button" class="jdtablinks active" onclick="openTab(event, 'detail0')"><?= $typeList['0']['name']?></button>
                     <?php

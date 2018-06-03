@@ -47,6 +47,7 @@ use yii\jui\DatePicker;
             </div>
         </div>
     </div>
+    <h4>Danh sách sản phẩm áp dụng khuyến mãi</h4>
      <input type="hidden" name="productList" class="jdProductList" value="">
     <div class="jdtab">
 
@@ -90,7 +91,16 @@ use yii\jui\DatePicker;
             echo '<tbody>';
             foreach($productList as $product)
             {
-                if($product->type->name == $type['name'])
+                if($product->type->name == $type['name'] && $product->id_discount == $model->id && $model->info!=null)
+                {
+                    echo '<tr>';
+                    echo '<td><input type="checkbox" class="jdProductItem" checked="checked"></td>';
+                    echo '<td hidden="1" class="jdProductID">'.$product->id.'</td>';
+                    echo '<td>'.$product->name.'</td>';
+                    echo '<td>'.$product->code.'</td>';
+                    echo '</tr>';
+                }
+                else if($product->type->name == $type['name'])
                 {
                     echo '<tr>';
                     echo '<td><input type="checkbox" class="jdProductItem"></td>';

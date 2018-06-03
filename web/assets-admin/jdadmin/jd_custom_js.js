@@ -97,6 +97,9 @@ $('.jdProductItem').click(function(){
         getProductValue();
     }
 });
+$('.discount-product-update').ready(function(){
+    getProductValue();
+});
 function getProductValue(){
     var productList = []
     $(document).find('.jdProductItem').each(function(){
