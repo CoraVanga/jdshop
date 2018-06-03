@@ -56,9 +56,18 @@ class DiscountProductController extends Controller
     public function actionView($id)
     {
         $this->layout='jdshop-admin';
+        $productList = Product::find()->all();
 
+        $query = new \yii\db\Query;
+        $query->select('t.name')
+            ->from('type as t, product as p')
+            ->where('t.id = p.id_type')
+            ->groupBy(['t.name']);
+        $typeList = $query->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'productList' => $productList,
+            'typeList' =>$typeList,
         ]);
     }
 
