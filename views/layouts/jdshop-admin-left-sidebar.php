@@ -21,7 +21,7 @@
 
                 
                 <li class="nav-label">Thống kê</li>
-                <li> <a href="../../admin/users" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Doanh thu</span></a>
+                <li> <a href="../../admin/statistics" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Doanh thu</span></a>
                 
             </ul>
         </nav>

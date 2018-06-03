@@ -28,8 +28,8 @@ AppAsset::register($this);
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo Yii::$app->homeUrl.'../assets-admin/images/favicon.png'?>">
+    <link rel="shortcut icon" href="<?php echo Yii::$app->homeUrl.'../assets-shopper/imageweb/icon1.png'?>">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="<?php echo Yii::$app->homeUrl.'../assets-admin/images/favicon.png'?>"> -->
     <link href="<?php echo Yii::$app->homeUrl.'../assets-admin/jdadmin/jd_custom_css.css'?>" rel="stylesheet"/>
     <link href="<?php echo Yii::$app->homeUrl.'../assets-admin/css/lib/dropzone/dropzone.css'?>" rel="stylesheet"/>
     <script src="<?php echo Yii::$app->homeUrl.'../assets-admin/js/lib/jquery/jquery.min.js'?>"></script>
@@ -62,12 +62,12 @@ AppAsset::register($this);
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="../../admin/home">
                         <!-- Logo icon -->
-                        <b><img src="<?php echo Yii::$app->homeUrl.'../assets-admin/images/logo.png'?>" alt="homepage" class="dark-logo" /></b>
+                        <b><img src="<?php echo Yii::$app->homeUrl.'../assets-shopper/imageweb/icon1.png'?>" alt="homepage" class="dark-logo" /></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="<?php echo Yii::$app->homeUrl.'../assets-admin/images/logo-text.png'?>" alt="homepage" class="dark-logo" /></span>
+                        <!-- <span><img src="<?php echo Yii::$app->homeUrl.'../assets-admin/images/logo-text.png'?>" alt="homepage" class="dark-logo" /></span> -->
                     </a>
                 </div>
                 <!-- End Logo -->
