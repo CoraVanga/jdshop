@@ -92,6 +92,25 @@ class CartController extends Controller
     }
     public function actionView()
     {   
+        //get feature product
+        $query = new \yii\db\Query;
+        $query->select('order_line.id_product,type.gender,product.name, sum(amount)  as amount')
+            ->from('order_line')
+            ->innerJoin('product',$on = 'product.id = order_line.id_product')
+            ->innerJoin('type',$on = 'product.id_type = type.id')
+            ->addGroupBy('order_line.id_product,product.name,type.gender')
+            ->addOrderBy(['sum(amount)'=>SORT_DESC])
+            ->limit(4);
+        $featureProduct = $query->all();
+
+        //get new product
+        $query = new \yii\db\Query;
+        $query->select('*')
+            ->from('product')
+            ->addOrderBy(['created_date'=>SORT_DESC])
+            ->limit(4);
+        $newProduct = $query->all();
+
         if (isset($_SESSION['ID_USER']))
         {
             $user = Users::findOne($_SESSION['ID_USER']);
@@ -150,6 +169,8 @@ class CartController extends Controller
                         'orderline'=>$new_orderline,
                         'user'=>$user,
                         'status'=>$status,
+                        'newProduct' => $newProduct,
+                        'featureProduct' =>$featureProduct,
                     ]);
                 }
             }
@@ -164,6 +185,8 @@ class CartController extends Controller
                 'orderline'=>$orderline,
                 'user'=>$user,
                 'status'=>$status,
+                'newProduct' => $newProduct,
+                'featureProduct' =>$featureProduct,
             ]);    
         }
     }
