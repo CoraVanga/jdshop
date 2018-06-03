@@ -73,6 +73,19 @@ class DiscountProductController extends Controller
         $model = new DiscountProduct();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if (isset($_POST['productList']))
+            {
+                $idProduct = json_decode($_POST['productList']);
+                //echo $array[0];
+                for ($x = 0; $x <= count($idProduct)-1; $x++) {
+                    $product = Product::findOne($idProduct[$x]);
+                    if(isset($product))
+                    {
+                        $product->id_discount = $model->id;
+                        $product->save();
+                    }
+                } 
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
         $productList = Product::find()->all();
