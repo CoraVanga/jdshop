@@ -81,10 +81,23 @@
 	//Numbers are right-aligned so we give 'R' after new line parameter
 	foreach($model->orderLines as $orderline)
     {
-    	$pdf->Cell(114 ,7,$orderline->product->name,1,0);
-		$pdf->Cell(25 ,7,$orderline->size_product,1,0);
-		$pdf->Cell(25 ,7,$orderline->amount,1,0);
-		$pdf->Cell(25 ,7,number_format($orderline->sum_price),1,1,'R');//end of line
+    	if(strlen($orderline->product->name)>=55)
+    	{
+	    	$y = $pdf->GetY();
+	    	$pdf->MultiCell(114 ,7,$orderline->product->name,1,'L',false);
+	    	$x = $pdf->GetX();
+	    	$pdf->setXY($x+114,$y);
+			$pdf->Cell(25 ,14,$orderline->size_product,1,0,'C');
+			$pdf->Cell(25 ,14,$orderline->amount,1,0,'C');
+			$pdf->Cell(25 ,14,number_format($orderline->sum_price),1,1,'C');//end of line
+		}
+		else
+		{
+	    	$pdf->Cell(114 ,7,$orderline->product->name,1,0);
+			$pdf->Cell(25 ,7,$orderline->size_product,1,0,'C');
+			$pdf->Cell(25 ,7,$orderline->amount,1,0,'C');
+			$pdf->Cell(25 ,7,number_format($orderline->sum_price),1,1,'C');//end of line
+		}
     }
 	// $pdf->Cell(130 ,5,'UltraCool Fridge',1,0);
 	// $pdf->Cell(25 ,5,'-',1,0);
@@ -114,10 +127,11 @@
 	// $pdf->Cell(4 ,5,'$',1,0);
 	// $pdf->Cell(30 ,5,'10%',1,1,'R');//end of line
     //make a dummy empty cell as a vertical spacer
-	$pdf->Cell(189 ,10,'',0,1);//end of line
-	$pdf->Cell(130 ,5,'',0,0);
-	$pdf->Cell(25 ,5,'Tổng cộng',0,0);
-	$pdf->Cell(30 ,5,number_format($model->total_price).' VNĐ',0,1,'R');//end of line
+    $pdf->SetFont('DejaVuB','',15);
+	$pdf->Cell(189 ,5,'',0,1);//end of line
+	$pdf->Cell(125 ,5,'',0,0);
+	$pdf->Cell(30 ,5,'Tổng cộng: ',0,0);
+	$pdf->Cell(30 ,5,number_format($model->total_price).' VNĐ',0,1,'L');//end of line
 
 	//output the result
 	$pdf->Output();
