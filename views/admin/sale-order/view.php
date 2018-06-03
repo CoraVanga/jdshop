@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </p>
             <br/>
             <p>
-                <button class="btn btn-info">In</button>
+                <?= Html::a('In', ['print', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
                 <?php
                     if($model->status==1 || $model->status==2)
                         echo Html::a('Xác nhận', ['changestatus', 'id' => $model->id, 'status'=>3],['class'=>'btn btn-warning']);

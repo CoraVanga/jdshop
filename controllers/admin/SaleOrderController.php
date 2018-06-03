@@ -33,6 +33,16 @@ class SaleOrderController extends Controller
      * Lists all SaleOrder models.
      * @return mixed
      */
+    public function actionPrint($id)
+    {
+        $this->layout=false;
+         $model = $this->findModel($id);
+        return $this->render('print', [
+            'model'=>$model,
+        ]);
+    }
+
+
     public function actionChangestatus($id, $status)
     {
         $model = $this->findModel($id);
