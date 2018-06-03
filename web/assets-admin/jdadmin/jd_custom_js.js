@@ -71,3 +71,43 @@ function deleteOne2ManyRow(row)
         number = number + 1;
     });
 }
+$('.jdProductType').click(function(){
+    if(this.checked)
+    {
+        //alert('checked');
+        $(this).parent().parent().parent().parent().find('.jdProductItem').prop('checked', true);
+        //alert(html);
+        //$('.jdProductItem').attr('checked', true);
+        getProductValue();
+    }
+    else
+    {
+        $(this).parent().parent().parent().parent().find('.jdProductItem').prop('checked', false);
+        getProductValue();
+    }
+});
+$('.jdProductItem').click(function(){
+    if(this.checked==false)
+    {
+        $(this).parent().parent().parent().parent().find('.jdProductType').prop('checked', false);
+        getProductValue();
+    }
+    else
+    {
+        getProductValue();
+    }
+});
+function getProductValue(){
+    var productList = []
+    $(document).find('.jdProductItem').each(function(){
+        if(this.checked)
+        {
+            //alert('checked');
+            var id = $(this).parent().parent().find('.jdProductID').html();
+            productList.push(id);
+        }
+    });
+
+    $('.jdProductList').val(JSON.stringify(productList));
+}
+

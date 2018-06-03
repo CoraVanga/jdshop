@@ -3,6 +3,8 @@
 namespace app\controllers\admin;
 
 use Yii;
+use app\models\Product;
+use app\models\Type;
 use app\models\DiscountProduct;
 use app\models\SearchDiscountProduct;
 use yii\web\Controller;
@@ -54,6 +56,7 @@ class DiscountProductController extends Controller
     public function actionView($id)
     {
         $this->layout='jdshop-admin';
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -72,9 +75,18 @@ class DiscountProductController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+        $productList = Product::find()->all();
 
+        $query = new \yii\db\Query;
+        $query->select('t.name')
+            ->from('type as t, product as p')
+            ->where('t.id = p.id_type')
+            ->groupBy(['t.name']);
+        $typeList = $query->all();
         return $this->render('create', [
             'model' => $model,
+            'productList' => $productList,
+            'typeList' =>$typeList,
         ]);
     }
 
