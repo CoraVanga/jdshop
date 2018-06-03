@@ -8,11 +8,47 @@ use dosamigos\chartjs\ChartJs;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 
-$this->title = 'Trang chủ (admin)';
+$this->title = 'Thống kê';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="card p-30">
+				<h6 align="center">SẢN PHẨM BÁN CHẠY NHẤT</h6>
+					<?php
+						$i=0;
+						foreach ($featureProduct as $product)
+						{
+							
+							$model = Product::findOne($product['id_product']);
+							echo '<div class="avatar">';
+							if (!empty($model->getImageProducts()->one())) {
+								
+								$image = $model->getImageProducts()->asArray()->one();
+								echo '<p>'.Html::a('<img src="../../images/product-images'.'/'.$image['link'].'" alt="" width="170px" height="170px"/>', ['../../admin/product/view', 'id' => $product['id_product']]).'</p></div>';
+								// echo '<div class="middle">';
+								// echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id_product']]).'</div>';
+								// echo '</div></div>';
+							}
+							else
+							{
+								echo '<p>'.Html::a('<img src="../../images/product-images/NoImageFound.png" alt="" width="170px" height="170px"/>', ['../../admin/product/view', 'id' => $product['id_product']]).'</p></div>';
+							}
+							echo '<h6 align="center">'.$model->name.'</h6>';
+						}
+					?>
+					<!-- <div class="avatar">
+                        <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker">
+                    </div> -->
+					<!-- <div class="media-body media-text-right">
+						<h5><?=  number_format($revenue['0']['revenue']) ?></h5>
+						<p class="m-b-0">Tổng doanh số</p>
+					</div> -->
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-3">
 			<div class="card p-30">

@@ -66,6 +66,17 @@ class StatisticsController extends Controller{
             ->addGroupBy('p.id_type,t.name, t.gender');
         $inventory = $query->all();
 
+        //get feature product
+        $query = new \yii\db\Query;
+        $query->select('order_line.id_product,type.gender,product.name, sum(amount)  as amount')
+            ->from('order_line')
+            ->innerJoin('product',$on = 'product.id = order_line.id_product')
+            ->innerJoin('type',$on = 'product.id_type = type.id')
+            ->addGroupBy('order_line.id_product,product.name,type.gender')
+            ->addOrderBy(['sum(amount)'=>SORT_DESC])
+            ->limit(1);
+        $featureProduct = $query->all();
+
 		return $this->render('index', [
         	'revenue' => $revenue,
         	'sales' => $sales,
@@ -74,6 +85,7 @@ class StatisticsController extends Controller{
         	'recentSO' => $recentSO,
         	'profit' =>$profit,
         	'inventory' => $inventory,
+            'featureProduct' => $featureProduct,
         ]);
 	}
 }
