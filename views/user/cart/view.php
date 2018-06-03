@@ -56,7 +56,7 @@ $this->title = 'Giỏ hàng';
 					 
 					<?php if(isset($saleorder)):?>
 						<?php foreach ($orderline as $item) {
-							echo '<tr>';
+							echo '<tr class="'.$item->id.'">';
 							$image = ImageProduct::find()->where(['id_product'=>$item->product->id])->one();
 							$productdetail = ProductDetail::find()->where(['id_product'=>$item->product->id,'size'=>$item->size_product])->one();
 							if(!empty($image))
@@ -67,7 +67,8 @@ $this->title = 'Giỏ hàng';
 							{
 								echo '<td>'.Html::a('<img src="../../images/product-images/NoImageFound.png" class="thumbnail" title="No Image Found"').'</td>';
 							}
-							echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5><h5>'.Html::a('Xóa', ['../main']).'<h5></td>';
+							echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5></h5><button class="btn btn-inverse delCartItem">Xóa</button></td>';
+							echo '<td class="orderLineId" hidden="1">'.$item->id.'</td>';
 							echo '<td>'.$item->amount.'</td>';
 							echo '<td>'.number_format($item->sum_price).'</td>';
 							echo '</tr>';
@@ -77,12 +78,12 @@ $this->title = 'Giỏ hàng';
 					</tbody>
 				</table>
 				<hr>
-				<p class="cart-total right">
+				<p class="cart-total right jdTotalPrice">
 					<strong>Tổng cộng: </strong><strong style="color: #eb4800; font-size:17px;"><?= number_format($saleorder->total_price)?> VNĐ</strong><br>
 				</p>
 				<hr/>
 				<p class="buttons center" style="text-align: center;">
-					<form class="form-inline" method="post" action="view">
+					<form class="form-inline jdCartForm" method="post" action="view">
 						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 						<input type="hidden" name="status" value="<?php echo $status ?>">
 						<div id="jdCartSubmitButton" style="text-align: center;">
@@ -92,7 +93,7 @@ $this->title = 'Giỏ hàng';
 						</div>
 					</form>				
 				</p>
-				<table class="table table-striped">
+				<!-- <table class="table table-striped">
 					<thead>
 						<tr>
 							<th>Tên sản phẩm</th>
@@ -112,7 +113,7 @@ $this->title = 'Giỏ hàng';
 						
 					?>
 					</tbody>
-				</table>
+				</table> -->
 
 			<?php endif;?>
 			<?php elseif($status==1): ?>
@@ -197,8 +198,8 @@ $this->title = 'Giỏ hàng';
 			<?php endif;?>
 			<?php else: ?>
 				<h2 align="center">Hiện tại bạn chưa có đơn hàng nào</h2>
-				<h3 align="center" style="color:#eb4800">Xem những đơn hàng bạn đã mua</h3>
-				<?=Html::a('Xem những đơn hàng bạn đã mua', ['../user/cart/old', 'id' => $_SESSION['ID_USER']],['class' => 'title'])?>
+				<h3 align="center" style="color:#eb4800"><?=Html::a('Xem những đơn hàng bạn đã mua', ['../user/cart/old', 'id' => $_SESSION['ID_USER']],['class' => 'title'])?></h3>
+				
 			<?php endif;?>			
 		</div>
 		<div class="span3 col">
@@ -342,6 +343,8 @@ $this->title = 'Giỏ hàng';
 				success:function(data){
 					alert("Đã xóa sản phẩm này khỏi giỏ hàng của bạn");
 					$(classOrderLineId).remove();
+					$('.jdTotalPrice').remove();
+					$('.jdCartForm').remove();
 				}
 			});
 			
