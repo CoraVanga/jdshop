@@ -1087,9 +1087,6 @@ class MockObjectTest extends TestCase
         $this->resetMockObjects();
     }
 
-    /**
-     * @requires PHP 7.1
-     */
     public function testVoidReturnTypeIsMockedCorrectly()
     {
         /** @var ClassWithAllPossibleReturnTypes|MockObject $stub */
@@ -1107,5 +1104,12 @@ class MockObjectTest extends TestCase
         $stub = $this->createMock(ClassWithAllPossibleReturnTypes::class);
 
         $this->assertInstanceOf(stdClass::class, $stub->methodWithObjectReturnTypeDeclaration());
+    }
+
+    public function testGetObjectForTrait()
+    {
+        $object = $this->getObjectForTrait(ExampleTrait::class);
+
+        $this->assertSame('ohHai', $object->ohHai());
     }
 }
