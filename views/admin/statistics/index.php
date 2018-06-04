@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					</div> -->
 			</div>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-6">
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title">Tổng lợi nhuận theo loại sản phẩm</h4>
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					echo ChartJs::widget([
 					    'type' => 'bar',
 					    'options' => [
-					        'height' => 100,
+					        'height' => 170,
                     
                 
 					    ],
@@ -84,6 +84,27 @@ $this->params['breadcrumbs'][] = $this->title;
 					    ],
 					]);
 					?>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3" >
+			<div class="card" style="height: 350px;">
+				<div class="card-body">
+					<h4 class="card-title">In danh sách đơn hàng</h4>
+					<form class="form-horizontal" method="post" action="statistics/print">
+						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+						<div class="form-group">
+							<label for="beginDate">Ngày bắt đầu</label>
+							<input type="date" class="form-control" name="beginDate">
+						</div>
+						<div class="form-group">
+							<label for="endDate">Ngày kết thúc</label>
+							<input type="date" class="form-control" name="endDate">
+						</div>
+						<div id="jdCartSubmitButton" style="text-align: center;">
+							<button class="btn btn-inverse"  type="submit">In</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
