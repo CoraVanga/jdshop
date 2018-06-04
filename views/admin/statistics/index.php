@@ -153,7 +153,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="col-md-6">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Tổng lợi nhuận theo loại sản phẩm TỪ <?=date("m",strtotime("-3 month"))?>-<?=date('m').'/'.date('Y')?></h4>
+					<h4 class="card-title">Tổng lợi nhuận theo loại sản phẩm từ <?=date("m",strtotime("-3 month"))?>-<?=date('m').'/'.date('Y')?></h4>
 					<?php
 					$label = []; 
 					$data = [];
@@ -262,6 +262,71 @@ $this->params['breadcrumbs'][] = $this->title;
 					    'clientOptions' => [
 					    	'legend' => [ 'display'=> false ],
 					    ],
+					]);
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Lợi nhuận của từng loại sản phẩm</h4>
+					<?php
+					$color=[];
+					array_push($color,"#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95ce"); 
+					$ayear = [];
+					foreach($yearList as $year)
+					{
+						if($year['year']!=null)
+						array_push($ayear,$year['year']);
+					}
+					//print_r($ayear);
+					//print_r(count($profitAllYearByType));
+					$adatasets = [];
+					for($i=0;$i<(count($profitAllYearByType)-1);$i++)
+					{
+						if($profitAllYearByType[$i]['year']!=$yearList['0']['year'])
+						{
+							break;
+						}
+						$set=[];
+						$data=[];
+						$set = array(
+							'label' => $profitAllYearByType[$i]['name'],
+			                'backgroundColor' => "transparent",
+			                'borderColor' => $color[$i],
+			                'pointBackgroundColor' => $color[$i],
+			                'pointBorderColor' => "#fff",
+			                'pointHoverBackgroundColor' => "#fff",
+			                'pointHoverBorderColor' => $color[$i],
+						);
+						array_push($data,$profitAllYearByType[$i]['profit']);
+						for($j=$i+1;$j<count($profitAllYearByType);$j++)
+						{
+							if($profitAllYearByType[$i]['year']!=$profitAllYearByType[$j]['year']
+								&& $profitAllYearByType[$i]['name'] == $profitAllYearByType[$j]['name'])
+								array_push($data,$profitAllYearByType[$j]['profit']);
+						}
+						$set['data']=$data;
+						array_push($adatasets,$set);
+						//print_r($data);
+						echo('<br>');
+					}
+					//print_r($adatasets);
+					echo ChartJs::widget([
+					    'type' => 'line',
+					    'options' => [
+					        'height' => 100,
+                    
+                
+					    ],
+					    'data' => [
+					        'labels' => $ayear,
+					        'datasets' => $adatasets,
+					        ]
+					    
 					]);
 					?>
 				</div>
