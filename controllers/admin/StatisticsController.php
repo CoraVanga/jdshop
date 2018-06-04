@@ -67,27 +67,69 @@ class StatisticsController extends Controller{
             ->addGroupBy('p.id_type,t.name, t.gender');
         $inventory = $query->all();
 
-        //get feature product
+        //get feature product in 1 month
         $query = new \yii\db\Query;
         $query->select('order_line.id_product,type.gender,product.name, sum(amount)  as amount')
             ->from('order_line')
             ->innerJoin('product',$on = 'product.id = order_line.id_product')
             ->innerJoin('type',$on = 'product.id_type = type.id')
             ->innerJoin('sale_order',$on = 'order_line.id_bill = sale_order.id')
-            ->where('month(sale_order.created_date)=month(getdate())')
+            ->where('month(sale_order.created_date)=month(getdate()) and year(sale_order.created_date) = year(getdate())')
             ->addGroupBy('order_line.id_product,product.name,type.gender')
             ->addOrderBy(['sum(amount)'=>SORT_DESC])
             ->limit(1);
         $feature1MountProduct = $query->all();
 
-        //get profit by producttype
+
+        //get feature product in 3 month
+        $query = new \yii\db\Query;
+        $query->select('order_line.id_product,type.gender,product.name, sum(amount)  as amount')
+            ->from('order_line')
+            ->innerJoin('product',$on = 'product.id = order_line.id_product')
+            ->innerJoin('type',$on = 'product.id_type = type.id')
+            ->innerJoin('sale_order',$on = 'order_line.id_bill = sale_order.id')
+            ->where('sale_order.created_date<=getdate() and sale_order.created_date>=DATEADD(month,-2,getdate())')
+            ->addGroupBy('order_line.id_product,product.name,type.gender')
+            ->addOrderBy(['sum(amount)'=>SORT_DESC])
+            ->limit(1);
+        $feature3MountProduct = $query->all();
+
+        //get feature product in 1 year
+        $query = new \yii\db\Query;
+        $query->select('order_line.id_product,type.gender,product.name, sum(amount)  as amount')
+            ->from('order_line')
+            ->innerJoin('product',$on = 'product.id = order_line.id_product')
+            ->innerJoin('type',$on = 'product.id_type = type.id')
+            ->innerJoin('sale_order',$on = 'order_line.id_bill = sale_order.id')
+            ->where('sale_order.created_date<=getdate() and sale_order.created_date>=DATEADD(month,-2,getdate())')
+            ->addGroupBy('order_line.id_product,product.name,type.gender')
+            ->addOrderBy(['sum(amount)'=>SORT_DESC])
+            ->limit(1);
+        $feature3MountProduct = $query->all();
+
+        //get profit by producttype in 1 month
         $query = new \yii\db\Query;
         $query->select('t.name, sum(ol.sum_price) as amount')
             ->from('sale_order as so, type as t, order_line as ol, product as p')
-            ->where('so.id = ol.id_bill and ol.id_product = p.id and p.id_type = t.id and month(so.created_date) is not null')
+            ->where('so.id = ol.id_bill and ol.id_product = p.id and p.id_type = t.id and month(so.created_date) is not null and month(so.created_date)=month(getdate()) and year(so.created_date)=year(getdate()) and day(so.created_date)<=day(getdate())')
             ->addGroupBy('t.name');
-        $profitByType = $query->all();
+        $profit1MonthByType = $query->all();
 
+        //get profit by producttype in 3 month
+        $query = new \yii\db\Query;
+        $query->select('t.name, sum(ol.sum_price) as amount')
+            ->from('sale_order as so, type as t, order_line as ol, product as p')
+            ->where('so.id = ol.id_bill and ol.id_product = p.id and p.id_type = t.id and month(so.created_date) is not null and so.created_date<=getdate() and so.created_date>=DATEADD(month,-2,getdate())')
+            ->addGroupBy('t.name');
+        $profit3MonthByType = $query->all();
+
+        //get profit by producttype in 1 year
+        $query = new \yii\db\Query;
+        $query->select('t.name, sum(ol.sum_price) as amount')
+            ->from('sale_order as so, type as t, order_line as ol, product as p')
+            ->where('so.id = ol.id_bill and ol.id_product = p.id and p.id_type = t.id and month(so.created_date) is not null and year(so.created_date)=year(getdate())')
+            ->addGroupBy('t.name');
+        $profitYearByType = $query->all();
 
         //get list type
         $typeList = Type::find()->all();
@@ -100,8 +142,10 @@ class StatisticsController extends Controller{
         	'profit' =>$profit,
         	'inventory' => $inventory,
             'feature1MountProduct' => $feature1MountProduct,
-            'profitByType' =>$profitByType,
+            'profit1MonthByType' =>$profit1MonthByType,
             'typeList' => $typeList,
+            'feature3MountProduct' => $feature3MountProduct,
+            'profit3MonthByType' => $profit3MonthByType,
         ]);
 	}
 }
