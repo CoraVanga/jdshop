@@ -115,27 +115,40 @@ class ProductController extends Controller
     public function actionSearch(){
         $this->layout = 'jdshop-user';
         $query = new \yii\db\Query;
-        $query->select('p.name as productname, t.gender as gender, t.name as typename,p.id as pid')
-            ->from('product as p, type as t');
-           
         
-        // ->andFilterWhere([
-        //     'id' => $this->id,
-        //     'size' => $this->size,
-        //     'price' => $this->price,
-        //     'amount' => $this->amount,
-        //     'id_product' => $this->id_product,
-        // ]);
+        $query->select('p.name as productname, t.gender as gender, t.name as typename,p.id as pid')
+            ->from('product as p, type as t')
+            ->where('p.id_type=t.id');
+           
+        if(isset($_POST['search'])){
+            $query->andFilterWhere([
+                'or',
+                ['like', 'p.name', $_POST['search']],
+            ]);
+        }
+        
 
+        // echo '<pre>';
+        // print_r($query);
+        // echo '</pre>';
+        // die;
         $countQuery = $query->count();
-        $pages = new Pagination(['totalCount' => $countQuery]);
-        $pages->pageSize= 6;
-        $productList = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
-        return $this->render('search', [
-            'productList' => $productList,
-            'pages' => $pages,
-        ]);
+        if($countQuery){
+           $pages = new Pagination(['totalCount' => $countQuery]);
+            $pages->pageSize= 6;
+            $productList = $query->offset($pages->offset)
+                ->limit($pages->limit)
+                ->all();
+            return $this->render('search', [
+                'productList' => $productList,
+                'pages' => $pages,
+            ]);
+        }
+         return $this->render('search', [
+                'productList' => '',
+                'pages' => '',
+            ]);
+         
+        
     }
 }

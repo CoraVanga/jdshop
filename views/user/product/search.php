@@ -5,9 +5,25 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use app\models\Product;
 use yii\widgets\LinkPager;
+use yii\widgets\ActiveForm;
 
 ?>
 <br>
+ <?php $form = ActiveForm::begin(); ?>
+	<div class="control-group">
+		<div class="controls">
+			<input type="text" placeholder="Tìm kiếm sản phẩm" name="search" id="search" class="input-xlarge">
+			<button class="btn btn-inverse">Tìm kiếm</button>
+		</div>
+		
+
+	</div>
+	<?php ActiveForm::end(); ?>
+<br>
+<hr>
+<?php if(!empty($productList)) : ?>
+
+
 <div class="row">
 		<div class="span9">			
 			<ul class="thumbnails listing-products">
@@ -53,7 +69,6 @@ use yii\widgets\LinkPager;
 					$i++;
 				}
 				?>
-				<hr>
 				<div class="pagination pagination-small pagination-centered">
 				 <?php
 				echo LinkPager::widget([
@@ -77,3 +92,6 @@ use yii\widgets\LinkPager;
 				</div> -->
 			</div>
 		</div>
+				<hr>
+				<?php  endif;?>
+

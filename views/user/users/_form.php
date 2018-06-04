@@ -12,8 +12,7 @@ use app\models\Users;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <div class="row">
-        <div class="col-lg-6">
+        
             <?= $form->field($model, 'username')->textInput() ?>
 
             <?= $form->field($model, 'password')->passwordInput() ?>
@@ -21,8 +20,7 @@ use app\models\Users;
             <?= $form->field($model, 'name')->textInput() ?>
 
             <?= $form->field($model, 'dob')->input('date') ?>
-        </div>
-        <div class="col-lg-6">
+        
             <?= $form->field($model, 'phone')->textInput() ?>
 
             <?= $form->field($model, 'address')->textInput() ?>
@@ -32,8 +30,6 @@ use app\models\Users;
             <input type="text" id="users-status" class="form-control" name="Users[status]" hidden="1">
             
             <?php $users = new Users(); echo $form->field($model, 'role')->dropDownList($users->getArrayRole()); ?>
-        </div>
-    </div>
     
 
     <div class="form-group">
