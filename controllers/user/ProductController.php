@@ -111,4 +111,31 @@ class ProductController extends Controller
             'pages' => $pages,
         ]);
     }
+
+    public function actionSearch(){
+        $this->layout = 'jdshop-user';
+        $query = new \yii\db\Query;
+        $query->select('p.name as productname, t.gender as gender, t.name as typename,p.id as pid')
+            ->from('product as p, type as t');
+           
+        
+        // ->andFilterWhere([
+        //     'id' => $this->id,
+        //     'size' => $this->size,
+        //     'price' => $this->price,
+        //     'amount' => $this->amount,
+        //     'id_product' => $this->id_product,
+        // ]);
+
+        $countQuery = $query->count();
+        $pages = new Pagination(['totalCount' => $countQuery]);
+        $pages->pageSize= 6;
+        $productList = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('search', [
+            'productList' => $productList,
+            'pages' => $pages,
+        ]);
+    }
 }

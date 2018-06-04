@@ -200,23 +200,23 @@ class ProductController extends Controller
     }
 
     //nghia
-    public function actionListProduct(){
-        $this->layout = 'jdshop-user';
+    // public function actionListProduct(){
+    //     $this->layout = 'jdshop-user';
 
-         // $product = new Product();
-        $query = Product::find();
+    //      // $product = new Product();
+    //     $query = Product::find();
 
         
-        // $countQuery = $query->count();
-        // $pages = new Pagination(['totalCount' => $countQuery]);
-        // $pages->pageSize= 9;
-        // $models = $query->offset($pages->offset)
-        //     ->limit($pages->limit)
-        //     ->all();
+    //     $countQuery = $query->count();
+    //     $pages = new Pagination(['totalCount' => $countQuery]);
+    //     $pages->pageSize= 9;
+    //     $models = $query->offset($pages->offset)
+    //         ->limit($pages->limit)
+    //         ->all();
 
-        return $this->render('listproduct/index',[
-            'listProduct' => $models,
-            'pages' => $pages,
-        ]);
-    }
+    //     return $this->render('listproduct/index',[
+    //         'listProduct' => $models,
+    //         'pages' => $pages,
+    //     ]);
+    // }
 }
