@@ -54,8 +54,8 @@ class HomeController extends Controller{
         $query = new \yii\db\Query;
         $query->select('month(created_date) as month,year(created_date) as year,sum(total_price) as profit')
             ->from('sale_order')
-            ->addGroupBy('month(created_date),year(created_date)')
-            ->addOrderBy(['month(created_date)'=>SORT_DESC, 'year(created_date)'=>SORT_DESC]);
+            ->addGroupBy('year(created_date),month(created_date)')
+            ->addOrderBy('year(created_date) desc, month(created_date) desc');
         $profit = $query->all();
 
         //get inventory

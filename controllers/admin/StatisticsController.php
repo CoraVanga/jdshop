@@ -73,10 +73,12 @@ class StatisticsController extends Controller{
             ->from('order_line')
             ->innerJoin('product',$on = 'product.id = order_line.id_product')
             ->innerJoin('type',$on = 'product.id_type = type.id')
+            ->innerJoin('sale_order',$on = 'order_line.id_bill = sale_order.id')
+            ->where('month(sale_order.created_date)=month(getdate())')
             ->addGroupBy('order_line.id_product,product.name,type.gender')
             ->addOrderBy(['sum(amount)'=>SORT_DESC])
             ->limit(1);
-        $featureProduct = $query->all();
+        $feature1MountProduct = $query->all();
 
         //get profit by producttype
         $query = new \yii\db\Query;
@@ -97,7 +99,7 @@ class StatisticsController extends Controller{
         	'recentSO' => $recentSO,
         	'profit' =>$profit,
         	'inventory' => $inventory,
-            'featureProduct' => $featureProduct,
+            'feature1MountProduct' => $feature1MountProduct,
             'profitByType' =>$profitByType,
             'typeList' => $typeList,
         ]);

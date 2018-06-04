@@ -19,15 +19,18 @@ $this->params['breadcrumbs'][] = $this->title;
 				<h6 align="center">SẢN PHẨM BÁN CHẠY NHẤT</h6>
 					<?php
 						$i=0;
-						foreach ($featureProduct as $product)
+						foreach ($feature1MountProduct as $product)
 						{
 							
 							$model = Product::findOne($product['id_product']);
-							echo '<div class="avatar">';
+							echo '<div class="avatar jdimgcontainer">';
 							if (!empty($model->getImageProducts()->one())) {
 								
 								$image = $model->getImageProducts()->asArray()->one();
-								echo '<p>'.Html::a('<img src="../../images/product-images'.'/'.$image['link'].'" alt="" width="170px" height="170px"/>', ['../../admin/product/view', 'id' => $product['id_product']]).'</p></div>';
+								echo '<p>'.Html::a('<img src="../../images/product-images'.'/'.$image['link'].'" alt="" width="170px" height="170px"/>', ['../../admin/product/view', 'id' => $product['id_product']]).'</p>';
+								echo '<div class="jdmiddle">';
+				                echo '<p class="btn btn-info">Số lần mua: '.$product['amount'].'</p>';
+				                echo '</div></div>';
 								// echo '<div class="middle">';
 								// echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id_product']]).'</div>';
 								// echo '</div></div>';
