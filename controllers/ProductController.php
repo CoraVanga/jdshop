@@ -198,4 +198,25 @@ class ProductController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    //nghia
+    public function actionListProduct(){
+        $this->layout = 'jdshop-user';
+
+         // $product = new Product();
+        $query = Product::find();
+
+        
+        // $countQuery = $query->count();
+        // $pages = new Pagination(['totalCount' => $countQuery]);
+        // $pages->pageSize= 9;
+        // $models = $query->offset($pages->offset)
+        //     ->limit($pages->limit)
+        //     ->all();
+
+        return $this->render('listproduct/index',[
+            'listProduct' => $models,
+            'pages' => $pages,
+        ]);
+    }
 }

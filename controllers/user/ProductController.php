@@ -10,6 +10,7 @@ use app\models\SearchImageProduct;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -71,7 +72,15 @@ class ProductController extends Controller
         $query->select('p.name as productname, t.gender as gender, t.name as typename,p.id as pid')
             ->from('product as p, type as t')
             ->where('p.id_type=t.id and t.name='.$name);
-        $productList = $query->all();
+        //$productList = $query->all();
+        // nghia
+        $countQuery = $query->count();
+        $pages = new Pagination(['totalCount' => $countQuery]);
+        $pages->pageSize= 6;
+        $productList = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+            // nghia
 
         //get feature product
         $query = new \yii\db\Query;
@@ -99,6 +108,7 @@ class ProductController extends Controller
             'nametype'=>$nametype,
             'newProduct' => $newProduct,
             'featureProduct' =>$featureProduct,
+            'pages' => $pages,
         ]);
     }
 }
