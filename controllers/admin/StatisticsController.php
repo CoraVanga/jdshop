@@ -74,7 +74,7 @@ class StatisticsController extends Controller{
             ->innerJoin('product',$on = 'product.id = order_line.id_product')
             ->innerJoin('type',$on = 'product.id_type = type.id')
             ->innerJoin('sale_order',$on = 'order_line.id_bill = sale_order.id')
-            ->where('month(sale_order.created_date)=month(getdate()) and year(sale_order.created_date) = year(getdate())')
+            ->where('month(sale_order.created_date)=month(getdate()) and year(sale_order.created_date)=year(getdate()) and day(sale_order.created_date)<=day(getdate())')
             ->addGroupBy('order_line.id_product,product.name,type.gender')
             ->addOrderBy(['sum(amount)'=>SORT_DESC])
             ->limit(1);
@@ -101,11 +101,11 @@ class StatisticsController extends Controller{
             ->innerJoin('product',$on = 'product.id = order_line.id_product')
             ->innerJoin('type',$on = 'product.id_type = type.id')
             ->innerJoin('sale_order',$on = 'order_line.id_bill = sale_order.id')
-            ->where('sale_order.created_date<=getdate() and sale_order.created_date>=DATEADD(month,-2,getdate())')
+            ->where('year(sale_order.created_date)=year(getdate())')
             ->addGroupBy('order_line.id_product,product.name,type.gender')
             ->addOrderBy(['sum(amount)'=>SORT_DESC])
             ->limit(1);
-        $feature3MountProduct = $query->all();
+        $featureYearProduct = $query->all();
 
         //get profit by producttype in 1 month
         $query = new \yii\db\Query;
@@ -146,6 +146,8 @@ class StatisticsController extends Controller{
             'typeList' => $typeList,
             'feature3MountProduct' => $feature3MountProduct,
             'profit3MonthByType' => $profit3MonthByType,
+            'profitYearByType' => $profitYearByType,
+            'featureYearProduct' => $featureYearProduct,
         ]);
 	}
 }
