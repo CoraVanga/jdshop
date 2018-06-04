@@ -113,4 +113,13 @@ function getProductValue(){
 
     $('.jdProductList').val(JSON.stringify(productList));
 }
+$('.jdstatic').click(function(){
+    alert("clicked");
+});
+$('.jdstatic3month').click(function(){
+   alert("clicked"); 
+});
+$('.jdstaticyear').click(function(){
+    alert("clicked");
+});
 
