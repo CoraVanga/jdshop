@@ -3,6 +3,8 @@
 namespace app\controllers\admin;
 
 use Yii;
+use app\models\Product;
+use app\models\Type;
 use app\models\DiscountProduct;
 use app\models\SearchDiscountProduct;
 use yii\web\Controller;
@@ -54,8 +56,18 @@ class DiscountProductController extends Controller
     public function actionView($id)
     {
         $this->layout='jdshop-admin';
+        $productList = Product::find()->all();
+
+        $query = new \yii\db\Query;
+        $query->select('t.name')
+            ->from('type as t, product as p')
+            ->where('t.id = p.id_type')
+            ->groupBy(['t.name']);
+        $typeList = $query->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'productList' => $productList,
+            'typeList' =>$typeList,
         ]);
     }
 
@@ -70,11 +82,33 @@ class DiscountProductController extends Controller
         $model = new DiscountProduct();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if (isset($_POST['productList']))
+            {
+                $idProduct = json_decode($_POST['productList']);
+                //echo $array[0];
+                for ($x = 0; $x <= count($idProduct)-1; $x++) {
+                    $product = Product::findOne($idProduct[$x]);
+                    if(isset($product))
+                    {
+                        $product->id_discount = $model->id;
+                        $product->save();
+                    }
+                } 
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
+        $productList = Product::find()->all();
 
+        $query = new \yii\db\Query;
+        $query->select('t.name')
+            ->from('type as t, product as p')
+            ->where('t.id = p.id_type')
+            ->groupBy(['t.name']);
+        $typeList = $query->all();
         return $this->render('create', [
             'model' => $model,
+            'productList' => $productList,
+            'typeList' =>$typeList,
         ]);
     }
 
@@ -90,12 +124,45 @@ class DiscountProductController extends Controller
         $this->layout='jdshop-admin';
         $model = $this->findModel($id);
 
+        $productList = Product::find()->all();
+
+        $query = new \yii\db\Query;
+        $query->select('t.name')
+            ->from('type as t, product as p')
+            ->where('t.id = p.id_type')
+            ->groupBy(['t.name']);
+        $typeList = $query->all();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $productUpdate = Product::find()->all();
+            foreach($productUpdate as $product)
+            {
+                if($product->id_discount == $model->id)
+                {
+                    $product->id_discount=null;
+                    $product->save();
+                }
+            }
+            if (isset($_POST['productList']))
+            {
+                $idProduct = json_decode($_POST['productList']);
+                //echo $array[0];
+                for ($x = 0; $x <= count($idProduct)-1; $x++) {
+                    $product = Product::findOne($idProduct[$x]);
+                    if(isset($product))
+                    {
+                        $product->id_discount = $model->id;
+                        $product->save();
+                    }
+                } 
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'productList' => $productList,
+            'typeList' =>$typeList,
         ]);
     }
 

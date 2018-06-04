@@ -69,8 +69,8 @@ function uri_for($uri)
  * - metadata: Array of custom metadata.
  * - size: Size of the stream.
  *
- * @param resource|string|null|int|float|bool|StreamInterface|callable $resource Entity body data
- * @param array                                                        $options  Additional options
+ * @param resource|string|null|int|float|bool|StreamInterface|callable|\Iterator $resource Entity body data
+ * @param array                                                                  $options  Additional options
  *
  * @return StreamInterface
  * @throws \InvalidArgumentException if the $resource arg is not valid.
@@ -832,6 +832,41 @@ function _parse_request_uri($path, array $headers)
     $scheme = substr($host, -4) === ':443' ? 'https' : 'http';
 
     return $scheme . '://' . $host . '/' . ltrim($path, '/');
+}
+
+/**
+ * Get a short summary of the message body
+ *
+ * Will return `null` if the response is not printable.
+ *
+ * @param MessageInterface $message    The message to get the body summary
+ * @param int              $truncateAt The maximum allowed size of the summary
+ *
+ * @return null|string
+ */
+function get_message_body_summary(MessageInterface $message, $truncateAt = 120)
+{
+    $body = $message->getBody();
+
+    if (!$body->isSeekable()) {
+        return null;
+    }
+
+    $size = $body->getSize();
+    $summary = $body->read($truncateAt);
+    $body->rewind();
+
+    if ($size > $truncateAt) {
+        $summary .= ' (truncated...)';
+    }
+
+    // Matches any printable character, including unicode characters:
+    // letters, marks, numbers, punctuation, spacing, and separators.
+    if (preg_match('/[^\pL\pM\pN\pP\pS\pZ\n\r\t]/', $summary)) {
+        return null;
+    }
+
+    return $summary;
 }
 
 /** @internal */

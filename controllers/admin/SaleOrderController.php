@@ -33,6 +33,27 @@ class SaleOrderController extends Controller
      * Lists all SaleOrder models.
      * @return mixed
      */
+    public function actionPrint($id)
+    {
+        $this->layout=false;
+         $model = $this->findModel($id);
+        return $this->render('print', [
+            'model'=>$model,
+        ]);
+    }
+
+
+    public function actionChangestatus($id, $status)
+    {
+        $model = $this->findModel($id);
+
+        if (isset($model)) {
+            $model->status=$status;
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+    }
+
     public function actionIndex()
     {
         $this->layout = 'jdshop-admin';
@@ -54,6 +75,7 @@ class SaleOrderController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout = 'jdshop-admin';
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

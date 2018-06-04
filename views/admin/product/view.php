@@ -57,7 +57,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="form-group">
                         <div class="col-md-10">
                             <h4>Khuyến mãi: 
-                            <?= Html::a($discount->info, ['../../admin/discount-product/view','id'=>$discount->id]) ?></h4>
+                            <?php
+                            if(isset($discount)) 
+                                echo Html::a($discount->info, ['../../admin/discount-product/view','id'=>$discount->id]);
+                            else
+                                echo 'Không có'; ?></h4>
                         </div>
                     </div>
                 </div>

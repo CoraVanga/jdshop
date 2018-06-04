@@ -56,7 +56,7 @@ $this->title = 'Giỏ hàng';
 					 
 					<?php if(isset($saleorder)):?>
 						<?php foreach ($orderline as $item) {
-							echo '<tr>';
+							echo '<tr class="'.$item->id.'">';
 							$image = ImageProduct::find()->where(['id_product'=>$item->product->id])->one();
 							$productdetail = ProductDetail::find()->where(['id_product'=>$item->product->id,'size'=>$item->size_product])->one();
 							if(!empty($image))
@@ -67,7 +67,8 @@ $this->title = 'Giỏ hàng';
 							{
 								echo '<td>'.Html::a('<img src="../../images/product-images/NoImageFound.png" class="thumbnail" title="No Image Found"').'</td>';
 							}
-							echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5><h5>'.Html::a('Xóa', ['../main']).'<h5></td>';
+							echo '<td><h4>'.Html::a($item->product->name, ['../product/view', 'id' => $item->product->id],['class' => 'title']).'</h4><h5>KÍCH CỠ: '.$item->size_product.'</h5><h5>ĐƠN GIÁ: '.number_format($productdetail->price).' VNĐ </h5></h5><button class="btn btn-inverse delCartItem">Xóa</button></td>';
+							echo '<td class="orderLineId" hidden="1">'.$item->id.'</td>';
 							echo '<td>'.$item->amount.'</td>';
 							echo '<td>'.number_format($item->sum_price).'</td>';
 							echo '</tr>';
@@ -77,12 +78,12 @@ $this->title = 'Giỏ hàng';
 					</tbody>
 				</table>
 				<hr>
-				<p class="cart-total right">
+				<p class="cart-total right jdTotalPrice">
 					<strong>Tổng cộng: </strong><strong style="color: #eb4800; font-size:17px;"><?= number_format($saleorder->total_price)?> VNĐ</strong><br>
 				</p>
 				<hr/>
 				<p class="buttons center" style="text-align: center;">
-					<form class="form-inline" method="post" action="view">
+					<form class="form-inline jdCartForm" method="post" action="view">
 						<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 						<input type="hidden" name="status" value="<?php echo $status ?>">
 						<div id="jdCartSubmitButton" style="text-align: center;">
@@ -92,7 +93,7 @@ $this->title = 'Giỏ hàng';
 						</div>
 					</form>				
 				</p>
-				<table class="table table-striped">
+				<!-- <table class="table table-striped">
 					<thead>
 						<tr>
 							<th>Tên sản phẩm</th>
@@ -112,7 +113,7 @@ $this->title = 'Giỏ hàng';
 						
 					?>
 					</tbody>
-				</table>
+				</table> -->
 
 			<?php endif;?>
 			<?php elseif($status==1): ?>
@@ -197,33 +198,14 @@ $this->title = 'Giỏ hàng';
 			<?php endif;?>
 			<?php else: ?>
 				<h2 align="center">Hiện tại bạn chưa có đơn hàng nào</h2>
-				<h3 align="center" style="color:#eb4800">Xem những đơn hàng bạn đã mua</h3>
-				<?=Html::a('Xem những đơn hàng bạn đã mua', ['../user/cart/old', 'id' => $_SESSION['ID_USER']],['class' => 'title'])?>
+				<h3 align="center" style="color:#eb4800"><?=Html::a('Xem những đơn hàng bạn đã mua', ['../user/cart/old', 'id' => $_SESSION['ID_USER']],['class' => 'title'])?></h3>
+				
 			<?php endif;?>			
 		</div>
 		<div class="span3 col">
 			<div class="block">	
-				<ul class="nav nav-list">
-					<li class="nav-header">SUB CATEGORIES</li>
-					<li><a href="products.html">Nullam semper elementum</a></li>
-					<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-					<li><a href="products.html">Donec laoreet dui</a></li>
-					<li><a href="products.html">Nullam semper elementum</a></li>
-					<li><a href="products.html">Phasellus ultricies</a></li>
-					<li><a href="products.html">Donec laoreet dui</a></li>
-				</ul>
-				<br/>
-				<ul class="nav nav-list below">
-					<li class="nav-header">MANUFACTURES</li>
-					<li><a href="products.html">Adidas</a></li>
-					<li><a href="products.html">Nike</a></li>
-					<li><a href="products.html">Dunlop</a></li>
-					<li><a href="products.html">Yamaha</a></li>
-				</ul>
-			</div>
-			<div class="block">
 				<h4 class="title">
-					<span class="pull-left"><span class="text">Randomize</span></span>
+					<span class="pull-left"><span class="text">Sản phẩm bán chạy nhất</span></span>
 					<span class="pull-right">
 						<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 					</span>
@@ -232,32 +214,112 @@ $this->title = 'Giỏ hàng';
 					<div class="carousel-inner">
 						<div class="active item">
 							<ul class="thumbnails listing-products">
-								<li class="span3">
-									<div class="product-box">
-										<span class="sale_tag"></span>												
-										<a href="product_detail.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
-										<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-										<a href="#" class="category">Suspendisse aliquet</a>
-										<p class="price">$261</p>
-									</div>
-								</li>
-							</ul>
+								<?php
+								$i=0;
+								foreach ($featureProduct as $product)
+								{
+									if ($i==1) {
+										echo '</ul></div><div class="item"><ul class="thumbnails listing-products">';
+										$i=0;
+									}
+									echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+									$model = Product::findOne($product['id_product']);
+									if (!empty($model->getImageProducts()->one())) {
+										$image = $model->getImageProducts()->asArray()->one();
+										echo '<div class="jdimgcontainer">';
+										echo '<p>'.Html::a('<img src="../../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../../product/view', 'id' => $product['id_product']]).'</p>';
+										echo '<div class="middle">';
+										echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id_product']]).'</div>';
+										echo '</div></div>';
+									}
+									else
+									{
+										echo '<div class="jdimgcontainer">';
+										echo '<p>'.Html::a('<img src="../../images/product-images/NoImageFound.png'.'" alt="" />', ['../../product/view', 'id' => $product['id_product']]).'</p>';
+										echo '<div class="middle">';
+										echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id_product']]).'</div>';
+										echo '</div></div>';
+									}
+									echo Html::a($product['name'], ['../../product/view', 'id' => $product['id_product']],['class' => 'title']);
+										// echo '<p class="price">'.$model->price.' VNĐ</p>';
+									echo '<br/>';
+									echo Html::a($product['gender'], ['../../product/view', 'id' => $product['id_product']],['class' => 'category']);
+									echo '</div></li>';
+									$i++;
+								}
+								?>					
+							</div>
 						</div>
-						<div class="item">
+					</div>
+				</div>
+				<div class="block">
+					<h4 class="title">
+						<span class="pull-left"><span class="text">Sản phẩm mới nhất</span></span>
+						<span class="pull-right">
+							<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+						</span>
+					</h4>
+					<div id="myCarousel-2" class="carousel slide">
+						<div class="carousel-inner">
+							<div class="active item">
+								<ul class="thumbnails listing-products">
+									<?php
+									$i=0;
+									foreach ($newProduct as $product)
+									{
+										if ($i==1) {
+											echo '</ul></div><div class="item"><ul class="thumbnails listing-products">';
+											$i=0;
+										}
+										echo '<li class="span3"><div class="product-box"><span class="sale_tag"></span>';
+										$model = Product::findOne($product['id']);
+										if (!empty($model->getImageProducts()->one())) {
+											$image = $model->getImageProducts()->asArray()->one();
+											echo '<div class="jdimgcontainer">';
+											echo '<p>'.Html::a('<img src="../../images/product-images'.'/'.$image['link'].'" alt=""/>', ['../../product/view', 'id' => $product['id']]).'</p>';
+											echo '<div class="middle">';
+											echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id']]).'</div>';
+											echo '</div></div>';
+										}
+										else
+										{
+											echo '<div class="jdimgcontainer">';
+											echo '<p>'.Html::a('<img src="../../images/product-images/NoImageFound.png'.'" alt="" />', ['../../product/view', 'id' => $product['id']]).'</p>';
+											echo '<div class="middle">';
+											echo '<div class="jdimgtext">'.Html::a('Xem chi tiết', ['../../product/view', 'id' => $product['id']]).'</div>';
+											echo '</div></div>';
+										}
+										echo Html::a($product['name'], ['../../product/view', 'id' => $product['id']],['class' => 'title']);
+											// echo '<p class="price">'.$model->price.' VNĐ</p>';
+										echo '<br/>';
+										echo Html::a($model->type->gender, ['../../product/view', 'id' => $product['id']],['class' => 'category']);
+										echo '</div></li>';
+										$i++;
+									}
+									?>
+								</div>
+						<!-- <div class="item">
 							<ul class="thumbnails listing-products">
 								<li class="span3">
 									<div class="product-box">												
-										<a href="product_detail.html"><img alt="" src="themes/images/ladies/4.jpg"></a><br/>
+										<a href="product_detail.html"><img alt="" src="../assets-shopper/themes/images/ladies/8.jpg"></a><br/>
 										<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
 										<a href="#" class="category">Urna nec lectus mollis</a>
 										<p class="price">$134</p>
 									</div>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 				</div>
-			</div>						
+			</div>
+			<div class="block">								
+				<h4 class="title"><strong>Hỗ trợ</strong> Khách hàng </h4>		
+				<ul>
+					<li><a href="products.html">Hỗ trợ mua hàng</a></li>
+					<li><a href="products.html">Tư vấn chọn trang sức</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </section>
@@ -281,6 +343,8 @@ $this->title = 'Giỏ hàng';
 				success:function(data){
 					alert("Đã xóa sản phẩm này khỏi giỏ hàng của bạn");
 					$(classOrderLineId).remove();
+					$('.jdTotalPrice').remove();
+					$('.jdCartForm').remove();
 				}
 			});
 			

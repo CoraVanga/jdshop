@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use app\models\Product;
+use yii\widgets\LinkPager;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SearchProduct */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -12,7 +13,7 @@ use app\models\Product;
 	<img class="pageBanner" src="../../assets-shopper/themes/images/carousel/nhannu.jpg" alt="New products" >
 	<h4><span><?=$nametype?></span></h4>
 </section>
-<section class="main-content">
+<section class="main-content" >
 
 	<div class="row">						
 		<div class="span9">								
@@ -59,8 +60,18 @@ use app\models\Product;
 					$i++;
 				}
 				?>
-
 				<hr>
+				<div class="pagination pagination-small pagination-centered">
+				 <?php
+				echo LinkPager::widget([
+				    'pagination' => $pages,
+				    // 'options' => [
+		      //           'class' => 'pagination pagination-small pagination-centered',
+		      //       ],
+				]);
+				?>
+				</div> 
+				<!-- <hr>
 				<div class="pagination pagination-small pagination-centered">
 					<ul>
 						<li><a href="#">Prev</a></li>
@@ -70,7 +81,7 @@ use app\models\Product;
 						<li><a href="#">4</a></li>
 						<li><a href="#">Next</a></li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 			<div class="span3 col">
 			<div class="block">	
@@ -194,3 +205,14 @@ use app\models\Product;
 	</div>
 </section>
 
+<script type="text/javascript">
+    //console.log("sdfsdfdíd");
+ 
+	// document.getElementsByClassName("pagination").classList.add("pagination-small pagination-centered");
+
+function myFunction() {
+	console.log("sdfsdfdíd");
+   var element = document.getElementsByClassName("pagination");
+   element.classList.add("pagination-small pagination-centered");
+}
+</script>

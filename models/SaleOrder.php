@@ -49,7 +49,7 @@ class SaleOrder extends \yii\db\ActiveRecord
             'id' => 'ID',
             'status' => 'Trạng thái',
             'created_date' => 'Ngày tạo',
-            'id_user' => 'Id User',
+            'id_user' => 'Khách hàng',
         ];
     }
 

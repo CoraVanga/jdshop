@@ -10,7 +10,8 @@
 namespace PHPUnit\Framework\Constraint;
 
 use PHPUnit\Framework\ExpectationFailedException;
-use SebastianBergmann;
+use SebastianBergmann\Comparator\ComparisonFailure;
+use SebastianBergmann\Comparator\Factory as ComparatorFactory;
 
 /**
  * Constraint that checks if one value is equal to another.
@@ -48,18 +49,6 @@ class IsEqual extends Constraint
      */
     private $ignoreCase = false;
 
-    /**
-     * @var SebastianBergmann\Comparator\ComparisonFailure
-     */
-    private $lastFailure;
-
-    /**
-     * @param mixed $value
-     * @param float $delta
-     * @param int   $maxDepth
-     * @param bool  $canonicalize
-     * @param bool  $ignoreCase
-     */
     public function __construct($value, float $delta = 0.0, int $maxDepth = 10, bool $canonicalize = false, bool $ignoreCase = false)
     {
         parent::__construct();
@@ -98,7 +87,7 @@ class IsEqual extends Constraint
             return true;
         }
 
-        $comparatorFactory = SebastianBergmann\Comparator\Factory::getInstance();
+        $comparatorFactory = ComparatorFactory::getInstance();
 
         try {
             $comparator = $comparatorFactory->getComparatorFor(
@@ -113,7 +102,7 @@ class IsEqual extends Constraint
                 $this->canonicalize,
                 $this->ignoreCase
             );
-        } catch (SebastianBergmann\Comparator\ComparisonFailure $f) {
+        } catch (ComparisonFailure $f) {
             if ($returnResult) {
                 return false;
             }
@@ -131,8 +120,6 @@ class IsEqual extends Constraint
      * Returns a string representation of the constraint.
      *
      * @throws SebastianBergmann\RecursionContext\InvalidArgumentException
-     *
-     * @return string
      */
     public function toString(): string
     {
