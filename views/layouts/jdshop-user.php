@@ -176,7 +176,7 @@
 				</div>	
 			</section>
 			<section id="copyright">
-				<span>Tác giả: Nguyễn Thị Cẩm Tiên</span>
+				<span>Tác giả: Nguyễn Thị Cẩm Tiên - Lê Đình Tiến - Phạm Thành Nghĩa</span>
 			</section>
 		</div>
 		<script src="../assets-shopper/themes/js/common.js"></script>
