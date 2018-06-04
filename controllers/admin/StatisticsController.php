@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers\admin;
 use Yii;
+use app\models\Type;
 use app\models\ProductDetail;
 use app\models\Product;
 use app\models\SearchProduct;
@@ -77,6 +78,17 @@ class StatisticsController extends Controller{
             ->limit(1);
         $featureProduct = $query->all();
 
+        //get profit by producttype
+        $query = new \yii\db\Query;
+        $query->select('t.name, sum(ol.sum_price) as amount')
+            ->from('sale_order as so, type as t, order_line as ol, product as p')
+            ->where('so.id = ol.id_bill and ol.id_product = p.id and p.id_type = t.id and month(so.created_date) is not null')
+            ->addGroupBy('t.name');
+        $profitByType = $query->all();
+
+
+        //get list type
+        $typeList = Type::find()->all();
 		return $this->render('index', [
         	'revenue' => $revenue,
         	'sales' => $sales,
@@ -86,6 +98,8 @@ class StatisticsController extends Controller{
         	'profit' =>$profit,
         	'inventory' => $inventory,
             'featureProduct' => $featureProduct,
+            'profitByType' =>$profitByType,
+            'typeList' => $typeList,
         ]);
 	}
 }

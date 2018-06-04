@@ -48,6 +48,45 @@ $this->params['breadcrumbs'][] = $this->title;
 					</div> -->
 			</div>
 		</div>
+		<div class="col-md-9">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Tổng lợi nhuận theo loại sản phẩm</h4>
+					<?php
+					$label = []; 
+					$data = [];
+					foreach($profitByType as $type)
+					{
+						array_push($label,$type['name']);
+						array_push($data,$type['amount']);
+					}
+					echo ChartJs::widget([
+					    'type' => 'bar',
+					    'options' => [
+					        'height' => 100,
+                    
+                
+					    ],
+					    'data' => [
+					        'labels' => $label,
+					        'datasets' => [
+					            [
+					                'label' => false,
+					                'backgroundColor' => ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95ce"],
+					                'hoverBackgroundColor' => ["#3e95dd", "#8e5eb2","#3cba0f","#e8c3c9","#c45860","#3e95de"],
+					                'data' => $data,
+
+					            ],
+					        ]
+					    ],
+					    'clientOptions' => [
+					    	'legend' => [ 'display'=> false ],
+					    ],
+					]);
+					?>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-3">
