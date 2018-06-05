@@ -157,9 +157,9 @@ class CartController extends Controller
                 }
                 else
                 {
-                    echo "<pre>";
-                    print_r($_POST);
-                    echo "</pre>";
+                    // echo "<pre>";
+                    // print_r($_POST);
+                    // echo "</pre>";
                     $new_saleorder = SaleOrder::find()->where(['id'=>$_POST['soid']])->one();
                     $new_saleorder->status=3;
                     $new_saleorder->save();

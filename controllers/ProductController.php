@@ -169,12 +169,12 @@ class ProductController extends Controller
                     }
                 }
             }
-            echo "<pre>";
-            print_r($user->name);
-            print_r($product->name);
-            print_r($saleorder->total_price);
-            print_r($productdetail->amount);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($user->name);
+            // print_r($product->name);
+            // print_r($saleorder->total_price);
+            // print_r($productdetail->amount);
+            // echo "</pre>";
             $flag=3;
             }
         return $this->render('view', [
