@@ -24,21 +24,23 @@ begin
 	commit tran
 end
 
-drop procedure lost_update_update_2_error
+drop procedure lost_update_update_1_error
 go
-create procedure lost_update_update_2_error
+create procedure lost_update_update_1_error
 @id int
 as
 begin
-set transaction isolation level read uncommitted
+	--set transaction isolation level SERIALIZABLE 
 	begin tran
 		declare @amount int
 		Select @amount = amount
 		from product_detail where id = @id
 		set @amount = @amount -1
+		waitfor delay '00:00:10'
 		update product_detail
 		set amount = @amount
 		where id = @id
+
 	commit tran
 end
 
@@ -84,5 +86,5 @@ select * from product_detail where id = 1000
 exec lost_update_update_1 1000 --TRAN 1
 exec lost_update_update_2 1000 --TRAN 2
 ---
-exec lost_update_update_1 1000 --TRAN 1
-exec lost_update_update_2_error 1000 --TRAN 2
+exec lost_update_update_1_error 1000 --TRAN 1
+exec lost_update_update_2 1000 --TRAN 2
