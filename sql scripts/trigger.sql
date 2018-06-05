@@ -150,23 +150,161 @@ begin
 	If(UPDATE (amount))
 	print N'Cập nhật giá tiền của hóa đơn khi cập nhật chi tiết hóa đơn'
 	begin
-		declare @soluong int
+		declare @soluong int, @iid int
 		declare @sumprice int
 		declare @id int
 		declare @idbill int
-		declare @size int
-		declare @price int
-		select @soluong=amount from inserted
-		select @idbill=id_bill from inserted
-		select @size=size_product from inserted
-		select @id=id_product from inserted
-		select @price=price from product_detail where @id=product_detail.id_product and @size=product_detail.size
+		declare @size int, @precent int
+		declare @price int, @id_discount int
+		select @soluong=amount, @idbill=id_bill, @size=size_product, @id=id_product, @iid = id
+		from inserted
+
+		select @price=price 
+		from product_detail 
+		where @id=product_detail.id_product and @size=product_detail.size
+
+		select @id_discount = id_discount 
+		from product 
+		where id = @id
+		if(@id_discount is not null)
+		begin
+			select @precent = discount 
+			from discount_product
+			where id = @id_discount
+		end
+		else
+		begin
+			set @precent = 0
+		end
+
 		update order_line
-		set sum_price=@soluong*@price
-		select @sumprice=SUM(sum_price) from order_line where @idbill=order_line.id_bill
+		set sum_price=@soluong*@price*(1-@precent/100)
+		where id = @iid
+
+		select @sumprice=SUM(sum_price) 
+		from order_line 
+		where @idbill=order_line.id_bill
+
 		update sale_order
-		set total_price=@sumprice where id=@idbill
+		set total_price=@sumprice 
+		where id=@idbill
 	end
 end
+--test
+select * from order_line
+set IDENTITY_INSERT order_line off
+set IDENTITY_INSERT sale_order on
+insert into sale_order(id,total_price,id_user,status) values (1000,10000,2,1)
+set IDENTITY_INSERT sale_order off
+set IDENTITY_INSERT order_line on
+insert into order_line(id,amount,size_product,sum_price,id_product,id_bill) values(1000,1,10,20170000,3,1000)
+update order_line
+set amount = 3
+where id = 1000
+select * from sale_order where id = 1000
+select * from order_line where id_bill = 1000
 
+--7 Khi thêm khuyến mãi ngày bắt đầu phải nhỏ hơn ngày kết thúc, 
+--khuyến mãi không trùng lắp, ngày tạo tự động trong hệ thống
+drop trigger trg_ins_discount
+go
+create trigger trg_ins_discount on discount_product 
+for insert, update
+as
+begin
+ print N'Kiểm tra ngày bắt đầu và ngày kết thúc của khuyến mãi'
+ declare @begindate date, @enddate date
+ select @begindate = begin_date, @enddate = end_date from inserted
+ if(@begindate>=@enddate)
+ begin
+	print N'Ngày bắt đầu phải nhỏ hơn ngày kết thúc'
+	rollback tran
+ end
+end
+--test
+insert into discount_product(info,begin_date,end_date) values(N'Test khuyến mãi',GETDATE(),'1970-01-01')
 
+--8 Khi xóa khuyến mãi, đặt mã khuyến mãi của sản phẩm là null
+drop trigger trg_del_discount
+go
+create trigger trg_del_discount on discount_product 
+instead of delete
+as
+begin
+	print N'Khi xóa khuyến mãi, cập nhật sản phẩm'
+	declare @id int
+	declare cs cursor for select id from deleted
+	open cs
+	fetch next from cs into @id
+	while(@@FETCH_STATUS=0)
+	begin
+		update product
+		set id_discount = null
+		where id_discount=@id
+		delete from discount_product where id = @id
+		fetch next from cs into @id
+	end
+	close cs
+	deallocate cs
+end
+--test
+set IDENTITY_INSERT order_line off
+set IDENTITY_INSERT discount_product on
+insert into discount_product(id,info,begin_date,end_date,discount) values(1000,N'Test khuyến mãi',GETDATE(),'2020-01-01',20)
+update product
+set id_discount = 1000
+where id_type = 1
+select * from product where id_type = 1 
+delete from discount_product where id = 1000
+
+--9 Khi xóa user, cập nhật trạng thái user về 0
+drop trigger trg_del_users
+go
+create trigger trg_del_users on users
+instead of delete
+as
+begin
+	print N'Khi xóa user, cập nhật status user'
+	declare @id int
+	declare cs cursor for select id from deleted
+	open cs
+	fetch next from cs into @id
+	while(@@FETCH_STATUS=0)
+	begin
+		update users
+		set status = 0
+		where id=@id
+		fetch next from cs into @id
+	end
+	close cs
+	deallocate cs
+end
+--test
+delete  from users where id>21
+select * from users
+
+--10 Khi xóa sản phẩm, cập nhật trạng thái về 0
+drop trigger trg_del_product
+go
+create trigger trg_del_product on product
+instead of delete
+as
+begin
+	print N'Khi xóa product, cập nhật status product'
+	declare @id int
+	declare cs cursor for select id from deleted
+	open cs
+	fetch next from cs into @id
+	while(@@FETCH_STATUS=0)
+	begin
+		update product
+		set status = 0
+		where id=@id
+		fetch next from cs into @id
+	end
+	close cs
+	deallocate cs
+end
+--test
+select * from product where id = 1000
+delete from product where id = 1000
