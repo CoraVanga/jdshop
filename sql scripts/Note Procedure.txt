@@ -1,0 +1,17 @@
+dirty_read_update
+dirty_read_select
+lost_update_update_1
+lost_update_update_2
+CAPNHATSANPHAMDONGLOAT
+VIEWPRODUCTDETAIL
+update_product_detail
+XOACHITIETHOADON
+CAPNHATTRANGTHAIHOADON
+----------------------- procedure 
+
+-------function 
+showNameProductById
+tinhDoanhThuTheoThoiGian
+tinhDoanhThuTheoLoaiSanPham
+tinhDoanhThuTrongNgayHienTai
+sanPhamBanChayNhat
