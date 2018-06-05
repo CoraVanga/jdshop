@@ -1,4 +1,4 @@
------------------------ procedure -- x? l� d?ng th?i
+﻿----------------------- procedure -- xử lý đồng thời
 dirty_read_update 
 dirty_read_select 
 lost_update_update_1
