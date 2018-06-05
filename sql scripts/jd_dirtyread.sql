@@ -4,6 +4,7 @@
 --kịch bản: T1 cập nhật số lượng sản phẩm trong kho nhưng chưa commit thì T2 xem số lượng sản phẩm trong kho
 use jd
 
+
 drop procedure dirty_read_update
 go
 create procedure dirty_read_update
