@@ -87,14 +87,16 @@ create procedure pro_del_users
 @id_user int
 as
 begin
-delete from sale_order where id_user=@id_user
-delete from users where id=@id_user
-update discount_product
-set created_uid=null where created_date=@id_user
+	disable TRIGGER ALL ON users
+	delete from sale_order where id_user=@id_user
+	delete from users where id=@id_user
+	update discount_product
+	set created_uid=null where created_date=@id_user;
+	enable TRIGGER ALL ON users;
 end
 ---test
-select * from users
-exec pro_del_users 3
+select * from users where id = 23
+exec pro_del_users 23
 
 ---xóa type
 create procedure pro_del_type
@@ -131,9 +133,11 @@ create procedure pro_del_product
 @id int
 as
 begin
-delete from product_detail where id_product=@id
-delete from product where id=@id
-delete from image_product where id_product=@id
+	disable trigger all on product
+	delete from product_detail where id_product=@id
+	delete from product where id=@id
+	delete from image_product where id_product=@id;
+	enable trigger all on product
 end
 
 ---xóa order_line
@@ -204,6 +208,7 @@ begin
 update product
 set name=@name, status=@status, code=@code,info=@info where id=@id
 end
+
 ---update order_line
 create procedure pro_update_order_line
 @id int, @amount int, @size_pro int, @sum int
@@ -212,6 +217,7 @@ begin
 update order_line
 set amount=@amount, size_product=@size_pro, sum_price=@sum where id=@id
 end
+
 ---update image_product
 create procedure pro_update_image_product
 @id int, @link nvarchar(200)
@@ -220,6 +226,7 @@ begin
 update image_product
 set link=@link where id=@id
 end
+
 ---update discount_product
 create procedure pro_update_discount_product
 @id int, @info nvarchar(100),@discount int, @end_date date
