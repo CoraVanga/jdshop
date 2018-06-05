@@ -8,44 +8,44 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="shortcut icon" href="<?php echo Yii::$app->homeUrl.'../assets-shopper/imageweb/icon1.png'?>">
+		<link rel="shortcut icon" href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/imageweb/icon1.png'?>">
 		<meta charset="utf-8">
 		<title>Trang sức cao cấp JD</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
 		<!-- bootstrap -->
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap.min.css'?>" rel="stylesheet">      
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-responsive.min.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap.min.css'?>" rel="stylesheet">      
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-responsive.min.css'?>" rel="stylesheet">
 		
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/bootstrappage.css'?>" rel="stylesheet"/>
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/jd_custom.css'?>" rel="stylesheet"/>
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/themes/css/bootstrappage.css'?>" rel="stylesheet"/>
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/themes/css/jd_custom.css'?>" rel="stylesheet"/>
 		
 		<!-- global styles -->
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/flexslider.css'?>" rel="stylesheet"/>
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/css/main.css'?>" rel="stylesheet"/>
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/themes/css/flexslider.css'?>" rel="stylesheet"/>
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/themes/css/main.css'?>" rel="stylesheet"/>
 
 		<!-- scripts -->
-		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery-1.7.2.min.js'?>"></script>
-		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/bootstrap.min.js'?>"></script>
-		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/js/jd_custom.js'?>"></script>	
-		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/superfish.js'?>"></script>	
-		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jquery.scrolltotop.js'?>"></script>
+		<script src="<?php echo Yii::$app->homeUrl.'../../assets-shopper/themes/js/jquery-1.7.2.min.js'?>"></script>
+		<script src="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/js/bootstrap.min.js'?>"></script>
+		<script src="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/js/jd_custom.js'?>"></script>	
+		<script src="<?php echo Yii::$app->homeUrl.'../../assets-shopper/themes/js/superfish.js'?>"></script>	
+		<script src="<?php echo Yii::$app->homeUrl.'../../assets-shopper/themes/js/jquery.scrolltotop.js'?>"></script>
 		
 		<!--[if lt IE 9]>			
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="js/respond.min.js"></script>
 		<![endif]-->
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-about.css'?>" rel="stylesheet"> 
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-info.css'?>" rel="stylesheet">
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-faq.css'?>" rel="stylesheet">
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdmh.css'?>" rel="stylesheet">
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdtt.css'?>" rel="stylesheet">
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdvc.css'?>" rel="stylesheet">
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-dosize.css'?>" rel="stylesheet">
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdsd.css'?>" rel="stylesheet">
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/bootstrap-hdtc.css'?>" rel="stylesheet">
-		<link href="<?php echo Yii::$app->homeUrl.'../assets-shopper/bootstrap/css/jd_custom.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-about.css'?>" rel="stylesheet"> 
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-info.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-faq.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-hdmh.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-hdtt.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-hdvc.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-dosize.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-hdsd.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/bootstrap-hdtc.css'?>" rel="stylesheet">
+		<link href="<?php echo Yii::$app->homeUrl.'../../assets-shopper/bootstrap/css/jd_custom.css'?>" rel="stylesheet">
 	</head>
     <body>		
 		<div id="top-bar" class="container">
@@ -61,9 +61,9 @@
                                     $users = Users::findUsersById($_SESSION['ID_USER']);
                                     $saleorder = SaleOrder::find()->where(['id_user'=>$users->id])->one();
                                     ?>
-                            	<li><?= Html::a('Tài khoản', ['../user/users/view','id'=>$_SESSION['ID_USER']]) ?></li>
+                            	<li><?= Html::a('Tài khoản', ['../../user/users/view','id'=>$_SESSION['ID_USER']]) ?></li>
 								<?php if(isset($saleorder)):?>
-									<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
+									<li><?= Html::a('Giỏ hàng', ['../../user/cart/view']) ?></li>
 								<?php endif;?>
 								<?php if($users->username!=null):?>
                                 <li><a href="../../user/site/logout-user">
@@ -79,7 +79,7 @@
                             			$saleorder = SaleOrder::find()->where(['id_user'=>$users->id, 'status'=>'1'])->one();
                             		?>
                             		<?php if(isset($saleorder)):?>
-                            			<li><?= Html::a('Giỏ hàng', ['../user/cart/view']) ?></li>
+                            			<li><?= Html::a('Giỏ hàng', ['../../user/cart/view']) ?></li>
                         			<?php endif;?>
                     			<?php endif;?>
                                 <li><a href="../../user/site/login">Đăng nhập</a></li>	
@@ -92,24 +92,24 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">			
-					<a href="../../main" class="logo pull-left"><img src="<?php echo Yii::$app->homeUrl.'../assets-shopper/imageweb/logo.png'?>" width="50%", height="50%" class="site_logo" alt=""></a>
+					<a href="../../main" class="logo pull-left"><img src="<?php echo Yii::$app->homeUrl.'../../assets-shopper/imageweb/logo.png'?>" width="50%", height="50%" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><?= Html::a('Trang chủ', ['../main']) ?>
+							<li><?= Html::a('Trang chủ', ['../../main']) ?>
 							</li>
-							<li><?= Html::a('Giới thiệu', ['../main/about']) ?>
+							<li><?= Html::a('Giới thiệu', ['../../main/about']) ?>
 							</li>
 							<li><a href="../../user/product/search">Sản phẩm</a>					
 								<ul>
-									<li><?= Html::a('Nhẫn', ['../user/product/view', 'type' => 'ring'])?></li>				
-									<li><?= Html::a('Bông tai', ['../user/product/view', 'type' => 'earring'])?></li>
-									<li><?= Html::a('Dây chuyền', ['../user/product/view', 'type' => 'necklace'])?></li>
-									<li><?= Html::a('Lắc tay', ['../user/product/view', 'type' => 'bangles'])?></li>									
+									<li><?= Html::a('Nhẫn', ['../../user/product/view', 'type' => 'ring'])?></li>				
+									<li><?= Html::a('Bông tai', ['../../user/product/view', 'type' => 'earring'])?></li>
+									<li><?= Html::a('Dây chuyền', ['../../user/product/view', 'type' => 'necklace'])?></li>
+									<li><?= Html::a('Lắc tay', ['../../user/product/view', 'type' => 'bangles'])?></li>									
 								</ul>
 							</li>
-							<li><li><?= Html::a('Liên hệ', ['../main/info']) ?></li>
+							<li><li><?= Html::a('Liên hệ', ['../../main/info']) ?></li>
 							</li>
-							<li><li><?= Html::a('FAQs', ['../main/faq']) ?></li>
+							<li><li><?= Html::a('FAQs', ['../../main/faq']) ?></li>
 							</li>														
 						</ul>
 					</nav>
@@ -140,24 +140,24 @@
 					<div class="span3">
 						<h4>Giới thiệu về JD</h4>
 						<ul class="nav">
-							<li><?= Html::a('Thông tin về JD', ['../main/about']) ?></li> 
-							<li><?= Html::a('Liên hệ', ['../main/info']) ?></li>
-							<li><?= Html::a('FAQs', ['../main/faq']) ?></li>							
+							<li><?= Html::a('Thông tin về JD', ['../../main/about']) ?></li> 
+							<li><?= Html::a('Liên hệ', ['../../main/info']) ?></li>
+							<li><?= Html::a('FAQs', ['../../main/faq']) ?></li>							
 						</ul>					
 					</div>
 					<div class="span4">
 						<h4>Hỗ trợ mua hàng</h4>
 						<ul class="nav">
-							<li><?= Html::a('Hướng dẫn mua hàng', ['../main/hdmh']) ?></li>
-							<li><?= Html::a('Hướng dẫn thanh toán', ['../main/hdtt']) ?></li>
-							<li><?= Html::a('Phương thức vận chuyển', ['../main/hdvc']) ?></li>
-							<li><?= Html::a('Hướng dẫn đo size trang sức', ['../main/hdds']) ?></li>
-							<li><?= Html::a('Hướng dẫn sử dụng trang sức', ['../main/hdsd']) ?></li>
-							<li><?= Html::a('Tra cứu đơn hàng-thẻ thành viên', ['../main/hdtc']) ?></li>
+							<li><?= Html::a('Hướng dẫn mua hàng', ['../../main/hdmh']) ?></li>
+							<li><?= Html::a('Hướng dẫn thanh toán', ['../../main/hdtt']) ?></li>
+							<li><?= Html::a('Phương thức vận chuyển', ['../../main/hdvc']) ?></li>
+							<li><?= Html::a('Hướng dẫn đo size trang sức', ['../../main/hdds']) ?></li>
+							<li><?= Html::a('Hướng dẫn sử dụng trang sức', ['../../main/hdsd']) ?></li>
+							<li><?= Html::a('Tra cứu đơn hàng-thẻ thành viên', ['../../main/hdtc']) ?></li>
 						</ul>
 					</div>
 					<div class="span5">
-						<p class="logo"><img src="../assets-shopper/imageweb/logo.png" class="site_logo" alt=""></p>
+						<p class="logo"><img src="../../assets-shopper/imageweb/logo.png" class="site_logo" alt=""></p>
 						<p>CÔNG TY CỔ PHẦN BẠC ĐÁ QUÝ TÂY NGUYÊN </p>
 						<p>170E Phan Đăng Lưu, P.3, T.Gia Lai, TP.Hồ Chí Minh - ĐT: 028 3995 1703 - 
 						<br/>
@@ -179,8 +179,8 @@
 				<span>Tác giả: Nguyễn Thị Cẩm Tiên - Lê Đình Tiến - Phạm Thành Nghĩa</span>
 			</section>
 		</div>
-		<script src="../assets-shopper/themes/js/common.js"></script>
-		<script src="../assets-shopper/themes/js/jquery.flexslider-min.js"></script>
+		<script src="../../assets-shopper/themes/js/common.js"></script>
+		<script src="../../assets-shopper/themes/js/jquery.flexslider-min.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$(document).ready(function() {
@@ -195,6 +195,6 @@
 				});
 			});
 		</script>
-		<script src="<?php echo Yii::$app->homeUrl.'../assets-shopper/themes/js/jd_custom.js'?>"></script>
+		<script src="<?php echo Yii::$app->homeUrl.'../../assets-shopper/themes/js/jd_custom.js'?>"></script>
     </body>
 </html>
