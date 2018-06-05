@@ -1,5 +1,5 @@
 use jd
-SELECT count(*) FROM sys.triggers
+SELECT * FROM sys.triggers
 --1 Khi thêm sản phẩm vào, tự động thêm ngày tạo và status
 drop trigger trg_set_product_status_createdate
 go
@@ -137,6 +137,7 @@ begin
 	set total_price=total_price-@price
 	where @id=sale_order.id
 end
+--test
 insert into order_line(sum_price,id_bill) values (10,4)
 delete from order_line where id_bill=2
 
