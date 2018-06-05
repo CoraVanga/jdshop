@@ -170,4 +170,5 @@ class StatisticsController extends Controller{
             'yearList'=> $yearList,
         ]);
 	}
+
 }
