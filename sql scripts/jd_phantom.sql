@@ -67,7 +67,15 @@ SELECT TOP 1000 [id]
 -- Run correct 
 EXEC CAPNHATSANPHAMDONGLOAT 1, 200
 EXEC chendulieuvao
+
+
+ --SET IDENTITY_INSERT product_detail ON
+	--begin tran
+	--	insert product_detail (id,size,price,amount,id_product) values (1000,10,500000,100,1)
+	--commit tran
 -- Run Error
+
+
 EXEC CAPNHATSANPHAMDONGLOAT_ERROR 1, 200
 EXEC chendulieuvao
 
