@@ -120,7 +120,13 @@ insert into order_line values(1,10,20170000,3,1000)
 insert into order_line values(1,16,15388000,19,1000)
 select * from sale_order where id = 1000
 select * from order_line order by id desc
+-- --- ---- ----- ------ ------- --------
+insert into discount_product (info,discount,created_date,begin_date,end_date,created_uid) values ('test',100,'2018-06-01','2018-06-01','2018-06-10',2)
+update product set id_discount = 1 where id = 1
+insert into sale_order (status , id_user) values (1,2)
+insert into order_line (amount,size_product,id_product,id_bill) values (1,10,1,1002)
 
+-----------------------------------------
 --5 Khi xóa chi tiết hóa đơn, cập nhật lại giá tiền trên hóa đơn
 drop trigger trg_set_orderlinedel
 go

@@ -18,12 +18,12 @@ USE JD
 -- Nếu khác 0 thì cập nhật lại tổng thành tiền cho hoá đơn
 -----------------------------------------------------------------------
 
-
+Drop procedure XOACHITIETHOADON
+go
 create PROCEDURE XOACHITIETHOADON 
 @ID_ORDER_LINE INT
 AS
 BEGIN
-	--BEGIN TRY  
 		DECLARE @ID_SALE_ORDER INT
 		DECLARE @PRICE INT
 		SET @PRICE = 0
@@ -37,29 +37,23 @@ BEGIN
 				--PRINT @PRICE
 				IF @PRICE = 0
 					BEGIN
-						waitfor delay '00:00:15'
+						waitfor delay '00:00:10'
 						UPDATE [sale_order] SET [sale_order].[status] = 0 WHERE [sale_order].[id] = @ID_SALE_ORDER
 						PRINT @PRICE
 					END
 				ELSE
 					BEGIN
-						waitfor delay '00:00:15'
+						waitfor delay '00:00:10'
 						UPDATE [sale_order]
 						SET [sale_order].[total_price] = @PRICE
 						WHERE [sale_order].[id] = @ID_SALE_ORDER
 						PRINT @PRICE
 					END
 			commit Tran
-	--END TRY  
-	--BEGIN CATCH  
-		 --print 'ER'
-	--END CATCH  
-			
 END
 
-DROP PROC XOACHITIETHOADON
 
-EXEC XOACHITIETHOADON 5
+
 
 -----------------------------------------------------------------------
 ---Chú thích trạng thái của sale-order
@@ -74,13 +68,15 @@ EXEC XOACHITIETHOADON 5
 --TH2: Nếu trạng thái mới khác 0 và trạng thái cũ khác 4 thì chỉ cập nhật trạng thái.(từ thanh toán qua huỷ)
 --TH3: Nếu trạng thái mới là 0 và trạng thái cũ là  1,2,3 thì xoá hết chi tiết hoá đơn của hoá đơn đó.
 -----------------------------------------------------------------------
+Drop procedure CAPNHATTRANGTHAIHOADON
+go
 create PROCEDURE CAPNHATTRANGTHAIHOADON
 @ID_SALE_ORDER INT, @STATUS_NEW INT
 AS
 BEGIN
 	BEGIN TRY  
 		DECLARE @STATUS_OLD INT 
-		--SET TRANSACTION ISOLATION LEVEL Serializable
+		SET TRANSACTION ISOLATION LEVEL Serializable
 		BEGIN TRAN T2
 			SELECT @STATUS_OLD = [sale_order].[status] FROM [sale_order] WHERE  [sale_order].[id] = @ID_SALE_ORDER   
 			IF @STATUS_OLD = 4 OR @STATUS_OLD = 0 OR @STATUS_NEW = @STATUS_OLD
@@ -95,8 +91,9 @@ BEGIN
 			END
 			IF @STATUS_NEW =0  AND @STATUS_OLD != 4
 			BEGIN
+				 waitfor delay '00:00:10'
 				 UPDATE [sale_order] SET [sale_order].[status] = @STATUS_NEW WHERE [sale_order].[id] = @ID_SALE_ORDER
-			 
+				
 				 DELETE FROM [order_line] WHERE  [order_line].[id_bill] = @ID_SALE_ORDER  
 				 PRINT 'TRƯỜNG HỢP 3' 
 			END 
@@ -160,12 +157,13 @@ SELECT TOP 1000 [id]
   --Msg 1205, Level 13, State 51, Procedure XOACHITIETHOADON, Line 22
   --Transaction (Process ID 51) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
 --------------------------------------------------------------------
-SELECT TOP 1000 [total_price]
+SELECT  [total_price]
       ,[id]
       ,[status]
       ,[created_date]
       ,[id_user]
   FROM [JD].[dbo].[sale_order]
+  WHERE [id] = 1000
 --------------------------------------------------------------------
 
 SELECT TOP 1000 [id]
@@ -175,4 +173,5 @@ SELECT TOP 1000 [id]
       ,[id_product]
       ,[id_bill]
   FROM [JD].[dbo].[order_line]
+  WHERE [id] IN (1000,1001,1002)
 
