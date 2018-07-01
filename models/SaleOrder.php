@@ -33,7 +33,7 @@ class SaleOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['total_price', 'status', 'id_user'], 'integer'],
+            [['total_price', 'status'], 'integer'],
             [['created_date'], 'safe'],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['id_user' => 'id']],
         ];

@@ -8,6 +8,7 @@ use app\models\SearchSaleOrder;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * SaleOrderController implements the CRUD actions for SaleOrder model.

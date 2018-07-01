@@ -18,8 +18,8 @@ class SearchSaleOrder extends SaleOrder
     public function rules()
     {
         return [
-            [['total_price', 'id', 'status', 'id_user'], 'integer'],
-            [['created_date'], 'safe'],
+            [['total_price', 'id', 'status'], 'integer'],
+            [['created_date','id_user'], 'safe'],
         ];
     }
 
@@ -56,16 +56,16 @@ class SearchSaleOrder extends SaleOrder
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->joinWith('user');
         // grid filtering conditions
         $query->andFilterWhere([
             'total_price' => $this->total_price,
             'id' => $this->id,
             'status' => $this->status,
             'created_date' => $this->created_date,
-            'id_user' => $this->id_user,
+            //'id_user' => $this->id_user,
         ]);
-
+        $query->andFilterWhere(['like','users.name',$this->id_user]);
 
         return $dataProvider;
     }

@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-title">
                 <h4><?= Html::encode($this->title) ?></h4>
                 <p>
-                    <?= Html::a('Thêm đơn hàng', ['create'], ['class' => 'btn btn-success']) ?>
+                    
                 </p>
             </div>
             <div class="card-body">
@@ -26,24 +26,34 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filterModel' => $searchModel,
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                        'attribute'=>'user.name',
-                        //'total_price',
                         [
-                            'label' => 'Tổng tiền',
+                            'attribute' => 'id_user',
+                            'label' => 'Họ & tên',
+                            'value' => function ($model) {
+                                    return $model->user->name;
+                            },
+                        ],
+                        //'total_price',
+                        //'user.address:text:School',
+                        [
+                            //'label' => 'total_price',
+                            'attribute'=>'total_price',
                             'value' => function ($model) {
                                     return number_format($model->total_price);
                             },
                         ],
                         //'id',
                         //'bill_code',
-                        [
-                            'label' => 'Địa chỉ',
-                            'value' => function ($model) {
-                                    return $model->user->address;
-                            },
-                        ],
+                        // [
+                        //     'attribute' => 'id_user',
+                        //     'label' => 'Địa chỉ',
+                        //     'value' => function ($model) {
+                        //             return $model->user->address;
+                        //     },
+                        // ],
                         [
                             'label' => 'Ngày tạo',
+                            'attribute'=>'created_date',
                             'value' => function ($model) {
                                     return date("d/m/Y", strtotime($model->created_date));
                             },
